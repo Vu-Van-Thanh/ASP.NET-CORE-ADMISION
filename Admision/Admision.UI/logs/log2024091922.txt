@@ -1,0 +1,88 @@
+2024-09-19 22:39:42.360 +07:00 [INF] User profile is available. Using 'C:\Users\vut42\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-19 22:39:42.623 +07:00 [INF] Now listening on: http://localhost:5059
+2024-09-19 22:39:44.186 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/ - null null
+2024-09-19 22:39:44.279 +07:00 [WRN] Failed to determine the https port for redirect.
+2024-09-19 22:39:44.286 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /
+2024-09-19 22:39:44.317 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-19 22:39:44.333 +07:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-09-19 22:39:44.335 +07:00 [INF] Response:
+StatusCode: 302
+Location: http://localhost:5059/Account/Login?ReturnUrl=%2F
+2024-09-19 22:39:44.338 +07:00 [INF] HTTP GET / responded 302 in 54.9189 ms
+2024-09-19 22:39:44.348 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/ - 302 0 null 172.337ms
+2024-09-19 22:39:44.353 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Account/Login?ReturnUrl=%2F - null null
+2024-09-19 22:39:44.360 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Account/Login
+2024-09-19 22:39:44.385 +07:00 [INF] Executing endpoint 'ContactsManager.UI.Controllers.AccountController.Login (Admision.UI)'
+2024-09-19 22:39:44.447 +07:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller ContactsManager.UI.Controllers.AccountController (Admision.UI).
+2024-09-19 22:39:44.647 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 22:39:44.651 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 22:39:44.665 +07:00 [INF] Executing ViewResult, running view Login.
+2024-09-19 22:39:44.937 +07:00 [INF] Executed ViewResult - view Login executed in 276.3871ms.
+2024-09-19 22:39:44.940 +07:00 [INF] Executed action ContactsManager.UI.Controllers.AccountController.Login (Admision.UI) in 489.9468ms
+2024-09-19 22:39:44.943 +07:00 [INF] Executed endpoint 'ContactsManager.UI.Controllers.AccountController.Login (Admision.UI)'
+2024-09-19 22:39:44.950 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-19 22:39:44.950 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Stylesheet.css - null null
+2024-09-19 22:39:44.951 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_vs/browserLink - null null
+2024-09-19 22:39:44.952 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Thu, 19 Sep 2024 15:39:44 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+Set-Cookie: [Redacted]
+Transfer-Encoding: chunked
+My-Key-From-Global: [Redacted]
+X-Frame-Options: [Redacted]
+2024-09-19 22:39:44.957 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.9884ms
+2024-09-19 22:39:44.956 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Stylesheet.css
+2024-09-19 22:39:44.963 +07:00 [INF] HTTP GET /Account/Login responded 200 in 602.6594 ms
+2024-09-19 22:39:44.992 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 639.5442ms
+2024-09-19 22:39:45.024 +07:00 [INF] Sending file. Request path: '/Stylesheet.css'. Physical path: 'C:\Đồ án 2\Admision\Admision.UI\wwwroot\StyleSheet.css'
+2024-09-19 22:39:45.029 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/css
+Date: Thu, 19 Sep 2024 15:39:44 GMT
+Server: Kestrel
+Accept-Ranges: bytes
+ETag: [Redacted]
+Last-Modified: Thu, 19 Sep 2024 02:55:44 GMT
+Content-Length: 11129
+2024-09-19 22:39:45.030 +07:00 [INF] HTTP GET /Stylesheet.css responded 200 in 73.9911 ms
+2024-09-19 22:39:45.033 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Stylesheet.css - 200 11129 text/css 82.8785ms
+2024-09-19 22:39:45.041 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.0906ms
+2024-09-19 22:39:45.236 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/jquery.validate.unobtrusive.min.js - null null
+2024-09-19 22:39:45.241 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /jquery.validate.unobtrusive.min.js
+2024-09-19 22:39:45.279 +07:00 [INF] Sending file. Request path: '/jquery.validate.unobtrusive.min.js'. Physical path: 'C:\Đồ án 2\Admision\Admision.UI\wwwroot\jquery.validate.unobtrusive.min.js'
+2024-09-19 22:39:45.282 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/javascript
+Date: Thu, 19 Sep 2024 15:39:44 GMT
+Server: Kestrel
+Accept-Ranges: bytes
+ETag: [Redacted]
+Last-Modified: Thu, 19 Sep 2024 02:55:44 GMT
+Content-Length: 5871
+2024-09-19 22:39:45.287 +07:00 [INF] HTTP GET /jquery.validate.unobtrusive.min.js responded 200 in 46.3253 ms
+2024-09-19 22:39:45.296 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/jquery.validate.unobtrusive.min.js - 200 5871 text/javascript 59.1666ms
