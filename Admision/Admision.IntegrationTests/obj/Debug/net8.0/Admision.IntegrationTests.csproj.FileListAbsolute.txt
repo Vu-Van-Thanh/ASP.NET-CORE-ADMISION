@@ -487,3 +487,5 @@ C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\refint\Admisi
 C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.pdb
 C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.genruntimeconfig.cache
 C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\ref\Admision.IntegrationTests.dll
+C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

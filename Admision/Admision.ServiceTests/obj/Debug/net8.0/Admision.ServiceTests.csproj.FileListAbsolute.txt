@@ -183,3 +183,10 @@ C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\refint\Admision.S
 C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.pdb
 C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.genruntimeconfig.cache
 C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\ref\Admision.ServiceTests.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Microsoft.AspNetCore.Antiforgery.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Microsoft.AspNetCore.Html.Abstractions.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

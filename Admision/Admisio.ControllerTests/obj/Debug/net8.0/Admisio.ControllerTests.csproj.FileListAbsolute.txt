@@ -181,3 +181,5 @@ C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\refint\Admisio.
 C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.pdb
 C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.genruntimeconfig.cache
 C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\ref\Admisio.ControllerTests.dll
+C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
