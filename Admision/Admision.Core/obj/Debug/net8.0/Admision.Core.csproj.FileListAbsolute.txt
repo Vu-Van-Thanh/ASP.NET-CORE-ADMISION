@@ -1,0 +1,13 @@
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.csproj.AssemblyReference.cache
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.AssemblyInfoInputs.cache
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.AssemblyInfo.cs
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.csproj.CoreCompileInputs.cache
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.sourcelink.json
+C:\Đồ án 2\Admision\Admision.Core\bin\Debug\net8.0\Admision.Core.deps.json
+C:\Đồ án 2\Admision\Admision.Core\bin\Debug\net8.0\Admision.Core.dll
+C:\Đồ án 2\Admision\Admision.Core\bin\Debug\net8.0\Admision.Core.pdb
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.dll
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\refint\Admision.Core.dll
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\Admision.Core.pdb
+C:\Đồ án 2\Admision\Admision.Core\obj\Debug\net8.0\ref\Admision.Core.dll

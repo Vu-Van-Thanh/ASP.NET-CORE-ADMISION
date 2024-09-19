@@ -1,0 +1,6 @@
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net6.0\Admisio.ControllerTests.csproj.AssemblyReference.cache
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net6.0\Admisio.ControllerTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net6.0\Admisio.ControllerTests.AssemblyInfoInputs.cache
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net6.0\Admisio.ControllerTests.AssemblyInfo.cs
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net6.0\Admisio.ControllerTests.csproj.CoreCompileInputs.cache
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net6.0\Admisio.ControllerTests.sourcelink.json
