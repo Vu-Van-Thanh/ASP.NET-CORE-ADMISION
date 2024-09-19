@@ -1,11 +1,5 @@
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_Admision.ServiceTests
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\CoverletSourceRootsMapping_Admision.ServiceTests
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.csproj.AssemblyReference.cache
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.AssemblyInfoInputs.cache
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.AssemblyInfo.cs
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.csproj.CoreCompileInputs.cache
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.sourcelink.json
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\testhost.dll
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\testhost.exe
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\xunit.runner.visualstudio.testadapter.dll
@@ -177,6 +171,12 @@ C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\runtimes\win\lib\
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Admision.Core.dll
 C:\Đồ án 2\Admision\Admision.ServiceTests\bin\Debug\net8.0\Admision.Core.pdb
+C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.csproj.AssemblyReference.cache
+C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.AssemblyInfoInputs.cache
+C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.AssemblyInfo.cs
+C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.csproj.CoreCompileInputs.cache
+C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.sourcelink.json
 C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.B24E82DE.Up2Date
 C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\Admision.ServiceTests.dll
 C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net8.0\refint\Admision.ServiceTests.dll

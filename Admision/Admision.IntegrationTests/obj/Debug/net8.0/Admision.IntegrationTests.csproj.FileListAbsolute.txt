@@ -1,12 +1,5 @@
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_Admision.IntegrationTests
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\CoverletSourceRootsMapping_Admision.IntegrationTests
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.csproj.AssemblyReference.cache
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\MvcTestingAppManifest.json
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.AssemblyInfoInputs.cache
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.AssemblyInfo.cs
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.csproj.CoreCompileInputs.cache
-C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.sourcelink.json
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\testhost.dll
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Admision.UI.deps.json
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Admision.UI.runtimeconfig.json
@@ -481,6 +474,13 @@ C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Admision.UI.d
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Admision.Infrastructure.pdb
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Admision.UI.pdb
 C:\Đồ án 2\Admision\Admision.IntegrationTests\bin\Debug\net8.0\Admision.Core.pdb
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.csproj.AssemblyReference.cache
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\MvcTestingAppManifest.json
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.AssemblyInfoInputs.cache
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.AssemblyInfo.cs
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.csproj.CoreCompileInputs.cache
+C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.sourcelink.json
 C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.D97E17C6.Up2Date
 C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\Admision.IntegrationTests.dll
 C:\Đồ án 2\Admision\Admision.IntegrationTests\obj\Debug\net8.0\refint\Admision.IntegrationTests.dll

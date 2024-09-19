@@ -1,9 +1,3 @@
-C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.csproj.AssemblyReference.cache
-C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.AssemblyInfoInputs.cache
-C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.AssemblyInfo.cs
-C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.csproj.CoreCompileInputs.cache
-C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.sourcelink.json
 C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_Admisio.ControllerTests
 C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\CoverletSourceRootsMapping_Admisio.ControllerTests
 C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\testhost.dll
@@ -175,6 +169,12 @@ C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\Admision.UI.dll
 C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\Admision.UI.pdb
 C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\Admision.Core.pdb
 C:\Đồ án 2\Admision\Admisio.ControllerTests\bin\Debug\net8.0\Admision.Infrastructure.pdb
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.csproj.AssemblyReference.cache
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.AssemblyInfoInputs.cache
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.AssemblyInfo.cs
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.csproj.CoreCompileInputs.cache
+C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.sourcelink.json
 C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio..BF350F16.Up2Date
 C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\Admisio.ControllerTests.dll
 C:\Đồ án 2\Admision\Admisio.ControllerTests\obj\Debug\net8.0\refint\Admisio.ControllerTests.dll

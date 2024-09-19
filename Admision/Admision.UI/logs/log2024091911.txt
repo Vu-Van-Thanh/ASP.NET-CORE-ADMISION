@@ -163,3 +163,185 @@ CREATE INDEX [IX_Persons_CountryID] ON [Persons] ([CountryID]);
 2024-09-19 11:32:56.466 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20240919043229_Init', N'8.0.8');
+2024-09-19 11:37:07.794 +07:00 [INF] User profile is available. Using 'C:\Users\vut42\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-09-19 11:37:08.030 +07:00 [INF] Now listening on: http://localhost:5059
+2024-09-19 11:37:08.926 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/ - null null
+2024-09-19 11:37:09.023 +07:00 [WRN] Failed to determine the https port for redirect.
+2024-09-19 11:37:09.032 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /
+2024-09-19 11:37:09.075 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-19 11:37:09.101 +07:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-09-19 11:37:09.104 +07:00 [INF] Response:
+StatusCode: 302
+Location: http://localhost:5059/Account/Login?ReturnUrl=%2F
+2024-09-19 11:37:09.108 +07:00 [INF] HTTP GET / responded 302 in 82.5967 ms
+2024-09-19 11:37:09.116 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/ - 302 0 null 204.9823ms
+2024-09-19 11:37:09.125 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Account/Login?ReturnUrl=%2F - null null
+2024-09-19 11:37:09.130 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Account/Login
+2024-09-19 11:37:09.146 +07:00 [INF] Executing endpoint 'ContactsManager.UI.Controllers.AccountController.Login (Admision.UI)'
+2024-09-19 11:37:09.181 +07:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller ContactsManager.UI.Controllers.AccountController (Admision.UI).
+2024-09-19 11:37:09.322 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 11:37:09.324 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 11:37:09.333 +07:00 [INF] Executing ViewResult, running view Login.
+2024-09-19 11:37:09.540 +07:00 [INF] Executed ViewResult - view Login executed in 210.4603ms.
+2024-09-19 11:37:09.545 +07:00 [INF] Executed action ContactsManager.UI.Controllers.AccountController.Login (Admision.UI) in 359.4143ms
+2024-09-19 11:37:09.549 +07:00 [INF] Executed endpoint 'ContactsManager.UI.Controllers.AccountController.Login (Admision.UI)'
+2024-09-19 11:37:09.549 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Stylesheet.css - null null
+2024-09-19 11:37:09.555 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-19 11:37:09.557 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_vs/browserLink - null null
+2024-09-19 11:37:09.558 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Stylesheet.css
+2024-09-19 11:37:09.551 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Thu, 19 Sep 2024 04:37:09 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+Set-Cookie: [Redacted]
+Transfer-Encoding: chunked
+My-Key-From-Global: [Redacted]
+X-Frame-Options: [Redacted]
+2024-09-19 11:37:09.562 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 9.279ms
+2024-09-19 11:37:09.562 +07:00 [INF] HTTP GET /Account/Login responded 200 in 431.7161 ms
+2024-09-19 11:37:09.576 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 451.365ms
+2024-09-19 11:37:09.596 +07:00 [INF] Sending file. Request path: '/Stylesheet.css'. Physical path: 'C:\Đồ án 2\Admision\Admision.UI\wwwroot\StyleSheet.css'
+2024-09-19 11:37:09.601 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/css
+Date: Thu, 19 Sep 2024 04:37:09 GMT
+Server: Kestrel
+Accept-Ranges: bytes
+ETag: [Redacted]
+Last-Modified: Thu, 19 Sep 2024 02:55:44 GMT
+Content-Length: 11129
+2024-09-19 11:37:09.602 +07:00 [INF] HTTP GET /Stylesheet.css responded 200 in 44.8195 ms
+2024-09-19 11:37:09.606 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Stylesheet.css - 200 11129 text/css 56.5695ms
+2024-09-19 11:37:09.614 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.2016ms
+2024-09-19 11:37:09.766 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/jquery.validate.unobtrusive.min.js - null null
+2024-09-19 11:37:09.771 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /jquery.validate.unobtrusive.min.js
+2024-09-19 11:37:09.809 +07:00 [INF] Sending file. Request path: '/jquery.validate.unobtrusive.min.js'. Physical path: 'C:\Đồ án 2\Admision\Admision.UI\wwwroot\jquery.validate.unobtrusive.min.js'
+2024-09-19 11:37:09.815 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/javascript
+Date: Thu, 19 Sep 2024 04:37:09 GMT
+Server: Kestrel
+Accept-Ranges: bytes
+ETag: [Redacted]
+Last-Modified: Thu, 19 Sep 2024 02:55:44 GMT
+Content-Length: 5871
+2024-09-19 11:37:09.816 +07:00 [INF] HTTP GET /jquery.validate.unobtrusive.min.js responded 200 in 45.1684 ms
+2024-09-19 11:37:09.819 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/jquery.validate.unobtrusive.min.js - 200 5871 text/javascript 53.9446ms
+2024-09-19 11:37:09.899 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/favicon.ico - null null
+2024-09-19 11:37:09.902 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /favicon.ico
+2024-09-19 11:37:09.915 +07:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Đồ án 2\Admision\Admision.UI\wwwroot\favicon.ico'
+2024-09-19 11:37:09.919 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: image/x-icon
+Date: Thu, 19 Sep 2024 04:37:09 GMT
+Server: Kestrel
+Accept-Ranges: bytes
+ETag: [Redacted]
+Last-Modified: Thu, 19 Sep 2024 02:55:44 GMT
+Content-Length: 5430
+2024-09-19 11:37:09.920 +07:00 [INF] HTTP GET /favicon.ico responded 200 in 18.3520 ms
+2024-09-19 11:37:09.922 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/favicon.ico - 200 5430 image/x-icon 23.1398ms
+2024-09-19 11:37:15.172 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Persons/Index - null null
+2024-09-19 11:37:15.176 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Persons/Index
+2024-09-19 11:37:15.184 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-09-19 11:37:15.188 +07:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-09-19 11:37:15.189 +07:00 [INF] Response:
+StatusCode: 302
+Location: http://localhost:5059/Account/Login?ReturnUrl=%2FPersons%2FIndex
+2024-09-19 11:37:15.190 +07:00 [INF] HTTP GET /Persons/Index responded 302 in 13.5659 ms
+2024-09-19 11:37:15.191 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Persons/Index - 302 0 null 19.1702ms
+2024-09-19 11:37:15.194 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Account/Login?ReturnUrl=%2FPersons%2FIndex - null null
+2024-09-19 11:37:15.197 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Account/Login
+2024-09-19 11:37:15.199 +07:00 [INF] Executing endpoint 'ContactsManager.UI.Controllers.AccountController.Login (Admision.UI)'
+2024-09-19 11:37:15.200 +07:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller ContactsManager.UI.Controllers.AccountController (Admision.UI).
+2024-09-19 11:37:15.207 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 11:37:15.208 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 11:37:15.209 +07:00 [INF] Executing ViewResult, running view Login.
+2024-09-19 11:37:15.218 +07:00 [INF] Executed ViewResult - view Login executed in 8.5305ms.
+2024-09-19 11:37:15.219 +07:00 [INF] Executed action ContactsManager.UI.Controllers.AccountController.Login (Admision.UI) in 18.2774ms
+2024-09-19 11:37:15.220 +07:00 [INF] Executed endpoint 'ContactsManager.UI.Controllers.AccountController.Login (Admision.UI)'
+2024-09-19 11:37:15.221 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Thu, 19 Sep 2024 04:37:15 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+Transfer-Encoding: chunked
+My-Key-From-Global: [Redacted]
+2024-09-19 11:37:15.221 +07:00 [INF] HTTP GET /Account/Login responded 200 in 24.6293 ms
+2024-09-19 11:37:15.224 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Account/Login?ReturnUrl=%2FPersons%2FIndex - 200 null text/html; charset=utf-8 29.7119ms
+2024-09-19 11:37:15.226 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_vs/browserLink - null null
+2024-09-19 11:37:15.227 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-19 11:37:15.230 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 2.9499ms
+2024-09-19 11:37:15.233 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_vs/browserLink - 200 null text/javascript; charset=UTF-8 6.9154ms
+2024-09-19 11:37:18.781 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/Account/Register - null null
+2024-09-19 11:37:18.788 +07:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Account/Register
+2024-09-19 11:37:18.790 +07:00 [INF] Executing endpoint 'ContactsManager.UI.Controllers.AccountController.Register (Admision.UI)'
+2024-09-19 11:37:18.795 +07:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register() on controller ContactsManager.UI.Controllers.AccountController (Admision.UI).
+2024-09-19 11:37:18.811 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 11:37:18.813 +07:00 [INF] Before logic - ResponseHeaderActionFilter
+2024-09-19 11:37:18.816 +07:00 [INF] Executing ViewResult, running view Register.
+2024-09-19 11:37:18.854 +07:00 [INF] Executed ViewResult - view Register executed in 39.2524ms.
+2024-09-19 11:37:18.857 +07:00 [INF] Executed action ContactsManager.UI.Controllers.AccountController.Register (Admision.UI) in 57.0932ms
+2024-09-19 11:37:18.859 +07:00 [INF] Executed endpoint 'ContactsManager.UI.Controllers.AccountController.Register (Admision.UI)'
+2024-09-19 11:37:18.860 +07:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Thu, 19 Sep 2024 04:37:18 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+Transfer-Encoding: chunked
+My-Key-From-Global: [Redacted]
+2024-09-19 11:37:18.862 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - null null
+2024-09-19 11:37:18.862 +07:00 [INF] HTTP GET /Account/Register responded 200 in 73.7209 ms
+2024-09-19 11:37:18.863 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5059/_vs/browserLink - null null
+2024-09-19 11:37:18.865 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 3.7258ms
+2024-09-19 11:37:18.866 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/Account/Register - 200 null text/html; charset=utf-8 85.0131ms
+2024-09-19 11:37:18.888 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5059/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.8313ms
