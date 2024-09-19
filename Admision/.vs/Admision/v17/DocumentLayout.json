@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\\u0110\u1ED3 \u00E1n 2\\Admision\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{480BBE3A-5739-4753-8B7C-B1CF14547EDB}|Admision.Core\\Admision.Core.csproj|c:\\\u0111\u1ED3 \u00E1n 2\\admision\\admision.core\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{480BBE3A-5739-4753-8B7C-B1CF14547EDB}|Admision.Core\\Admision.Core.csproj|solutionrelative:admision.core\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DDB656F-96ED-495E-B9E9-AF5744D9841D}|Admision.UI\\Admision.UI.csproj|c:\\\u0111\u1ED3 \u00E1n 2\\admision\\admision.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DDB656F-96ED-495E-B9E9-AF5744D9841D}|Admision.UI\\Admision.UI.csproj|solutionrelative:admision.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\\u0110\u1ED3 \u00E1n 2\\Admision\\Admision.Core\\Class1.cs",
+              "RelativeDocumentMoniker": "Admision.Core\\Class1.cs",
+              "ToolTip": "C:\\\u0110\u1ED3 \u00E1n 2\\Admision\\Admision.Core\\Class1.cs",
+              "RelativeToolTip": "Admision.Core\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T01:57:39.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\\u0110\u1ED3 \u00E1n 2\\Admision\\Admision.UI\\Program.cs",
+              "RelativeDocumentMoniker": "Admision.UI\\Program.cs",
+              "ToolTip": "C:\\\u0110\u1ED3 \u00E1n 2\\Admision\\Admision.UI\\Program.cs",
+              "RelativeToolTip": "Admision.UI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T01:55:00.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1498,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
