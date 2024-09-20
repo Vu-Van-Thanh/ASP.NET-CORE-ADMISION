@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ContactsManager.Core.Domain.IdentityEntities;
+using Admision.Core.Domain.Entities;
+using Admision.Core.Domain.IdentityEntities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +16,10 @@ namespace Entities
 
   public virtual DbSet<Country> Countries { get; set; }
   public virtual DbSet<Person> Persons { get; set; }
+  public virtual DbSet<HighSchool> HighSchools { get; set; }
+  public virtual DbSet<Student> Students { get; set; }
 
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
    base.OnModelCreating(modelBuilder);
 

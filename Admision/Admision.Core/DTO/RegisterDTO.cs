@@ -1,10 +1,10 @@
-﻿using ContactsManager.Core.Enums;
+﻿using Admision.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ContactsManager.Core.DTO
+namespace Admision.Core.DTO
 {
  public class RegisterDTO
  {

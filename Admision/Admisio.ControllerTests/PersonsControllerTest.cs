@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
-using CRUDExample.Controllers;
+using Admision.Controllers;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 using Microsoft.AspNetCore.Mvc;

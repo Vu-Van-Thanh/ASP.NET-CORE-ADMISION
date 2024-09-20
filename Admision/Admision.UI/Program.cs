@@ -5,9 +5,9 @@ using Entities;
 using RepositoryContracts;
 using Repositories;
 using Serilog;
-using CRUDExample.Filters.ActionFilters;
-using CRUDExample;
-using CRUDExample.Middleware;
+using Admision.Filters.ActionFilters;
+using Admision;
+using Admision.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +18,7 @@ builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider services, 
  .ReadFrom.Configuration(context.Configuration) //read configuration settings from built-in IConfiguration
  .ReadFrom.Services(services); //read out current app's services and make them available to serilog
 } );
+
 
 builder.Services.ConfigureServices(builder.Configuration);
 

@@ -1,12 +1,12 @@
-﻿using ContactsManager.Core.Domain.IdentityEntities;
-using ContactsManager.Core.DTO;
-using ContactsManager.Core.Enums;
-using CRUDExample.Controllers;
+﻿using Admision.Core.Domain.IdentityEntities;
+using Admision.Core.DTO;
+using Admision.Core.Enums;
+using Admision.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ContactsManager.UI.Controllers
+namespace Admision.UI.Controllers
 {
  //[AllowAnonymous]
  public class AccountController : Controller

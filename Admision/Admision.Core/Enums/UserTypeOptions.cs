@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ContactsManager.Core.Enums
+namespace Admision.Core.Enums
 {
  public enum UserTypeOptions
  {

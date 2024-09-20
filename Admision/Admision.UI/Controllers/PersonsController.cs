@@ -1,8 +1,8 @@
-﻿using CRUDExample.Filters;
-using CRUDExample.Filters.ActionFilters;
-using CRUDExample.Filters.AuthorizationFilter;
-using CRUDExample.Filters.ResourceFilters;
-using CRUDExample.Filters.ResultFilters;
+﻿using Admision.Filters;
+using Admision.Filters.ActionFilters;
+using Admision.Filters.AuthorizationFilter;
+using Admision.Filters.ResourceFilters;
+using Admision.Filters.ResultFilters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rotativa.AspNetCore;
@@ -10,7 +10,7 @@ using ServiceContracts;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 
-namespace CRUDExample.Controllers
+namespace Admision.Controllers
 {
  [Route("[controller]")]
 

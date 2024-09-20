@@ -1,9 +1,9 @@
-﻿using CRUDExample.Controllers;
+﻿using Admision.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 
-namespace CRUDExample.Filters.ActionFilters
+namespace Admision.Filters.ActionFilters
 {
  public class PersonsListActionFilter : IActionFilter
  {

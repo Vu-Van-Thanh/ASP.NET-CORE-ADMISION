@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ContactsManager.Core.DTO
+namespace Admision.Core.DTO
 {
  public class LoginDTO
  {

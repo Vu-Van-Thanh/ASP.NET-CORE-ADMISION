@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CRUDExample.Controllers
+namespace Admision.Controllers
 {
  public class HomeController : Controller
  {

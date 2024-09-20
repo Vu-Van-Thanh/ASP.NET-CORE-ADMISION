@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Admisio.ControllerTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20b7502e4cdba1f178aa4f3aacb637ea1ad2154b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecf982630b7d01ad1c328f1484766c480a904287")]
 [assembly: System.Reflection.AssemblyProductAttribute("Admisio.ControllerTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Admisio.ControllerTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

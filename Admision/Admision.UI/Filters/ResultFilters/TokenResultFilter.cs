@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace CRUDExample.Filters.ResultFilters
+namespace Admision.Filters.ResultFilters
 {
  public class TokenResultFilter : IResultFilter
  {

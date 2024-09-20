@@ -22,7 +22,62 @@ namespace Admision.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ContactsManager.Core.Domain.IdentityEntities.ApplicationRole", b =>
+            modelBuilder.Entity("Admision.Core.Domain.Entities.HighSchool", b =>
+                {
+                    b.Property<Guid>("HighSchoolID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("HighSchoolName")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Province")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.HasKey("HighSchoolID");
+
+                    b.ToTable("HighSchools");
+                });
+
+            modelBuilder.Entity("Admision.Core.Domain.Entities.Student", b =>
+                {
+                    b.Property<Guid>("StudentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Gender")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<Guid>("HighSchoolID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("StudentID");
+
+                    b.HasIndex("HighSchoolID");
+
+                    b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Admision.Core.Domain.IdentityEntities.ApplicationRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +105,7 @@ namespace Admision.Infrastructure.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("ContactsManager.Core.Domain.IdentityEntities.ApplicationUser", b =>
+            modelBuilder.Entity("Admision.Core.Domain.IdentityEntities.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -444,6 +499,17 @@ namespace Admision.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Admision.Core.Domain.Entities.Student", b =>
+                {
+                    b.HasOne("Admision.Core.Domain.Entities.HighSchool", "HighSchool")
+                        .WithMany("Students")
+                        .HasForeignKey("HighSchoolID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HighSchool");
+                });
+
             modelBuilder.Entity("Entities.Person", b =>
                 {
                     b.HasOne("Entities.Country", "Country")
@@ -455,7 +521,7 @@ namespace Admision.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("ContactsManager.Core.Domain.IdentityEntities.ApplicationRole", null)
+                    b.HasOne("Admision.Core.Domain.IdentityEntities.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -464,7 +530,7 @@ namespace Admision.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("ContactsManager.Core.Domain.IdentityEntities.ApplicationUser", null)
+                    b.HasOne("Admision.Core.Domain.IdentityEntities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -473,7 +539,7 @@ namespace Admision.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("ContactsManager.Core.Domain.IdentityEntities.ApplicationUser", null)
+                    b.HasOne("Admision.Core.Domain.IdentityEntities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -482,13 +548,13 @@ namespace Admision.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("ContactsManager.Core.Domain.IdentityEntities.ApplicationRole", null)
+                    b.HasOne("Admision.Core.Domain.IdentityEntities.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ContactsManager.Core.Domain.IdentityEntities.ApplicationUser", null)
+                    b.HasOne("Admision.Core.Domain.IdentityEntities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -497,11 +563,16 @@ namespace Admision.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("ContactsManager.Core.Domain.IdentityEntities.ApplicationUser", null)
+                    b.HasOne("Admision.Core.Domain.IdentityEntities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Admision.Core.Domain.Entities.HighSchool", b =>
+                {
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("Entities.Country", b =>

@@ -1,5 +1,5 @@
-﻿using ContactsManager.Core.Domain.IdentityEntities;
-using CRUDExample.Filters.ActionFilters;
+﻿using Admision.Core.Domain.IdentityEntities;
+using Admision.Filters.ActionFilters;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,12 +11,13 @@ using RepositoryContracts;
 using ServiceContracts;
 using Services;
 
-namespace CRUDExample
+namespace Admision
 {
  public static class ConfigureServicesExtension
  {
   public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
   {
+
    services.AddTransient<ResponseHeaderActionFilter>();
 
    //it adds controllers and views as services
