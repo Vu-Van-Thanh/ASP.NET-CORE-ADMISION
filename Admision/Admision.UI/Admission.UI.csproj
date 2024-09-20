@@ -24,8 +24,8 @@
 		<InternalsVisibleTo Include="Admision.IntegrationTests" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Admision.Core\Admision.Core.csproj" />
-	  <ProjectReference Include="..\Admision.Infrastructure\Admision.Infrastructure.csproj" />
+	  <ProjectReference Include="..\Admision.Core\Admission.Core.csproj" />
+	  <ProjectReference Include="..\Admision.Infrastructure\Admission.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

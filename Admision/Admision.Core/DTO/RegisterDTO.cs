@@ -1,10 +1,10 @@
-﻿using Admision.Core.Enums;
+﻿using Admission.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Admision.Core.DTO
+namespace Admission.Core.DTO
 {
  public class RegisterDTO
  {

@@ -1,9 +1,9 @@
-﻿using Admision.Controllers;
+﻿using Admission.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 
-namespace Admision.Filters.ActionFilters
+namespace Admission.Filters.ActionFilters
 {
  public class PersonsListActionFilter : IActionFilter
  {

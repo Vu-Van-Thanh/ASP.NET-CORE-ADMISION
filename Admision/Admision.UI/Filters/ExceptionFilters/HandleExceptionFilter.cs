@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Admision.Filters.ExceptionFilters
+namespace Admission.Filters.ExceptionFilters
 {
  public class HandleExceptionFilter : IExceptionFilter
  {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Admision.Core.Domain.Entities
+namespace Admission.Core.Domain.Entities
 {
 	public class HighSchool
 	{

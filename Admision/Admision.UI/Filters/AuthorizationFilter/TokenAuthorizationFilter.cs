@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net.Mime;
 
-namespace Admision.Filters.AuthorizationFilter
+namespace Admission.Filters.AuthorizationFilter
 {
  public class TokenAuthorizationFilter : IAuthorizationFilter
  {

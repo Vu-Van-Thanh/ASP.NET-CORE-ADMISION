@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Admision.Filters
+namespace Admission.Filters
 {
  public class SkipFilter : Attribute, IFilterMetadata
  {

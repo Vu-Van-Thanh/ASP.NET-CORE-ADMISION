@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Admision.Filters.ResultFilters
+namespace Admission.Filters.ResultFilters
 {
  public class PersonAlwaysRunResultFilter : IAlwaysRunResultFilter
  {

@@ -1,12 +1,12 @@
-﻿using Admision.Core.Domain.IdentityEntities;
-using Admision.Core.DTO;
-using Admision.Core.Enums;
-using Admision.Controllers;
+﻿using Admission.Core.Domain.IdentityEntities;
+using Admission.Core.DTO;
+using Admission.Core.Enums;
+using Admission.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Admision.UI.Controllers
+namespace Admission.UI.Controllers
 {
  //[AllowAnonymous]
  public class AccountController : Controller

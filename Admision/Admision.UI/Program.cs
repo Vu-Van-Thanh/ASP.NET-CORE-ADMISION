@@ -5,9 +5,9 @@ using Entities;
 using RepositoryContracts;
 using Repositories;
 using Serilog;
-using Admision.Filters.ActionFilters;
-using Admision;
-using Admision.Middleware;
+using Admission.Filters.ActionFilters;
+using Admission;
+using Admission.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 

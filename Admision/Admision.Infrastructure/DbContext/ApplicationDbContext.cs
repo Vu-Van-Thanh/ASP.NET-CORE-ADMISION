@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Admision.Core.Domain.Entities;
-using Admision.Core.Domain.IdentityEntities;
+using Admission.Core.Domain.Entities;
+using Admission.Core.Domain.IdentityEntities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;

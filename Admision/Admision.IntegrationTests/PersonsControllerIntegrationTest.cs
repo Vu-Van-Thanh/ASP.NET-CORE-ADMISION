@@ -10,7 +10,7 @@ using Fizzler;
 using Fizzler.Systems.HtmlAgilityPack;
 using HtmlAgilityPack;
 
-namespace CRUDTests
+namespace AdmissionTest
 {
  public class PersonsControllerIntegrationTest : IClassFixture<CustomWebApplicationFactory>
  {

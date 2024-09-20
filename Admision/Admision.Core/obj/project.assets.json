@@ -8294,9 +8294,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj",
-      "projectName": "Admision.Core",
-      "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj",
+      "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj",
+      "projectName": "Admission.Core",
+      "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj",
       "packagesPath": "C:\\Users\\vut42\\.nuget\\packages\\",
       "outputPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\obj\\",
       "projectStyle": "PackageReference",

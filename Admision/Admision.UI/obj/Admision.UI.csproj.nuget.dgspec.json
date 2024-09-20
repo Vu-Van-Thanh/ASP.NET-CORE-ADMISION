@@ -4,12 +4,12 @@
     "C:\\Đồ án 2\\Admision\\Admision.UI\\Admision.UI.csproj": {}
   },
   "projects": {
-    "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj": {
+    "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj",
-        "projectName": "Admision.Core",
-        "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj",
+        "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj",
+        "projectName": "Admission.Core",
+        "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj",
         "packagesPath": "C:\\Users\\vut42\\.nuget\\packages\\",
         "outputPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\obj\\",
         "projectStyle": "PackageReference",
@@ -103,12 +103,12 @@
         }
       }
     },
-    "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj": {
+    "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj",
-        "projectName": "Admision.Infrastructure",
-        "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj",
+        "projectName": "Admission.Infrastructure",
+        "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\vut42\\.nuget\\packages\\",
         "outputPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
@@ -128,8 +128,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj": {
-                "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj"
+              "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj": {
+                "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj"
               }
             }
           }
@@ -207,11 +207,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj": {
-                "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj"
+              "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj": {
+                "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj"
               },
-              "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj": {
-                "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj"
+              "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj": {
+                "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj"
               }
             }
           }

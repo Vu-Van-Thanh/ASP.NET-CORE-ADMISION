@@ -1,5 +1,5 @@
-﻿using Admision.Core.Domain.IdentityEntities;
-using Admision.Filters.ActionFilters;
+﻿using Admission.Core.Domain.IdentityEntities;
+using Admission.Filters.ActionFilters;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +11,7 @@ using RepositoryContracts;
 using ServiceContracts;
 using Services;
 
-namespace Admision
+namespace Admission
 {
  public static class ConfigureServicesExtension
  {

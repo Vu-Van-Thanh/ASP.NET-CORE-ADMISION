@@ -1,0 +1,16 @@
+C:\Đồ án 2\Admision\Admision.Infrastructure\bin\Debug\net8.0\Admission.Infrastructure.deps.json
+C:\Đồ án 2\Admision\Admision.Infrastructure\bin\Debug\net8.0\Admission.Infrastructure.dll
+C:\Đồ án 2\Admision\Admision.Infrastructure\bin\Debug\net8.0\Admission.Infrastructure.pdb
+C:\Đồ án 2\Admision\Admision.Infrastructure\bin\Debug\net8.0\Admission.Core.dll
+C:\Đồ án 2\Admision\Admision.Infrastructure\bin\Debug\net8.0\Admission.Core.pdb
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.csproj.AssemblyReference.cache
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.AssemblyInfoInputs.cache
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.AssemblyInfo.cs
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.sourcelink.json
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admissio.FE0B62EA.Up2Date
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.dll
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\refint\Admission.Infrastructure.dll
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\Admission.Infrastructure.pdb
+C:\Đồ án 2\Admision\Admision.Infrastructure\obj\Debug\net8.0\ref\Admission.Infrastructure.dll

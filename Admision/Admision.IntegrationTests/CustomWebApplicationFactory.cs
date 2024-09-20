@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CRUDTests
+namespace AdmissionTest
 {
  public class CustomWebApplicationFactory : WebApplicationFactory<Program>
  {

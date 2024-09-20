@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Admision.Core.DTO
+namespace Admission.Core.DTO
 {
  public class LoginDTO
  {

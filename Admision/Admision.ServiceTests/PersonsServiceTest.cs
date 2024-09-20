@@ -17,7 +17,7 @@ using System.Linq.Expressions;
 using Serilog;
 using Microsoft.Extensions.Logging;
 
-namespace CRUDTests
+namespace AdmissionTest
 {
  public class PersonsServiceTest
  {

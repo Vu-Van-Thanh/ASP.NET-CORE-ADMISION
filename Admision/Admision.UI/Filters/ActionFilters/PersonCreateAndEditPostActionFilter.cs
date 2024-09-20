@@ -1,10 +1,10 @@
-﻿using Admision.Controllers;
+﻿using Admission.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceContracts;
 using ServiceContracts.DTO;
 
-namespace Admision.Filters.ActionFilters
+namespace Admission.Filters.ActionFilters
 {
  public class PersonCreateAndEditPostActionFilter : IAsyncActionFilter
  {

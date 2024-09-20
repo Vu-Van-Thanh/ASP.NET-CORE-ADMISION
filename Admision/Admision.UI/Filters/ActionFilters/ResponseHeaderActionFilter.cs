@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Admision.Filters.ActionFilters
+namespace Admission.Filters.ActionFilters
 {
  public class ResponseHeaderFilterFactoryAttribute : Attribute, IFilterFactory
  {

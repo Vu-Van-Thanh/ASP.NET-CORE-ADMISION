@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceContracts;
 
-namespace Admision.Controllers
+namespace Admission.Controllers
 {
  [Route("[controller]")]
  public class CountriesController : Controller

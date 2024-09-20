@@ -1,8 +1,8 @@
-﻿using Admision.Filters;
-using Admision.Filters.ActionFilters;
-using Admision.Filters.AuthorizationFilter;
-using Admision.Filters.ResourceFilters;
-using Admision.Filters.ResultFilters;
+﻿using Admission.Filters;
+using Admission.Filters.ActionFilters;
+using Admission.Filters.AuthorizationFilter;
+using Admission.Filters.ResourceFilters;
+using Admission.Filters.ResultFilters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rotativa.AspNetCore;
@@ -10,7 +10,7 @@ using ServiceContracts;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 
-namespace Admision.Controllers
+namespace Admission.Controllers
 {
  [Route("[controller]")]
 

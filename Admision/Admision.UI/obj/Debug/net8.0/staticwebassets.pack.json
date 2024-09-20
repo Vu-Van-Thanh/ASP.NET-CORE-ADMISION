@@ -33,20 +33,20 @@
       "PackagePath": "staticwebassets\\logo.png"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Admision.UI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Admission.UI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Admision.UI.props",
-      "PackagePath": "build\\Admision.UI.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Admission.UI.props",
+      "PackagePath": "build\\Admission.UI.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Admision.UI.props",
-      "PackagePath": "buildMultiTargeting\\Admision.UI.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Admission.UI.props",
+      "PackagePath": "buildMultiTargeting\\Admission.UI.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Admision.UI.props",
-      "PackagePath": "buildTransitive\\Admision.UI.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Admission.UI.props",
+      "PackagePath": "buildTransitive\\Admission.UI.props"
     }
   ],
   "ElementsToRemove": []

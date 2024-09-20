@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oHgT0TFmjFo=",
+  "dgSpecHash": "LyPvHWrqb80=",
   "success": true,
-  "projectFilePath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj",
+  "projectFilePath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vut42\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\vut42\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

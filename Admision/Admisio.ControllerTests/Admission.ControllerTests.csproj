@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Admision.UI\Admision.UI.csproj" />
+    <ProjectReference Include="..\Admision.UI\Admission.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
-using Admision.Controllers;
+using Admission.Controllers;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace CRUDTests
+namespace AdmissionTest
 {
  public class PersonsControllerTest
  {

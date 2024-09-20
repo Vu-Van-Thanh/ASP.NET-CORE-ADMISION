@@ -12,7 +12,7 @@ using FluentAssertions;
 using RepositoryContracts;
 using System.Linq;
 
-namespace CRUDTests
+namespace AdmissionTest
 {
  public class CountriesServiceTest
  {

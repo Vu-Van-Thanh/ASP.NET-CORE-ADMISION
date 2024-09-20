@@ -7,17 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4943FC7E-EC3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B980C387-115F-46E7-9E27-08B480D917EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admision.Core", "Admision.Core\Admision.Core.csproj", "{480BBE3A-5739-4753-8B7C-B1CF14547EDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admission.Core", "Admision.Core\Admission.Core.csproj", "{480BBE3A-5739-4753-8B7C-B1CF14547EDB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admision.Infrastructure", "Admision.Infrastructure\Admision.Infrastructure.csproj", "{17252AA4-219E-4B9D-BA52-75062BC6EFE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admission.Infrastructure", "Admision.Infrastructure\Admission.Infrastructure.csproj", "{17252AA4-219E-4B9D-BA52-75062BC6EFE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admision.ServiceTests", "Admision.ServiceTests\Admision.ServiceTests.csproj", "{3A14F920-4B19-48F9-A989-70F96F486DD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admission.ServiceTests", "Admision.ServiceTests\Admission.ServiceTests.csproj", "{3A14F920-4B19-48F9-A989-70F96F486DD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admision.IntegrationTests", "Admision.IntegrationTests\Admision.IntegrationTests.csproj", "{5ECC0EE6-0D18-4B78-A5F8-521112C250FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admission.IntegrationTests", "Admision.IntegrationTests\Admission.IntegrationTests.csproj", "{5ECC0EE6-0D18-4B78-A5F8-521112C250FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admisio.ControllerTests", "Admisio.ControllerTests\Admisio.ControllerTests.csproj", "{4961A144-EC30-4339-A2E1-B3CD3BE1B68F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admission.ControllerTests", "Admisio.ControllerTests\Admission.ControllerTests.csproj", "{4961A144-EC30-4339-A2E1-B3CD3BE1B68F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admision.UI", "Admision.UI\Admision.UI.csproj", "{3EEA0BC4-404D-481A-B4C5-9D300C33D6E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admission.UI", "Admision.UI\Admission.UI.csproj", "{3EEA0BC4-404D-481A-B4C5-9D300C33D6E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

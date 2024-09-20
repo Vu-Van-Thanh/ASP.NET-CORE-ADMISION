@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Admision.Core.Enums
+namespace Admission.Core.Enums
 {
  public enum UserTypeOptions
  {

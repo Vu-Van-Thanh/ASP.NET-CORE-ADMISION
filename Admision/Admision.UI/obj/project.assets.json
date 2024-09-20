@@ -3948,7 +3948,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Admision.Core/1.0.0": {
+      "Admission.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -3963,26 +3963,26 @@
           "SerilogTimings": "3.1.0"
         },
         "compile": {
-          "bin/placeholder/Admision.Core.dll": {}
+          "bin/placeholder/Admission.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Admision.Core.dll": {}
+          "bin/placeholder/Admission.Core.dll": {}
         }
       },
-      "Admision.Infrastructure/1.0.0": {
+      "Admission.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Admision.Core": "1.0.0",
+          "Admission.Core": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore": "8.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8"
         },
         "compile": {
-          "bin/placeholder/Admision.Infrastructure.dll": {}
+          "bin/placeholder/Admission.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Admision.Infrastructure.dll": {}
+          "bin/placeholder/Admission.Infrastructure.dll": {}
         }
       }
     }
@@ -11054,21 +11054,21 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "Admision.Core/1.0.0": {
+    "Admission.Core/1.0.0": {
       "type": "project",
-      "path": "../Admision.Core/Admision.Core.csproj",
-      "msbuildProject": "../Admision.Core/Admision.Core.csproj"
+      "path": "../Admision.Core/Admission.Core.csproj",
+      "msbuildProject": "../Admision.Core/Admission.Core.csproj"
     },
-    "Admision.Infrastructure/1.0.0": {
+    "Admission.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../Admision.Infrastructure/Admision.Infrastructure.csproj",
-      "msbuildProject": "../Admision.Infrastructure/Admision.Infrastructure.csproj"
+      "path": "../Admision.Infrastructure/Admission.Infrastructure.csproj",
+      "msbuildProject": "../Admision.Infrastructure/Admission.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Admision.Core >= 1.0.0",
-      "Admision.Infrastructure >= 1.0.0",
+      "Admission.Core >= 1.0.0",
+      "Admission.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
@@ -11086,9 +11086,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.UI\\Admision.UI.csproj",
-      "projectName": "Admision.UI",
-      "projectPath": "C:\\Đồ án 2\\Admision\\Admision.UI\\Admision.UI.csproj",
+      "projectUniqueName": "C:\\Đồ án 2\\Admision\\Admision.UI\\Admission.UI.csproj",
+      "projectName": "Admission.UI",
+      "projectPath": "C:\\Đồ án 2\\Admision\\Admision.UI\\Admission.UI.csproj",
       "packagesPath": "C:\\Users\\vut42\\.nuget\\packages\\",
       "outputPath": "C:\\Đồ án 2\\Admision\\Admision.UI\\obj\\",
       "projectStyle": "PackageReference",
@@ -11108,11 +11108,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj": {
-              "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admision.Core.csproj"
+            "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj": {
+              "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Core\\Admission.Core.csproj"
             },
-            "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj": {
-              "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admision.Infrastructure.csproj"
+            "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj": {
+              "projectPath": "C:\\Đồ án 2\\Admision\\Admision.Infrastructure\\Admission.Infrastructure.csproj"
             }
           }
         }
