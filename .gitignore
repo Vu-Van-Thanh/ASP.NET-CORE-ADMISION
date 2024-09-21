@@ -1,1 +1,18 @@
 .vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+bin/
+obj/
+
+*.log
+
+# Bỏ qua các file tạm thời khác của .NET
+*.pdb
+*.dll
+*.exe
+*.cache
+*.csproj.user
+*.csproj.BuildWithSkipAnalyzers

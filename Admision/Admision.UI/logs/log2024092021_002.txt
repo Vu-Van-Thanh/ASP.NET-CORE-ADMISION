@@ -1,0 +1,3 @@
+2024-09-20 21:43:02.581 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-09-20 21:43:02.588 +07:00 [INF] Hosting environment: Development
+2024-09-20 21:43:02.589 +07:00 [INF] Content root path: C:\Đồ án 2\Admision\Admision.UI
