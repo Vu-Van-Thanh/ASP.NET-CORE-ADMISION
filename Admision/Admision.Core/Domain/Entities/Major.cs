@@ -8,19 +8,17 @@ using System.Threading.Tasks;
 
 namespace Admission.Core.Domain.Entities
 {
-	public class Result
+	public class Major
 	{
 		[Key]
-		public Guid ResultId { get; set; }
+		public Guid MajorId { get; set; }
+		public Guid SchoolID { get; set; }
 
-		public Guid StudentID { get; set; }
+		[StringLength(50)]
+		public string? Name { get; set; }
 
-		[StringLength(10)]
-		public string? Status {  get; set; }
-
-		public double? Score { get; set; }
-
-		[ForeignKey("StudentID")]
-		public virtual Student? Student { get; set; }
+		[ForeignKey("SchoolID")]
+		
+		public virtual School? School { get; set; }
 	}
 }

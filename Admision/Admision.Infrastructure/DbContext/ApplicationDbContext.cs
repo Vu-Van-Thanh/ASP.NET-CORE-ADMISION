@@ -18,7 +18,13 @@ namespace Entities
   public virtual DbSet<Person> Persons { get; set; }
   public virtual DbSet<HighSchool> HighSchools { get; set; }
   public virtual DbSet<Student> Students { get; set; }
-
+  public virtual DbSet<InformationOfApplied> InformationOfApplieds { get; set; }
+  public virtual DbSet<School> Schools { get; set; }
+  public virtual DbSet<Major> Majors { get; set; }
+  public virtual DbSet<Media> Medias { get; set; }
+  public virtual DbSet<Article> Articles  { get; set; }
+  public virtual DbSet<Result> Results { get; set; }
+  public virtual DbSet<Payment> Payments { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
    base.OnModelCreating(modelBuilder);

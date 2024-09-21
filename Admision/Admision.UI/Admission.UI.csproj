@@ -27,5 +27,8 @@
 	  <ProjectReference Include="..\Admision.Core\Admission.Core.csproj" />
 	  <ProjectReference Include="..\Admision.Infrastructure\Admission.Infrastructure.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="logs\" />
+	</ItemGroup>
 
 </Project>
