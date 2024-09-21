@@ -1,6 +1,0 @@
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net6.0\Admision.ServiceTests.csproj.AssemblyReference.cache
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net6.0\Admision.ServiceTests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net6.0\Admision.ServiceTests.AssemblyInfoInputs.cache
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net6.0\Admision.ServiceTests.AssemblyInfo.cs
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net6.0\Admision.ServiceTests.csproj.CoreCompileInputs.cache
-C:\Đồ án 2\Admision\Admision.ServiceTests\obj\Debug\net6.0\Admision.ServiceTests.sourcelink.json
