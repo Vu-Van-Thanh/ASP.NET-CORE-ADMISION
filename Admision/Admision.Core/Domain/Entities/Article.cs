@@ -12,11 +12,13 @@ namespace Admission.Core.Domain.Entities
 		[Key]
 		public Guid ArticleId { get; set; }
 
-		[StringLength(20)]
+		[StringLength(40)]
 		public string? Title { get; set; }
-
-		[StringLength(100)]				
+		
 		public string? Content { get; set; }
+
 		public DateTime DateCreated { get; set; }
+
+		public virtual ICollection<Media>? medias { get; set; }
 	}
 }

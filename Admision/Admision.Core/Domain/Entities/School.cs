@@ -27,5 +27,7 @@ namespace Admission.Core.Domain.Entities
 
 		[StringLength(40)]
 		public string? Email {  get; set; }
+
+		public virtual ICollection<Major>? majors {  get; set; } 
 	}
 }

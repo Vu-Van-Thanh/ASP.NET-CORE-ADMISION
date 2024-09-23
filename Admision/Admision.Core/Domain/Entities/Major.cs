@@ -18,7 +18,8 @@ namespace Admission.Core.Domain.Entities
 		public string? Name { get; set; }
 
 		[ForeignKey("SchoolID")]
-		
 		public virtual School? School { get; set; }
+
+		public virtual ICollection<InformationOfApplied>? InformationOfApplieds { get; set; }
 	}
 }
