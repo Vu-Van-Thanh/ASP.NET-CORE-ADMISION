@@ -50,6 +50,7 @@ namespace Admission.Core.Domain.Entities
 		public virtual ICollection<InformationOfApplied>? InformationOfApplieds { get; set; }
 		public virtual ICollection<Post>? Posts { get; set; }
 		public virtual ICollection<Comment>? Comments { get; set; }
+		public virtual ICollection<Result>? Results { get; set; }
 
 
 

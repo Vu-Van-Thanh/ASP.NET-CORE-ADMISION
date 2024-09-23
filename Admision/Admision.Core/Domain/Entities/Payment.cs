@@ -14,9 +14,9 @@ namespace Admission.Core.Domain.Entities
 		public Guid PaymentID { get; set; }
 
 		public Guid ResultID { get; set; }
-
+		[Column(TypeName = "decimal(18,2)")]
 		public decimal InitialExpenses { get; set; }
-
+		[Column(TypeName = "decimal(18,2)")]
 		public decimal CostPaid { get; set; }
 
 		[ForeignKey("ResultID")]

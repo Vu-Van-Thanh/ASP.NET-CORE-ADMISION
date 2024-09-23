@@ -23,7 +23,9 @@ namespace Admission.Core.Domain.Entities
 		[ForeignKey("PostID")]
 		public virtual Post? Post { get; set; }
 
-		[ForeignKey("PostID")]
+
+
+		[ForeignKey("AuthorID")]
 		public virtual Student? Student { get; set; }
 
 	}

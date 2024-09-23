@@ -71,6 +71,14 @@ namespace Entities
 		  .HasForeignKey(p => p.CountryID);
 			});
 
+			// Cấu hình mối quan hệ giữa Comment và Student
+			modelBuilder.Entity<Comment>()
+				.HasOne(c => c.Student)  // Comment có một Student
+				.WithMany(s => s.Comments)  // Student có nhiều Comment
+				.HasForeignKey(c => c.AuthorID)  // Khóa ngoại trong Comment
+				.HasPrincipalKey(s => s.StudentID)  // Khóa chính trong Student
+				.OnDelete(DeleteBehavior.NoAction);  // Cấu hình hành động xóa
+
 
 		}
 
@@ -90,7 +98,7 @@ namespace Entities
 		new SqlParameter("@CountryID", person.CountryID),
 		new SqlParameter("@Address", person.Address),
 		new SqlParameter("@ReceiveNewsLetters", person.ReceiveNewsLetters)
-	  };
+			};
 
 			return Database.ExecuteSqlRaw("EXECUTE [dbo].[InsertPerson] @PersonID, @PersonName, @Email, @DateOfBirth, @Gender, @CountryID, @Address, @ReceiveNewsLetters", parameters);
 		}
