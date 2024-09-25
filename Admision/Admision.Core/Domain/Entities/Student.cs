@@ -39,9 +39,7 @@ namespace Admission.Core.Domain.Entities
 		[ForeignKey("HighSchoolID")]
 		public virtual HighSchool? HighSchool { get; set; }
 
-
-		[ForeignKey("Id")]
-		public ApplicationUser? ApplicationUser { get; set; }
+		public virtual ApplicationUser? ApplicationUser { get; set; }
 
 
 		/// <summary>

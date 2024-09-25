@@ -79,6 +79,11 @@ namespace Entities
 				.HasPrincipalKey(s => s.StudentID)  // Khóa chính trong Student
 				.OnDelete(DeleteBehavior.NoAction);  // Cấu hình hành động xóa
 
+			modelBuilder.Entity<Student>()
+				.HasOne(s => s.ApplicationUser)
+				.WithOne()
+				.HasForeignKey<Student>(s => s.Id);
+
 
 		}
 
