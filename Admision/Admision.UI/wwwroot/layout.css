@@ -266,7 +266,7 @@ header {
     
     position: absolute; /* Đặt vị trí của danh sách con */
     top: 100%; /* Đặt danh sách con ngay bên dưới liên kết */
-    left: 70px; /* Căn trái danh sách con với liên kết */
+    left: 30px; /* Căn trái danh sách con với liên kết */
     z-index: 1000; /* Đảm bảo danh sách con hiển thị phía trên các phần tử khác */
     min-width: 120px; /* Đặt chiều rộng tối thiểu cho menu */
 }
