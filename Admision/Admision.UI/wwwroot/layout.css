@@ -1,0 +1,245 @@
+/* Căn chỉnh các thành phần trong thẻ title */
+body{
+    margin:0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    height:100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: center;   /* Căn giữa toàn bộ theo chiều ngang */
+    align-items: center;       /* Căn giữa theo chiều dọc */
+    width:90%;
+    position:relative;
+    height:100%;
+
+    
+}
+
+.title {
+    display: flex;
+    justify-content: space-between; /* Căn đều không gian giữa các phần tử */
+    align-items: center;
+    width: 90%;
+    height:100%;
+}
+#logo-site{
+    display:flex;
+    align-items: center;
+    
+}
+
+.title-site {
+    margin-left: 10px; /* Khoảng cách giữa logo và tiêu đề */
+    
+}
+.input-group-text{
+    background-color:red;
+}
+
+.right-item{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+#logo-site img {
+    max-width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước của phần tử cha */
+    height: auto; /* Giữ tỉ lệ hình ảnh */
+    transform: scale(1.5); /* Tăng kích thước hình ảnh lên 150% */
+}
+
+.right-item a {
+    border: 1px solid rgb(104, 102, 102); /* Viền của nút */
+    text-decoration: none;
+    background-color: white; /* Màu nền ban đầu */
+    border-radius: 25px; /* Bo góc nhẹ */
+    font-size: 15px;
+    padding: 10px 20px; /* Tạo không gian bên trong nút */
+    color: black;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    min-width: 150px; /* Đảm bảo nút không quá nhỏ, tạo hình chữ nhật */
+    text-align: center; /* Canh giữa nội dung trong nút */
+}
+
+.right-item a:hover{
+    background-color:red;
+    color: #fff; /* Màu chữ khi hover (tùy chọn) */
+}
+.btn-secondary {
+    white-space: nowrap; /* Ngăn chặn nội dung bị xuống dòng */
+}
+
+
+/* Đặt màu nền cho thanh điều hướng */
+.navbar {
+    background-color: rgb(38, 34, 34) !important; /* Nền màu đen */
+}
+
+/* Đặt màu chữ của các liên kết trong thanh điều hướng */
+.navbar-nav .nav-link {
+    color: white !important; /* Màu chữ trắng */
+    border: 2px solid transparent; /* Đường viền trong suốt ban đầu */
+    border-radius:10px;
+    text-decoration: none !important; /* Bỏ gạch chân mặc định */
+    padding: 10px 15px !important; /* Tạo không gian xung quanh liên kết */
+    transition: background-color 0.3s ease, color 0.3s ease !important; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+/* Đặt màu chữ và gạch chân khi hover qua các liên kết */
+.navbar-nav .nav-link:hover {
+    background-color: red !important; /* Màu chữ trắng khi hover */
+    color:black !important;
+    border-color: red; /* Màu viền đỏ khi hover */
+    border-radius:10px;
+}
+
+/* Căn chỉnh các item trong thanh điều hướng nếu cần */
+.navbar-nav .nav-item {
+    margin-right: 15px !important; /* Khoảng cách giữa các mục */
+    position:relative;
+}
+
+/* Ẩn danh sách con mặc định */
+.dropdown-menu {
+    display: none !important; /* Ẩn danh sách con */
+    background-color: rgb(40, 36, 36) !important; /* Nền màu đỏ */
+    border: none !important; /* Bỏ viền mặc định */
+    position: absolute !important; /* Đặt vị trí của danh sách con */
+    top: 100% !important; /* Đặt danh sách con bên dưới liên kết */
+    left:  0!important;
+    z-index: 1000 !important; /* Đảm bảo danh sách con hiển thị phía trên các phần tử khác */
+    
+}
+
+/* Hiển thị danh sách con khi hover vào liên kết */
+.nav-item:hover .dropdown-menu {
+    display: block !important; /* Hiển thị danh sách con */
+}
+
+/* Đặt kiểu cho các liên kết trong danh sách con */
+.dropdown-menu .dropdown-item {
+    color: white !important; /* Màu chữ trắng */
+    text-decoration: none !important; /* Bỏ gạch chân mặc định */
+    padding: 10px 20px !important; /* Tạo không gian bên trong liên kết */
+}
+
+/* Đặt hiệu ứng hover cho các liên kết trong danh sách con */
+.dropdown-menu .dropdown-item:hover {
+    background-color: darkred !important; /* Màu nền khi hover */
+    color: white !important; /* Màu chữ khi hover */
+}
+
+
+
+/* FOOTER */
+.footer{
+    background-image: url('bgFoot.png');
+    background-size: cover; /* Làm cho hình ảnh bao phủ toàn bộ phần tử */
+    background-position: center; /* Căn chỉnh hình ảnh ở giữa phần tử */
+    background-repeat: no-repeat; 
+}
+.background-container {
+    width: 100%; /* Đặt chiều rộng của phần tử */
+    height: 400px; /* Đặt chiều cao của phần tử */
+    color: white; /* Màu chữ trắng để tương phản với nền */
+    display: flex; /* Sử dụng flexbox để căn giữa nội dung */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-around; /* Căn giữa theo chiều ngang */
+    text-align: center; /* Căn giữa văn bản */
+
+}
+
+.endfooter{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+/* Phần contact */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color :black !important;
+    
+}
+
+.logo-school div{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-school div h2{
+    text-align: left;
+}
+.logo-school {
+    display: flex;
+    align-items: center;
+}
+
+.logo_footer {
+    width: 70px;
+    height: 90px;
+    margin-right: 10px;
+}
+
+.details {
+    margin-top: 10px;
+    text-align:left;
+}
+
+.details p {
+    margin: 5px 0;
+}
+
+.details i {
+    margin-right: 8px;
+}
+
+/* Phần social */
+.social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-container {
+    margin-bottom: 10px;
+}
+
+.social-media-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.social-media-list a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+.social-media-list a:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+.social-media-list i {
+    font-size: 36px; /* Tăng kích thước biểu tượng */
+    margin-bottom: 10px; /* Khoảng cách giữa biểu tượng và tên */
+}
+.social-media-list span {
+    font-size: 16px;
+}
