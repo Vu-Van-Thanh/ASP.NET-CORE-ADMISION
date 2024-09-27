@@ -261,14 +261,17 @@ header{
     border-radius:10px;
     position: absolute; /* Đặt vị trí của danh sách con */
     top: 100%; /* Đặt danh sách con ngay bên dưới liên kết */
-    left: 10px; /* Căn trái danh sách con với liên kết */
+    left: 8px; /* Căn trái danh sách con với liên kết */
     z-index: 1000; /* Đảm bảo danh sách con hiển thị phía trên các phần tử khác */
     min-width: 120px; /* Đặt chiều rộng tối thiểu cho menu */
 }
 
 /* Hiển thị danh sách con khi hover vào liên kết */
 .account-dropdown:hover .account-dropdown-menu {
+    list-style-type: none;
     display: block; /* Hiển thị danh sách con */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Đặt kiểu cho các liên kết trong danh sách con */
@@ -285,8 +288,4 @@ header{
         color: black !important; /* Màu chữ khi hover */
     }
 
-/* Đặt kiểu cho đường viền trong danh sách con */
-.account-dropdown-divider {
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Đường viền nhạt màu trắng */
-    margin: 5px 0; /* Thêm khoảng cách trên và dưới cho đường viền */
-}
+
