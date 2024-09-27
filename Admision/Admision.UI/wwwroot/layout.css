@@ -1,23 +1,23 @@
 /* Căn chỉnh các thành phần trong thẻ title */
-body{
-    margin:0px;
+body {
+    margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
-header{
-    height:100px;
-    display:flex;
+
+header {
+    height: 100px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .container {
     display: flex;
-    justify-content: center;   /* Căn giữa toàn bộ theo chiều ngang */
-    align-items: center;       /* Căn giữa theo chiều dọc */
-    width:90%;
-    position:relative;
-    height:100%;
-
-    
+    justify-content: center; /* Căn giữa toàn bộ theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 90%;
+    position: relative;
+    height: 100%;
 }
 
 .title {
@@ -25,35 +25,36 @@ header{
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    height:100%;
+    height: 100%;
 }
-#logo-site{
-    display:flex;
+
+#logo-site {
+    display: flex;
     align-items: center;
-    
 }
 
 .title-site {
     margin-left: 10px;
-    
-}
-.input-group-text{
-    background-color:red;
 }
 
-.right-item{
-    display:flex;
-    align-items:center;
+.input-group-text {
+    background-color: red;
+}
+
+.right-item {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 }
+
 #logo-site img {
     max-width: 100%;
-    height: auto; 
-    transform: scale(1.5); 
+    height: auto;
+    transform: scale(1.5);
 }
 
 .right-item a {
-    border: 1px solid rgb(104, 102, 102); 
+    border: 1px solid rgb(104, 102, 102);
     text-decoration: none;
     background-color: white;
     border-radius: 25px; /* Bo góc nhẹ */
@@ -61,15 +62,16 @@ header{
     padding: 10px 20px; /* Tạo không gian bên trong nút */
     color: black;
     display: inline-block;
-    transition: background-color 0.3s ease, color 0.3s ease; 
+    transition: background-color 0.3s ease, color 0.3s ease;
     min-width: 150px;
     text-align: center;
 }
 
-.right-item a:hover{
-    background-color:red;
-    color: #fff; /* Màu chữ khi hover (tùy chọn) */
-}
+    .right-item a:hover {
+        background-color: red;
+        color: #fff; /* Màu chữ khi hover (tùy chọn) */
+    }
+
 .btn-secondary {
     white-space: nowrap; /* Ngăn chặn nội dung bị xuống dòng */
 }
@@ -84,24 +86,24 @@ header{
 .navbar-nav .nav-link {
     color: white !important; /* Màu chữ trắng */
     border: 2px solid transparent; /* Đường viền trong suốt ban đầu */
-    border-radius:10px;
+    border-radius: 10px;
     text-decoration: none !important; /* Bỏ gạch chân mặc định */
     padding: 10px 15px !important; /* Tạo không gian xung quanh liên kết */
     transition: background-color 0.3s ease, color 0.3s ease !important; /* Hiệu ứng chuyển đổi mượt mà */
 }
 
-/* Đặt màu chữ và gạch chân khi hover qua các liên kết */
-.navbar-nav .nav-link:hover {
-    background-color: red !important; /* Màu chữ trắng khi hover */
-    color:black !important;
-    border-color: red; /* Màu viền đỏ khi hover */
-    border-radius:10px;
-}
+    /* Đặt màu chữ và gạch chân khi hover qua các liên kết */
+    .navbar-nav .nav-link:hover {
+        background-color: red !important; /* Màu chữ trắng khi hover */
+        color: black !important;
+        border-color: red; /* Màu viền đỏ khi hover */
+        border-radius: 10px;
+    }
 
 /* Căn chỉnh các item trong thanh điều hướng nếu cần */
 .navbar-nav .nav-item {
     margin-right: 15px !important; /* Khoảng cách giữa các mục */
-    position:relative;
+    position: relative;
 }
 
 /* Ẩn danh sách con mặc định */
@@ -111,9 +113,8 @@ header{
     border: none !important; /* Bỏ viền mặc định */
     position: absolute !important; /* Đặt vị trí của danh sách con */
     top: 100% !important; /* Đặt danh sách con bên dưới liên kết */
-    left:  0!important;
+    left: 0 !important;
     z-index: 1000 !important; /* Đảm bảo danh sách con hiển thị phía trên các phần tử khác */
-    
 }
 
 /* Hiển thị danh sách con khi hover vào liên kết */
@@ -128,21 +129,22 @@ header{
     padding: 10px 20px !important; /* Tạo không gian bên trong liên kết */
 }
 
-/* Đặt hiệu ứng hover cho các liên kết trong danh sách con */
-.dropdown-menu .dropdown-item:hover {
-    background-color: darkred !important; /* Màu nền khi hover */
-    color: white !important; /* Màu chữ khi hover */
-}
+    /* Đặt hiệu ứng hover cho các liên kết trong danh sách con */
+    .dropdown-menu .dropdown-item:hover {
+        background-color: darkred !important; /* Màu nền khi hover */
+        color: white !important; /* Màu chữ khi hover */
+    }
 
 
 
 /* FOOTER */
-.footer{
+.footer {
     background-image: url('bgFoot.png');
     background-size: cover; /* Làm cho hình ảnh bao phủ toàn bộ phần tử */
     background-position: center; /* Căn chỉnh hình ảnh ở giữa phần tử */
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 }
+
 .background-container {
     width: 100%; /* Đặt chiều rộng của phần tử */
     height: 400px; /* Đặt chiều cao của phần tử */
@@ -151,12 +153,11 @@ header{
     align-items: center; /* Căn giữa theo chiều dọc */
     justify-content: space-around; /* Căn giữa theo chiều ngang */
     text-align: center; /* Căn giữa văn bản */
-
 }
 
-.endfooter{
-    display:flex;
-    justify-content:center;
+.endfooter {
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -165,18 +166,18 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color :black !important;
-    
+    color: black !important;
 }
 
-.logo-school div{
-    display:flex;
-    flex-direction:column;
+.logo-school div {
+    display: flex;
+    flex-direction: column;
 }
 
-.logo-school div h2{
-    text-align: left;
-}
+    .logo-school div h2 {
+        text-align: left;
+    }
+
 .logo-school {
     display: flex;
     align-items: center;
@@ -190,16 +191,16 @@ header{
 
 .details {
     margin-top: 10px;
-    text-align:left;
+    text-align: left;
 }
 
-.details p {
-    margin: 5px 0;
-}
+    .details p {
+        margin: 5px 0;
+    }
 
-.details i {
-    margin-right: 8px;
-}
+    .details i {
+        margin-right: 8px;
+    }
 
 /* Phần social */
 .social {
@@ -217,32 +218,36 @@ header{
     flex-wrap: wrap;
     gap: 10px;
 }
-.social-media-list a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    padding: 10px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-    text-align: center;
-}
-.social-media-list a:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-.social-media-list i {
-    font-size: 36px; /* Tăng kích thước biểu tượng */
-    margin-bottom: 10px; /* Khoảng cách giữa biểu tượng và tên */
-}
-.social-media-list span {
-    font-size: 16px;
-}
+
+    .social-media-list a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+        text-align: center;
+    }
+
+        .social-media-list a:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .social-media-list i {
+        font-size: 36px; /* Tăng kích thước biểu tượng */
+        margin-bottom: 10px; /* Khoảng cách giữa biểu tượng và tên */
+    }
+
+    .social-media-list span {
+        font-size: 16px;
+    }
 
 
 
@@ -256,22 +261,24 @@ header{
 
 .account-dropdown-menu {
     display: none; /* Ẩn danh sách con */
-    background-color: rgb(40, 36, 36); /* Nền màu xám tối */
+    background-color: inherit; /* Nền màu xám tối */
     border: none; /* Bỏ viền mặc định */
-    border-radius:10px;
+    
     position: absolute; /* Đặt vị trí của danh sách con */
     top: 100%; /* Đặt danh sách con ngay bên dưới liên kết */
-    left: 8px; /* Căn trái danh sách con với liên kết */
+    left: 70px; /* Căn trái danh sách con với liên kết */
     z-index: 1000; /* Đảm bảo danh sách con hiển thị phía trên các phần tử khác */
     min-width: 120px; /* Đặt chiều rộng tối thiểu cho menu */
 }
+
 
 /* Hiển thị danh sách con khi hover vào liên kết */
 .account-dropdown:hover .account-dropdown-menu {
     list-style-type: none;
     display: block; /* Hiển thị danh sách con */
-    padding-left: 10px;
-    padding-right: 10px;
+    /*padding-left: 10px;
+    padding-right: 10px;*/
+    padding: 0;
 }
 
 /* Đặt kiểu cho các liên kết trong danh sách con */
@@ -281,11 +288,8 @@ header{
     padding: 10px 20px; /* Tạo không gian bên trong liên kết */
     display: block; /* Đặt các item thành block để hiển thị đúng cách */
 }
-
     /* Đặt hiệu ứng hover cho các liên kết trong danh sách con */
-    .account-dropdown-menu .account-dropdown-item:hover {
-        background-color: darkred; /* Màu nền khi hover */
-        color: black !important; /* Màu chữ khi hover */
-    }
-
-
+.account-dropdown-menu .account-dropdown-item:hover {
+    background-color: darkred; /* Màu nền khi hover */
+    color: white !important; /* Màu chữ khi hover */
+}
