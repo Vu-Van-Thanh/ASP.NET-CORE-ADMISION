@@ -22,7 +22,7 @@ header{
 
 .title {
     display: flex;
-    justify-content: space-between; /* Căn đều không gian giữa các phần tử */
+    justify-content: space-between;
     align-items: center;
     width: 90%;
     height:100%;
@@ -34,7 +34,7 @@ header{
 }
 
 .title-site {
-    margin-left: 10px; /* Khoảng cách giữa logo và tiêu đề */
+    margin-left: 10px;
     
 }
 .input-group-text{
@@ -47,23 +47,23 @@ header{
     justify-content: space-between;
 }
 #logo-site img {
-    max-width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước của phần tử cha */
-    height: auto; /* Giữ tỉ lệ hình ảnh */
-    transform: scale(1.5); /* Tăng kích thước hình ảnh lên 150% */
+    max-width: 100%;
+    height: auto; 
+    transform: scale(1.5); 
 }
 
 .right-item a {
-    border: 1px solid rgb(104, 102, 102); /* Viền của nút */
+    border: 1px solid rgb(104, 102, 102); 
     text-decoration: none;
-    background-color: white; /* Màu nền ban đầu */
+    background-color: white;
     border-radius: 25px; /* Bo góc nhẹ */
     font-size: 15px;
     padding: 10px 20px; /* Tạo không gian bên trong nút */
     color: black;
     display: inline-block;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
-    min-width: 150px; /* Đảm bảo nút không quá nhỏ, tạo hình chữ nhật */
-    text-align: center; /* Canh giữa nội dung trong nút */
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    min-width: 150px;
+    text-align: center;
 }
 
 .right-item a:hover{
@@ -243,3 +243,6 @@ header{
 .social-media-list span {
     font-size: 16px;
 }
+
+
+

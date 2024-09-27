@@ -70,8 +70,6 @@ app.UseEndpoints(endpoints => {
   );
 });
 
-//Eg: /persons/edit/1
-
 
 app.Run();
 
