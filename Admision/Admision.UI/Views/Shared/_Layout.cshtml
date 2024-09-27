@@ -43,16 +43,15 @@
                 }
                 else
                 {
-                    <div class="dropdown ms-4">
-                        <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="account-dropdown ms-4">
+                        <a class="d-flex align-items-center text-decoration-none account-dropdown-toggle" href="#" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user me-2"></i>
                             <span>@User.Identity?.Name</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        <ul class="account-dropdown-menu account-dropdown-menu-end" aria-labelledby="accountDropdown">
+                            <li><a class="account-dropdown-item" href="#">Profile</a></li>
+                            <li><a class="account-dropdown-item" href="#">Settings</a></li>
+                            <li><a class="account-dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
                         </ul>
                     </div>
                 }
