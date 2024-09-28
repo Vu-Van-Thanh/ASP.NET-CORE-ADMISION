@@ -5,70 +5,87 @@
 	Layout = "";
 
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="~/css/stylelogin.css" rel="stylesheet" type="text/css" media="all" />
+<body>
+    <div class="container demo-1">
+        <div class="content">
+            <div id="large-header" class="large-header">
+                <h1 style="color:black;">Welcome</h1>
+                <div class="main-agileits">
+                    <div class="form-w3-agile">
+                        <h2>Đăng Nhập</h2>
 
+                        <form asp-controller="Account" asp-action="Login" method="post" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]">
+                            @*Email*@
+                            <div class="form-sub-w3">
+                                <input asp-for="Email" type="text" placeholder="Email" required />
+                                <div class="icon-w3">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <span asp-validation-for="Email" class="text-red"></span>
+                            </div>
 
-<div class="text-grey">
-	<span>Contacts</span>
-	<i class="fa-solid fa-caret-right"></i>
-	<span>Login</span>
-</div>
+                            @* Password *@
+                            <div class="form-sub-w3">
+                                <input asp-for="Password" type="password" placeholder="Password" required />
+                                <div class="icon-w3">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                <span asp-validation-for="Password" class="text-red"></span>
+                            </div>
 
-<div class="form-container">
-	Not yet registered? <a asp-action="Register" asp-controller="Account" class="link-hover">Register</a>
-	<h2 class="text-large">Login</h2>
+                            <!-- Forgot Password & Register links -->
+                            <p class="p-bottom-w3ls">Forgot Password?<a asp-action="ForgotPassword" asp-controller="Account"> Click here</a></p>
+                            <p class="p-bottom-w3ls1">New User?<a asp-action="Register" asp-controller="Account"> Register here</a></p>
+                            <div class="clear"></div>
 
-	<form asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+                            <!-- Submit button -->
+                            <div class="submit-w3l">
+                                <input id="btnLogIn" type="submit" value="Login">
+                            </div>
+                        </form>
 
-		@*Email*@
-		<div class="form-field flex">
-			<div class="w-25">
-				<label asp-for="Email" class="form-label pt">Email</label>
-			</div>
-			<div class="flex-1">
-				<input asp-for="Email" class="form-input" />
-				<span asp-validation-for="Email" class="text-red"></span>
-			</div>
-		</div>
+                        <!-- Social Media Login -->
+                        <div class="social w3layouts">
+                            <div class="heading">
+                                <h5>Or Login with</h5>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="icons">
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
 
-		@*Password*@
-		<div class="form-field flex">
-			<div class="w-25">
-				<label asp-for="Password" class="form-label pt">Password</label>
-			</div>
-			<div class="flex-1">
-				<input asp-for="Password" class="form-input" />
-				<span asp-validation-for="Password" class="text-red"></span>
-			</div>
-		</div>
+                <!-- Copyright -->
+                <div class="copyright w3-agile">
+                    <p>
+                        © 2017 Clean Login Form . All rights reserved | Design by
+                        <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Validation Summary -->
+    <div asp-validation-summary="All" class="text-red"></div>
+</body>
 
-		@*Login button*@
-		<div class="form-field flex">
-			<div class="w-25"></div>
-			<div class="flex-1">
-				<button class="button button-green-back" type="submit">Login</button>
-
-				<div asp-validation-summary="All" class="text-red"></div>
-
-				@if (ViewBag.Errors != null)
-				{
-					<div class="text-red ml">
-						<ul>
-							@foreach (string error in ViewBag.Errors)
-							{
-								<li class="ml">@error</li>
-							}
-						</ul>
-					</div>
-				}
-			</div>
-		</div>
-
-	</form>
-</div>
 
 @section scripts
 {
+    <script src="~/JS/jquery.js"></script>
+
+    <script src="~/JS/login.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="~/jquery.validate.min.js"></script>
