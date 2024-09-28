@@ -53,7 +53,7 @@ header {
     transform: scale(1.5);
 }
 
-.right-item a {
+a.not_op {
     border: 1px solid rgb(104, 102, 102);
     text-decoration: none;
     background-color: white;
@@ -260,17 +260,14 @@ header {
 }
 
 .account-dropdown-menu {
-    display: none; /* Ẩn danh sách con */
-    background-color: inherit; /* Nền màu xám tối */
-    border: none; /* Bỏ viền mặc định */
-    
-    position: absolute; /* Đặt vị trí của danh sách con */
-    top: 100%; /* Đặt danh sách con ngay bên dưới liên kết */
-    left: 30px; /* Căn trái danh sách con với liên kết */
-    z-index: 1000; /* Đảm bảo danh sách con hiển thị phía trên các phần tử khác */
-    min-width: 120px; /* Đặt chiều rộng tối thiểu cho menu */
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 200px;
+    left: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100
 }
-
 
 /* Hiển thị danh sách con khi hover vào liên kết */
 .account-dropdown:hover .account-dropdown-menu {
@@ -278,18 +275,26 @@ header {
     display: block; /* Hiển thị danh sách con */
     /*padding-left: 10px;
     padding-right: 10px;*/
+    background-color:dimgray;
     padding: 0;
 }
 
 /* Đặt kiểu cho các liên kết trong danh sách con */
 .account-dropdown-menu .account-dropdown-item {
-    color: black !important; /* Màu chữ trắng */
-    text-decoration: none; /* Bỏ gạch chân mặc định */
-    padding: 10px 20px; /* Tạo không gian bên trong liên kết */
-    display: block; /* Đặt các item thành block để hiển thị đúng cách */
+    float: none !important;
+    color: white !important;
+    padding: 12px 16px !important;
+    text-decoration: none !important;
+    display: block !important;
+    text-align: left !important;
+    border-bottom: 1px solid #333 !important; 
 }
     /* Đặt hiệu ứng hover cho các liên kết trong danh sách con */
-.account-dropdown-menu .account-dropdown-item:hover {
-    background-color: darkred; /* Màu nền khi hover */
-    color: white !important; /* Màu chữ khi hover */
-}
+    .account-dropdown-menu .account-dropdown-item:hover {
+        background-color: darkred; /* Màu nền khi hover */
+        color: aqua !important; /* Màu chữ khi hover */
+    }
+
+    .option_acc:active{
+        color:bisque;
+    }
