@@ -43,7 +43,7 @@ namespace Admission.UI.Controllers
                 return View(registerDTO);
             }
 
-            ApplicationUser user = new ApplicationUser() { Email = registerDTO.Email, PhoneNumber = registerDTO.Phone, UserName = registerDTO.PersonName, PersonName = registerDTO.PersonName };
+            ApplicationUser user = new ApplicationUser() { Email = registerDTO.Email, PhoneNumber = registerDTO.Phone, UserName = registerDTO.Email, PersonName = registerDTO.PersonName };
 
             IdentityResult result = await _userManager.CreateAsync(user, registerDTO.Password);
             if (result.Succeeded)
