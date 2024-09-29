@@ -6,13 +6,13 @@ namespace Admission.Core.DTO
 {
  public class LoginDTO
  {
-  [Required(ErrorMessage = "Email cant't be blank")]
-  [EmailAddress(ErrorMessage = "Email should be in a proper email address format")]
+  [Required(ErrorMessage = "Email không thể để trống!")]
+  [EmailAddress(ErrorMessage = "Email không đúng định dạng!")]
   [DataType(DataType.EmailAddress)]
   public string? Email { get; set; }
 
 
-  [Required(ErrorMessage = "Password can't be blank")]
+  [Required(ErrorMessage = "Password không thể để trống!")]
   [DataType(DataType.Password)]
   public string? Password { get; set; }
  }

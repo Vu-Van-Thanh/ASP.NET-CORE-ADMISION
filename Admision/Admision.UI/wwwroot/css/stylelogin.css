@@ -1,5 +1,6 @@
 ﻿body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image:url('../account_bg.jpg')
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -126,8 +127,9 @@ input:-ms-input-placeholder {
 }
 
 .demo-1 .large-header {
-    background-image: url("../Data/background\ image\ \ by\ sale\ shop\ not\ colorful.png");
+    background-image: url('../account_bg.jpg');
     background-position: center bottom;
+    background-repeat: no-repeat; /* Không l?p l?i ?nh */
 }
 
 
@@ -164,6 +166,16 @@ h1 {
     letter-spacing: 4px;
     word-spacing: 4px;
     font-family: 'Sirin Stencil', cursive;
+}
+
+.text-red {
+    color: red;
+    font-size: 14px;
+    position: absolute; /* Đặt vị trí cho thông báo */
+    left: 10px; /* Căn trái */
+    bottom: -10px; /* Đặt phía dưới ô nhập liệu */
+    display: block;
+    margin-top: 3px; /* Khoảng cách trên */
 }
 
 .icon-w3 i {
@@ -237,6 +249,8 @@ input[type="submit"] {
     -o-transition: 0.3s all;
     -ms-transition: 0.3s all;
 }
+
+
 
     input[type="submit"]:hover {
         background: #4CAF50;
