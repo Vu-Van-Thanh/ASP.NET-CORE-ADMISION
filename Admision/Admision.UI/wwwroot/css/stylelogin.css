@@ -129,7 +129,7 @@ input:-ms-input-placeholder {
 .demo-1 .large-header {
     background-image: url('../account_bg.jpg');
     background-position: center bottom;
-    background-repeat: no-repeat; /* Không l?p l?i ?nh */
+    background-repeat: no-repeat;
 }
 
 

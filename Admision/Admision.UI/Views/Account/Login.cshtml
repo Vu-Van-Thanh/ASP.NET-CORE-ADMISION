@@ -5,9 +5,11 @@
 	Layout = "";
 
 }
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Đăng kí tài khoản</title>
+    <title>Đăng nhập tài khoản</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords"
@@ -16,7 +18,7 @@
     <script src="~/JS/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css" />
-    <link href="~/css/stylelogin.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/css/formRegister.css" aspasp-append-version="true" />
 </head>
 <body>
     <div class="container demo-1">
@@ -30,7 +32,7 @@
                             @*Email*@
                             <div class="form-sub-w3">
                                 <input asp-for="Email" type="text" placeholder="Email" required />
-                                <span asp-validation-for="Email" class="text-red"> ssssssssssssssss</span>
+                                <span asp-validation-for="Email" class="text-red"></span>
                                 <div class="icon-w3">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
@@ -44,6 +46,7 @@
                                     <i class="fa-solid fa-lock"></i>
                                 </div>
                             </div>
+
 
                             <!-- Forgot Password & Register links -->
                             <p class="p-bottom-w3ls">Forgot Password?<a asp-action="ForgotPassword" asp-controller="Account"> Click here</a></p>
@@ -98,9 +101,6 @@
     
 </html>
 
-
-
-<script src="~/JS/jquery.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js"></script>
 
