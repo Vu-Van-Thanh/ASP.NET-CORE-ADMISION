@@ -1,5 +1,6 @@
 ﻿body {
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	/*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
+	font-family:'Times New Roman';
 
 }
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
@@ -278,6 +279,12 @@ input[type="submit"]:hover{
     -moz-transition: 0.3s all;
     -o-transition: 0.3s all;
     -ms-transition: 0.3s all;
+}
+
+.errors_login {
+	margin-top:10px;
+	color: red;
+	
 }
 .copyright a:hover{
     color: #fff;

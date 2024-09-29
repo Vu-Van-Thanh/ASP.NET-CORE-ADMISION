@@ -132,6 +132,7 @@ namespace Admission.UI.Controllers
             }
 
             ModelState.AddModelError("Login", "Tài khoản hoặc mật khẩu không đúng!");
+            ViewBag.Errors = "Tài khoản hoặc mật khẩu không đúng!";
             return View(loginDTO);
         }
 
