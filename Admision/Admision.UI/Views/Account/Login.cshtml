@@ -5,8 +5,19 @@
 	Layout = "";
 
 }
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="~/css/stylelogin.css" rel="stylesheet" type="text/css" media="all" />
+<html>
+<head>
+    <title>Đăng kí tài khoản</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords"
+          content="Register Form Responsive" />
+    <!-- jquery file -->
+    <script src="~/JS/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <link href="~/css/stylelogin.css" rel="stylesheet" type="text/css" media="all" />
+</head>
 <body>
     <div class="container demo-1">
         <div class="content">
@@ -19,7 +30,7 @@
                             @*Email*@
                             <div class="form-sub-w3">
                                 <input asp-for="Email" type="text" placeholder="Email" required />
-                                <span asp-validation-for="Email" class="text-red"></span>
+                                <span asp-validation-for="Email" class="text-red"> ssssssssssssssss</span>
                                 <div class="icon-w3">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
@@ -38,7 +49,17 @@
                             <p class="p-bottom-w3ls">Forgot Password?<a asp-action="ForgotPassword" asp-controller="Account"> Click here</a></p>
                             <p class="p-bottom-w3ls1">New User?<a asp-action="Register" asp-controller="Account"> Register here</a></p>
                             <div class="clear"></div>
-
+                            @if (ViewBag.Errors != null)
+                            {
+                                <div class="text-red">
+                                    <ul>
+                                        @foreach (string error in ViewBag.Errors)
+                                        {
+                                            <li>@error</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
                             <!-- Submit button -->
                             <div class="submit-w3l">
                                 <input id="btnLogIn" type="submit" value="Login">
@@ -52,10 +73,10 @@
                                 <div class="clear"></div>
                             </div>
                             <div class="icons">
-                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                 <div class="clear"></div>
                             </div>
                             <div class="clear"></div>
@@ -65,10 +86,7 @@
 
                 <!-- Copyright -->
                 <div class="copyright w3-agile">
-                    <p>
-                        © 2017 Clean Login Form . All rights reserved | Design by
-                        <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
-                    </p>
+                    <p style="color:black"> &copy; 2024 Đại học Bách Khoa Hà Nội. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -77,10 +95,12 @@
     <!-- Validation Summary -->
     <div asp-validation-summary="All" class="text-red"></div>
 </body>
+    
+</html>
+
+
 
 <script src="~/JS/jquery.js"></script>
-
-<script src="~/JS/login.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js"></script>
 

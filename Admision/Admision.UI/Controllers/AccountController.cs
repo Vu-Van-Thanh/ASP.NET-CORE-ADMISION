@@ -131,7 +131,7 @@ namespace Admission.UI.Controllers
                 return RedirectToAction(nameof(PersonsController.Index), "Persons");
             }
 
-            ModelState.AddModelError("Login", "Inalid email or password");
+            ModelState.AddModelError("Login", "Tài khoản hoặc mật khẩu không đúng!");
             return View(loginDTO);
         }
 
