@@ -158,5 +158,46 @@ namespace Admission.UI.Controllers
                 return Json(false); //invalid
             }
         }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordDTO changePasswordDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Errors = ModelState.Values.SelectMany(temp => temp.Errors).Select(temp => temp.ErrorMessage);
+                return View(changePasswordDTO);
+            }
+
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, changePasswordDTO.CurrentPassword, changePasswordDTO.NewPassword);
+
+            if (result.Succeeded)
+            {
+                //Sign the user out so they can log in with the new password
+                await _signInManager.SignOutAsync();
+                TempData["SuccessMessage"] = "Mật khẩu đã được thay đổi thành công, vui lòng đăng nhập lại.";
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return View(changePasswordDTO);
+        }
     }
 }
