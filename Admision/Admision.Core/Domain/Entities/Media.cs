@@ -20,6 +20,7 @@ namespace Admission.Core.Domain.Entities
 
 		[StringLength(50)]
 		public string? MediaUrl { get; set; }
+		public string? MediaContent { get; set; }
 
 		[ForeignKey("ArticleID")]
 		public virtual Article? Article { get; set; }
