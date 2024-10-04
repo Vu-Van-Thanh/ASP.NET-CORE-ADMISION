@@ -1,8 +1,10 @@
 ﻿using Admission.Core.Domain.Entities;
 using Admission.Core.Domain.IdentityEntities;
+using Admission.Core.Domain.RepositoryContracts;
 using Admission.Core.ServiceContracts;
 using Admission.Core.Services;
 using Admission.Filters.ActionFilters;
+using Admission.Infrastructure.Repositories;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -57,6 +59,7 @@ namespace Admission
             services.AddScoped<IPersonsUpdaterService, PersonsUpdaterService>();
             services.AddScoped<IPersonsSorterService, PersonsSorterService>();
             services.AddScoped<IArticlesService, ArticleService>();
+            services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddTransient<PersonsListActionFilter>();
 
             services.AddDbContext<ApplicationDbContext>(options =>

@@ -14,6 +14,10 @@ namespace Admission.UI.Controllers
             _articlesService = articlesService;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
         public async Task<IActionResult> ShowArticle()
         {
             List<Article>? list = await _articlesService.GetAllArticle();
