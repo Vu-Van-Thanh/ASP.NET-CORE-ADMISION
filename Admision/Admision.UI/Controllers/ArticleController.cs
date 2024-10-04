@@ -1,13 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Admission.Core.Domain.Entities;
+using Admission.Core.Domain.RepositoryContracts;
+using Admission.Core.ServiceContracts;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Admission.UI.Controllers
 {
     public class ArticleController : Controller
     {
-        public async Task<IActionResult> Index()
+
+        private readonly IArticlesService _articlesService;
+        public ArticleController(IArticlesService articlesService)
         {
-            
-            return View();
+            _articlesService = articlesService;
+        }
+
+        public async Task<IActionResult> ShowArticle()
+        {
+            List<Article>? list = await _articlesService.GetAllArticle();
+            return View(list);
         }
     }
 }

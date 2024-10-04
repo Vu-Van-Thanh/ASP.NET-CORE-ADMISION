@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Admission.Core.Domain.RepositoryContracts
-{
-    public interface IArticlesRepository
+namespace Admission.Core.ServiceContracts
+{   public interface IArticlesService
     {
-        Task<Article?> GetArticleByArticleID (Guid articleID);
+        Task<Article?> GetArticleByArticleID(Guid articleID);
         Task<List<Article>?> GetAllArticle();
-
-
     }
 }
