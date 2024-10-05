@@ -42,7 +42,7 @@ namespace Entities
 			foreach (Country country in countries)
 				modelBuilder.Entity<Country>().HasData(country);
 
-
+			
 			//Seed to Persons
 			string personsJson = System.IO.File.ReadAllText("persons.json");
 			List<Person> persons = System.Text.Json.JsonSerializer.Deserialize<List<Person>>(personsJson);
@@ -50,6 +50,18 @@ namespace Entities
 			foreach (Person person in persons)
 				modelBuilder.Entity<Person>().HasData(person);
 
+			// Seed to Article
+			string articleJson = System.IO.File.ReadAllText("Article.json");
+			List<Article>? articles = System.Text.Json.JsonSerializer.Deserialize<List<Article>>(articleJson);
+			foreach(Article article in articles)
+				modelBuilder.Entity<Article>().HasData(article);
+
+			//Seed to Media
+			string mediaJson = System.IO.File.ReadAllText("Media.json");
+			List<Media>? medias = System.Text.Json.JsonSerializer.Deserialize<List<Media>>(mediaJson);
+
+			foreach(Media media in medias)
+				modelBuilder.Entity<Media>().HasData(media);
 
 			//Fluent API
 			modelBuilder.Entity<Person>().Property(temp => temp.TIN)
