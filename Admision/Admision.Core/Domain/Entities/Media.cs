@@ -18,7 +18,7 @@ namespace Admission.Core.Domain.Entities
 		[StringLength(20)]
 		public string? MediaType { get; set; }
 
-		[StringLength(50)]
+		
 		public string? MediaUrl { get; set; }
 		public string? MediaContent { get; set; }
 
