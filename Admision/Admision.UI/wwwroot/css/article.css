@@ -1,0 +1,144 @@
+﻿.container-component {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-right: 500px
+}
+
+.sidebar {
+    width: 250px;
+    margin-right: 20px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.category-menu {
+    border: 1px solid #ccc;
+    width: 250px;
+}
+
+    .category-menu h5 {
+        background-color: #d32f2f;
+        color: white;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .category-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .category-menu a {
+        color: black;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .category-menu li {
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        cursor: pointer;
+        position: relative;
+    }
+
+        /* Chỉ đổi màu của tiêu đề khi hover */
+        .category-menu li:hover {
+            color: orange; /* Đổi màu tiêu đề thành cam khi hover */
+        }
+
+            /* Đổi màu chữ cho thẻ <a> trong tiêu đề thành cam khi hover */
+            .category-menu li:hover > a {
+                color: orange;
+            }
+
+        /* Submenu */
+        .category-menu li ul {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .category-menu li:hover ul {
+            display: block;
+        }
+
+        .category-menu li ul li::before {
+            content: '• ';
+            color: black;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .category-menu li ul li {
+            padding: 5px 0;
+            color: black; /* Submenu màu đen mặc định */
+        }
+
+            /* Chỉ đổi màu chữ cho submenu khi hover */
+            .category-menu li ul li:hover::before {
+                color: orange;
+            }
+
+            .category-menu li ul li:hover {
+                color: orange; /* Đổi màu submenu thành cam khi hover */
+            }
+
+                /* Đổi màu cho thẻ <a> trong submenu khi hover */
+                .category-menu li ul li:hover a {
+                    color: orange;
+                }
+
+
+/*Content*/
+
+body {
+    font-family: Arial, sans-serif; 
+}
+
+/* Định dạng cho các cột */
+.row {
+    display: flex; 
+}
+
+.col-md-3 {
+    flex: 0 0 25%; 
+    max-width: 25%; 
+    padding: 15px; 
+    background-color: #f8f9fa; 
+}
+/* Định dạng cho cột article */
+.col-md-9 {
+    flex: 0 0 75%; 
+    max-width: 75%; 
+    padding: 15px; 
+}
+    .col-md-9 h2 {
+        margin-left: 100px
+    }
+    /* Định dạng cho từng bài viết */
+.article {
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    background-color: #ffffff; 
+    margin-left: 100px
+}
+
+    /* Định dạng cho tiêu đề bài viết */
+    .article h3 {
+        margin: 0 0 10px 0; 
+        color: #007bff; 
+    }
+
+    /* Định dạng cho ngày tạo bài viết */
+    .article p:first-child {
+        font-size: 0.9em; 
+        color: #888; 
+    }
+

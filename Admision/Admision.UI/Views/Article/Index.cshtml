@@ -1,4 +1,18 @@
-﻿@{
-	ViewBag.Title = "Test";
-}
-@await Component.InvokeAsync("CategoryMenu")
+﻿@model IEnumerable<Admission.UI.ViewModels.ArticleVM>
+<link asp-append-version="true" href="~/css/article.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("CategoryMenu")
+    </div>
+    <div class="col-md-9">
+        <h2>@ViewBag.Title</h2>
+        @foreach (var article in Model)
+        {
+            <div class="article">
+                <h3>@article.Title</h3>
+                <p>@article.DateCreate.ToString("dd-MM-yyyy")</p>
+                <p>@article.Content</p>
+            </div>
+        }
+    </div>
+</div>

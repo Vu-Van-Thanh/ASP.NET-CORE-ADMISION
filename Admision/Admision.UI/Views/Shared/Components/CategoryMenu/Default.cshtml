@@ -1,18 +1,25 @@
 ﻿@model IEnumerable<Admission.UI.ViewModels.Category>
-<div class="category-menu">
-    <h2>DANH MỤC</h2>
-    <ul>
-        @foreach (var category in Model)
-        {
-            <li>
-                <span>@category.Title</span>
-                <ul>
-                    @foreach (var subItem in category.SubItems)
-                    {
-                        <li>@subItem</li>
-                    }
-                </ul>
-            </li>
-        }
-    </ul>
+<div class="container-component">
+	<div class="sidebar">
+		<div class="category-menu">
+			<h5>DANH MỤC</h5>
+			<ul>
+				@foreach (var category in Model)
+				{
+					<li>
+						<a asp-controller="Article" asp-action="Index" asp-route-title="@category.Title">@category.Title</a>
+						<ul>
+							@foreach (var subItem in category.SubItems)
+							{
+								<li>
+									<a asp-controller="Article" asp-action="Index" asp-route-title="@category.SubItems">@subItem</a>
+								</li>
+							}
+						</ul>
+					</li>
+				}
+			</ul>
+		</div>
+	</div>
 </div>
+
