@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace Admission.Core.Domain.RepositoryContracts
 {
-    public interface IArticlesRepository
+    public interface IMediasRepository
     {
-        Task<Article?> GetArticleByArticleID (Guid articleID);
-        Task<List<Article>?> GetAllArticle();
-
-        Task<Article> AddArticle(Article article); 
-
+        Task<Media> AddMedia(Media meida);
     }
 }

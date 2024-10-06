@@ -60,6 +60,7 @@ namespace Admission
             services.AddScoped<IPersonsSorterService, PersonsSorterService>();
             services.AddScoped<IArticlesService, ArticleService>();
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
+            services.AddScoped<IMediasRepository, MediasRepository>();
             services.AddTransient<PersonsListActionFilter>();
 
             services.AddDbContext<ApplicationDbContext>(options =>

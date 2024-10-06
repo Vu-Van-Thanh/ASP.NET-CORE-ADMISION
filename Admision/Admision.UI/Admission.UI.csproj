@@ -36,11 +36,10 @@
 	  <ProjectReference Include="..\Admision.Infrastructure\Admission.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Areas\Admin\Controllers\" />
 	  <Folder Include="Areas\Admin\Data\" />
 	  <Folder Include="Areas\Admin\Models\" />
-	  <Folder Include="Areas\Admin\Views\" />
 	  <Folder Include="logs\" />
+	  <Folder Include="wwwroot\StaticData\" />
 	</ItemGroup>
 
 </Project>
