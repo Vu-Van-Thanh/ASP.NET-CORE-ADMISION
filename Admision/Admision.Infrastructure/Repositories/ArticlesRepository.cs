@@ -17,6 +17,14 @@ namespace Admission.Infrastructure.Repositories
         {
             _db = db;
         }
+
+        public async Task<Article> AddArticle(Article article)
+        {
+            _db.Articles.Add(article);
+            await _db.SaveChangesAsync();
+            return article;
+        }
+
         public async Task<List<Article>?> GetAllArticle()
         {
             return await _db.Articles.Include("medias").ToListAsync();
