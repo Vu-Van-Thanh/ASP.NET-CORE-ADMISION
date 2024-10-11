@@ -68,7 +68,7 @@
         }
 
         .category-menu li ul li::before {
-            content: '• ';
+            content: '\25C6';
             color: black;
             font-weight: bold;
             margin-right: 5px;
@@ -97,48 +97,70 @@
 /*Content*/
 
 body {
-    font-family: Arial, sans-serif; 
+    font-family: Arial, sans-serif !important;
 }
 
 /* Định dạng cho các cột */
 .row {
-    display: flex; 
+    display: flex;
 }
 
 .col-md-3 {
-    flex: 0 0 25%; 
-    max-width: 25%; 
-    padding: 15px; 
-    background-color: #f8f9fa; 
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 15px;
+    background-color: inherit;
 }
 /* Định dạng cho cột article */
 .col-md-9 {
-    flex: 0 0 75%; 
-    max-width: 75%; 
-    padding: 15px; 
-}
-    .col-md-9 h2 {
-        margin-left: 100px
-    }
-    /* Định dạng cho từng bài viết */
-.article {
-    border: 1px solid #ddd; 
-    border-radius: 5px; 
-    padding: 15px; 
-    margin-bottom: 20px; 
-    background-color: #ffffff; 
-    margin-left: 100px
+    flex: 0 0 75%;
+    max-width: 75%;
+    padding: 15px;
 }
 
+    .col-md-9 h2 {
+        margin-left: 30px
+    }
+/* Định dạng cho từng bài viết */
+.article {
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    margin-left: 30px;
+    display:flex;
+    
+}
+.inner-content {
+    display: -webkit-box; /* Đặt display thành box để dùng kết hợp với line-clamp */
+    -webkit-box-orient: vertical;  /*Hướng xếp của box là theo chiều dọc*/ 
+    overflow: hidden !important;  /*Ẩn nội dung bị tràn */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm */
+    -webkit-line-clamp: 3 !important;  /*Giới hạn hiển thị nội dung trong 3 dòng */
+    max-width: 100%; /* Giới hạn chiều rộng tối đa */
+    
+}
+
+
+
+
     /* Định dạng cho tiêu đề bài viết */
-    .article h3 {
-        margin: 0 0 10px 0; 
-        color: #007bff; 
+    .article a {
+        margin: 0 0 10px 0;
+        color: black;
+        text-decoration: none;
     }
 
     /* Định dạng cho ngày tạo bài viết */
     .article p:first-child {
-        font-size: 0.9em; 
-        color: #888; 
+        font-size: 0.9em;
+        color: #888;
     }
 
+.article img{
+    width:30%;
+    height:100%;
+    object-fit:cover;
+    margin-right:10px;
+}

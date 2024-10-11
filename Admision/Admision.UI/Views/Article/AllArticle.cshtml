@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ArticleDTO>
+<link asp-append-version="true" href="~/css/article.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("CategoryMenu")
+    </div>
+    <div class="col-md-9">
+        <h2>@ViewBag.Title</h2>
+        @foreach (var article in Model)
+        {
+            <div class="article">
+                <img src="~/account_bg.jpg" alt="News Image" />
+
+                <div class="article-content">
+                    <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-ArticleID="@article.ArticleID"><h3>@article.Title</h3></a>
+                    <p>@article.DateCreate.ToString("dd-MM-yyyy")</p>
+
+                    <p class="inner-content">@Html.Raw(article.Content)</p>
+                    @* <p class="inner-content">@article.Content</p> *@
+                </div>
+            </div>
+        }
+    </div>
+</div>
