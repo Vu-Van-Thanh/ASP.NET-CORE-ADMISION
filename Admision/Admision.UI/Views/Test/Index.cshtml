@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Image Upload";
+}
+
+<h2>Upload and Compress Image</h2>
+
+<form asp-action="UploadImage" asp-controller="test" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="file">Choose image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required />
+    </div>
+    <button type="submit">Upload Image</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+
+@if (ViewBag.Base64Image != null)
+{
+    <h3>Compressed Image:</h3>
+    <img src="@ViewBag.Base64Image" alt="Compressed Image" style="width: 200px; height: auto;" />
+
+    <h3>Base64 String:</h3>
+    <textarea rows="10" cols="80">@ViewBag.Base64Image</textarea>
+}

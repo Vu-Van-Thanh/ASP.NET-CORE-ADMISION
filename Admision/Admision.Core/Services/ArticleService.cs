@@ -54,15 +54,7 @@ namespace Admission.Core.Services
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Nếu URL truy cập được, sử dụng URL
-                        if (media.MediaType == "image")
-                        {
-                            mediaTag = $"<img src='{media.MediaUrl}' alt='Image {media.MediaID}' />";
-                        }
-                        else if (media.MediaType == "video/mp4")
-                        {
-                            mediaTag = $"<video controls><source src='{media.MediaUrl}' type='video/mp4'>Your browser does not support the video tag.</video>";
-                        }
+                        content = content.Replace($"[media:{media.MediaID}]", media.MediaUrl);
                     }
                     else
                     {
@@ -77,6 +69,8 @@ namespace Admission.Core.Services
                             {
                                 mediaTag = $"<video controls><source src='data:video/mp4;base64,{media.MediaContent}' type='video/mp4'>Your browser does not support the video tag.</video>";
                             }
+                            // Thay thế [media:MediaID] trong content bằng media tag
+                            content = content.Replace($"[media:{media.MediaID}]", mediaTag);
                         }
                         else
                         {
@@ -84,9 +78,6 @@ namespace Admission.Core.Services
                             mediaTag = $"<p>Media {media.MediaID} không khả dụng.</p>";
                         }
                     }
-
-                    // Thay thế [media:MediaID] trong content bằng media tag
-                    content = content.Replace($"[media:{media.MediaID}]", mediaTag);
                 }
 
                 return content;
@@ -100,14 +91,14 @@ namespace Admission.Core.Services
 
         public async Task ExtractNewsFromStream(Stream stream, string filepath)
         {
+            Guid articleId = Guid.NewGuid();
             // Lấy đường dẫn đến thư mục chứa Solution
-            string solutionPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-
-            string outputDirectory = Path.Combine(solutionPath, "Admision.UI", "wwwroot", "StaticData");
+            string outputDirectory = GetStaticDataPathWithDate();
             // Tải tài liệu Word
             Document doc = new Document(stream);
             string name = Path.GetFileNameWithoutExtension(filepath);
-            string newFolderPath = Path.Combine(outputDirectory, name + " data");
+
+            string newFolderPath = Path.Combine(outputDirectory, name + " data " + articleId.ToString());
             Directory.CreateDirectory(newFolderPath);
             // Chuyển đổi thành HTML
             string outputPath = Path.Combine(newFolderPath, name + ".html");
@@ -115,7 +106,6 @@ namespace Admission.Core.Services
             string htmlContent = System.IO.File.ReadAllText(outputPath);
 
             //xử lý html content
-            Guid articleId = Guid.NewGuid();
             List<Media> mediaList = new List<Media>();
             string textContent = ParseHtmlContent(htmlContent, mediaList,articleId);
 
@@ -130,6 +120,31 @@ namespace Admission.Core.Services
             }
         }
 
+        public string GetStaticDataPathWithDate()
+        {
+            // Lấy đường dẫn thư mục hiện tại của project Admision.Core
+            string coreProjectPath = Directory.GetCurrentDirectory();
+
+            // Lấy thời gian hiện tại
+            DateTime currentTime = DateTime.Now;
+
+            // Lấy năm và tên tháng bằng tiếng Anh
+            string year = currentTime.Year.ToString();         // Lấy năm
+            string month = currentTime.ToString("MMMM");       // Lấy tên tháng (January, February,...)
+
+            // Kết hợp đường dẫn với wwwroot/StaticData/năm/tháng
+            string outputDirectory = Path.Combine(coreProjectPath, "wwwroot", "StaticData", year, month);
+
+            // Kiểm tra xem thư mục đã tồn tại chưa, nếu chưa thì tạo
+            if (!Directory.Exists(outputDirectory))
+            {
+                Directory.CreateDirectory(outputDirectory);
+            }
+
+            return outputDirectory;
+        }
+
+
         static string ParseHtmlContent(string html, List<Media> mediaList, Guid articleID)
         {
             var doc = new HtmlDocument();
@@ -137,26 +152,27 @@ namespace Admission.Core.Services
 
             // Tìm tất cả các nút <img> và <video>
             var nodes = doc.DocumentNode.SelectNodes("//*"); // Lưu các nút vào danh sách để lặp lại
-            // Tìm tất cả các nút <img> và <video>
+                                                             // Tìm tất cả các nút <img> và <video>
             foreach (var node in nodes)
             {
                 if (node.Name == "img")
                 {
                     Guid id = Guid.NewGuid();
                     string mediaId = $"[media: {id}]"; // Tạo ID cho media
-                    mediaList.Add(new Media {MediaID = id, MediaType = "image", MediaUrl = node.GetAttributeValue("src", ""),ArticleID= articleID});
-                    var textNode = HtmlNode.CreateNode(mediaId);
-                    node.ParentNode.ReplaceChild(textNode, node);
+                    mediaList.Add(new Media { MediaID = id, MediaType = "image", MediaUrl = node.GetAttributeValue("src", ""), ArticleID = articleID });
+
+                    // Thay thế thuộc tính src của thẻ img
+                    node.SetAttributeValue("src", mediaId);
                 }
                 else if (node.Name == "video")
                 {
                     Guid id = Guid.NewGuid();
                     string mediaId = $"[media: {id}]"; // Tạo ID cho media
-                    mediaList.Add(new Media { MediaID = id, MediaType = "video/mp4", MediaUrl = node.GetAttributeValue("src", "") , ArticleID = articleID });
-                    var textNode = HtmlNode.CreateNode(mediaId);
-                    node.ParentNode.ReplaceChild(textNode, node);
+                    mediaList.Add(new Media { MediaID = id, MediaType = "video/mp4", MediaUrl = node.GetAttributeValue("src", ""), ArticleID = articleID });
+
+                    // Thay thế thuộc tính src của thẻ video
+                    node.SetAttributeValue("src", mediaId);
                 }
-                
             }
 
             return doc.DocumentNode.InnerHtml.Trim();

@@ -1,0 +1,16 @@
+﻿@model ArticleDTO
+@{
+    string content = Model.Content;
+}
+<link asp-append-version="true" href="~/css/article.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("CategoryMenu")
+    </div>
+    <div class="col-md-9">
+        <h2>@ViewBag.Title</h2>
+        <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-ArticleID="@Model.ArticleID"><h3>@Model.Title</h3></a>
+        <p>@Model.DateCreate.ToString("dd-MM-yyyy")</p>
+         @Html.Raw(content)
+    </div>
+</div>

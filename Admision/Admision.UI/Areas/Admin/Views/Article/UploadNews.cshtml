@@ -1,1 +1,10 @@
 ﻿
+
+<form enctype="multipart/form-data" method="post" asp-area="Admin" asp-controller="Article" asp-action="UploadNews">
+    <div class="form-group">
+        <label for="file">Chọn tệp Word (.docx):</label>
+        <input type="file" name="file" accept=".docx" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Tải lên</button>
+</form>
+
