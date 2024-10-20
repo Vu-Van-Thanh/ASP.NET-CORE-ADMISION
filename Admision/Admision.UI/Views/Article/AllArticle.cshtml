@@ -3,7 +3,7 @@
 <link asp-append-version="true" href="~/css/article.css" rel="stylesheet" />
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const innerContentElements = document.querySelectorAll('.inner-content');
+        const innerContentElements = document.querySelectorAll('.article-content');
 
         innerContentElements.forEach(element => {
             let content = element.textContent;
@@ -12,6 +12,13 @@
             if (content.length > 1000) {
                 element.textContent = content.substring(0, 1000) + '...';
             }
+        });
+
+        const backspaceElements = document.querySelectorAll('.inner-content > div > div');
+        backspaceElements.forEach(element => {
+            let contentbp = element.innerHTML;
+            contentbp = contentbp.replace(/&nbsp;/g, '');
+            element.innerHTML = contentbp;
         });
     });
 </script>
@@ -29,8 +36,7 @@
                 <div class="article-content">
                     <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-ArticleID="@article.ArticleID"><h3>@article.Title</h3></a>
                     <p>@article.DateCreate.ToString("dd-MM-yyyy")</p>
-
-                    <p class="inner-content">@Html.Raw(article.Content)</p>
+                    <span class="inner-content">@Html.Raw(article.Content)</span>
                 </div>
             </div>
         }
