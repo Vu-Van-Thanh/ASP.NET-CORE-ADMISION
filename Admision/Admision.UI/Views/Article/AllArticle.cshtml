@@ -30,7 +30,7 @@
                     <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-ArticleID="@article.ArticleID"><h3>@article.Title</h3></a>
                     <p>@article.DateCreate.ToString("dd-MM-yyyy")</p>
 
-                    <p class="inner-content">@Html.Raw(article.Content)</p>
+                    <span class="inner-content">@Html.Raw(article.Content)</span>
                 </div>
             </div>
         }
