@@ -29,21 +29,18 @@ namespace Admission.UI.Controllers
             List<ArticleDTO> list = new List<ArticleDTO>();
             foreach (Article article in articles)
             {
+                article.Content = await _articlesService.RenderArticleContent(article);
                 list.Add(article.ToArticleDTO());
             }
             ViewBag.Title = title;
             return View(list);
         }
-/*        public async Task<IActionResult> ShowArticle()
-        {
-            List<Article>? list = await _articlesService.GetAllArticle();
-            return View(list);
-        }*/
 
         public async Task<IActionResult> ShowArticleDetails(Guid ArticleID)
         {
             Article? article = await _articlesService.GetArticleByArticleID(ArticleID);
             ViewBag.Title = article?.Title;
+            article.Content = await _articlesService.RenderArticleContent(article);
             return View(article.ToArticleDTO());
         }
     }

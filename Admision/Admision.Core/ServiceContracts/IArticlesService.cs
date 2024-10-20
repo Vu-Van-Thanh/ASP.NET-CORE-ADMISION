@@ -11,5 +11,6 @@ namespace Admission.Core.ServiceContracts
         Task<Article?> GetArticleByArticleID(Guid articleID);
         Task<List<Article>?> GetAllArticle();
         Task ExtractNewsFromStream(Stream stream, string filepath);
+         Task<string> RenderArticleContent(Article article);
     }
 }

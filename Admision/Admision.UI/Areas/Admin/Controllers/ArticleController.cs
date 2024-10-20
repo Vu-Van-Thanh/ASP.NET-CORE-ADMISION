@@ -20,7 +20,7 @@ namespace Admission.UI.Areas.Admin.Controllers
         { 
             return View();
         }
-            [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> UploadNews(IFormFile file)
         {
             if (file == null || file.Length == 0)
