@@ -2,35 +2,85 @@
 	ViewBag.Title = "Trang Chủ";
 }
 <link href="~/css/home.css" rel="stylesheet" />
+<link href="~/css/article.css" rel="stylesheet" />
 
 <body>
 	<div class="a">
-	<section id="Slider">
-		<div class="aspect-ratio-169">
-			<img src="~/img/OIP.jpg">
-			<img src="~/img/OIP (1).jpg">
-			<img src="~/img/OIP (2).jpg">
-		</div>
-		<div class="dot-container">
-			<div class="dot active"></div>
-			<div class="dot"></div>
-			<div class="dot"></div>
-		</div>
-	</section>
-	
-	<section id="banner">
-		<div class="banner-content">
-			<h1>ĐÁNH GIÁ TƯ DUY (TSA)</h1>
-			<a href="#" class="btn">Chi tiết &rarr;</a>
-		</div>
-	</section>
+		<section id="Slider">
+			<div class="aspect-ratio-169">
+				<img src="~/img/OIP.jpg">
+				<img src="~/img/OIP (1).jpg">
+				<img src="~/img/OIP (2).jpg">
+			</div>
+			<div class="dot-container">
+				<div class="dot active"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+			</div>
+		</section>
+
+		<section id="banner">
+			<div class="banner-content">
+				<h1>ĐÁNH GIÁ TƯ DUY (TSA)</h1>
+				<a href="#" class="btn">Chi tiết &rarr;</a>
+			</div>
+		</section>
+
+		<section id="info-section">
+			<div class="info-container">
+				<div class="info-item">
+					<a href="https://example.com/page1" target="_blank">
+						<img src="~/img/Daco_1094108.png" alt="Icon 1">
+						<h3>TOP 801-1000 TRƯỜNG ĐẠI HỌC TỐT NHẤT THẾ GIỚI</h3>
+					</a>
+				</div>
+				<div class="info-item">
+					<a href="https://example.com/page2" target="_blank">
+						<img src="~/img/Daco_1094108.png" alt="Icon 2">
+						<h3>BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TOP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020</h3>
+					</a>
+				</div>
+				<div class="info-item">
+					<a href="https://example.com/page3" target="_blank">
+						<img src="~/img/Daco_1094108.png" alt="Icon 3">
+						<h3>LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI</h3>
+					</a>
+				</div>
+				<div class="info-item">
+					<a href="https://example.com/page4" target="_blank">
+						<img src="~/img/Daco_1094108.png" alt="Icon 4">
+						<h3>ĐỘI NGŨ GIẢNG VIÊN CHẤT LƯỢNG CAO, GIÀU CHUYÊN MÔN</h3>
+					</a>
+				</div>
+				<div class="info-item">
+					<a href="https://example.com/page5" target="_blank">
+						<img src="~/img/Daco_1094108.png" alt="Icon 5">
+						<h3>CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="article">
+			<div class="col-md-9">
+				<h2>@ViewBag.Title</h2>
+				@await Component.InvokeAsync("ListArticle")
+			</div>
+		</section>
+
+		<section id="banner">
+			<div class="banner-content">
+				<h1>ĐỀ ÁN TUYỂN SINH NĂM 2024</h1>
+				<a href="#" class="btn">Chi tiết &rarr;</a>
+			</div>
+		</section>
 	</div>
 
 </body>
 <script>
 	const header = document.querySelector('header')
 	window.addEventListener("scroll", function () {
-		x = window.pageYOffset
+		x = window.scrollY
 		if (x > 0) {
 			header.classList.add("sticky")
 		}
@@ -63,4 +113,27 @@
 		dotItem[index].classList.add("active")
 	}
 	setInterval(imgSlide, 4000)
+
+	setInterval(imgSlide, 4000);
+
+	// Code cho slider của phần info-section
+	let currentIndex = 0;
+	const infoContainer = document.querySelector('.info-container');
+	const infoItems = document.querySelectorAll('.info-item');
+	const itemWidth = infoItems[0].offsetWidth + 20; // Bao gồm cả margin/padding nếu có
+
+	function infoSlide() {
+		currentIndex++;
+		if (currentIndex >= infoItems.length) {
+			currentIndex = 0;
+		}
+		slideInfo(currentIndex);
+	}
+
+	function slideInfo(index) {
+		infoContainer.style.transform = `translateX(-${index * itemWidth}px)`;
+	}
+
+	// Tự động slide cho phần info-section
+	setInterval(infoSlide, 4000);
 </script>
