@@ -8,6 +8,7 @@ bin/
 obj/
 logs/
 nenv/
+__pycache__/
 
 *.log
 

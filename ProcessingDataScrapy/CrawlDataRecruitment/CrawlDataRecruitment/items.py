@@ -1,12 +1,21 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
 
 
-class CrawldatarecruitmentItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class Job_Item(scrapy.Item):
+    Web = scrapy.Field() #
+    Major = scrapy.Field() # 
+    Link = scrapy.Field()  #
+    WorkName = scrapy.Field() #
+    Company = scrapy.Field() #
+    Province = scrapy.Field() #
+    Salary = scrapy.Field() #
+    Type = scrapy.Field() #
+    YOE = scrapy.Field() #
+    Level = scrapy.Field() #
+    Requirement = scrapy.Field() 
+    Description = scrapy.Field() 
+    Welfare = scrapy.Field() 
+    DeadlineCV = scrapy.Field() #
+    Amount = scrapy.Field() #
+    Img = scrapy.Field() #
