@@ -14,7 +14,7 @@ namespace Admission.Core.DTO
 
   [Required(ErrorMessage = "Email không được để trống!")]
   [EmailAddress(ErrorMessage = "Email không đúng định dạng!")]
-  [Remote(action: "IsEmailAlreadyRegistered", controller: "Account", ErrorMessage = "Email đã được sử dụng")] // view features
+  [Remote(action: "IsEmailAlreadyRegistered", controller: "Account", ErrorMessage = "Email đã được sử dụng")] 
   public string Email { get; set; }
 
 

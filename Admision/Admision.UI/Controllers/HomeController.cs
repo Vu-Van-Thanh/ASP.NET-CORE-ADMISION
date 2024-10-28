@@ -17,7 +17,7 @@ namespace Admission.Controllers
             }
             return View(); //Views/Shared/Error
         }
-
+        [Route("/")]
         public IActionResult Index() 
         {
             return View();
