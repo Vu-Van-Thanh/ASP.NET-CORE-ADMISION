@@ -5,6 +5,7 @@ using Admission.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Admission.UI.Controllers
 {
@@ -73,10 +74,15 @@ namespace Admission.UI.Controllers
                     //Add the new user into 'User' role
                     await _userManager.AddToRoleAsync(user, UserTypeOptions.User.ToString());
                 }
-                //Sign in
-                await _signInManager.SignInAsync(user, isPersistent: false);
 
-                return RedirectToAction(nameof(PersonsController.Index), "Persons");
+				// Thêm claim cho AccountID
+				// Add Claim for AccountID
+				var accountId = user.Id; // Lấy ID của người dùng
+				await _userManager.AddClaimAsync(user, new Claim("AccountID", accountId.ToString())); // Chuyển đổi thành string
+																									  //Sign in
+				await _signInManager.SignInAsync(user, isPersistent: false);
+
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             else
             {
@@ -118,6 +124,7 @@ namespace Admission.UI.Controllers
                 ApplicationUser user = await _userManager.FindByEmailAsync(loginDTO.Email);
                 if (user != null)
                 {
+
                     if (await _userManager.IsInRoleAsync(user, UserTypeOptions.Admin.ToString()))
                     {
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
@@ -128,7 +135,7 @@ namespace Admission.UI.Controllers
                 {
                     return LocalRedirect(ReturnUrl);
                 }
-                return RedirectToAction(nameof(PersonsController.Index), "Persons");
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
             ModelState.AddModelError("Login", "Tài khoản hoặc mật khẩu không đúng!");
@@ -141,7 +148,7 @@ namespace Admission.UI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(PersonsController.Index), "Persons");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
 

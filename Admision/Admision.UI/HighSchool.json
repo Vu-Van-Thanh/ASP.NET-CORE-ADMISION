@@ -1,0 +1,220 @@
+[
+  {
+    "HighSchoolID": "514174FD-7B08-4089-9768-A1410F9398E7",
+    "HighSchoolName": "Trường THPT Hoàng Hoa Thám",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "117 Hùng Vương Thị trấn Diên Khánh",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "FF95CA35-53DF-45B5-A025-A70681972850",
+    "HighSchoolName": "Trường THPT Lý Tự Trọng",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "03 Lý Tự Trọng - Phường Lộc Thọ - Thành phố Nha Trang - Tỉnh Khánh Hòa.",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "45BCE675-3C48-4B36-958D-9E78C67FFCB9",
+    "HighSchoolName": "Trường THPT Nguyễn Thái Học",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Phước Tuy - Diên Phước - Diên Khánh",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "BA2BB140-6287-4243-95FE-3711240161F7",
+    "HighSchoolName": "Trường THPT Nguyễn Trãi",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "số 01 đường 16/7; tổ dân phố 16",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "6D85738C-463D-4591-8E5E-57DF29320357",
+    "HighSchoolName": "Trường THPT Phan Bội Châu",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "đường Nguyễn Thái Học",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "DF72FBE5-5039-4B46-8BEC-F7FD4FC24614",
+    "HighSchoolName": "Trường THPT Trần Bình Trọng",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "08-Trường Chinh TT. Cam Đức H. Cam Lâm T. Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "B4034916-FD21-42A7-A631-0DBDF2816371",
+    "HighSchoolName": "Trường THPT Trần Cao Vân",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Đường Đinh Tiên Hoàng Phường Ninh Hiệp Thị xã Ninh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "0E753B01-815E-48FE-8FDB-550BAA35E7E6",
+    "HighSchoolName": "Trường THPT Nguyễn Thiện Thuật",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "75C Nguyễn Thị Minh Khai- Nha Trang - Khánh Hòa",
+    "Type": "Tư thục"
+  },
+  {
+    "HighSchoolID": "9F0596A4-0556-478A-91C2-4034CF7C41B9",
+    "HighSchoolName": "Trường THPT DL Lê Thánh Tôn",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "10 Phước Long",
+    "Type": "Tư thục"
+  },
+  {
+    "HighSchoolID": "D88B8099-D17A-499D-B1E0-C138B76FC97F",
+    "HighSchoolName": "Trường THPT Lê Hồng Phong",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "E1A2A3EC-2330-44C7-8A60-291FBAC9DC3E",
+    "HighSchoolName": "Trường THPT Đoàn Thị Điểm",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Tân Xương2  Suối Cát  Cam Lâm  Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "4B33C784-B8F6-4502-B4C8-E56F2B4FFF7B",
+    "HighSchoolName": "Trường THPT Huỳnh Thúc Kháng",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "362 Hùng Vương- TT Vạn Giã- Vạn Ninh - Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "E15837A2-5C5B-4B52-A48F-5BEBBD33293B",
+    "HighSchoolName": "Trường THPT Hoàng Văn Thụ",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "02 Hòn Chồng",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "B7EB5F5B-9396-4CF2-B90D-3268A889E869",
+    "HighSchoolName": "Trường THPT Lạc Long Quân",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "90 Hùng Vương Thị trấn Khánh Vĩnh huyện Khánh Vĩnh",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "95D0969F-1DA2-4FD8-A79E-1635DEA0274D",
+    "HighSchoolName": "Trường THPT Nguyễn Chí Thanh",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Quốc lộ 26 xã Ninh Phụng thị xã Ninh Hòa tĩnh Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "39141DE0-6E65-4D20-A5CF-CC8CA5CCC3E8",
+    "HighSchoolName": "Trường THPT Ngô Gia Tự",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "284 Nguyễn Công Trứ - Cam Nghĩa - Cam Ranh - Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "9EA71901-FF11-4823-97B1-55323DCAB175",
+    "HighSchoolName": "Trường THPT Nguyễn Văn Trỗi",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "32 Hàn Thuyên",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "08AC0D47-4482-4ABE-AB30-B549FF8E3BF3",
+    "HighSchoolName": "Trường THPT Tô Văn Ơn",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Xã Vạn Khánh Huyện Vạn Ninh Tỉnh Khánh Hòa.",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "ED3635CC-0E76-4BE5-8F5A-243903FEB1D8",
+    "HighSchoolName": "Trường THPT Trần Quý Cáp",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "188 Hòn Khói phường Ninh Diêm thị xã Ninh Hòa tỉnh Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "BDFF377D-B000-4F30-9464-E35DEEB19D6C",
+    "HighSchoolName": "Trường THPT Nguyễn Huệ",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "100 Nguyễn Trãi Cam Đức Cam Lâm Khánh Hoà",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "84DD1DBE-0AF3-44FE-8DC9-2479DD0881E2",
+    "HighSchoolName": "Trường THPT Nguyễn Thị Minh Khai",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "183 lý Thường kiệt Tổ dp số 8 Vạn Giã-Vạn Ninh-Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "A949624C-0843-45CF-9759-F464F53A0B0F",
+    "HighSchoolName": "Trường THPT Trần Hưng Đạo",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "386 Đường 3 tháng 4 Phường cam Linh Thành Phố Cam ranhtỉnh Khánh hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "E9445ECE-9731-4A83-830B-005A0D3F7D96",
+    "HighSchoolName": "Trường THPT Tôn Đức Thắng",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Mỹ Lợi - Ninh Lộc - Ninh Hòa - Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "217772D7-611A-45C9-9346-31A8B0E5857E",
+    "HighSchoolName": "Trường THPT Phạm Văn Đồng",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "05 Trường Sơn Phường Vĩnh Nguyên Thành phố Nha Trang",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "2F19A6E1-CF10-43A4-9350-8C44A13A18EA",
+    "HighSchoolName": "Trường THPT Khánh Sơn",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Lê Duẩn - Tô Hạp - Khánh Sơn - Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "39BED8C0-B543-4858-A180-3D95E887C490",
+    "HighSchoolName": "Trường PT DTNT tỉnh",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "02 Hòn Chồng P.Vĩnh Phước TP.Nha Trang",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "B1C755E4-1102-4403-AE5C-34F6D5558943",
+    "HighSchoolName": "Trường THPT Chuyên Lê Quý Đôn",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "67 Yersin",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "C8C74838-A0E0-428C-8FFF-B48B96E15D76",
+    "HighSchoolName": "Trường PT Hermann Gmeiner",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Số 11 Đường Nguyễn Quyền - Phường Vĩnh Hải - TP Nha Trang- Tỉnh Khánh Hòa",
+    "Type": "Tư thục"
+  },
+  {
+    "HighSchoolID": "9A574C91-A796-46C4-B56A-1BC8D0D4E369",
+    "HighSchoolName": "Trường Tiểu học THCS THPT Quốc Tế Việt Nam Singapore",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Đường A1 KĐT Vĩnh Điềm Trung Vĩnh Hiệp Tp.Nha Trang",
+    "Type": "Tư thục"
+  },
+  {
+    "HighSchoolID": "BFB353E8-AC8B-4225-8EAB-3C8C714F2A16",
+    "HighSchoolName": "Trường THPT Hà Huy Tập",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "Tổ 6 Thôn Phú Thạnh xã Vĩnh Thạnh Tp. Nha Trang tỉnh Khánh Hòa",
+    "Type": "Công lập"
+  },
+  {
+    "HighSchoolID": "A7D11B3C-8D8C-4701-BA77-22BC6D164581",
+    "HighSchoolName": "Trường THCS và THPT iSchool Nha Trang",
+    "DepartmentOfEducation": "Sở Giáo dục và Đào tạo Khánh Hòa",
+    "Address": "25 Hai Bà Trưng",
+    "Type": "Tư thục"
+  }
+
+]

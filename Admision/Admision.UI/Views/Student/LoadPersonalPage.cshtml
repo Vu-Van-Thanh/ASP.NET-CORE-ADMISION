@@ -1,4 +1,7 @@
-﻿
+﻿@{
+	var accountIdClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountID");
+	var accountId = accountIdClaim?.Value; // accountId sẽ là null nếu không tồn tại claim này
+}
 <link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="~/css/jquery-ui.css" />
 @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> *@
@@ -22,11 +25,11 @@
 	<div class="event_now">
 		<div>
 			<i class="fa fa-calendar"></i>
-			<a class="event-link" data-action="ClassList" href="#">Danh sách lớp thi</a>
+			<a class="event-link" data-option="ClassList" href="#">Danh sách lớp thi</a>
 		</div>
 		<div>
 			<i class="fa fa-user"></i>
-			<a class="event-link" data-action="MyAccount" @* data-user-id="@Model.UserId" *@ href="#">Tài khoản của tôi</a>
+			<a class="event-link" data-option="MyInformation" data-user-id="@accountId" href="#">Hồ sơ của tôi</a>
 		</div>
 
 
@@ -40,26 +43,26 @@
 <script>
 	$(document).ready(function () {
 		$('.event-link').click(function (event) {
-			event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+			event.preventDefault();
 
-			var action = $(this).data('action'); // Lấy giá trị của thuộc tính data-action
-			var userId = $(this).data('user-id'); // Lấy ID người dùng
+			var option = $(this).data('option');
+			var userId = $(this).data('user-id');
 
-			// Gửi yêu cầu AJAX đến server
+			// Gửi yêu cầu AJAX với query string
 			$.ajax({
-				url: '@Url.Action("GetDetail", "Student")/' + action + '/' + userId, // Đường dẫn đến action trong controller
+				url: '@Url.Action("GetDetail", "Student")',
 				method: 'GET',
+				data: { option : option, userId: userId }, // Thêm query string
 				success: function (response) {
-					// Cập nhật nội dung của div
-					$('#option-detail-account').html(response);
+					$('.option-detail-account').html(response);
 				},
 				error: function () {
-					// Xử lý lỗi
 					alert('Có lỗi xảy ra khi tải dữ liệu.');
 				}
 			});
 		});
 	});
+
 </script>
 
 

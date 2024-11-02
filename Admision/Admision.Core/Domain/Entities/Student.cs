@@ -24,8 +24,8 @@ namespace Admission.Core.Domain.Entities
 
 		public DateTime? DateOfBirth { get; set; }
 
-		[StringLength(10)] //nvarchar(100)
-		public GenderOptions Gender { get; set; }
+		[StringLength(10)]
+		public GenderOptions? Gender { get; set; }
 
 		public Guid HighSchoolID { get; set; }
 
@@ -34,6 +34,9 @@ namespace Admission.Core.Domain.Entities
 
 		[StringLength(200)] //nvarchar(200)
 		public string? Address { get; set; }
+
+		[StringLength(150)]
+		public string? PathOfAvatar { get; set; } = "default_avatar.jpg";
 
 
 		[ForeignKey("HighSchoolID")]

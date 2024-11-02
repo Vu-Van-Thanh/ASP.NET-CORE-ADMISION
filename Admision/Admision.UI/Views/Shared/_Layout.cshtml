@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+	var accountIdClaim = User.Claims.FirstOrDefault(c => c.Type == "AccountID");
+	var accountId = accountIdClaim?.Value; // accountId sẽ là null nếu không tồn tại claim này
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -50,7 +54,7 @@
 							<i class="fa-solid fa-chevron-down ms-2"></i>
 						</a>
 						<ul class="account-dropdown-menu account-dropdown-menu-end not_op" aria-labelledby="accountDropdown">
-							<li><a class="account-dropdown-item option_acc" href="/student/loadpersonalpage/studentID=3"><i class="fa-solid fa-user-circle me-2"></i>Profile</a></li>
+							<li><a class="account-dropdown-item option_acc" href="/student/loadpersonalpage?accountID=@accountId"><i class="fa-solid fa-user-circle me-2"></i>Profile</a></li>
 							<li><a class="account-dropdown-item option_acc" href="#"><i class="fa-solid fa-cog me-2"></i>Settings</a></li>
 							<li><a class="account-dropdown-item option_acc" asp-controller="Account" asp-action="Logout"><i class="fa-solid fa-sign-out-alt me-2"></i>Logout</a></li>
 						</ul>
