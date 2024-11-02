@@ -63,6 +63,12 @@ namespace Entities
 			foreach(Media media in medias)
 				modelBuilder.Entity<Media>().HasData(media);
 
+			//Seed to HighSchool
+			string highschoolJson = System.IO.File.ReadAllText("HighSchool.json");
+			List<HighSchool>? highSchools = System.Text.Json.JsonSerializer.Deserialize<List<HighSchool>>(highschoolJson);
+			foreach(HighSchool highSchool in highSchools)
+				modelBuilder.Entity<HighSchool>().HasData(highSchool);
+
 			//Fluent API
 			modelBuilder.Entity<Person>().Property(temp => temp.TIN)
 			  .HasColumnName("TaxIdentificationNumber")

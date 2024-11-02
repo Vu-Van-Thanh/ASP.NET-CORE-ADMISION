@@ -4,6 +4,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Admission.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241029084457_AdjustHighSchool")]
+    partial class AdjustHighSchool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,8 +137,8 @@ namespace Admission.Infrastructure.Migrations
 
                     b.Property<string>("HighSchoolName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Type")
                         .HasMaxLength(10)
@@ -144,256 +147,6 @@ namespace Admission.Infrastructure.Migrations
                     b.HasKey("HighSchoolID");
 
                     b.ToTable("HighSchools");
-
-                    b.HasData(
-                        new
-                        {
-                            HighSchoolID = new Guid("514174fd-7b08-4089-9768-a1410f9398e7"),
-                            Address = "117 Hùng Vương Thị trấn Diên Khánh",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Hoàng Hoa Thám",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("ff95ca35-53df-45b5-a025-a70681972850"),
-                            Address = "03 Lý Tự Trọng - Phường Lộc Thọ - Thành phố Nha Trang - Tỉnh Khánh Hòa.",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Lý Tự Trọng",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("45bce675-3c48-4b36-958d-9e78c67ffcb9"),
-                            Address = "Phước Tuy - Diên Phước - Diên Khánh",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Thái Học",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("ba2bb140-6287-4243-95fe-3711240161f7"),
-                            Address = "số 01 đường 16/7; tổ dân phố 16",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Trãi",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("6d85738c-463d-4591-8e5e-57df29320357"),
-                            Address = "đường Nguyễn Thái Học",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Phan Bội Châu",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("df72fbe5-5039-4b46-8bec-f7fd4fc24614"),
-                            Address = "08-Trường Chinh TT. Cam Đức H. Cam Lâm T. Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Trần Bình Trọng",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("b4034916-fd21-42a7-a631-0dbdf2816371"),
-                            Address = "Đường Đinh Tiên Hoàng Phường Ninh Hiệp Thị xã Ninh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Trần Cao Vân",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("0e753b01-815e-48fe-8fdb-550baa35e7e6"),
-                            Address = "75C Nguyễn Thị Minh Khai- Nha Trang - Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Thiện Thuật",
-                            Type = "Tư thục"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("9f0596a4-0556-478a-91c2-4034cf7c41b9"),
-                            Address = "10 Phước Long",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT DL Lê Thánh Tôn",
-                            Type = "Tư thục"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("d88b8099-d17a-499d-b1e0-c138b76fc97f"),
-                            Address = "",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Lê Hồng Phong",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("e1a2a3ec-2330-44c7-8a60-291fbac9dc3e"),
-                            Address = "Tân Xương2  Suối Cát  Cam Lâm  Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Đoàn Thị Điểm",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("4b33c784-b8f6-4502-b4c8-e56f2b4fff7b"),
-                            Address = "362 Hùng Vương- TT Vạn Giã- Vạn Ninh - Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Huỳnh Thúc Kháng",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("e15837a2-5c5b-4b52-a48f-5bebbd33293b"),
-                            Address = "02 Hòn Chồng",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Hoàng Văn Thụ",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("b7eb5f5b-9396-4cf2-b90d-3268a889e869"),
-                            Address = "90 Hùng Vương Thị trấn Khánh Vĩnh huyện Khánh Vĩnh",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Lạc Long Quân",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("95d0969f-1da2-4fd8-a79e-1635dea0274d"),
-                            Address = "Quốc lộ 26 xã Ninh Phụng thị xã Ninh Hòa tĩnh Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Chí Thanh",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("39141de0-6e65-4d20-a5cf-cc8ca5ccc3e8"),
-                            Address = "284 Nguyễn Công Trứ - Cam Nghĩa - Cam Ranh - Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Ngô Gia Tự",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("9ea71901-ff11-4823-97b1-55323dcab175"),
-                            Address = "32 Hàn Thuyên",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Văn Trỗi",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("08ac0d47-4482-4abe-ab30-b549ff8e3bf3"),
-                            Address = "Xã Vạn Khánh Huyện Vạn Ninh Tỉnh Khánh Hòa.",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Tô Văn Ơn",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("ed3635cc-0e76-4be5-8f5a-243903feb1d8"),
-                            Address = "188 Hòn Khói phường Ninh Diêm thị xã Ninh Hòa tỉnh Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Trần Quý Cáp",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("bdff377d-b000-4f30-9464-e35deeb19d6c"),
-                            Address = "100 Nguyễn Trãi Cam Đức Cam Lâm Khánh Hoà",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Huệ",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("84dd1dbe-0af3-44fe-8dc9-2479dd0881e2"),
-                            Address = "183 lý Thường kiệt Tổ dp số 8 Vạn Giã-Vạn Ninh-Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Nguyễn Thị Minh Khai",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("a949624c-0843-45cf-9759-f464f53a0b0f"),
-                            Address = "386 Đường 3 tháng 4 Phường cam Linh Thành Phố Cam ranhtỉnh Khánh hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Trần Hưng Đạo",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("e9445ece-9731-4a83-830b-005a0d3f7d96"),
-                            Address = "Mỹ Lợi - Ninh Lộc - Ninh Hòa - Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Tôn Đức Thắng",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("217772d7-611a-45c9-9346-31a8b0e5857e"),
-                            Address = "05 Trường Sơn Phường Vĩnh Nguyên Thành phố Nha Trang",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Phạm Văn Đồng",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("2f19a6e1-cf10-43a4-9350-8c44a13a18ea"),
-                            Address = "Lê Duẩn - Tô Hạp - Khánh Sơn - Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Khánh Sơn",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("39bed8c0-b543-4858-a180-3d95e887c490"),
-                            Address = "02 Hòn Chồng P.Vĩnh Phước TP.Nha Trang",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường PT DTNT tỉnh",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("b1c755e4-1102-4403-ae5c-34f6d5558943"),
-                            Address = "67 Yersin",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Chuyên Lê Quý Đôn",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("c8c74838-a0e0-428c-8fff-b48b96e15d76"),
-                            Address = "Số 11 Đường Nguyễn Quyền - Phường Vĩnh Hải - TP Nha Trang- Tỉnh Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường PT Hermann Gmeiner",
-                            Type = "Tư thục"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("9a574c91-a796-46c4-b56a-1bc8d0d4e369"),
-                            Address = "Đường A1 KĐT Vĩnh Điềm Trung Vĩnh Hiệp Tp.Nha Trang",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường Tiểu học THCS THPT Quốc Tế Việt Nam Singapore",
-                            Type = "Tư thục"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("bfb353e8-ac8b-4225-8eab-3c8c714f2a16"),
-                            Address = "Tổ 6 Thôn Phú Thạnh xã Vĩnh Thạnh Tp. Nha Trang tỉnh Khánh Hòa",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THPT Hà Huy Tập",
-                            Type = "Công lập"
-                        },
-                        new
-                        {
-                            HighSchoolID = new Guid("a7d11b3c-8d8c-4701-ba77-22bc6d164581"),
-                            Address = "25 Hai Bà Trưng",
-                            DepartmentOfEducation = "Sở Giáo dục và Đào tạo Khánh Hòa",
-                            HighSchoolName = "Trường THCS và THPT iSchool Nha Trang",
-                            Type = "Tư thục"
-                        });
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.InformationOfApplied", b =>
@@ -638,7 +391,7 @@ namespace Admission.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int?>("Gender")
+                    b.Property<int>("Gender")
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
@@ -651,10 +404,6 @@ namespace Admission.Infrastructure.Migrations
                     b.Property<string>("LastName")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("PathOfAvatar")
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("StudentID");
 

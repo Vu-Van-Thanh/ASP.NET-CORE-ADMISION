@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Admission.Controllers
 {
-    public class HomeController : Controller
+	[AllowAnonymous]
+	public class HomeController : Controller
     {
-        [AllowAnonymous]
+        
         [Route("Error")]
         public IActionResult Error()
         {

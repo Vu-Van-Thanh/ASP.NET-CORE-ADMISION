@@ -1,0 +1,757 @@
+﻿@model Admission.Core.DTO.StudentInfoDTO
+@{
+    var highSchools = ViewBag.SchoolList as List<HighSchool>;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/studentinfo.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="title-info">I. Thông tin cá nhân</div>
+    <div class="personal-info">
+        <div class="user-avatar">
+            <div class="access-info">
+                <img class="avatar-image" src="~/img/default_avatar.jpg">
+                <div class="group-button">
+                    <button onclick="chooseImage('.access-info .avatar-image')" class="select-avatar">Chọn ảnh</button>
+                    <button onclick="removeImageAvatar(event,'.access-info .avatar-image')" class="del-avatar">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+                <div class="qr-cod">Ảnh hồ sơ</div>
+            </div>
+        </div>
+        <div class="user-info">
+            <form class="user-form">
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Giới tính</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Quốc tịch</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Việt Nam</option>
+                                <option value="female">Hàn Quốc</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Dân tộc</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Kinh</option>
+                                <option value="female">Thái</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Tôn giáo</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Phật Giáo</option>
+                                <option value="female">Hồi Giáoc</option>
+                                <option value="other">Không có</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Nơi sinh</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Nam Định</option>
+                                <option value="female">Thái</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Ngày sinh</label>
+                        <input class="el-form-item-content" type="date">
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Số CCCD</label>
+                        <input class="el-form-item-content" type="text">
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Nơi cấp</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Nam Định</option>
+                                <option value="female">Thái</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Ảnh CCCD</label>
+                        <div class="el-form-item-content">
+                            <input style="display: none;" type="file" id="imageUploadCCCD" accept="image/*" multiple onchange="previewImages(event, 'imagePreviewCCCD', selectedFilesCCCD)">
+                            <label for="imageUploadCCCD" class="custom-file-upload">+</label>
+                            <div id="imagePreviewCCCD" class="image-preview"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Số điện thoại</label>
+                        <input class="el-form-item-content" type="text">
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Email</label>
+                        <input class="el-form-item-content" type="text">
+                    </div>
+                </div>
+
+                <div class="el-form-item">
+
+                    <div class="form-row">
+                        <!-- Quốc gia -->
+                        <label class="el-label">Hộ khẩu thường trú</label>
+                        <select class="select-input">
+                            <option>Việt Nam</option>
+                            <!-- Thêm các tùy chọn quốc gia khác nếu cần -->
+                        </select>
+
+                        <!-- Địa chỉ chi tiết -->
+                        <input type="text" class="address-input" placeholder="Đội 8 - Xã Nghĩa Trung - Huyện Nghĩa Hưng - Tỉnh Nam Định">
+                    </div>
+
+                    <!-- Dòng thứ hai -->
+                    <div class="form-row row-2">
+                        <!-- Tỉnh -->
+                        <select class="select-input">
+                            <option>Tỉnh Nam Định</option>
+                            <!-- Thêm các tùy chọn tỉnh khác nếu cần -->
+                        </select>
+
+                        <!-- Huyện -->
+                        <select class="select-input">
+                            <option>Huyện Nghĩa Hưng</option>
+                            <!-- Thêm các tùy chọn huyện khác nếu cần -->
+                        </select>
+
+                        <!-- Xã -->
+                        <select class="select-input">
+                            <option>Xã Nghĩa Trung</option>
+                            <!-- Thêm các tùy chọn xã khác nếu cần -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Khi cần báo tin cho ai</label>
+                        <input class="el-form-item-content" type="text" placeholder="Chức danh">
+                    </div>
+                    <div class="element-form-item">
+                        <input class="el-form-item-content" type="text" placeholder="Họ tên">
+                    </div>
+                    <div class="element-form-item">
+                        <input class="el-form-item-content" type="text" placeholder="Số điện thoại">
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Đối tượng trúng tuyển</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Xét tuyển dựa trên kết quả kì thi tốt nghiệp THPT</option>
+                                <option value="female">Xét tuyển thằng do có chứng chỉ IELTS,SAT</option>
+                                <option value="other">Xét hồ sơ năng lực kết hợp phỏng vấn</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Đoàn viên</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Đã tham gia</option>
+                                <option value="female">Chưa tham gia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Ngày vào đoàn</label>
+                        <input class="el-form-item-content" type="date">
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Nơi vào đoàn</label>
+                        <input class="el-form-item-content" type="text">
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Sổ đoàn viên</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Đã có</option>
+                                <option value="female">Chưa có</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Thẻ đoàn viên</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Đã có</option>
+                                <option value="female">Chưa có</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Đảng viên</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Tham gia</option>
+                                <option value="female">Chưa tham gia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Sức khỏe</label>
+                        <div class="el-form-item-content">
+                            <select>
+                                <option value="male">Tốt</option>
+                                <option value="female">Bình thường</option>
+                                <option value="female">Có bệnh mãn tính</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Số BHYT</label>
+                        <input class="el-form-item-content" type="text">
+                    </div>
+                </div>
+
+                <div class="element-row">
+                    <div class="element-form-item">
+                        <label class="el-form-item-label">Ảnh thẻ BHYT</label>
+                        <div class="el-form-item-content">
+                            <input style="display: none;" type="file" id="imageUploadBHYT" accept="image/*" multiple onchange="previewImages(event, 'imagePreviewBHYT', selectedFilesBHYT)" ">
+                            <label for="imageUploadBHYT" class="custom-file-upload">+</label>
+                            <div id="imagePreviewBHYT" class="image-preview"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <div class="title-info">II. Thông tin gia đình</div>
+    <div class="study-info">
+        <div class="title-info-family">*Về cha</div>
+        <form class="user-form father">
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Họ và tên</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+            </div>
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Năm sinh</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Quốc tịch</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Việt Nam</option>
+                            <option value="female">Hàn Quốc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Dân tộc</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Kinh</option>
+                            <option value="female">Thái</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Tôn giáo</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Phật giáo</option>
+                            <option value="female">Hồi giáo</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Nghề nghiệp</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Nơi làm việc</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+            </div>
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Số điện thoại</label>
+                    <input type="text" class="el-form-item-content">
+
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">CCCD</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Email</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+            </div>
+            <div class="el-form-item">
+
+                <div class="form-row">
+                    <!-- Quốc gia -->
+                    <label class="el-label">Hộ khẩu thường trú</label>
+                    <select class="select-input">
+                        <option>Việt Nam</option>
+                        <!-- Thêm các tùy chọn quốc gia khác nếu cần -->
+                    </select>
+
+                    <!-- Địa chỉ chi tiết -->
+                    <input type="text" class="address-input" placeholder="Đội 8 - Xã Nghĩa Trung - Huyện Nghĩa Hưng - Tỉnh Nam Định">
+                </div>
+
+                <!-- Dòng thứ hai -->
+                <div class="form-row row-2">
+                    <!-- Tỉnh -->
+                    <select class="select-input">
+                        <option>Tỉnh Nam Định</option>
+                        <!-- Thêm các tùy chọn tỉnh khác nếu cần -->
+                    </select>
+
+                    <!-- Huyện -->
+                    <select class="select-input">
+                        <option>Huyện Nghĩa Hưng</option>
+                        <!-- Thêm các tùy chọn huyện khác nếu cần -->
+                    </select>
+
+                    <!-- Xã -->
+                    <select class="select-input">
+                        <option>Xã Nghĩa Trung</option>
+                        <!-- Thêm các tùy chọn xã khác nếu cần -->
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="title-info-family">*Về mẹ</div>
+        <form class="user-form father">
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Họ và tên</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+            </div>
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Năm sinh</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Quốc tịch</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Việt Nam</option>
+                            <option value="female">Hàn Quốc</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Dân tộc</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Kinh</option>
+                            <option value="female">Thái</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Tôn giáo</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Phật giáo</option>
+                            <option value="female">Hồi giáo</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Nghề nghiệp</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Nơi làm việc</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+            </div>
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Số điện thoại</label>
+                    <input type="text" class="el-form-item-content">
+
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">CCCD</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Email</label>
+                    <input type="text" class="el-form-item-content">
+                </div>
+            </div>
+            <div class="el-form-item">
+
+                <div class="form-row">
+                    <!-- Quốc gia -->
+                    <label class="el-label">Hộ khẩu thường trú</label>
+                    <select class="select-input">
+                        <option>Việt Nam</option>
+                        <!-- Thêm các tùy chọn quốc gia khác nếu cần -->
+                    </select>
+
+                    <!-- Địa chỉ chi tiết -->
+                    <input type="text" class="address-input" placeholder="Đội 8 - Xã Nghĩa Trung - Huyện Nghĩa Hưng - Tỉnh Nam Định">
+                </div>
+
+                <!-- Dòng thứ hai -->
+                <div class="form-row row-2">
+                    <!-- Tỉnh -->
+                    <select class="select-input">
+                        <option>Tỉnh Nam Định</option>
+                        <!-- Thêm các tùy chọn tỉnh khác nếu cần -->
+                    </select>
+
+                    <!-- Huyện -->
+                    <select class="select-input">
+                        <option>Huyện Nghĩa Hưng</option>
+                        <!-- Thêm các tùy chọn huyện khác nếu cần -->
+                    </select>
+
+                    <!-- Xã -->
+                    <select class="select-input">
+                        <option>Xã Nghĩa Trung</option>
+                        <!-- Thêm các tùy chọn xã khác nếu cần -->
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <div class="title-info-family">*Gia đình</div>
+        <form class="user-form family">
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Tổng số thành viên</label>
+                    <input class="el-form-item-content" type="number" name="quantity" min="1" max="20">
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Số người đang đi học</label>
+                    <input class="el-form-item-content" type="number" name="quantity" min="1" max="20">
+
+                </div>
+            </div>
+            <div><strong>Thông tin người thân</strong></div><br>
+            <div class="element-row">
+                <div class="element-form-item relation">
+                    <div class="el-form-item-content">
+                        <select id="Relation">
+                            <option value="" disabled selected hidden>Mối quan hệ</option>
+                            <option value="Anh">Anh</option>
+                            <option value="Em">Em</option>
+                        </select>
+                    </div>
+                    <input class="el-form-item-content" id="FullNameRelation" type="text" placeholder="Họ và tên">
+                    <input class="el-form-item-content" id="DateOfBirthRelation" placeholder="Năm sinh">
+                    <input class="el-form-item-content" id="Occupation" type="text" placeholder="Nghề nghiệp">
+                    <div class="el-form-item-content">
+                        <select id="Workplace">
+                            <option value="" disabled selected hidden>Nơi làm việc</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Nam Định">Nam Định</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <span id="add-relation">+ Thêm thành viên</span>
+            <div clas="element_row">
+                <!-- table -->
+                <table id="infoTable">
+                    <thead>
+                        <tr>
+                            <th>Mối quan hệ</th>
+                            <th>Họ tên</th>
+                            <th>Năm sinh</th>
+                            <th>Nghề nghiệp</th>
+                            <th>Địa chỉ</th>
+                            <th>Tương tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Ảnh Hộ khẩu</label>
+                    <div class="el-form-item-content">
+                        <input style="display: none;" type="file" id="imageUploadHK" accept="image/*" multiple onchange="previewImages(event, 'imagePreviewHK', selectedFilesHK)">
+                        <label for="imageUploadHK" class="custom-file-upload">+</label>
+                        <div id="imagePreviewHK" class="image-preview"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Sinh viên thuộc đối tượng</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Không thuộc diện chế độ chính sách</option>
+                            <option value="female">Con liệt sỹ</option>
+                            <option value="other">Con anh hùng lực lượng vũ trang</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Thuộc hộ</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Nghèo</option>
+                            <option value="female">Cận nghèo</option>
+                            <option value="other">Không có</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="title-info">III. Quá trình học tập</div>
+    <div class="study-info">
+        <form class="user-form">
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Tên trường THPT</label>
+                    <div class="el-form-item-content single">
+                        <select>
+                            <option value="male">Thành phố Hà Nội</option>
+                            <option value="male">Thành phố Nam Định</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">THPT A Nghĩa Hưng</option>
+                            <option value="male">THPT Chu Văn An</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Xếp loại học lực lớp 10</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Xuất sắc</option>
+                            <option value="female">Giỏi</option>
+                            <option value="female">Khá</option>
+                            <option value="female">Trung bình</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Lớp 11</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Xuất sắc</option>
+                            <option value="female">Giỏi</option>
+                            <option value="female">Khá</option>
+                            <option value="female">Trung bình</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Lớp 12</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Xuất sắc</option>
+                            <option value="female">Giỏi</option>
+                            <option value="female">Khá</option>
+                            <option value="female">Trung bình</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Xếp loại hạnh kiểm lớp 10</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Tốt</option>
+                            <option value="female">Khá</option>
+                            <option value="female">Trung bình</option>
+                            <option value="female">Yếu</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Lớp 11</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Tốt</option>
+                            <option value="female">Khá</option>
+                            <option value="female">Trung bình</option>
+                            <option value="female">Yếu</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Lớp 12</label>
+                    <div class="el-form-item-content">
+                        <select>
+                            <option value="male">Tốt</option>
+                            <option value="female">Khá</option>
+                            <option value="female">Trung bình</option>
+                            <option value="female">Yếu</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Thành tích nổi bật</label>
+                    <textarea class="el-form-item-content" rows="5" cols="30"></textarea>
+                </div>
+            </div>
+
+            <div class="element-row">
+                <div class="element-form-item">
+                    <label class="el-form-item-label">Ảnh Học bạ PTTH</label>
+                    <div class="el-form-item-content">
+                        <input style="display: none;" type="file" id="imageUploadHB" accept="image/*" multiple onchange="previewImages(event, 'imagePreviewHB', selectedFilesHB)">
+                        <label for="imageUploadHB" class="custom-file-upload">+</label>
+                        <div id="imagePreviewHB" class="image-preview"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="title-info">IV. Tải ảnh hồ sơ</div>
+    <div class="profile-loading">
+        <form class="user-form">
+            <div class="el-row">
+                <div class="el-item">
+                    <label><strong>Ảnh chứng nhận tốt nghiệp THPT tạm thời</strong></label>
+                    <div onclick="chooseImage('.ivTN')">
+                        <img class="iv ivTN" src="" alt="Chọn ảnh" style="display: none;">
+                        <span class="plus-sign">+</span>
+                        <span class="remove-button" onclick="removeImageAvatar(event, '.ivTN')"><i class="fas fa-trash"></i></span>
+                        <span class="zoom-icon" onclick="openModal(event, document.querySelector('.ivTN').src)">🔍</span>
+                    </div>
+                </div>
+                <div class="el-item">
+                    <label><strong>Ảnh giấy khai sinh</strong></label>
+                    <div onclick="chooseImage('.ivKS')">
+                        <img class="iv ivKS" src="" alt="Chọn ảnh" style="display: none;">
+                        <span class="plus-sign">+</span>
+                        <span class="remove-button" onclick="removeImageAvatar(event, '.ivKS')"><i class="fas fa-trash"></i></span>
+                        <span class="zoom-icon" onclick="openModal(event, document.querySelector('.ivKS').src)">🔍</span>
+                    </div>
+                </div>
+            </div>
+            <div class="el-row">
+                <div class="el-item">
+                    <label><strong>Ảnh giấy chuyển đoàn (Nếu có)</strong></label>
+                    <div onclick="chooseImage('.ivCD')">
+                        <img class="iv ivCD" src="" alt="Chọn ảnh" style="display: none;">
+                        <span class="plus-sign">+</span>
+                        <span class="remove-button" onclick="removeImageAvatar(event, '.ivCD')"><i class="fas fa-trash"></i></span>
+                        <span class="zoom-icon" onclick="openModal(event, document.querySelector('.ivCD').src)">🔍</span>
+                    </div>
+                </div>
+                <div class="el-item">
+                    <label><strong>Ảnh giấy tạm hoãn nghĩa vụ quân sự đối với nam sinh</strong></label>
+                    <div onclick="chooseImage('.ivNVQS')">
+                        <img class="iv ivNVQS" src="" alt="Chọn ảnh" style="display: none;">
+                        <span class="plus-sign">+</span>
+                        <span class="remove-button" onclick="removeImageAvatar(event, '.ivNVQS')"><i class="fas fa-trash"></i></span>
+                        <span class="zoom-icon" onclick="openModal(event, document.querySelector('.ivNVQS').src)">🔍</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</body>
+<!-- Modal cho ảnh lớn -->
+<div id="imageModal" class="modal" onclick="this.style.display='none'">
+    <span class="close" onclick="this.parentElement.style.display='none'">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div id="caption"></div>
+</div>
+<script src="~/JS/studentinfo.js"></script>
+</html>
