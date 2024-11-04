@@ -1,8 +1,8 @@
 ﻿@{
 	ViewBag.Title = "Trang Chủ";
 }
-<link href="~/css/home.css" rel="stylesheet" />
-<link href="~/css/article.css" rel="stylesheet" />
+<link href="~/css/home.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/article.css" rel="stylesheet" asp-append-version="true" />
 
 <body>
 	<div class="a">
@@ -30,31 +30,31 @@
 			<div class="info-container">
 				<div class="info-item">
 					<a href="https://example.com/page1" target="_blank">
-						<img src="~/img/Daco_1094108.png" alt="Icon 1">
+						<img src="~/img/globe.png" alt="Icon 1">
 						<h3>TOP 801-1000 TRƯỜNG ĐẠI HỌC TỐT NHẤT THẾ GIỚI</h3>
 					</a>
 				</div>
 				<div class="info-item">
 					<a href="https://example.com/page2" target="_blank">
-						<img src="~/img/Daco_1094108.png" alt="Icon 2">
+						<img src="~/img/premium-badge.png" alt="Icon 2">
 						<h3>BỐN NHÓM NGÀNH CỦA ĐHBK HÀ NỘI TĂNG HẠNG VÀO TOP 400 VÀ 500 THẾ GIỚI THEO XẾP HẠNG QS 2020</h3>
 					</a>
 				</div>
 				<div class="info-item">
 					<a href="https://example.com/page3" target="_blank">
-						<img src="~/img/Daco_1094108.png" alt="Icon 3">
+						<img src="~/img/micro.png" alt="Icon 3">
 						<h3>LĨNH VỰC KỸ THUẬT VÀ CÔNG NGHỆ BÁCH KHOA HÀ NỘI VÀO TOP 400 THẾ GIỚI</h3>
 					</a>
 				</div>
 				<div class="info-item">
 					<a href="https://example.com/page4" target="_blank">
-						<img src="~/img/Daco_1094108.png" alt="Icon 4">
+						<img src="~/img/group.png" alt="Icon 4">
 						<h3>ĐỘI NGŨ GIẢNG VIÊN CHẤT LƯỢNG CAO, GIÀU CHUYÊN MÔN</h3>
 					</a>
 				</div>
 				<div class="info-item">
 					<a href="https://example.com/page5" target="_blank">
-						<img src="~/img/Daco_1094108.png" alt="Icon 5">
+						<img src="~/img/award.png" alt="Icon 5">
 						<h3>CƠ SỞ VẬT CHẤT THUỘC LOẠI TỐT NHẤT TRONG CÁC TRƯỜNG ĐẠI HỌC</h3>
 					</a>
 				</div>
@@ -88,52 +88,76 @@
 			header.classList.remove("sticky")
 		}
 	})
-	const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
-	const imgContainer = document.querySelector('.aspect-ratio-169')
-	const dotItem = document.querySelectorAll(".dot")
-	let imgNumber = imgPosition.length
-	let index = 0
+	// Slider ảnh
+	const imgContainer = document.querySelector('.aspect-ratio-169');
+	const imgPosition = document.querySelectorAll(".aspect-ratio-169 img");
+	const dotItem = document.querySelectorAll(".dot");
+	let imgNumber = imgPosition.length;
+	let index = 0;
 
-	imgPosition.forEach(function (image, index) {
-		image.style.left = index * 100 + "%"
-		dotItem[index].addEventListener("click", function () {
-			slider(index)
-		})
-	})
+	// Đặt vị trí ban đầu cho các ảnh và thêm sự kiện cho các dấu chấm
+	imgPosition.forEach(function (image, idx) {
+		image.style.left = idx * 100 + "%";
+		dotItem[idx].addEventListener("click", function () {
+			slider(idx); // Khi click vào dấu chấm, chuyển đến slide tương ứng
+		});
+	});
+
+	// Hàm tự động chuyển ảnh sau mỗi 4 giây
 	function imgSlide() {
 		index++;
-		console.log(index)
-		if (index >= imgNumber) { index = 0 }
-		slider(index)
-	}
-	function slider(index) {
-		imgContainer.style.left = "-" + index * 100 + "%"
-		const dotActive = document.querySelector('.active')
-		dotActive.classList.remove("active")
-		dotItem[index].classList.add("active")
-	}
-	setInterval(imgSlide, 4000)
-
-	setInterval(imgSlide, 4000);
-
-	// Code cho slider của phần info-section
-	let currentIndex = 0;
-	const infoContainer = document.querySelector('.info-container');
-	const infoItems = document.querySelectorAll('.info-item');
-	const itemWidth = infoItems[0].offsetWidth + 20; // Bao gồm cả margin/padding nếu có
-
-	function infoSlide() {
-		currentIndex++;
-		if (currentIndex >= infoItems.length) {
-			currentIndex = 0;
+		if (index >= imgNumber) {
+			index = 0;
 		}
-		slideInfo(currentIndex);
+		slider(index); // Chuyển ảnh và cập nhật dấu chấm
 	}
 
-	function slideInfo(index) {
-		infoContainer.style.transform = `translateX(-${index * itemWidth}px)`;
+	// Hàm để chuyển ảnh và cập nhật dấu chấm
+	function slider(newIndex) {
+		index = newIndex;
+		imgContainer.style.transform = `translateX(-${index * 100}%)`;
+
+		dotItem.forEach(dot => dot.classList.remove("active"));
+
+		dotItem[index].classList.add("active");
 	}
 
-	// Tự động slide cho phần info-section
-	setInterval(infoSlide, 4000);
+	// Tự động chuyển ảnh sau mỗi 5 giây
+	setInterval(imgSlide, 5000);
+
+
+	//Silde infor-sect
+	const infoContainer = document.querySelector('.info-container');
+	let items = document.querySelectorAll('.info-item');
+
+	// Nhân đôi các item để tạo hiệu ứng vòng lặp liên tục
+	infoContainer.innerHTML += infoContainer.innerHTML;
+	let totalItems = items.length * 2; // Tổng số item sau khi nhân đôi
+	let currentIndex = 0;
+	const itemWidthPercentage = 20; // Mỗi item chiếm 20% container
+
+	function slide() {
+		// Di chuyển container sang trái để hiển thị item tiếp theo
+		currentIndex++;
+		infoContainer.style.transition = 'transform 0.5s ease';
+		infoContainer.style.transform = `translateX(-${currentIndex * itemWidthPercentage}%)`;
+
+		// Kiểm tra nếu đã đi qua hết phần gốc, reset vị trí về đầu phần gốc ngay lập tức
+		if (currentIndex === items.length) {
+			setTimeout(() => {
+				infoContainer.style.transition = 'none'; // Tắt transition tạm thời
+				infoContainer.style.transform = 'translateX(0)'; // Reset vị trí về phần gốc
+				currentIndex = 0; // Reset index về đầu
+
+				// Kích hoạt lại transition cho lần di chuyển tiếp theo
+				setTimeout(() => {
+					infoContainer.style.transition = 'transform 0.5s ease';
+				}, 50);
+			}, 500); // Khớp với thời gian chuyển động của transition
+		}
+	}
+
+	// Tự động chạy slide mỗi 2 giây
+	setInterval(slide, 2000);
+
 </script>
