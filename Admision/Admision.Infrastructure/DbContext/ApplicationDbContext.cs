@@ -27,8 +27,10 @@ namespace Entities
 		public virtual DbSet<Payment> Payments { get; set; }
 		public virtual DbSet<Post> Posts { get; set; }
 		public virtual DbSet<Comment> Comments { get; set; }
+		public virtual DbSet<Group> Groups { get; set; }
+		public virtual DbSet<Notification> Notifications { get; set; }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
 

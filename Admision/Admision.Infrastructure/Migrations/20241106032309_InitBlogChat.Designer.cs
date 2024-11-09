@@ -4,6 +4,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Admission.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241106032309_InitBlogChat")]
+    partial class InitBlogChat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,10 +99,6 @@ namespace Admission.Infrastructure.Migrations
                     b.Property<Guid>("AuthorID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -109,20 +108,19 @@ namespace Admission.Infrastructure.Migrations
                     b.Property<int>("LikeCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ParentCommentID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("PostID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("VideoUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CommentID");
 
                     b.HasIndex("AuthorID");
-
-                    b.HasIndex("ParentCommentID");
 
                     b.HasIndex("PostID");
 
@@ -1173,17 +1171,11 @@ namespace Admission.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Admission.Core.Domain.Entities.Comment", "ParentComment")
-                        .WithMany("Replies")
-                        .HasForeignKey("ParentCommentID");
-
                     b.HasOne("Admission.Core.Domain.Entities.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ParentComment");
 
                     b.Navigation("Post");
 
@@ -1371,11 +1363,6 @@ namespace Admission.Infrastructure.Migrations
             modelBuilder.Entity("Admission.Core.Domain.Entities.Article", b =>
                 {
                     b.Navigation("medias");
-                });
-
-            modelBuilder.Entity("Admission.Core.Domain.Entities.Comment", b =>
-                {
-                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Group", b =>

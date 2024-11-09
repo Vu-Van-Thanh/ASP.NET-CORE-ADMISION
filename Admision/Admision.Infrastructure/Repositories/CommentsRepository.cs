@@ -1,0 +1,30 @@
+﻿using Admission.Core.Domain.Entities;
+using Admission.Core.Domain.RepositoryContracts;
+using Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Admission.Infrastructure.Repositories
+{
+    public class CommentsRepository : ICommentsRepository
+    {
+        private readonly ApplicationDbContext _context;
+
+        public CommentsRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IEnumerable<Comment>> GetCommentsByPostId(Guid postId)
+        {
+            return await _context.Comments
+            .Where(c => c.PostID == postId)
+            .Include(c => c.Student)
+            .ToListAsync();
+        }
+    }
+}

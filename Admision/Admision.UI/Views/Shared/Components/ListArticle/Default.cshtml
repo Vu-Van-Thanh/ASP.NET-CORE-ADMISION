@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<ArticleDTO>
+@using System.Text.Json
+
 @foreach (var article in Model)
 {
     <div class="article">
@@ -7,7 +9,28 @@
         <div class="article-content">
             <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-ArticleID="@article.ArticleID"><h3>@article.Title</h3></a>
             <p>@article.DateCreate.ToString("dd-MM-yyyy")</p>
-            <span class="inner-content">@Html.Raw(article.Content)</span>
+            <span class="inner-content" id="content-@article.ArticleID"></span>
         </div>
     </div>
+
+    <script>
+        (function () {
+            // JsonSerializer  mã hóa nội dung
+            let htmlContent = @Html.Raw(JsonSerializer.Serialize(article.Content));
+
+            htmlContent = htmlContent.replace(/<div style="-aw-headerfooter-type:header-primary; clear:both">.*?<\/div>/s, '');
+
+            // Tìm phần tử container dựa trên ID bài viết
+            const container = document.getElementById("content-@article.ArticleID");
+
+            // Kiểm tra nếu phần tử container tồn tại
+            if (container) {
+                // Tạo Shadow Root cho nội dung
+                const shadowRoot = container.attachShadow({ mode: 'open' });
+
+                // Gán nội dung HTML đã sửa vào Shadow DOM
+                shadowRoot.innerHTML = htmlContent;
+            }
+        })();
+    </script>
 }

@@ -78,7 +78,7 @@ class ScrapeOpsFakeBrowserHeaderAgentMiddleware:
         random_browser_header = self._get_random_browser_header()
         request.headers['accept-language'] = random_browser_header['accept-language']
         request.headers['sec-fetch-user'] = random_browser_header['sec-fetch-user'] 
-        request.headers['sec-fetch-mod'] = random_browser_header['sec-fetch-mod'] 
+        request.headers['sec-fetch-mode'] = random_browser_header['sec-fetch-mode'] 
         request.headers['sec-fetch-site'] = random_browser_header['sec-fetch-site'] 
         request.headers['sec-ch-ua-platform'] = random_browser_header['sec-ch-ua-platform'] 
         request.headers['sec-ch-ua-mobile'] = random_browser_header['sec-ch-ua-mobile'] 
@@ -86,5 +86,6 @@ class ScrapeOpsFakeBrowserHeaderAgentMiddleware:
         request.headers['accept'] = random_browser_header['accept'] 
         request.headers['user-agent'] = random_browser_header['user-agent'] 
         request.headers['upgrade-insecure-requests'] = random_browser_header.get('upgrade-insecure-requests')
+        print("Request Headers:", request.headers.to_unicode_dict())
         
         print("Browser header complete!!!")
