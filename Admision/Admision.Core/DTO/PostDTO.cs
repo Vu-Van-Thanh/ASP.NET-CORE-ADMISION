@@ -21,7 +21,7 @@ namespace Admission.Core.DTO
     {
         public static PostDTO ToPostDTO(this Post post)
         {
-            return new PostDTO { PostID = post.PostID, Content = post.Content, AuthorName = post.Author.FirstName + " " + post.Author.LastName, DateCreated = post.DateCreated, ImageUrl = post.ImageUrl, VideoUrl = post.VideoUrl, LikeCount = post.LikeCount };
+            return new PostDTO { PostID = post.PostID, Content = post.Content, AuthorName = post.Author.FirstName + " " + post.Author.LastName, DateCreated = post.DateCreated, LikeCount = post.LikeCount };
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Admission.Core.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities
 {
@@ -12,6 +13,7 @@ namespace Entities
 
     public string? CountryName { get; set; }
 
-    public virtual ICollection<Person>? Persons { get; set; }
-  }
+    public virtual ICollection<Student>? Students { get; set; }
+    public virtual ICollection<Relative>? Relatives { get; set; }
+    }
 }

@@ -45,25 +45,22 @@ namespace Admission
 
             //add services into IoC container
             services.AddScoped<ICountriesRepository, CountriesRepository>();
-            services.AddScoped<IPersonsRepository, PersonsRepository>();
+
+            services.AddScoped<IGroupsRepository,GroupsRepository>();
+            services.AddScoped<IPostsRepository,PostsRepository>();
+            services.AddScoped<ICommentsRepository,CommentsRepository>();
             services.AddScoped<IStudentsRepository, StudentsRepository>();
             services.AddScoped<ICountriesGetterService, CountriesGetterService>();
             services.AddScoped<ICountriesAdderService, CountriesAdderService>();
             services.AddScoped<ICountriesUploaderService, CountriesUploaderService>();
             services.AddScoped<IHighSchoolsRepository, HighSchoolsRepository>();
-            services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
-            services.AddScoped<PersonsGetterService, PersonsGetterService>();
+            services.AddScoped<IGroupsService, GroupService>();
 
-            services.AddScoped<IPersonsAdderService, PersonsAdderService>();
-            services.AddScoped<IPersonsDeleterService, PersonsDeleterService>();
-            services.AddScoped<IPersonsUpdaterService, PersonsUpdaterService>();
-            services.AddScoped<IPersonsSorterService, PersonsSorterService>();
             services.AddScoped<IStudentsService, StudentService>();
             services.AddScoped<IHighSchoolsService, HighSchoolService>();
             services.AddScoped<IArticlesService, ArticleService>();
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IMediasRepository, MediasRepository>();
-            services.AddTransient<PersonsListActionFilter>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {

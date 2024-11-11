@@ -1,0 +1,78 @@
+[
+  {
+    "GroupID": "986C9E54-9EF0-4CE9-B714-B3F8F67234F0",
+    "Name": "Viện Khoa học và Công nghệ Vật liệu"
+  },
+  {
+    "GroupID": "996E2DB4-7341-408F-A57C-BC39F74207BD",
+    "Name": "Viện Cơ khí"
+  },
+  {
+    "GroupID": "63690708-42E3-4887-89B5-E3E7C5CFA8EF",
+    "Name": "Viện Điện tử Viễn thông"
+  },
+  {
+    "GroupID": "E726D97A-0CC2-4E98-AC73-E91B3EB1B645",
+    "Name": "Viện Công nghệ Thông tin và Truyền thông"
+  },
+  {
+    "GroupID": "AE0C4E13-922F-4FF5-AA8D-B2B650CED61E",
+    "Name": "Viện Công nghệ Sinh học"
+  },
+  {
+    "GroupID": "6A7A706E-55FB-4675-A721-7D5AB0EE583D",
+    "Name": "Viện Kỹ thuật Hóa học"
+  },
+  {
+    "GroupID": "4B1CF118-6612-4D47-97FE-8D6055F3BF67",
+    "Name": "Viện Quản trị Kinh doanh"
+  },
+  {
+    "GroupID": "CAAB93DE-F077-4F0F-AF70-431FFB630CAF",
+    "Name": "Viện Khoa học Máy tính"
+  },
+  {
+    "GroupID": "D9BCE23C-AC7F-4491-8820-9702EB6ECF11",
+    "Name": "Viện Xây dựng"
+  },
+  {
+    "GroupID": "1BF4C6B1-B102-4063-9396-8823A70FF7B5",
+    "Name": "Viện Kỹ thuật Điện và Điện tử"
+  },
+  {
+    "GroupID": "6FBC24F2-713A-42C9-980C-77C46DE81761",
+    "Name": "Viện Cơ học"
+  },
+  {
+    "GroupID": "E51C655A-25B5-4596-8BA8-1F711436FEBF",
+    "Name": "Viện Toán học và Tin học Ứng dụng"
+  },
+  {
+    "GroupID": "7FFE994D-DA38-4136-9F79-4E6695FD9696",
+    "Name": "Trường Kỹ thuật Cơ khí"
+  },
+  {
+    "GroupID": "6F20EAF9-0C3A-41EF-AB74-4E9DE7ADD63A",
+    "Name": "Trường Kỹ thuật Điện"
+  },
+  {
+    "GroupID": "2084A35B-6CEB-4974-8C1D-823E95BF02A7",
+    "Name": "Trường Kỹ thuật Công nghệ Thông tin"
+  },
+  {
+    "GroupID": "5B97F946-5446-404A-8EA7-F72DE1F1BF08",
+    "Name": "Trường Kỹ thuật Xây dựng"
+  },
+  {
+    "GroupID": "8BBAB4E8-2CC2-4489-A8BD-8BAF31894CEC",
+    "Name": "Trường Kỹ thuật Hóa học"
+  },
+  {
+    "GroupID": "B11BA393-C8BC-4496-A02B-FCE57326100E",
+    "Name": "Trường Kỹ thuật Cơ khí Động lực"
+  },
+  {
+    "GroupID": "6E041819-6114-4781-94B9-6892FE124F93",
+    "Name": "Trường Kinh tế và Quản lý"
+  }
+]

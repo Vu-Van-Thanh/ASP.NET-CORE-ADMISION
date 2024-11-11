@@ -1,1 +1,240 @@
 ﻿
+@model IEnumerable<GroupDTO>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="~/css/social.css" asp-append-version="true">
+
+
+<div class="full-content">
+
+    <div class="container-post">
+        <div class="sidebar">
+            <h5 class="text-center mb-4">Danh Sách Nhóm</h5>
+
+            <!-- Group Box 1 với badge số lượng thông báo -->
+            <div class="group-box" onclick="toggleGroup(this)">
+                <span>Group 1</span>
+                <span class="notification-badge">3</span>
+                <!-- Danh sách các group con -->
+                <ul class="group-list">
+                    <li class="group-list-item">
+                        Group 1.1
+                        <span class="sub-notification-badge">1</span>
+                    </li>
+                    <li class="group-list-item">
+                        Group 1.2
+                        <span class="sub-notification-badge">4</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Group Box 2 với badge số lượng thông báo -->
+            <div class="group-box" onclick="toggleGroup(this)">
+                <span>Group 2</span>
+                <span class="notification-badge">5</span>
+                <!-- Danh sách các group con -->
+                <ul class="group-list">
+                    <li class="group-list-item">
+                        Group 2.1
+                        <span class="sub-notification-badge">2</span>
+                    </li>
+                    <li class="group-list-item">
+                        Group 2.2
+                        <span class="sub-notification-badge">3</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Phần chính giữa -->
+        <div class="main-content">
+            <!-- Giao diện tạo bài viết ban đầu -->
+            <div class="create-post" onclick="openPostForm()">
+                <img src="./Data/logo_bg.png" alt="Profile" class="profile-pic">
+                <input type="text" class="form-control" placeholder="Đặt câu hỏi tại đây.." readonly>
+            </div>
+
+
+
+            <!-- Hiển thị các bài post -->
+            <div class="post-list">
+                <div class="post" id="post-1">
+                    <div class="post-header">
+                        <img src="https://via.placeholder.com/40" alt="Profile">
+                        <div class="post-info">
+                            <span class="post-author">Hóng Hớt Gen Z</span><br>
+                            <span class="post-time">21 giờ</span>
+                        </div>
+                    </div>
+                    Hành vi của cha mẹ ảnh hưởng tới con cái như thế nào 🥰. <br>
+                    <span style="color: #1877f2;">#honghotgenz</span>
+                    <div class="post-content">
+                        <div id="post-preview-post-1" class="post-preview">
+                            <img src="./Data/Máy ảnh.png" alt="Post Image">
+                        </div>
+
+                    </div>
+
+                    <div class="post-interactions">
+                        <div class="interaction-icons">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>18K</span>
+                        </div>
+                        <span>1,6K bình luận · 2,4K lượt chia sẻ</span>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="action-btn like-btn" onclick="toggleLike('post-1')">
+                            <i class="far fa-thumbs-up"></i> Thích
+                        </button>
+                        <button class="action-btn" onclick="openCommentModal('post-1')">
+                            <i class="far fa-comment"></i> Bình luận
+                        </button>
+                        <button class="action-btn">
+                            <i class="far fa-share-square"></i> Chia sẻ
+                        </button>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal cho Bình luận -->
+    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commentModalLabel">Bình luận</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Hiển thị nội dung bài viết -->
+                    <div id="modalPostContent">
+                        <!-- Nội dung của bài viết sẽ được thêm vào đây -->
+                    </div>
+
+                    <!-- Hiển thị các bình luận -->
+                    <div id="modalCommentSection">
+                        <!-- Các bình luận sẽ được tải động từ AJAX hoặc JavaScript -->
+                    </div>
+
+                    <!-- Form để người dùng nhập bình luận mới -->
+                    <div class="comment-box-total">
+                        <div class="comment-box">
+                            <img src="https://via.placeholder.com/40" alt="Profile" class="comment-profile-pic">
+                            <div class="comment-input-wrapper">
+                                <input type="text" id="text-input" class="comment-input" placeholder="Hãy gửi bình luận đầu tiên của bạn...">
+                                <div class="comment-icons">
+                                    <i id="state-input-comment" class="fas fa-smile" onclick="showEmojiPicker(event,'state-input-comment','text-input')"></i>
+                                    <i class="fas fa-camera" onclick="triggerFileInput()"></i>
+                                    <input type="file" id="image-uploadSelf" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                                </div>
+                            </div>
+                            <button class="send-button" onclick="submitComment()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+
+                        </div>
+                        <div id="image-previewSelf" class="image-previewSelf" style="display: none;">
+                            <div class="image-preview-buttons">
+                                <button onclick="zoomImageComment()" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+                                <button onclick="removeImageComment()" class="remove-btn"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                            <img id="preview-imgSelf" src="#" alt="Image Preview" />
+
+                        </div>
+                        <div id="emoji-selector" class="emoji-selector">
+                            <div class="emoji-list" id="emoji-list">
+                            </div>
+                            <div class="emoji-categories">
+                                <button class="category-button" data-category="smileys">😊</button>
+                                <button class="category-button" data-category="animals">🐶</button>
+                                <button class="category-button" data-category="foods">🍎</button>
+                                <button class="category-button" data-category="sports">⚽</button>
+                                <button class="category-button" data-category="objects">💡</button>
+                                <button class="category-button" data-category="celebrations">🎉</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form tạo bài viết mở rộng -->
+    <div class="post-form" id="postForm">
+        <div class="post-form-content">
+            <div class="post-form-header">
+                <span>Tạo bài viết</span>
+                <i class="fas fa-times" onclick="closePostForm()"></i>
+            </div>
+
+            <div class="d-flex align-items-center mt-3">
+                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                <div class="ms-2">
+                    <span>Vũ Thành</span>
+                    <small class="d-block text-muted">Công khai</small>
+                </div>
+            </div>
+
+            <textarea id="postContent" class="form-control mt-3" rows="4" placeholder="Vũ ơi, bạn đang nghĩ gì thế?"></textarea>
+            <div class="mediapost" id="mediaPreview"></div>
+            <div class="post-form-footer">
+                <div>
+                    <label for="imageUpload" style="cursor: pointer;">
+                        <i class="fas fa-photo-video" style="color: #45bd62;"></i> Ảnh/Video
+                    </label>
+                    <input type="file" id="imageUpload" accept="image/*, video/*" style="display: none;" multiple onchange="previewPostMedia(event)">
+                </div>
+                <div><i class="fas fa-smile" style="color: #f7b928;"></i> Cảm xúc/Hoạt động</div>
+            </div>
+
+            <button class="post-button mt-3" onclick="createPost()">Đăng</button>
+        </div>
+    </div>
+
+
+    <!-- Modal for viewing images -->
+    <div class="modal-post" id="imageModalPost">
+        <span class="close-modal-post" onclick="closeModalPost()">&times;</span>
+        <span class="arrow left" onclick="changeImagePost(-1)">&#10094;</span>
+        <span class="arrow right" onclick="changeImagePost(1)">&#10095;</span>
+        <div class="modal-post-content" id="modal-postContent"></div>
+    </div>
+
+    <!-- modal for blog -->
+    <div id="modalBlog" class="modalBlog" style="display: none;">
+        <span class="closeBlog" onclick="closeModalBlog()">&times;</span>
+        <span class="prevBlog" onclick="changeMediaBlog(-1)">&#10094;</span>
+        <div class="modalBlog-content">
+            <img id="modalBlogImage" style="display: none;">
+            <video id="modalBlogVideo" controls style="display: none;"></video>
+        </div>
+        <span class="nextBlog" onclick="changeMediaBlog(1)">&#10095;</span>
+    </div>
+
+
+    <!-- Modal cho Zoom Media -->
+    <div id="zoomModal" class="modal-comment">
+        <span class="close" onclick="closeZoomModal()">&times;</span>
+        <div class="modal-content-comment" id="zoomModalContentComment"></div>
+    </div>
+
+</div>
+
+<!-- Thư viện Font Awesome cho biểu tượng -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/JS/socialpost.js" asp-append-version="true"></script>
+
+    
+
+    
+
+    
