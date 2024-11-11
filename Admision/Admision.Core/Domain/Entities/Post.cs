@@ -20,9 +20,6 @@ namespace Admission.Core.Domain.Entities
 		public Guid GroupID { get; set; }
 
         public string Content { get; set; }
-        // Đường dẫn ảnh và video
-        public string? ImageUrl { get; set; }  
-        public string? VideoUrl { get; set; }  
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
 		public int LikeCount { get; set; } = 0;
@@ -34,6 +31,7 @@ namespace Admission.Core.Domain.Entities
         public virtual Group? Group { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public virtual ICollection<PostMedia> PostMedias { get; set; }
 
-	}
+    }
 }

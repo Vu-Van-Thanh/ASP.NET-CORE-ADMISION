@@ -41,7 +41,7 @@ namespace Admission.Core.Services
 				studentInfo.LastName = student.LastName;
 				studentInfo.DateOfBirth = student.DateOfBirth;
 				studentInfo.Gender = student.Gender;
-				studentInfo.PathOfAvatar = student.PathOfAvatar;
+				studentInfo.PathOfAvatar = "default_avatar.jpg";
 				studentInfo.HighSchoolID = student.HighSchoolID;
 				studentInfo.Address = student.Address;
 				studentInfo.Email = user.Email;
@@ -63,7 +63,6 @@ namespace Admission.Core.Services
 			student.Gender = studentInfoDTO.Gender;
 			student.HighSchoolID = studentInfoDTO.HighSchoolID;
 			student.Address = studentInfoDTO.Address;
-			student.PathOfAvatar = studentInfoDTO.PathOfAvatar;
 			user.PhoneNumber = studentInfoDTO.Phone;
 
 			await _studentsRepository.UpdateUserAsync(user,student);
