@@ -164,3 +164,29 @@ body {
     object-fit:cover;
     margin-right:10px;
 }
+
+/*Phân trang*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    .pagination a, .pagination span {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        text-decoration: none;
+        color: black;
+    }
+
+    .pagination .current-page {
+        font-weight: bold;
+        color: white;
+        background-color: #a80000;
+        border-color: #a80000;
+    }
+
+    .pagination a:hover {
+        background-color: #ddd;
+        color: #0d6efd;
+    }

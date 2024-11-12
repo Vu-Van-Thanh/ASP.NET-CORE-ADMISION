@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<ArticleDTO>
-
+@using System.Text.Json
 <link asp-append-version="true" href="~/css/article.css" rel="stylesheet" />
 
 <div class="row">
@@ -8,8 +8,64 @@
     </div>
     <div class="col-md-9">
         <h2>@ViewBag.Title</h2>
-        @await Component.InvokeAsync("ListArticle")
+        @foreach (var article in Model)
+        {
+            <div class="article">
+                <img src="~/account_bg.jpg" alt="News Image" />
+
+                <div class="article-content">
+                    <a asp-controller="Article" asp-action="ShowArticleDetails" asp-route-ArticleID="@article.ArticleID"><h3>@article.Title</h3></a>
+                    <p>@article.DateCreate.ToString("dd-MM-yyyy")</p>
+                    <span class="inner-content" id="content-@article.ArticleID"></span>
+                </div>
+            </div>
+
+            <script>
+                (function () {
+                    // JsonSerializer  mã hóa nội dung
+                    let htmlContent = @Html.Raw(JsonSerializer.Serialize(article.Content));
+
+                    htmlContent = htmlContent.replace(/<div style="-aw-headerfooter-type:header-primary; clear:both">.*?<\/div>/s, '');
+
+                    // Tìm phần tử container dựa trên ID bài viết
+                    const container = document.getElementById("content-@article.ArticleID");
+
+                    // Kiểm tra nếu phần tử container tồn tại
+                    if (container) {
+                        // Tạo Shadow Root cho nội dung
+                        const shadowRoot = container.attachShadow({ mode: 'open' });
+
+                        // Gán nội dung HTML đã sửa vào Shadow DOM
+                        shadowRoot.innerHTML = htmlContent;
+                    }
+                })();
+            </script>
+        }
     </div>
+    <div class="pagination">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a href="@Url.Action("AllArticle", new { page = ViewBag.CurrentPage - 1 })">Previous</a>
+        }
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            if (i == ViewBag.CurrentPage)
+            {
+                <span class="current-page">@i</span>
+            }
+            else
+            {
+                <a href="@Url.Action("AllArticle", new { page = i })">@i</a>
+            }
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a href="@Url.Action("AllArticle", new { page = ViewBag.CurrentPage + 1 })">Next</a>
+        }
+    </div>
+
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
