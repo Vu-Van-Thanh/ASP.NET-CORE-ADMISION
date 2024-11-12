@@ -19,24 +19,39 @@ namespace Admission.UI.Controllers
             _context = context;
         }
 
-        public  async Task<IActionResult> AllArticle(string title,string subTitle)
-        {
-            if (string.IsNullOrEmpty(title))
-            {
-                title = "Thông tin chung";
-            }
-            List<Article> articles = await _articlesService.GetAllArticle();
-            List<ArticleDTO> list = new List<ArticleDTO>();
-            foreach (Article article in articles)
-            {
-                article.Content = await _articlesService.RenderArticleContent(article);
-                list.Add(article.ToArticleDTO());
-            }
-            ViewBag.Title = title;
-            return View(list);
-        }
+		public async Task<IActionResult> AllArticle(string title, string subTitle, int page = 1, int pageSize = 5)
+		{
+			if (string.IsNullOrEmpty(title))
+			{
+				title = "Thông tin chung";
+			}
 
-        public async Task<IActionResult> ShowArticleDetails(Guid ArticleID)
+			List<Article> articles = await _articlesService.GetAllArticle();
+
+			// Phân trang
+			var pagedArticles = articles
+				.OrderByDescending(a => a.DateCreated)  
+				.Skip((page - 1) * pageSize)  // Bỏ qua bài viết trên các trang trước
+				.Take(pageSize)  // Lấy số bài viết theo pageSize
+				.ToList();
+
+			List<ArticleDTO> list = new List<ArticleDTO>();
+			foreach (Article article in pagedArticles)
+			{
+				article.Content = await _articlesService.RenderArticleContent(article);
+				list.Add(article.ToArticleDTO());
+			}
+
+			ViewBag.Title = title;
+			ViewBag.CurrentPage = page;
+			ViewBag.TotalPages = (int)Math.Ceiling((double)articles.Count / pageSize);
+
+			return View(list);
+		}
+
+
+
+		public async Task<IActionResult> ShowArticleDetails(Guid ArticleID)
         {
             Article? article = await _articlesService.GetArticleByArticleID(ArticleID);
             ViewBag.Title = article?.Title;
