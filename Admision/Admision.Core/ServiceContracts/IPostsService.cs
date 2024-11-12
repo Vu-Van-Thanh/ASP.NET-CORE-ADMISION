@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Admission.Core.ServiceContracts
 {
-    public interface IGroupsService
+    public interface IPostsService
     {
-        Task<GroupDTO> GetGroup(Guid groupId);
-        Task<IEnumerable<GroupDTO>> GetAllGroups();
-        Task<IEnumerable<PostContentDTO>> GetPosts(Guid groupId);
+        Task<List<PostContentDTO>> GetPostsByGroupId(Guid  groupId);
+        Task<List<PostMediaDTO>> GetPostMediasByPostId(Guid  postId);
     }
 }

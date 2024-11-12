@@ -127,7 +127,7 @@ namespace Admission.UI.Controllers
 
                     if (await _userManager.IsInRoleAsync(user, UserTypeOptions.Admin.ToString()))
                     {
-                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        return RedirectToAction("Index", "Home"/*, new { area = "Admin" }*/);
                     }
                 }
 

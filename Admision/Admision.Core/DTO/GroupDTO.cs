@@ -12,7 +12,6 @@ namespace Admission.Core.DTO
     {
         public Guid GroupID { get; set; }
         public string Name { get; set; }
-        public List<PostDTO> Posts { get; set; }
 
     }
     public static class GroupExtension

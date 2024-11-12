@@ -19,6 +19,14 @@ namespace Admission.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<PostMedia>> GetPostMediasByPostID(Guid postId)
+        {
+            return await _context.PostMedias
+            .Where(pm => pm.PostID == postId)
+            .ToListAsync();
+
+        }
+
         public async Task<IEnumerable<Post>> GetPostsByGroupId(Guid groupId)
         {
             return await _context.Posts
