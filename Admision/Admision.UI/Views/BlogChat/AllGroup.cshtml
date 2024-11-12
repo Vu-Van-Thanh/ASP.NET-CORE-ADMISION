@@ -1,49 +1,38 @@
 ﻿
-@model IEnumerable<GroupDTO>
+@model BlogChatDTO
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" type="text/css" href="~/css/social.css" asp-append-version="true">
 
 
 <div class="full-content">
-
+    
     <div class="container-post">
         <div class="sidebar">
             <h5 class="text-center mb-4">Danh Sách Nhóm</h5>
 
             <!-- Group Box 1 với badge số lượng thông báo -->
-            <div class="group-box" onclick="toggleGroup(this)">
-                <span>Group 1</span>
-                <span class="notification-badge">3</span>
-                <!-- Danh sách các group con -->
-                <ul class="group-list">
-                    <li class="group-list-item">
-                        Group 1.1
-                        <span class="sub-notification-badge">1</span>
-                    </li>
-                    <li class="group-list-item">
-                        Group 1.2
-                        <span class="sub-notification-badge">4</span>
-                    </li>
-                </ul>
-            </div>
+            
 
-            <!-- Group Box 2 với badge số lượng thông báo -->
-            <div class="group-box" onclick="toggleGroup(this)">
-                <span>Group 2</span>
-                <span class="notification-badge">5</span>
-                <!-- Danh sách các group con -->
-                <ul class="group-list">
-                    <li class="group-list-item">
-                        Group 2.1
-                        <span class="sub-notification-badge">2</span>
-                    </li>
-                    <li class="group-list-item">
-                        Group 2.2
-                        <span class="sub-notification-badge">3</span>
-                    </li>
-                </ul>
-            </div>
+            @foreach(GroupDTO group in Model.groups)
+            {
+                <div class="group-box" onclick="toggleGroup(this)">
+                    <span>@group.Name</span>
+                    <span class="notification-badge">3</span>
+                    <!-- Danh sách các group con -->
+                    <ul class="group-list">
+                        <li class="group-list-item">
+                            Group 1.1
+                            <span class="sub-notification-badge">1</span>
+                        </li>
+                        <li class="group-list-item">
+                            Group 1.2
+                            <span class="sub-notification-badge">4</span>
+                        </li>
+                    </ul>
+                </div>
+            }
         </div>
+
 
         <!-- Phần chính giữa -->
         <div class="main-content">
@@ -168,7 +157,7 @@
     </div>
 
     <!-- Form tạo bài viết mở rộng -->
-    <div class="post-form" id="postForm">
+    <form class="post-form" id="postForm" method="post" asp-controller="Post" asp-action="AddPost" enctype="multipart/form-data">
         <div class="post-form-content">
             <div class="post-form-header">
                 <span>Tạo bài viết</span>
@@ -195,9 +184,9 @@
                 <div><i class="fas fa-smile" style="color: #f7b928;"></i> Cảm xúc/Hoạt động</div>
             </div>
 
-            <button class="post-button mt-3" onclick="createPost()">Đăng</button>
+            <button type="submit" class="post-button mt-3" onclick="createPost()">Đăng</button>
         </div>
-    </div>
+    </form>
 
 
     <!-- Modal for viewing images -->

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Admission.Core.DTO
 {
-    public class PostDTO
+    public class BlogChatDTO
     {
-        public PostContentDTO content { get ; set; }
-        public List<PostMediaDTO> media { get; set; }
-    
+        public List<GroupDTO> groups {  get; set; }
+        public List<PostDTO> posts { get; set; }
     }
 }

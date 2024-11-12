@@ -10,5 +10,6 @@ namespace Admission.Core.Domain.RepositoryContracts
     public interface IPostsRepository
     {
         Task<IEnumerable<Post>> GetPostsByGroupId(Guid groupId);
+        Task<IEnumerable<PostMedia>> GetPostMediasByPostID(Guid postId);
     }
 }
