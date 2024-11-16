@@ -19,7 +19,7 @@ namespace Admission.Core.Domain.Entities
 
 		public Guid GroupID { get; set; }
 
-        public string Content { get; set; }
+        public string? Content { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
 
 		public int LikeCount { get; set; } = 0;

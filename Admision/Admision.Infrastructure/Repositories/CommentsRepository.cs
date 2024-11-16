@@ -19,6 +19,13 @@ namespace Admission.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<Comment> AddComment(Comment comment)
+        {
+            await _context.Comments.AddAsync(comment);
+            await _context.SaveChangesAsync();
+            return comment;
+        }
+
         public async Task<IEnumerable<Comment>> GetCommentsByPostId(Guid postId)
         {
             return await _context.Comments

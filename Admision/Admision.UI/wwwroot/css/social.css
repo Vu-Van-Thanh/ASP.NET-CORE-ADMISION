@@ -132,8 +132,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: auto;
+    width:100vw;
+    height: 100vh;/*auto;*/
     min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
@@ -954,6 +954,7 @@ button.action-btn {
     background-color: rgba(0, 0, 0, 0.8); /* Lớp phủ mờ */
     justify-content: center;
     align-items: center;
+    z-index:100000;
 }
 
 .modalBlog-content {

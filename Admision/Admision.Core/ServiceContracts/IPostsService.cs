@@ -11,5 +11,6 @@ namespace Admission.Core.ServiceContracts
     {
         Task<List<PostContentDTO>> GetPostsByGroupId(Guid  groupId);
         Task<List<PostMediaDTO>> GetPostMediasByPostId(Guid  postId);
+        Task<PostDTO> AddPost(PostDTO post,string GroupID);
     }
 }

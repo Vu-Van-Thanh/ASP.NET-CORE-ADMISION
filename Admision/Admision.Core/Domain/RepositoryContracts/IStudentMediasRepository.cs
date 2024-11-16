@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Admission.Core.Domain.RepositoryContracts
 {
-    public interface ICommentsRepository
+    public interface IStudentMediasRepository
     {
-        Task<IEnumerable<Comment>> GetCommentsByPostId(Guid postId);
-        Task<Comment> AddComment(Comment comment);
+        Task<List<StudentMedia>?> GetStudentMediaByStudentID (Guid studentID);
     }
 }
