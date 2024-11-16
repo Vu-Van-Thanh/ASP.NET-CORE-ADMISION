@@ -15,7 +15,7 @@
 
             @foreach(GroupDTO group in Model.groups)
             {
-                <div class="group-box" onclick="toggleGroup(this)">
+                <div class="group-box" onclick="toggleGroup(this,'@group.GroupID')">
                     <span>@group.Name</span>
                     <span class="notification-badge">3</span>
                     <!-- Danh sách các group con -->
@@ -38,7 +38,7 @@
         <div class="main-content">
             <!-- Giao diện tạo bài viết ban đầu -->
             <div class="create-post" onclick="openPostForm()">
-                <img src="./Data/logo_bg.png" alt="Profile" class="profile-pic">
+                <img src="@ViewBag.AvatarUrl"" alt="Profile" class="profile-pic">
                 <input type="text" class="form-control" placeholder="Đặt câu hỏi tại đây.." readonly>
             </div>
 
@@ -48,7 +48,7 @@
             <div class="post-list">
                 <div class="post" id="post-1">
                     <div class="post-header">
-                        <img src="https://via.placeholder.com/40" alt="Profile">
+                        <img src="@ViewBag.AvatarUrl" alt="Profile">
                         <div class="post-info">
                             <span class="post-author">Hóng Hớt Gen Z</span><br>
                             <span class="post-time">21 giờ</span>
@@ -94,6 +94,7 @@
 
     <!-- Modal cho Bình luận -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+        <div id="commentPostID" type="hidden" data-comment-post-id=""></div>
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -112,44 +113,47 @@
                     </div>
 
                     <!-- Form để người dùng nhập bình luận mới -->
-                    <div class="comment-box-total">
-                        <div class="comment-box">
-                            <img src="https://via.placeholder.com/40" alt="Profile" class="comment-profile-pic">
-                            <div class="comment-input-wrapper">
-                                <input type="text" id="text-input" class="comment-input" placeholder="Hãy gửi bình luận đầu tiên của bạn...">
-                                <div class="comment-icons">
-                                    <i id="state-input-comment" class="fas fa-smile" onclick="showEmojiPicker(event,'state-input-comment','text-input')"></i>
-                                    <i class="fas fa-camera" onclick="triggerFileInput()"></i>
-                                    <input type="file" id="image-uploadSelf" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                    <form id="comment-form" asp-controller="Comment" asp-action="AddComment">
+                        <div class="comment-box-total">
+                            <div class="comment-box">
+                                <img src="@ViewBag.AvatarUrl" data-authorcommentid="@ViewBag.AuthorID" alt="Profile" class="comment-profile-pic">
+                                <div class="comment-input-wrapper">
+                                    <input type="text" id="text-input" class="comment-input" placeholder="Hãy gửi bình luận đầu tiên của bạn...">
+                                    <div class="comment-icons">
+                                        <i id="state-input-comment" class="fas fa-smile" onclick="showEmojiPicker(event,'state-input-comment','text-input')"></i>
+                                        <i class="fas fa-camera" onclick="triggerFileInput()"></i>
+                                        <input type="file" id="image-uploadSelf" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                                    </div>
+                                </div>
+                                <button class="send-button" onclick="submitComment()">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+
+                            </div>
+                            <div id="image-previewSelf" class="image-previewSelf" style="display: none;">
+                                <div class="image-preview-buttons">
+                                    <button onclick="zoomImageComment()" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+                                    <button onclick="removeImageComment()" class="remove-btn"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                                <img id="preview-imgSelf" src="#" alt="Image Preview" />
+
+                            </div>
+                            <div id="emoji-selector" class="emoji-selector">
+                                <div class="emoji-list" id="emoji-list">
+                                </div>
+                                <div class="emoji-categories">
+                                    <button class="category-button" data-category="smileys">😊</button>
+                                    <button class="category-button" data-category="animals">🐶</button>
+                                    <button class="category-button" data-category="foods">🍎</button>
+                                    <button class="category-button" data-category="sports">⚽</button>
+                                    <button class="category-button" data-category="objects">💡</button>
+                                    <button class="category-button" data-category="celebrations">🎉</button>
                                 </div>
                             </div>
-                            <button class="send-button" onclick="submitComment()">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
 
                         </div>
-                        <div id="image-previewSelf" class="image-previewSelf" style="display: none;">
-                            <div class="image-preview-buttons">
-                                <button onclick="zoomImageComment()" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
-                                <button onclick="removeImageComment()" class="remove-btn"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <img id="preview-imgSelf" src="#" alt="Image Preview" />
-
-                        </div>
-                        <div id="emoji-selector" class="emoji-selector">
-                            <div class="emoji-list" id="emoji-list">
-                            </div>
-                            <div class="emoji-categories">
-                                <button class="category-button" data-category="smileys">😊</button>
-                                <button class="category-button" data-category="animals">🐶</button>
-                                <button class="category-button" data-category="foods">🍎</button>
-                                <button class="category-button" data-category="sports">⚽</button>
-                                <button class="category-button" data-category="objects">💡</button>
-                                <button class="category-button" data-category="celebrations">🎉</button>
-                            </div>
-                        </div>
-
-                    </div>
+                    </form>
+                    
 
                 </div>
             </div>
@@ -158,6 +162,8 @@
 
     <!-- Form tạo bài viết mở rộng -->
     <form class="post-form" id="postForm" method="post" asp-controller="Post" asp-action="AddPost" enctype="multipart/form-data">
+        <input type="hidden" id="GroupIDPost" name="GroupID" value="e51c655a-25b5-4596-8ba8-1f711436febf" />
+        <input type="hidden" id="UserIDPost" name="UserID" value="@ViewBag.AuthorID" />
         <div class="post-form-content">
             <div class="post-form-header">
                 <span>Tạo bài viết</span>
@@ -165,14 +171,14 @@
             </div>
 
             <div class="d-flex align-items-center mt-3">
-                <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                <img id="profile-pic-post" src="@ViewBag.AvatarUrl" alt="Profile" class="profile-pic">
                 <div class="ms-2">
-                    <span>Vũ Thành</span>
+                    <span id="authorName">@ViewBag.Author</span>
                     <small class="d-block text-muted">Công khai</small>
                 </div>
             </div>
 
-            <textarea id="postContent" class="form-control mt-3" rows="4" placeholder="Vũ ơi, bạn đang nghĩ gì thế?"></textarea>
+            <textarea name="PostText" id="postContent" class="form-control mt-3" rows="4" placeholder="Vũ ơi, bạn đang nghĩ gì thế?"></textarea>
             <div class="mediapost" id="mediaPreview"></div>
             <div class="post-form-footer">
                 <div>
@@ -184,7 +190,7 @@
                 <div><i class="fas fa-smile" style="color: #f7b928;"></i> Cảm xúc/Hoạt động</div>
             </div>
 
-            <button type="submit" class="post-button mt-3" onclick="createPost()">Đăng</button>
+            <button type="submit" class="post-button mt-3" onclick="createPost(event)">Đăng</button>
         </div>
     </form>
 

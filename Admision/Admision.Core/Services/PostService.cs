@@ -19,6 +19,16 @@ namespace Admission.Core.Services
             _postsRepository = postsRepository;
         }
 
+        public async Task<PostDTO> AddPost(PostDTO post, string GroupID)
+        {
+            await _postsRepository.AddPostContent(post.content,GroupID);
+            foreach (PostMediaDTO media in post.media)
+            {
+                await _postsRepository.AddPostMedia(media, post.content.PostID);
+            }
+            return post;
+        }
+
         public async  Task<List<PostMediaDTO>> GetPostMediasByPostId(Guid postId)
         {
             List<PostMedia> posts = (await _postsRepository.GetPostMediasByPostID(postId)).ToList();

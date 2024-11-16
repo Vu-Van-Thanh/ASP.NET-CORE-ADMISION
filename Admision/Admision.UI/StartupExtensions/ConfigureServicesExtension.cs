@@ -23,23 +23,24 @@ namespace Admission
         public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddTransient<ResponseHeaderActionFilter>();
+            //services.AddTransient<ResponseHeaderActionFilter>();
 
             //it adds controllers and views as services
             services.AddControllersWithViews(options =>
             {
                 //options.Filters.Add<ResponseHeaderActionFilter>(5);
 
-                var logger = services.BuildServiceProvider().GetRequiredService<ILogger<ResponseHeaderActionFilter>>();
+                /*var logger = services.BuildServiceProvider().GetRequiredService<ILogger<ResponseHeaderActionFilter>>();
 
                 options.Filters.Add(new ResponseHeaderActionFilter(logger)
                 {
                     Key = "My-Key-From-Global",
                     Value = "My-Value-From-Global",
                     Order = 2
-                });
+                });*/
 
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                
             });
 
 
@@ -56,12 +57,15 @@ namespace Admission
             services.AddScoped<IHighSchoolsRepository, HighSchoolsRepository>();
             services.AddScoped<IGroupsService, GroupService>();
             services.AddScoped<IPostsService,PostService>();
-
+            services.AddScoped<IStudentMediasService,StudentMediasService>();
+            services.AddScoped<IFilesService, FilesService>();
+            services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<IStudentsService, StudentService>();
             services.AddScoped<IHighSchoolsService, HighSchoolService>();
             services.AddScoped<IArticlesService, ArticleService>();
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IMediasRepository, MediasRepository>();
+            services.AddScoped<IStudentMediasRepository, StudentMediasRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {

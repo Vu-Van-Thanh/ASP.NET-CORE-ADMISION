@@ -1,7 +1,11 @@
+// post 
+let Items = [];
+let currentIndex = 0;
+
 // render Post
 const serverData = [
     {
-        postId: "00000193-143f-7775-284b-2cd08ff64b9b",
+        postId: "5cd8fdd6-fa7c-46b5-8f9a-8157118483d9",
         author: "Hóng Hớt Gen Z",
         timestamp: "2024-01-01T12:00:00Z",
         content: "Đây là nội dung bài đăng từ server.",
@@ -24,7 +28,7 @@ const serverData = [
             { type: "image", src: "../Data/Đồ chơi.png" },
             { type: "image", src: "../Data/logo.png" },
             { type: "image", src: "../Data/task2.png" }
-            
+
         ],
         likes: 10,
         comments: 5,
@@ -43,7 +47,7 @@ function renderPost(data) {
         const author = post.author;
         const timestamp = formatTime(new Date(post.timestamp));
         const mediaItems = post.mediaItems;
-        
+
         // Tạo HTML cho từng bài đăng
         let newPost = `
             <div class="post" id="post-${postId}">
@@ -103,48 +107,53 @@ renderPost(serverData);
 
 // Hàm để mở form tạo bài viết
 function openPostForm() {
-  document.getElementById('postForm').style.display = 'flex';
+    document.getElementById('postForm').style.display = 'flex';
 }
 
 // Hàm để đóng form tạo bài viết
 function closePostForm() {
-  document.getElementById('postForm').style.display = 'none';
+    document.getElementById('postForm').style.display = 'none';
 }
 
 // Hàm để toggle group con
-function toggleGroup(element) {
-  document.querySelectorAll('.group-box').forEach(box => box.classList.remove('active'));
-  element.classList.toggle('active');
+function toggleGroup(element, groupID) {
+    document.querySelectorAll('.group-box').forEach(box => box.classList.remove('active'));
+    element.classList.toggle('active');
+
+    const idPostElement = document.getElementById('GroupIDPost');
+    if (idPostElement) {
+        idPostElement.setAttribute('value', groupID);
+    }
 }
 
 // bình luận
 // Mở modal bình luận
-let currentReplyCommentId = null; 
+let currentReplyCommentId = null;
 function openCommentModal(postId) {
     var commentModal = new bootstrap.Modal(document.getElementById('commentModal'));
     commentModal.show();
-  
+
     const postElement = document.getElementById(`post-${postId}`);
     document.getElementById('modalPostContent').innerHTML = postElement ? postElement.innerHTML : "<p>Bài viết không tồn tại.</p>";
-  
+    document.getElementById("commentPostID").setAttribute("data-comment-post-id", postId);
     document.getElementById('modalCommentSection').innerHTML = '';
-  
+
     const comments = [
-        { id: 1, Imgurl : "../Data/Bách hóa online.png" ,author: "Pham Hoang Nam", time: "4 ngày trước", text: "Xin chào, đây là bình luận!", avatar: "https://via.placeholder.com/40", level: 0,parentID : null },
-        { id: 2, Imgurl : "../Data/task2.png",author: "Huyen Anh", time: "20 phút trước", text: "Tôi cũng muốn góp ý!", avatar: "https://via.placeholder.com/40", level: 0 , parentID : null},
-        { id: 3, Imgurl : "../Data/Thiết bị điện tử.png",author: "Lê Thị Hoa", time: "2 giờ trước", text: "Bình luận của tôi.", avatar: "https://via.placeholder.com/40", level: 1, parentID : 1}
+        { id: 1, Imgurl: "../Data/Bách hóa online.png", author: "Pham Hoang Nam", time: "4 ngày trước", text: "Xin chào, đây là bình luận!", avatar: "https://via.placeholder.com/40", level: 0, parentID: null },
+        { id: 2, Imgurl: "../Data/task2.png", author: "Huyen Anh", time: "20 phút trước", text: "Tôi cũng muốn góp ý!", avatar: "https://via.placeholder.com/40", level: 0, parentID: null },
+        { id: 3, Imgurl: "../Data/Thiết bị điện tử.png", author: "Lê Thị Hoa", time: "2 giờ trước", text: "Bình luận của tôi.", avatar: "https://via.placeholder.com/40", level: 1, parentID: 1 }
     ];
-  
+
     comments.forEach(comment => {
         renderComment(comment);
     })
-  }
-  
-  function renderComment(comment) {
+}
+
+function renderComment(comment) {
     const marginLeft = comment.level * 30; // Thụt vào theo level
 
     // Tạo HTML cho comment-media nếu Imgurl không phải là null
-    const mediaHtml = comment.Imgurl !== null 
+    const mediaHtml = comment.Imgurl !== null
         ? `<div class="comment-media">
                 <div class="media-wrapper">
                     <img src="${comment.Imgurl}" alt="Comment Image" class="comment-img">
@@ -226,19 +235,50 @@ function submitComment() {
     const previewContainer = document.getElementById('image-previewSelf');
     const previewImg = document.getElementById('preview-imgSelf');
     const imageInput = document.getElementById('image-uploadSelf');
-    
+    const postId = document.getElementById("commentPostID").getAttribute("data-comment-post-id");
+
+    const user = document.querySelector('.comment-profile-pic');
+    const authorCommentId = user.dataset.authorcommentid;
+
+    const currentDate = new Date();
+    const dateCreated = currentDate.toISOString();
     // Kiểm tra xem có văn bản hoặc ảnh nào để gửi không
     if (commentText.trim() === '' && (!previewImg.src || previewImg.src === '')) return;
+    const postForm = document.getElementById('comment-form');
+    const formData = new FormData(postForm);
+    formData.append("commentText", commentText);
+    formData.append("postID", postId);
+    formData.append("CreatedDate", dateCreated);
+    formData.append("AuthorID", authorCommentId);
+    if (imageInput && imageInput.files.length > 0) {
+        formData.append('image', imageInput.files[0]);
+    }
 
-    const userAvatar = "https://via.placeholder.com/40";
-    const newCommentId = generateGuid();
+    
+    console.log([...formData]);
+    fetch(postForm.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            console.log("đã vào");
+            if (response.ok) {
+                return response.json();
+            }
+            else {
+                throw new Error("Có lỗi xảy ra khi gửi bình luận")
+            }
+        })
+        .then(data => {
+            // Tạo HTML cho phần media (nếu có ảnh)
+            let mediaHtml = '';
+            const newCommentId = data.commentID;
+            const userAvatar = document.getElementById('profile-pic-post').src;
 
-    // Tạo HTML cho phần media (nếu có ảnh)
-    let mediaHtml = '';
-    if (imageInput.files && imageInput.files[0]) {
-        const newImg = document.createElement('img');
-        newImg.src = URL.createObjectURL(imageInput.files[0]);
-        mediaHtml = `<div class="media-wrapper">${newImg.outerHTML}
+            if (imageInput.files && imageInput.files[0]) {
+                const newImg = document.createElement('img');
+                newImg.src = URL.createObjectURL(imageInput.files[0]);
+                mediaHtml = `<div class="media-wrapper">${newImg.outerHTML}
             <div class="icon-overlay">
                 <span class="zoom-icon" onclick="zoomMedia('${newImg.src}','image')">
                     <i class="fas fa-search-plus"></i> <!-- Biểu tượng phóng to -->
@@ -248,9 +288,9 @@ function submitComment() {
                 </span>
             </div>
         </div>`;
-    }
-    // Thêm bình luận mới vào phần bình luận
-    document.getElementById('modalCommentSection').innerHTML += `
+            }
+            // Thêm bình luận mới vào phần bình luận
+            document.getElementById('modalCommentSection').innerHTML += `
         <div class="comment-container" id="comment-${newCommentId}">
             <img src="${userAvatar}" alt="Avatar" class="comment-avatar">
             <div class="comment-content">
@@ -263,19 +303,24 @@ function submitComment() {
                 </div>
             </div>
         </div>
-    `;
+        `;
 
-    // Xóa nội dung nhập và reset ảnh xem trước
-    document.getElementById('text-input').value = '';
-    previewImg.src = ''; // Xóa ảnh xem trước bằng cách đặt src thành rỗng
-    previewContainer.style.display = 'none'; // Ẩn phần xem trước ảnh
-    imageInput.value = ''; // Đặt lại input file để có thể chọn ảnh khác
+            // Xóa nội dung nhập và reset ảnh xem trước
+            document.getElementById('text-input').value = '';
+            previewImg.src = ''; // Xóa ảnh xem trước bằng cách đặt src thành rỗng
+            previewContainer.style.display = 'none'; // Ẩn phần xem trước ảnh
+            imageInput.value = ''; // Đặt lại input file để có thể chọn ảnh khác
+
+
+        })
+
+
 }
 
 // ô nhập 
 const inputField = document.getElementById('text-input');
-inputField.addEventListener('keydown', function(event) {
-    
+inputField.addEventListener('keydown', function (event) {
+
     if (event.key === 'Enter' && event.shiftKey) {
         // Ngăn sự kiện Enter mặc định
         event.preventDefault();
@@ -335,9 +380,9 @@ function submitReply(parentId, level) {
 
 
 function generateGuid() {
-    const timestamp = Date.now().toString(16); // Lấy thời gian hiện tại dưới dạng chuỗi hệ 16 (hex)
-    
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const timestamp = Date.now().toString(16);
+
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         const r = Math.random() * 16 | 0;
         const v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
@@ -350,7 +395,7 @@ function handleImageUpload(event, parentId) {
     const file = event.target.files[0];
     if (file) {
         const previewContainer = document.getElementById(`media-preview-${parentId}`);
-        
+
         if (!previewContainer) {
             console.error(`Không tìm thấy 'media-preview-${parentId}' để hiển thị ảnh.`);
             return;
@@ -360,7 +405,7 @@ function handleImageUpload(event, parentId) {
         previewContainer.style.display = 'flex';
 
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const mediaHtml = `
                 <div class="media-wrapper">
                     ${fileType === 'image' ? `<img src="${e.target.result}" alt="Ảnh đính kèm" class="attached-media">` :
@@ -382,7 +427,7 @@ function handleImageUpload(event, parentId) {
 function zoomMedia(mediaUrl, type) {
     const zoomModal = document.getElementById('zoomModal');
     const zoomModalContent = document.getElementById('zoomModalContentComment');
-    
+
     // Xóa nội dung cũ
     zoomModalContent.innerHTML = '';
 
@@ -429,7 +474,7 @@ function zoomImageComment() {
     const previewImg = document.getElementById('preview-imgSelf');
     const zoomModal = document.getElementById('zoomModal');
     const zoomModalContent = document.getElementById('zoomModalContentComment');
-    
+
     // Hiển thị modal và ảnh trong modal
     zoomModal.style.display = 'block';
     zoomModalContent.innerHTML = `<img src="${previewImg.src}" style="width:100%; max-height: 90vh; object-fit: contain;" />`;
@@ -447,7 +492,7 @@ function removeImageComment() {
 
 
 
-function createPost() {
+/*function createPost() {
     const postList = document.querySelector('.post-list');
     const postContent = document.getElementById('postContent').value;
     const mediaItems = Items.slice(); // Lấy tất cả các media từ mảng Items
@@ -508,12 +553,148 @@ function createPost() {
     displayMediaContentHTML(mediaItems, postId);
 
     // Xóa nội dung trong form sau khi đăng
-    document.getElementById('postContent').value = '';
-    Items.length = 0; // Xóa media items sau khi đăng
-    document.getElementById('mediaPreview').innerHTML = '';
+    *//*document.getElementById('postContent').value = '';
+Items.length = 0; // Xóa media items sau khi đăng
+document.getElementById('mediaPreview').innerHTML = '';*//*
+}*/
+
+async function createPost(event) {
+    event.preventDefault();  // Ngừng việc gửi form mặc định
+
+    const postForm = document.getElementById('postForm');
+    const formData = new FormData(postForm); // Tạo FormData từ form
+
+    const postContent = document.getElementById('postContent').value;
+    const groupId = document.getElementById('GroupIDPost').value;  // Lấy GroupID từ hidden input
+    const userID = document.getElementById('UserIDPost').value;
+    const userName = document.getElementById('authorName').innerHTML;
+    console.log(userName);
+    const profilePicSrc = document.getElementById('profile-pic-post').src;
+    const currentDate = new Date();
+    const dateCreated = currentDate.toISOString();
+
+    // Thêm PostText và GroupID vào FormData
+    formData.append('PostText', postContent);
+    formData.append('GroupID', groupId);
+    formData.append('AuthorID', userID);
+    formData.append('AuthorName', userName);
+    formData.append('DateCreated', dateCreated);
+
+
+    // Duyệt qua tất cả các media items từ preview
+    const mediaItems = document.querySelectorAll('.media-itemPost');
+
+    // Duyệt qua tất cả media items và thêm chúng vào FormData
+    for (const item of mediaItems) {
+        const img = item.querySelector('.preview-img');
+        const video = item.querySelector('.preview-video');
+
+        if (img) {
+            const file = img.src;
+            const response = await fetch(file);  // lấy file
+            const blob = await response.blob();  //response => Blob (tệp ảnh)
+            formData.append('mediaFiles', blob, 'image.png');
+        }
+
+        if (video) {
+            const file = video.src;
+            const response = await fetch(file);
+            const blob = await response.blob();
+            formData.append('mediaFiles', blob, 'video.mp4');
+        }
+    }
+
+    // Gửi formData qua fetch hoặc XMLHttpRequest
+    fetch(postForm.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Post đã được gửi lên server:", data);
+            // Nếu thành công, tạo bài post mới trên trang
+            const postList = document.querySelector('.post-list');
+            const postId = data.postID;
+            console.log("Post id la : ", postId);
+            const mediaItems = Items.slice(); // Lấymedia (Items)
+            const newPost = `
+            <div class="post" id="post-${postId}">
+                <div class="post-header">
+                    <img src="${profilePicSrc}" alt="Profile">
+                    <div class="post-info">
+                        <span class="post-author">${userName}</span><br>
+                        <span class="post-time">${formatTime(new Date(dateCreated))}</span>
+                    </div>
+                </div>
+        
+                <div class="post-content">
+                    ${postContent} <br>
+                    <span style="color: #1877f2;">#honghotgenz</span>
+                    <div id="post-preview-${postId}" class="post-preview" style="display: grid; gap: 5px;">
+                        <!-- Nội dung media sẽ được thêm vào đây -->
+                    </div>
+                </div>
+        
+                <div class="post-interactions">
+                    <div class="interaction-icons">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>0</span>
+                    </div>
+                    <span>0 bình luận · 0 lượt chia sẻ</span>
+                </div>
+        
+                <div class="post-actions">
+                    <button class="action-btn like-btn" onclick="toggleLike('${postId}')">
+                        <i class="far fa-thumbs-up"></i> Thích
+                    </button>
+                    <button class="action-btn" onclick="openCommentModal('${postId}')">
+                        <i class="far fa-comment"></i> Bình luận
+                    </button>
+                    <button class="action-btn">
+                        <i class="far fa-share-square"></i> Chia sẻ
+                    </button>
+                </div>
+            </div>
+        `;
+
+            // Chèn bài post mới lên đầu danh sách bài post
+            postList.insertAdjacentHTML('afterbegin', newPost);
+
+            // Gọi hàm hiển thị nội dung media
+            displayMediaContentHTML(mediaItems, postId);
+            document.getElementById('postContent').value = '';  // Xóa nội dung textarea
+            Items.length = 0;
+            document.getElementById('mediaPreview').innerHTML = '';  // Xóa preview media
+
+        })
+        .catch(error => {
+            console.error("Có lỗi xảy ra:", error);
+
+            // Nếu có lỗi trong phân tích JSON, in chi tiết thông báo
+            if (error.message) {
+                console.error("Thông điệp lỗi:", error.message);
+            }
+            if (error.stack) {
+                console.error("Stack trace lỗi:", error.stack);
+            }
+
+            alert("Có lỗi xảy ra khi đăng bài.");
+        });
+    closePostForm();
 }
 
 
+// Chuyển dataURL thành Blob
+function dataURLtoBlob(dataURL) {
+    const byteString = atob(dataURL.split(',')[1]);
+    const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mimeString });
+}
 
 function displayMediaContentHTML(mediaItems, postId) {
     const mediaPreview = document.getElementById(`post-preview-${postId}`);
@@ -552,7 +733,7 @@ function displayMediaContentHTML(mediaItems, postId) {
         // Bố cục cho 4 ảnh trở lên, với overlay trên ảnh thứ 4 nếu có hơn 4 ảnh
         mediaPreview.style.gridTemplateColumns = "1fr 1fr";
         mediaPreview.style.gridTemplateRows = "1fr 1fr";
-        
+
         mediaItems.forEach((item, index) => {
             if (index < 4) {
                 // Hiển thị 4 ảnh đầu tiên
@@ -612,15 +793,15 @@ let targetInputId = ""; // Biến để lưu ID của ô input hiện tại
 
 // Hàm lấy emoji từ file JSON
 function loadEmojis() {
-    fetch("~/emojiList.json")
+    fetch("/AnotherData/emojiList.json")
         .then(response => {
             if (!response.ok) throw new Error("Không tìm thấy file emojiList.json");
             return response.json();
         })
         .then(data => {
             emojis = data;
-            console.log("Dữ liệu emoji đã được tải:", emojis); 
-            showEmojis("smileys"); 
+            console.log("Dữ liệu emoji đã được tải:", emojis);
+            showEmojis("smileys");
         })
         .catch(error => console.error("Lỗi tải emoji:", error));
 }
@@ -667,9 +848,9 @@ function showEmojiPicker(event, iconId, inputId) {
     const iconPosition = icon.getBoundingClientRect();
     const modalContent = icon.closest('.modal-content');
     const modalPosition = modalContent.getBoundingClientRect();
-// Tính vị trí của emoji picker dựa trên modal và icon
-const top = iconPosition.bottom - modalPosition.top - 80; // khoảng cách 5px
-const left = iconPosition.left - modalPosition.left;
+    // Tính vị trí của emoji picker dựa trên modal và icon
+    const top = iconPosition.bottom - modalPosition.top - 80; // khoảng cách 5px
+    const left = iconPosition.left - modalPosition.left;
 
     emojiPicker.style.position = "absolute";
     emojiPicker.style.top = `${top}px`;
@@ -703,7 +884,7 @@ document.querySelectorAll('.category-button').forEach(button => {
 });
 
 // Đóng hộp chọn emoji khi nhấn ra ngoài
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
     const emojiPicker = document.getElementById("emoji-selector");
     if (emojiPickerVisible && !emojiPicker.contains(event.target) && !event.target.classList.contains("fa-smile")) {
         closeEmojiPicker();
@@ -719,9 +900,7 @@ function closeEmojiPicker() {
 
 
 
-// post 
-let Items = []; 
-let currentIndex = 0;
+
 
 function previewPostMedia(event) {
     const files = event.target.files;
@@ -734,7 +913,7 @@ function previewPostMedia(event) {
 
     Array.from(files).forEach((file) => {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             if (file.type.startsWith("image/")) {
                 Items.push({ type: "image", src: e.target.result });
             } else if (file.type.startsWith("video/")) {
@@ -809,6 +988,10 @@ function updateMediaPreview() {
             deleteImage(index);
         };
         mediaItem.appendChild(deleteIcon);
+        // Ẩn các phần tử có chỉ số lớn hơn 3
+        if (index >= 4) {
+            mediaItem.style.display = "none"; // Ẩn các phần tử thứ 5 trở đi
+        }
 
         // Hiển thị overlay nếu có hơn 4 media items
         if (index === 3 && Items.length > 4) {
@@ -819,10 +1002,7 @@ function updateMediaPreview() {
             mediaItem.appendChild(overlayDiv);
         }
 
-        // Chỉ hiển thị tối đa 4 media items
-        if (index < 4) {
-            mediaPreview.appendChild(mediaItem);
-        }
+        mediaPreview.appendChild(mediaItem);
     });
 }
 
@@ -877,14 +1057,14 @@ function openModalBlog(postId) {
     // Lấy tất cả các media-itemBlog của bài đăng có postId này
     const postElement = document.getElementById(`post-${postId}`);
     const mediaItems = Array.from(postElement.querySelectorAll(".media-itemBlog"));
-    
+
     // Tạo danh sách các media từ các phần tử media-itemBlog
     currentMediaItems = mediaItems.map(item => {
         const img = item.querySelector("img");
         const video = item.querySelector("video");
         return img ? { type: "image", src: img.src } : { type: "video", src: video.src };
     });
-    
+
     currentMediaIndex = 0; // Đặt vị trí ban đầu
     showMediaInModal(currentMediaIndex); // Hiển thị media đầu tiên
     document.getElementById("modalBlog").style.display = "flex"; // Hiển thị modal
@@ -919,11 +1099,11 @@ function showMediaInModal(index) {
 function changeMediaBlog(direction) {
     currentMediaIndex += direction;
     if (currentMediaIndex < 0) {
-        currentMediaIndex = currentMediaItems.length - 1; 
+        currentMediaIndex = currentMediaItems.length - 1;
     } else if (currentMediaIndex >= currentMediaItems.length) {
-        currentMediaIndex = 0; 
+        currentMediaIndex = 0;
     }
-    showMediaInModal(currentMediaIndex); 
+    showMediaInModal(currentMediaIndex);
 }
 
 
@@ -944,7 +1124,7 @@ function toggleLike(postId) {
 
     // Tìm đến phần tử span bên trong interaction-icons
     const interactionIcons = postElement.querySelector(".interaction-icons span");
-    
+
     // Kiểm tra phần tử interactionIcons có tồn tại
     if (!interactionIcons) {
         console.error("Không tìm thấy phần tử span trong interaction-icons");
