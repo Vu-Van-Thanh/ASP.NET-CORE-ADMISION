@@ -2,6 +2,7 @@
 using Admission.Core.Domain.RepositoryContracts;
 using Entities;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,12 @@ namespace Admission.Infrastructure.Repositories
 
         public async Task<Comment> AddComment(Comment comment)
         {
+            Console.WriteLine($"Before AddAsync: {JsonConvert.SerializeObject(comment)}");
             await _context.Comments.AddAsync(comment);
+            Console.WriteLine($"After AddAsync: {JsonConvert.SerializeObject(comment)}");
             await _context.SaveChangesAsync();
+            Console.WriteLine($"After AddAsync: {JsonConvert.SerializeObject(comment)}");
+
             return comment;
         }
 
