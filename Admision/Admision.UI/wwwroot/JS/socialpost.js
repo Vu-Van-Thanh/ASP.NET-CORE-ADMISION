@@ -230,7 +230,9 @@ function replyToComment(parentId, parentAuthor, parentLevel) {
 }
 
 
-function submitComment() {
+function submitComment(event) {
+    event.preventDefault(); 
+    console.log('Submit comment triggered');
     const commentText = document.getElementById('text-input').value;
     const previewContainer = document.getElementById('image-previewSelf');
     const previewImg = document.getElementById('preview-imgSelf');
