@@ -41,6 +41,7 @@
 	  <Folder Include="Areas\Admin\Models\" />
 	  <Folder Include="logs\" />
 	  <Folder Include="wwwroot\img\" />
+	  <Folder Include="wwwroot\Programs\2024\" />
 	  <Folder Include="wwwroot\StaticData\" />
 	</ItemGroup>
 

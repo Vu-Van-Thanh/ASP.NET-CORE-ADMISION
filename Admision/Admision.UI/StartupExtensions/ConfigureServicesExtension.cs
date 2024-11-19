@@ -54,6 +54,7 @@ namespace Admission
             services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();
 
+
             services.AddScoped<IPersonsAdderService, PersonsAdderService>();
             services.AddScoped<IPersonsDeleterService, PersonsDeleterService>();
             services.AddScoped<IPersonsUpdaterService, PersonsUpdaterService>();
@@ -64,6 +65,8 @@ namespace Admission
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IMediasRepository, MediasRepository>();
             services.AddTransient<PersonsListActionFilter>();
+            services.AddScoped<IMajorsService, MajorService>();
+            services.AddScoped<IMajorsRepository, MajorsRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {

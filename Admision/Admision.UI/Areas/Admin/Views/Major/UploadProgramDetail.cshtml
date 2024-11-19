@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Upload Program Detail";
+}
+
+<h2>Upload Program Detail</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div style="color: green;">
+        <strong>@ViewBag.Message</strong>
+    </div>
+}
+
+<form method="post" enctype="multipart/form-data" asp-action="UploadProgramDetail">
+    <div>
+        <label>Select files:</label>
+        <input type="file" name="files" multiple />
+    </div>
+    <button type="submit">Upload</button>
+</form>
