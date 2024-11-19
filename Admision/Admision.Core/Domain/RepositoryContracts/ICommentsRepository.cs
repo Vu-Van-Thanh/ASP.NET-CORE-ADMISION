@@ -10,5 +10,6 @@ namespace Admission.Core.Domain.RepositoryContracts
     public interface ICommentsRepository
     {
         Task<IEnumerable<Comment>> GetCommentsByPostId(Guid postId);
+        Task<Comment> AddComment(Comment comment);
     }
 }

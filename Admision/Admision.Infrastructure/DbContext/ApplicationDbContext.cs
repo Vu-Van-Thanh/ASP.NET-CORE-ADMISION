@@ -15,7 +15,6 @@ namespace Entities
 		}
 
 		public virtual DbSet<Country> Countries { get; set; }
-		public virtual DbSet<Person> Persons { get; set; }
 		public virtual DbSet<HighSchool> HighSchools { get; set; }
 		public virtual DbSet<Student> Students { get; set; }
 		public virtual DbSet<InformationOfApplied> InformationOfApplieds { get; set; }
@@ -28,14 +27,16 @@ namespace Entities
 		public virtual DbSet<Post> Posts { get; set; }
 		public virtual DbSet<Comment> Comments { get; set; }
 		public virtual DbSet<Group> Groups { get; set; }
-		public virtual DbSet<Notification> Notifications { get; set; }
+		public virtual DbSet<PostMedia> PostMedias { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<Relative> Relatives { get; set; }
+        public virtual DbSet<StudentMedia> StudentMedias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
 
 			modelBuilder.Entity<Country>().ToTable("Countries");
-			modelBuilder.Entity<Person>().ToTable("Persons");
 
 			//Seed to Countries
 			string countriesJson = System.IO.File.ReadAllText("countries.json");
@@ -45,12 +46,6 @@ namespace Entities
 				modelBuilder.Entity<Country>().HasData(country);
 
 			
-			//Seed to Persons
-			string personsJson = System.IO.File.ReadAllText("persons.json");
-			List<Person> persons = System.Text.Json.JsonSerializer.Deserialize<List<Person>>(personsJson);
-
-			foreach (Person person in persons)
-				modelBuilder.Entity<Person>().HasData(person);
 
 			// Seed to Article
 			string articleJson = System.IO.File.ReadAllText("Article.json");
@@ -71,25 +66,14 @@ namespace Entities
 			foreach(HighSchool highSchool in highSchools)
 				modelBuilder.Entity<HighSchool>().HasData(highSchool);
 
-			//Fluent API
-			modelBuilder.Entity<Person>().Property(temp => temp.TIN)
-			  .HasColumnName("TaxIdentificationNumber")
-			  .HasColumnType("varchar(8)")
-			  .HasDefaultValue("ABC12345");
+			// Seed to Group
+			string groupJson = System.IO.File.ReadAllText("Group.json");
+			List<Group>? groups = System.Text.Json.JsonSerializer.Deserialize<List<Group>>(groupJson);
+			foreach(Group group in groups)
+				modelBuilder.Entity<Group>().HasData(group);
 
-			//modelBuilder.Entity<Person>()
-			//  .HasIndex(temp => temp.TIN).IsUnique();
 
-			modelBuilder.Entity<Person>()
-			  .HasCheckConstraint("CHK_TIN", "len([TaxIdentificationNumber]) = 8");
-
-			//Table Relations
-			modelBuilder.Entity<Person>(entity =>
-			{
-				entity.HasOne<Country>(c => c.Country)
-		  .WithMany(p => p.Persons)
-		  .HasForeignKey(p => p.CountryID);
-			});
+			
 
 			// Cấu hình mối quan hệ giữa Comment và Student
 			modelBuilder.Entity<Comment>()
@@ -104,28 +88,17 @@ namespace Entities
 				.WithOne()
 				.HasForeignKey<Student>(s => s.Id);
 
+			modelBuilder.Entity<PostMedia>()
+				.HasKey(pm => new { pm.PostID, pm.MediaID });
+            modelBuilder.Entity<StudentMedia>()
+                .HasKey(sm => new { sm.StudentID, sm.StudentMediaID });
+            modelBuilder.Entity<Student>()
+				.HasOne(s => s.Country)
+				.WithMany(c => c.Students)
+				.HasForeignKey(s => s.CountryID)
+				.OnDelete(DeleteBehavior.NoAction); // Hoặc DeleteBehavior.Restrict
 
-		}
+        }
 
-		public List<Person> sp_GetAllPersons()
-		{
-			return Persons.FromSqlRaw("EXECUTE [dbo].[GetAllPersons]").ToList();
-		}
-
-		public int sp_InsertPerson(Person person)
-		{
-			SqlParameter[] parameters = new SqlParameter[] {
-		new SqlParameter("@PersonID", person.PersonID),
-		new SqlParameter("@PersonName", person.PersonName),
-		new SqlParameter("@Email", person.Email),
-		new SqlParameter("@DateOfBirth", person.DateOfBirth),
-		new SqlParameter("@Gender", person.Gender),
-		new SqlParameter("@CountryID", person.CountryID),
-		new SqlParameter("@Address", person.Address),
-		new SqlParameter("@ReceiveNewsLetters", person.ReceiveNewsLetters)
-			};
-
-			return Database.ExecuteSqlRaw("EXECUTE [dbo].[InsertPerson] @PersonID, @PersonName, @Email, @DateOfBirth, @Gender, @CountryID, @Address, @ReceiveNewsLetters", parameters);
-		}
-	}
+    }
 }

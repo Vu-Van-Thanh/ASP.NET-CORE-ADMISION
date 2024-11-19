@@ -97,7 +97,6 @@ namespace Admission.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -143,6 +142,103 @@ namespace Admission.Infrastructure.Migrations
                     b.HasKey("GroupID");
 
                     b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupID = new Guid("986c9e54-9ef0-4ce9-b714-b3f8f67234f0"),
+                            Name = "Viện Khoa học và Công nghệ Vật liệu"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("996e2db4-7341-408f-a57c-bc39f74207bd"),
+                            Name = "Viện Cơ khí"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("63690708-42e3-4887-89b5-e3e7c5cfa8ef"),
+                            Name = "Viện Điện tử Viễn thông"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("e726d97a-0cc2-4e98-ac73-e91b3eb1b645"),
+                            Name = "Viện Công nghệ Thông tin và Truyền thông"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("ae0c4e13-922f-4ff5-aa8d-b2b650ced61e"),
+                            Name = "Viện Công nghệ Sinh học"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("6a7a706e-55fb-4675-a721-7d5ab0ee583d"),
+                            Name = "Viện Kỹ thuật Hóa học"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("4b1cf118-6612-4d47-97fe-8d6055f3bf67"),
+                            Name = "Viện Quản trị Kinh doanh"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("caab93de-f077-4f0f-af70-431ffb630caf"),
+                            Name = "Viện Khoa học Máy tính"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("d9bce23c-ac7f-4491-8820-9702eb6ecf11"),
+                            Name = "Viện Xây dựng"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("1bf4c6b1-b102-4063-9396-8823a70ff7b5"),
+                            Name = "Viện Kỹ thuật Điện và Điện tử"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("6fbc24f2-713a-42c9-980c-77c46de81761"),
+                            Name = "Viện Cơ học"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("e51c655a-25b5-4596-8ba8-1f711436febf"),
+                            Name = "Viện Toán học và Tin học Ứng dụng"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("7ffe994d-da38-4136-9f79-4e6695fd9696"),
+                            Name = "Trường Kỹ thuật Cơ khí"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("6f20eaf9-0c3a-41ef-ab74-4e9de7add63a"),
+                            Name = "Trường Kỹ thuật Điện"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("2084a35b-6ceb-4974-8c1d-823e95bf02a7"),
+                            Name = "Trường Kỹ thuật Công nghệ Thông tin"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("5b97f946-5446-404a-8ea7-f72de1f1bf08"),
+                            Name = "Trường Kỹ thuật Xây dựng"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("8bbab4e8-2cc2-4489-a8bd-8baf31894cec"),
+                            Name = "Trường Kỹ thuật Hóa học"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("b11ba393-c8bc-4496-a02b-fce57326100e"),
+                            Name = "Trường Kỹ thuật Cơ khí Động lực"
+                        },
+                        new
+                        {
+                            GroupID = new Guid("6e041819-6114-4781-94b9-6892fe124f93"),
+                            Name = "Trường Kinh tế và Quản lý"
+                        });
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.HighSchool", b =>
@@ -614,7 +710,6 @@ namespace Admission.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
@@ -623,14 +718,8 @@ namespace Admission.Infrastructure.Migrations
                     b.Property<Guid>("GroupID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("LikeCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("VideoUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PostID");
 
@@ -639,6 +728,108 @@ namespace Admission.Infrastructure.Migrations
                     b.HasIndex("GroupID");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("Admission.Core.Domain.Entities.PostMedia", b =>
+                {
+                    b.Property<Guid>("PostID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MediaID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("MediaUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PostID", "MediaID");
+
+                    b.ToTable("PostMedias");
+                });
+
+            modelBuilder.Entity("Admission.Core.Domain.Entities.Relative", b =>
+                {
+                    b.Property<Guid>("RelativeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Career")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Commune")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<Guid>("CountryID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("District")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Ethnic")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("IdentityCard")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Nationality")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PlaceOfJob")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Province")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("RelativeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RelativeType")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Religion")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("StudentID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("RelativeID");
+
+                    b.HasIndex("CountryID");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("Relatives");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Result", b =>
@@ -704,12 +895,54 @@ namespace Admission.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AcademicPerformance10")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("AcademicPerformance11")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("AcademicPerformance12")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<string>("Address")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("CandidateType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Commune")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Conduct10")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Conduct11")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Conduct12")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<Guid>("CountryID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("District")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Ethnic")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(20)
@@ -719,21 +952,87 @@ namespace Admission.Infrastructure.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
+                    b.Property<string>("HealthStatus")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<Guid>("HighSchoolID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("HouseholdType")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IndentityCard")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InsuranceNumber")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("JoiningDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("PathOfAvatar")
+                    b.Property<string>("Member")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MembershipBook")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MembershipCard")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Nationality")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("OutstandingAchievements")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Partisan")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PlaceIssued")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceJoining")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("PlaceOfBirth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PolicySubjectType")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Province")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Religion")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Talent")
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
                     b.HasKey("StudentID");
+
+                    b.HasIndex("CountryID");
 
                     b.HasIndex("HighSchoolID");
 
@@ -741,6 +1040,27 @@ namespace Admission.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Admission.Core.Domain.Entities.StudentMedia", b =>
+                {
+                    b.Property<Guid>("StudentID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentMediaID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("MediaUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentMediaType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StudentID", "StudentMediaID");
+
+                    b.ToTable("StudentMedias");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.IdentityEntities.ApplicationRole", b =>
@@ -861,6 +1181,11 @@ namespace Admission.Infrastructure.Migrations
                         },
                         new
                         {
+                            CountryID = new Guid("4ac574fb-85a9-4159-9f2b-053b2bc6fc7e"),
+                            CountryName = "Việt Nam"
+                        },
+                        new
+                        {
                             CountryID = new Guid("56bf46a4-02b8-4693-a0f5-0a95e2218bdc"),
                             CountryName = "Thailand"
                         },
@@ -878,187 +1203,6 @@ namespace Admission.Infrastructure.Migrations
                         {
                             CountryID = new Guid("501c6d33-1bbe-45f1-8fbd-2275913c6218"),
                             CountryName = "China"
-                        });
-                });
-
-            modelBuilder.Entity("Entities.Person", b =>
-                {
-                    b.Property<Guid>("PersonID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<Guid?>("CountryID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<string>("Gender")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("PersonName")
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<bool>("ReceiveNewsLetters")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TIN")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(8)")
-                        .HasDefaultValue("ABC12345")
-                        .HasColumnName("TaxIdentificationNumber");
-
-                    b.HasKey("PersonID");
-
-                    b.HasIndex("CountryID");
-
-                    b.ToTable("Persons", null, t =>
-                        {
-                            t.HasCheckConstraint("CHK_TIN", "len([TaxIdentificationNumber]) = 8");
-                        });
-
-                    b.HasData(
-                        new
-                        {
-                            PersonID = new Guid("c03bbe45-9aeb-4d24-99e0-4743016ffce9"),
-                            Address = "4 Parkside Point",
-                            CountryID = new Guid("56bf46a4-02b8-4693-a0f5-0a95e2218bdc"),
-                            DateOfBirth = new DateTime(1989, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "mwebsdale0@people.com.cn",
-                            Gender = "Female",
-                            PersonName = "Marguerite",
-                            ReceiveNewsLetters = false
-                        },
-                        new
-                        {
-                            PersonID = new Guid("c3abddbd-cf50-41d2-b6c4-cc7d5a750928"),
-                            Address = "6 Morningstar Circle",
-                            CountryID = new Guid("14629847-905a-4a0e-9abe-80b61655c5cb"),
-                            DateOfBirth = new DateTime(1990, 10, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ushears1@globo.com",
-                            Gender = "Female",
-                            PersonName = "Ursa",
-                            ReceiveNewsLetters = false
-                        },
-                        new
-                        {
-                            PersonID = new Guid("c6d50a47-f7e6-4482-8be0-4ddfc057fa6e"),
-                            Address = "73 Heath Avenue",
-                            CountryID = new Guid("14629847-905a-4a0e-9abe-80b61655c5cb"),
-                            DateOfBirth = new DateTime(1995, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "fbowsher2@howstuffworks.com",
-                            Gender = "Male",
-                            PersonName = "Franchot",
-                            ReceiveNewsLetters = true
-                        },
-                        new
-                        {
-                            PersonID = new Guid("d15c6d9f-70b4-48c5-afd3-e71261f1a9be"),
-                            Address = "83187 Merry Drive",
-                            CountryID = new Guid("12e15727-d369-49a9-8b13-bc22e9362179"),
-                            DateOfBirth = new DateTime(1987, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "asarvar3@dropbox.com",
-                            Gender = "Male",
-                            PersonName = "Angie",
-                            ReceiveNewsLetters = true
-                        },
-                        new
-                        {
-                            PersonID = new Guid("89e5f445-d89f-4e12-94e0-5ad5b235d704"),
-                            Address = "50467 Holy Cross Crossing",
-                            CountryID = new Guid("56bf46a4-02b8-4693-a0f5-0a95e2218bdc"),
-                            DateOfBirth = new DateTime(1995, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ttregona4@stumbleupon.com",
-                            Gender = "Gender",
-                            PersonName = "Tani",
-                            ReceiveNewsLetters = false
-                        },
-                        new
-                        {
-                            PersonID = new Guid("2a6d3738-9def-43ac-9279-0310edc7ceca"),
-                            Address = "97570 Raven Circle",
-                            CountryID = new Guid("8f30bedc-47dd-4286-8950-73d8a68e5d41"),
-                            DateOfBirth = new DateTime(1988, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "mlingfoot5@netvibes.com",
-                            Gender = "Male",
-                            PersonName = "Mitchael",
-                            ReceiveNewsLetters = false
-                        },
-                        new
-                        {
-                            PersonID = new Guid("29339209-63f5-492f-8459-754943c74abf"),
-                            Address = "57449 Brown Way",
-                            CountryID = new Guid("12e15727-d369-49a9-8b13-bc22e9362179"),
-                            DateOfBirth = new DateTime(1983, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "mjarrell6@wisc.edu",
-                            Gender = "Male",
-                            PersonName = "Maddy",
-                            ReceiveNewsLetters = true
-                        },
-                        new
-                        {
-                            PersonID = new Guid("ac660a73-b0b7-4340-abc1-a914257a6189"),
-                            Address = "4 Stuart Drive",
-                            CountryID = new Guid("12e15727-d369-49a9-8b13-bc22e9362179"),
-                            DateOfBirth = new DateTime(1998, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "pretchford7@virginia.edu",
-                            Gender = "Female",
-                            PersonName = "Pegeen",
-                            ReceiveNewsLetters = true
-                        },
-                        new
-                        {
-                            PersonID = new Guid("012107df-862f-4f16-ba94-e5c16886f005"),
-                            Address = "413 Sachtjen Way",
-                            CountryID = new Guid("12e15727-d369-49a9-8b13-bc22e9362179"),
-                            DateOfBirth = new DateTime(1990, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "hmosco8@tripod.com",
-                            Gender = "Male",
-                            PersonName = "Hansiain",
-                            ReceiveNewsLetters = true
-                        },
-                        new
-                        {
-                            PersonID = new Guid("cb035f22-e7cf-4907-bd07-91cfee5240f3"),
-                            Address = "484 Clarendon Court",
-                            CountryID = new Guid("8f30bedc-47dd-4286-8950-73d8a68e5d41"),
-                            DateOfBirth = new DateTime(1997, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "lwoodwing9@wix.com",
-                            Gender = "Male",
-                            PersonName = "Lombard",
-                            ReceiveNewsLetters = false
-                        },
-                        new
-                        {
-                            PersonID = new Guid("28d11936-9466-4a4b-b9c5-2f0a8e0cbde9"),
-                            Address = "2 Warrior Avenue",
-                            CountryID = new Guid("501c6d33-1bbe-45f1-8fbd-2275913c6218"),
-                            DateOfBirth = new DateTime(1990, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "mconachya@va.gov",
-                            Gender = "Female",
-                            PersonName = "Minta",
-                            ReceiveNewsLetters = true
-                        },
-                        new
-                        {
-                            PersonID = new Guid("a3b9833b-8a4d-43e9-8690-61e08df81a9a"),
-                            Address = "9334 Fremont Street",
-                            CountryID = new Guid("501c6d33-1bbe-45f1-8fbd-2275913c6218"),
-                            DateOfBirth = new DateTime(1987, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "vklussb@nationalgeographic.com",
-                            Gender = "Female",
-                            PersonName = "Verene",
-                            ReceiveNewsLetters = true
                         });
                 });
 
@@ -1278,6 +1422,36 @@ namespace Admission.Infrastructure.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("Admission.Core.Domain.Entities.PostMedia", b =>
+                {
+                    b.HasOne("Admission.Core.Domain.Entities.Post", "Post")
+                        .WithMany("PostMedias")
+                        .HasForeignKey("PostID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("Admission.Core.Domain.Entities.Relative", b =>
+                {
+                    b.HasOne("Entities.Country", "Country")
+                        .WithMany("Relatives")
+                        .HasForeignKey("CountryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Admission.Core.Domain.Entities.Student", "Student")
+                        .WithMany("Relatives")
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("Admission.Core.Domain.Entities.Result", b =>
                 {
                     b.HasOne("Admission.Core.Domain.Entities.Student", "Student")
@@ -1291,6 +1465,12 @@ namespace Admission.Infrastructure.Migrations
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Student", b =>
                 {
+                    b.HasOne("Entities.Country", "Country")
+                        .WithMany("Students")
+                        .HasForeignKey("CountryID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("Admission.Core.Domain.Entities.HighSchool", "HighSchool")
                         .WithMany("Students")
                         .HasForeignKey("HighSchoolID")
@@ -1305,16 +1485,20 @@ namespace Admission.Infrastructure.Migrations
 
                     b.Navigation("ApplicationUser");
 
+                    b.Navigation("Country");
+
                     b.Navigation("HighSchool");
                 });
 
-            modelBuilder.Entity("Entities.Person", b =>
+            modelBuilder.Entity("Admission.Core.Domain.Entities.StudentMedia", b =>
                 {
-                    b.HasOne("Entities.Country", "Country")
-                        .WithMany("Persons")
-                        .HasForeignKey("CountryID");
+                    b.HasOne("Admission.Core.Domain.Entities.Student", "student")
+                        .WithMany("StudentMedias")
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Country");
+                    b.Navigation("student");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -1396,6 +1580,8 @@ namespace Admission.Infrastructure.Migrations
             modelBuilder.Entity("Admission.Core.Domain.Entities.Post", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("PostMedias");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.School", b =>
@@ -1411,12 +1597,18 @@ namespace Admission.Infrastructure.Migrations
 
                     b.Navigation("Posts");
 
+                    b.Navigation("Relatives");
+
                     b.Navigation("Results");
+
+                    b.Navigation("StudentMedias");
                 });
 
             modelBuilder.Entity("Entities.Country", b =>
                 {
-                    b.Navigation("Persons");
+                    b.Navigation("Relatives");
+
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

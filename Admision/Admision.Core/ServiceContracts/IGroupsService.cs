@@ -11,6 +11,6 @@ namespace Admission.Core.ServiceContracts
     {
         Task<GroupDTO> GetGroup(Guid groupId);
         Task<IEnumerable<GroupDTO>> GetAllGroups();
-        Task<IEnumerable<PostDTO>> GetPosts(Guid groupId);
+        Task<IEnumerable<PostContentDTO>> GetPosts(Guid groupId);
     }
 }

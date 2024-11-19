@@ -23,34 +23,39 @@ namespace Admission
         public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddTransient<ResponseHeaderActionFilter>();
+            //services.AddTransient<ResponseHeaderActionFilter>();
 
             //it adds controllers and views as services
             services.AddControllersWithViews(options =>
             {
                 //options.Filters.Add<ResponseHeaderActionFilter>(5);
 
-                var logger = services.BuildServiceProvider().GetRequiredService<ILogger<ResponseHeaderActionFilter>>();
+                /*var logger = services.BuildServiceProvider().GetRequiredService<ILogger<ResponseHeaderActionFilter>>();
 
                 options.Filters.Add(new ResponseHeaderActionFilter(logger)
                 {
                     Key = "My-Key-From-Global",
                     Value = "My-Value-From-Global",
                     Order = 2
-                });
+                });*/
 
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                
             });
 
 
             //add services into IoC container
             services.AddScoped<ICountriesRepository, CountriesRepository>();
-            services.AddScoped<IPersonsRepository, PersonsRepository>();
+
+            services.AddScoped<IGroupsRepository,GroupsRepository>();
+            services.AddScoped<IPostsRepository,PostsRepository>();
+            services.AddScoped<ICommentsRepository,CommentsRepository>();
             services.AddScoped<IStudentsRepository, StudentsRepository>();
             services.AddScoped<ICountriesGetterService, CountriesGetterService>();
             services.AddScoped<ICountriesAdderService, CountriesAdderService>();
             services.AddScoped<ICountriesUploaderService, CountriesUploaderService>();
             services.AddScoped<IHighSchoolsRepository, HighSchoolsRepository>();
+
             services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();
 
@@ -59,14 +64,23 @@ namespace Admission
             services.AddScoped<IPersonsDeleterService, PersonsDeleterService>();
             services.AddScoped<IPersonsUpdaterService, PersonsUpdaterService>();
             services.AddScoped<IPersonsSorterService, PersonsSorterService>();
+            services.AddScoped<IGroupsService, GroupService>();
+            services.AddScoped<IPostsService,PostService>();
+            services.AddScoped<IStudentMediasService,StudentMediasService>();
+            services.AddScoped<IFilesService, FilesService>();
+            services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<IStudentsService, StudentService>();
             services.AddScoped<IHighSchoolsService, HighSchoolService>();
             services.AddScoped<IArticlesService, ArticleService>();
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IMediasRepository, MediasRepository>();
+
             services.AddTransient<PersonsListActionFilter>();
             services.AddScoped<IMajorsService, MajorService>();
             services.AddScoped<IMajorsRepository, MajorsRepository>();
+
+            services.AddScoped<IStudentMediasRepository, StudentMediasRepository>();
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {

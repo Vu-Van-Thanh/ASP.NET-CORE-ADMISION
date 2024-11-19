@@ -34,10 +34,10 @@ namespace Admission.Core.Services
             return group.ToGroupDTO();
         }
 
-        public async Task<IEnumerable<PostDTO>> GetPosts(Guid groupId)
+        public async Task<IEnumerable<PostContentDTO>> GetPosts(Guid groupId)
         {
             List<Post> posts = (await _postRepository.GetPostsByGroupId(groupId)).ToList();
-            return posts.Select(p => p.ToPostDTO());
+            return posts.Select(p => p.ToPostContentDTO());
         }
     }
 }
