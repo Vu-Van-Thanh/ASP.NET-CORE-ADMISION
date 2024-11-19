@@ -56,14 +56,14 @@ namespace Admission
             services.AddScoped<ICountriesUploaderService, CountriesUploaderService>();
             services.AddScoped<IHighSchoolsRepository, HighSchoolsRepository>();
 
-            services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
+/*            services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();
 
 
             services.AddScoped<IPersonsAdderService, PersonsAdderService>();
             services.AddScoped<IPersonsDeleterService, PersonsDeleterService>();
             services.AddScoped<IPersonsUpdaterService, PersonsUpdaterService>();
-            services.AddScoped<IPersonsSorterService, PersonsSorterService>();
+            services.AddScoped<IPersonsSorterService, PersonsSorterService>();*/
             services.AddScoped<IGroupsService, GroupService>();
             services.AddScoped<IPostsService,PostService>();
             services.AddScoped<IStudentMediasService,StudentMediasService>();
@@ -75,7 +75,7 @@ namespace Admission
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IMediasRepository, MediasRepository>();
 
-            services.AddTransient<PersonsListActionFilter>();
+/*            services.AddTransient<PersonsListActionFilter>();*/
             services.AddScoped<IMajorsService, MajorService>();
             services.AddScoped<IMajorsRepository, MajorsRepository>();
 

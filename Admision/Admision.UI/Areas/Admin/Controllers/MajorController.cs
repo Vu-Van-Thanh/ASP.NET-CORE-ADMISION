@@ -37,7 +37,7 @@ namespace Admission.UI.Areas.Admin.Controllers
 			}
 
 			// Gọi service để xử lý lưu trữ file
-			await _majorsService.ExtractNewsFromStream(fileData);
+			await _majorsService.UploadFile(fileData);
 
 			ViewBag.Message = $"{files.Count()} file(s) uploaded successfully!";
 			return View();
