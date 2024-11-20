@@ -17,13 +17,14 @@ namespace Admission.Core.Domain.Entities
 		[StringLength(300)]
 		public string? SchoolDescription { get; set; }
 
-		[StringLength(10)]
+		[StringLength(30)]
 		public string? Location { get; set; }
 
 		[StringLength(30)]
 		public string? WebSite { get; set; }
 
-		public int PhoneNumber { get; set; }
+		[StringLength(20)]
+		public string? PhoneNumber { get; set; }
 
 		[StringLength(40)]
 		public string? Email {  get; set; }

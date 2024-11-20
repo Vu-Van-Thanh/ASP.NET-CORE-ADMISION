@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Major>
+@{
+	int count = 1;
+}
+<div class="container">
+	<div class="list-group">
+		@foreach (var major in Model)
+		{
+			<a asp-controller="Major" asp-action="ProgramDetail" class="list-group-item list-group-item-action">
+				<strong>@count.</strong> @major.Name
+			</a>
+			count++;
+		}
+	</div>
+</div>
