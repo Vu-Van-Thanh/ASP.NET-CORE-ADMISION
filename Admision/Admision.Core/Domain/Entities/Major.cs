@@ -14,7 +14,7 @@ namespace Admission.Core.Domain.Entities
 		public Guid MajorId { get; set; }
 		public Guid SchoolID { get; set; }
 
-		[StringLength(50)]
+		[StringLength(100)]
 		public string? Name { get; set; }
 
 		[ForeignKey("SchoolID")]
