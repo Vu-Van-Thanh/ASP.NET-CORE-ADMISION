@@ -17,12 +17,18 @@ namespace Admission.Core.DTO
         public string? CommentText { get; set; }
         public string? imgUrl { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int level { get; set; }
     }
     public static class CommentExtentsion
     {
+        
         public static CommentResponseDTO ToCommentResponseDTO(this Comment comment)
         {
-            return new CommentResponseDTO { CommentID = comment.CommentID,PostID=comment.PostID,UserID = comment.AuthorID,ParrentID=comment.ParentCommentID, CommentText= comment.Content,CreatedDate=comment.CreatedDate,imgUrl=comment.ImageUrl};
+            return new CommentResponseDTO { CommentID = comment.CommentID,PostID=comment.PostID,UserID = comment.AuthorID,ParrentID=comment.ParentCommentID, CommentText= comment.Content,CreatedDate=comment.CreatedDate,imgUrl=comment.ImageUrl,level = comment.level};
+        }
+        public static CommentDTO ToCommentDTO(this Comment comment)
+        {
+            return new CommentDTO { CommentId = comment.CommentID, PostId = comment.PostID, AuthorId = comment.AuthorID,  ParrentCommentId= comment.ParentCommentID, Content = comment.Content, DateCreated = comment.CreatedDate, ImageUrl = comment.ImageUrl, VideoUrl = comment.VideoUrl,level = comment.level, likeCount = comment.LikeCount};
         }
     }
 

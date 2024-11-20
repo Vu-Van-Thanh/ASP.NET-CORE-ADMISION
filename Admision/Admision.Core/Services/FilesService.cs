@@ -17,6 +17,20 @@ namespace Admission.Core.Services
             _rootFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
         }
 
+        public string GetMediaType(string filePath)
+        {
+            string extension = Path.GetExtension(filePath)?.ToLower(); // Lấy phần mở rộng và chuyển về chữ thường
+            if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
+            {
+                return "image";
+            }
+            else if (extension == ".mp4" || extension == ".avi" || extension == ".mov" || extension == ".mkv")
+            {
+                return "video";
+            }
+            return "Unknown"; // Mặc định nếu không phải ảnh hay video
+        }
+
         public async Task<List<string>> SaveMediaFilesAsync(IFormFile[] mediaFiles, string folderName)
         {
             string targetFolderPath = Path.Combine(_rootFolderPath, folderName);
@@ -43,8 +57,9 @@ namespace Admission.Core.Services
                     {
                         await file.CopyToAsync(stream);
                     }
-
-                    savedFilePaths.Add(filePath);
+                    string relativeFilePath = Path.Combine(folderName, Path.GetFileName(filePath))
+                        .Replace("\\", "/");
+                    savedFilePaths.Add("/" + relativeFilePath);
                 }
 
             }

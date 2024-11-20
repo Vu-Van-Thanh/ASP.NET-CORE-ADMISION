@@ -10,5 +10,6 @@ namespace Admission.Core.ServiceContracts
     public interface IFilesService
     {
         Task<List<string>> SaveMediaFilesAsync(IFormFile[] mediaFiles, string folderName);
+        string GetMediaType(string filePath);
     }
 }

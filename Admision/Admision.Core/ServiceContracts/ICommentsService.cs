@@ -1,4 +1,5 @@
-﻿using Admission.Core.DTO;
+﻿using Admission.Core.Domain.Entities;
+using Admission.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Admission.Core.ServiceContracts
     public interface ICommentsService
     {
         Task<CommentResponseDTO> AddComment(CommentAddDTO commentAddDTO);
+        Task<List<CommentDTO>> GetCommentByPostId(Guid postID);
     }
 }

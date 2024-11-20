@@ -14,12 +14,14 @@ namespace Admission.Core.Services
     public class CommentsService : ICommentsService
     {
         private readonly ICommentsRepository _commentsRepository;
+        private readonly IStudentsRepository _studentsRepository;
         private readonly IFilesService _filesService;
 
-        public CommentsService(ICommentsRepository commentsRepository, IFilesService filesService)
+        public CommentsService(ICommentsRepository commentsRepository, IFilesService filesService, IStudentsRepository studentsRepository)
         {
             _commentsRepository = commentsRepository;
             _filesService = filesService;   
+            _studentsRepository = studentsRepository;
         }
 
         public async Task<CommentResponseDTO> AddComment(CommentAddDTO commentAddDTO)
@@ -44,9 +46,27 @@ namespace Admission.Core.Services
             commentAdd.LikeCount = 0;
             commentAdd.VideoUrl = null;
             commentAdd.Content = commentAddDTO.CommentText;
-            commentAdd.ParentCommentID = null;
+            commentAdd.ParentCommentID = commentAddDTO.ParrentID != null ? commentAddDTO.ParrentID:null;
+            commentAdd.level = commentAddDTO.level;
             CommentResponseDTO commentResponse = (await _commentsRepository.AddComment(commentAdd)).ToCommentResponseDTO();
             return commentResponse;
+        }
+
+        public async Task<List<CommentDTO>> GetCommentByPostId(Guid postID)
+        {
+            List<Comment> comments = await _commentsRepository.GetCommentsByPostId(postID);
+            List<CommentDTO> results = comments.Select(c => c.ToCommentDTO()).ToList();
+            foreach (CommentDTO result in results)
+            {
+                var student = (await _studentsRepository.GetAuthorByAuthorId(result.AuthorId));
+                if(student != null)
+                {
+                    result.AuthorName = student.FirstName + student.LastName;
+                }
+                else result.AuthorName = "Anonymus";
+
+            }
+            return results;
         }
     }
 }

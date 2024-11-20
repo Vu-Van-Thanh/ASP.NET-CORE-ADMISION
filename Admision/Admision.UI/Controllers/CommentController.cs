@@ -16,7 +16,7 @@ namespace Admission.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddComment(CommentAddClient commentAdd)
+        public async Task<IActionResult> AddComment([FromForm] CommentAddClient commentAdd)
         {
 
             CommentAddDTO commentAddDTO = new CommentAddDTO();
@@ -26,6 +26,7 @@ namespace Admission.UI.Controllers
             commentAddDTO.PostID = commentAdd.postID; 
             commentAddDTO.UserID = commentAdd.AuthorID; 
             commentAddDTO.img = commentAdd.image;
+            commentAddDTO.level = commentAdd.level;
             CommentResponseDTO result = await _commentsService.AddComment(commentAddDTO);
             var comment = new { commentID = result.CommentID.ToString(), Title = "Uploaded Comment" };
             return Ok(comment);

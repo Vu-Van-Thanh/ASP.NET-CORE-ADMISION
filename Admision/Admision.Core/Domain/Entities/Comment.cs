@@ -16,6 +16,7 @@ namespace Admission.Core.Domain.Entities
         public string? Content { get; set; }
         public DateTime CreatedDate { get; set; }
         public int LikeCount { get; set; }
+        public int level {  get; set; }
 
         // URL cho ảnh và video
         public string? ImageUrl { get; set; }

@@ -24,7 +24,7 @@ namespace Admission.Core.Domain.Entities
 
         // các media cần có
         /*[StringLength(150)]
-        public string? PathOfAvatar { get; set; } = "default_avatar.jpg";
+        public string? PathOfAvatar { get; set; } = "default_avatar.jpg";        => type = avatar
 
         // căn cước 
         public string? FrontICUrl { get; set; }

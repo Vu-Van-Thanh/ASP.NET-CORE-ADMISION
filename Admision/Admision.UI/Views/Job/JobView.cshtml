@@ -1,0 +1,139 @@
+﻿<div class="dashboard-container">
+    <!-- Bộ lọc -->
+    <div class="filter-panel">
+        <h3>Bộ lọc</h3>
+        <form id="filterForm">
+            <!-- Bộ lọc ngành nghề -->
+            <label for="major">Ngành nghề:</label>
+            <select id="major" name="major">
+                <option value="">Tất cả</option>
+                <option value="IT">IT</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+            </select>
+
+            <!-- Bộ lọc tỉnh thành -->
+            <label for="province">Tỉnh/Thành phố:</label>
+            <select id="province" name="province">
+                <option value="">Tất cả</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+            </select>
+
+            <!-- Bộ lọc mức lương -->
+            <label for="wage">Mức lương:</label>
+            <select id="wage" name="wage">
+                <option value="">Tất cả</option>
+                <option value="0-1000">0-1000 USD</option>
+                <option value="1000-2000">1000-2000 USD</option>
+                <option value="2000-3000">2000-3000 USD</option>
+                <option value="3000+">Trên 3000 USD</option>
+            </select>
+
+            <!-- Nút áp dụng bộ lọc -->
+            <button type="button" id="applyFilter">Áp dụng bộ lọc</button>
+        </form>
+    </div>
+
+    <!-- Khung chứa biểu đồ -->
+    <div class="chart-panel">
+        <h3>Biểu đồ</h3>
+
+        <!-- Biểu đồ phân bổ việc làm theo ngành -->
+        <div class="chart-container">
+            <h4>Phân bổ việc làm theo ngành</h4>
+            <canvas id="jobDistributionChart"></canvas>
+        </div>
+
+        <!-- Biểu đồ xu hướng số lượng việc làm -->
+        <div class="chart-container">
+            <h4>Xu hướng số lượng việc làm</h4>
+            <canvas id="jobTrendChart"></canvas>
+        </div>
+
+        <!-- Biểu đồ phân bố lương -->
+        <div class="chart-container">
+            <h4>Phân bố lương</h4>
+            <canvas id="salaryDistributionChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Đặt thẻ chứa body hiển thị flex */
+    .dashboard-container {
+        display: flex;
+        gap: 20px; /* Khoảng cách giữa các panel */
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Bộ lọc bên trái */
+    .filter-panel {
+        flex: 3; /* Chiếm 30% không gian */
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+        .filter-panel h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .filter-panel label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .filter-panel select, .filter-panel button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .filter-panel button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+            .filter-panel button:hover {
+                background-color: #0056b3;
+            }
+
+    /* Khung chứa biểu đồ bên phải */
+    .chart-panel {
+        flex: 7; /* Chiếm 70% không gian */
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+        .chart-panel h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+    .chart-container {
+        margin-bottom: 30px;
+    }
+
+        .chart-container h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+</style>
