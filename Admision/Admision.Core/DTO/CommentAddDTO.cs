@@ -15,5 +15,6 @@ namespace Admission.Core.DTO
         public string? CommentText { get; set; }
         public IFormFile? img { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int level { get; set; }
     }
 }

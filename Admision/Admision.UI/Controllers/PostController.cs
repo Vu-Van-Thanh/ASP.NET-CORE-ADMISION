@@ -41,7 +41,7 @@ namespace Admission.UI.Controllers
                 PostMediaDTO postMedia = new PostMediaDTO();
                 postMedia.MediaID = Guid.NewGuid();
                 postMedia.MediaUrl = file;
-                postMedia.Type = "PostMedia";
+                postMedia.Type = _filesService.GetMediaType(file);
                 postMediaDTO.Add(postMedia);
             }
             PostDTO postDTO = new PostDTO();

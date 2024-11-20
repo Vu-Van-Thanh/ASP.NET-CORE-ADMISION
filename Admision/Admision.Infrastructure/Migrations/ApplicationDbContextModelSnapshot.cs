@@ -117,6 +117,9 @@ namespace Admission.Infrastructure.Migrations
                     b.Property<string>("VideoUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("level")
+                        .HasColumnType("int");
+
                     b.HasKey("CommentID");
 
                     b.HasIndex("AuthorID");

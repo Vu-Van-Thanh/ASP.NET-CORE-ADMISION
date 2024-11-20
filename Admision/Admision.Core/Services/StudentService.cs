@@ -47,7 +47,6 @@ namespace Admission.Core.Services
 				studentInfo.Email = user.Email;
 				studentInfo.Phone = user.PhoneNumber;
 				return studentInfo;
-
 			}
 		}
 

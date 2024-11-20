@@ -55,5 +55,13 @@ namespace Admission.Infrastructure.Repositories
 			await _dbcontext.SaveChangesAsync();
 
 		}
-	}
+
+		// auhor id = student id
+        public async Task<Student> GetAuthorByAuthorId(Guid authorID)
+        {
+            return await _dbcontext.Students
+						.Where(s=>s.StudentID == authorID)
+						.FirstOrDefaultAsync();
+        }
+    }
 }

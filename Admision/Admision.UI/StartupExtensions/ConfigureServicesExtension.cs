@@ -58,6 +58,7 @@ namespace Admission
             services.AddScoped<IGroupsService, GroupService>();
             services.AddScoped<IPostsService,PostService>();
             services.AddScoped<IStudentMediasService,StudentMediasService>();
+            services.AddScoped<IRecruitDataService,RecruitDataService>();
             services.AddScoped<IFilesService, FilesService>();
             services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<IStudentsService, StudentService>();
