@@ -1,0 +1,119 @@
+﻿[
+  {
+    "SchoolID": "DF205C8B-8194-4585-BD94-1DFCA3CDD169",
+    "SchoolName": "Khoa Giáo dục Quốc phòng & An ninh",
+    "SchoolDescription": null,
+    "Location": "Nhà B7 - Ký túc xá ĐHBKHN",
+    "Website": null,
+    "PhoneNumber": "02438680473",
+    "Email": null
+  },
+  {
+    "SchoolID": "878813D2-12C2-462F-B563-A568911FC5B4",
+    "SchoolName": "Khoa Giáo dục Thể chất",
+    "SchoolDescription": null,
+    "Location": "Tầng 2 - Nhà thi đấu Bách Khoa",
+    "Website": null,
+    "PhoneNumber": "02438684922",
+    "Email": null
+  },
+  {
+    "SchoolID": "11B08DB0-F13F-4DFB-8D7B-5B9D481B01BE",
+    "SchoolName": "Khoa Lý luận Chính trị",
+    "SchoolDescription": null,
+    "Location": "D3 - 306",
+    "Website": "fpt.hust.edu.vn",
+    "PhoneNumber": "02438692105",
+    "Email": null
+  },
+  {
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "SchoolName": "Trường Cơ khí",
+    "SchoolDescription": null,
+    "Location": "614M - C7",
+    "Website": "sme.hust.edu.vn",
+    "PhoneNumber": "0868040770",
+    "Email": "sme@hust.edu.vn"
+  },
+  {
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "SchoolName": "Trường Công nghệ Thông tin và Truyền thông",
+    "SchoolDescription": null,
+    "Location": "Nhà B1 - Phòng 505",
+    "Website": "soict.hust.edu.vn",
+    "PhoneNumber": "02438692463",
+    "Email": "vp@soict.hust.edu.vn"
+  },
+  {
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "SchoolName": "Trường Điện - Điện tử",
+    "SchoolDescription": null,
+    "Location": "C7 - E605",
+    "Website": "seee.hust.edu.vn",
+    "PhoneNumber": "02438696211",
+    "Email": "vseee@hust.edu.vn"
+  },
+  {
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "SchoolName": "Trường Hoá và Khoa học sự sống",
+    "SchoolDescription": null,
+    "Location": null,
+    "Website": "scls.hust.edu.vn",
+    "PhoneNumber": "02438682470",
+    "Email": "scls@hust.edu.vn"
+  },
+  {
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "SchoolName": "Trường Vật liệu",
+    "SchoolDescription": null,
+    "Location": "D8 - 706",
+    "Website": "smse.hust.edu.vn",
+    "PhoneNumber": "02438680409",
+    "Email": "smse@hust.edu.vn"
+  },
+  {
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "SchoolName": "Trường Kinh tế",
+    "SchoolDescription": null,
+    "Location": "C9 - 303,304",
+    "Website": "sem.hust.edu.vn",
+    "PhoneNumber": "02438692304",
+    "Email": "sem@hust.edu.vn"
+  },
+  {
+    "SchoolID": "24020BE3-2931-4802-B6C3-49B95D7528AA",
+    "SchoolName": "Khoa Toán - Tin",
+    "SchoolDescription": null,
+    "Location": "D3 - 106",
+    "Website": "fami.hust.edu.vn",
+    "PhoneNumber": "02438692137",
+    "Email": "fami@hust.edu.vn"
+  },
+  {
+    "SchoolID": "65076895-B133-4454-B573-9F2D6A9A0989",
+    "SchoolName": "Khoa Vật lý Kỹ thuật",
+    "SchoolDescription": null,
+    "Location": "C10-116",
+    "Website": "sep.hust.edu.vn",
+    "PhoneNumber": "02438693350",
+    "Email": "sep@hust.edu.vn"
+  },
+  {
+    "SchoolID": "95697538-47A2-4D6B-A8A3-B99C264240BF",
+    "SchoolName": "Khoa Ngoại ngữ",
+    "SchoolDescription": null,
+    "Location": "M310 - C7",
+    "Website": "sofl.hust.edu.vn",
+    "PhoneNumber": null,
+    "Email": "sofl@hust.edu.vn"
+  },
+  {
+    "SchoolID": "08D62E13-105C-4544-A0C3-093F055A2411",
+    "SchoolName": "Khoa Khoa học và Công nghệ Giáo dục",
+    "SchoolDescription": null,
+    "Location": "M321 - C7",
+    "Website": "fed.hust.edu.vn",
+    "PhoneNumber": "0902282489",
+    "Email": "sepd@hust.edu.vn"
+  }
+]

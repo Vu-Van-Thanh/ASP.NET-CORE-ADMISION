@@ -1,0 +1,322 @@
+﻿[
+  {
+    "MajorId": "AA3B3433-FEA0-4B5F-9C53-20B27516E42B",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( BF-E12 ) Kỹ thuật thực phẩm (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "0F19B58A-B2C6-4982-B8D6-7BA952263906",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( BF-E19 ) Kỹ thuật sinh học (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "2C388E07-4054-4D7C-B5C6-6658E5CE90C4",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( BF1 ) Kỹ thuật Sinh học"
+  },
+  {
+    "MajorId": "385BF34C-92C6-4C46-BBC3-E786ADEDBEFD",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( BF2 ) Kỹ thuật Thực phẩm"
+  },
+  {
+    "MajorId": "8F9F59F5-1151-4D4B-8D65-7C2B127FC504",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( CH-E11 ) Kỹ thuật Hóa dược (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "7CF8D25A-969A-4DD8-977A-C896EF5B48EC",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( CH1 ) Kỹ thuật Hóa học"
+  },
+  {
+    "MajorId": "AC54D038-8F72-44FF-AE4D-01E989C0277C",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( CH2 ) Hóa học"
+  },
+  {
+    "MajorId": "8B52605B-0F63-4612-A451-2E96EAE55B95",
+    "SchoolID": "08D62E13-105C-4544-A0C3-093F055A2411",
+    "Name": "( ED2 ) Công nghệ giáo dục"
+  },
+  {
+    "MajorId": "08C1CD68-4B4E-467B-B5E7-50D987C3C494",
+    "SchoolID": "08D62E13-105C-4544-A0C3-093F055A2411",
+    "Name": "( ED3 ) Quản lý giáo dục"
+  },
+  {
+    "MajorId": "3C7AD9C4-615F-4167-914B-15F19CB7B38E",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( EE-E18 ) Hệ thống điện và năng lượng tái tạo (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "976A5443-933C-49BF-A587-E04FBE23F924",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( EE-E8 ) Kỹ thuật Điều khiển - Tự động hóa (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "EC4B6480-38E3-4179-B89D-A9CCF1352737",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( EE-EP ) Tin học công nghiệp và Tự động hóa (Chương trình Việt-Pháp PFIEV)"
+  },
+  {
+    "MajorId": "2BFA586D-4153-4D89-8040-295726253749",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( EE1 ) Kỹ thuật điện"
+  },
+  {
+    "MajorId": "80E3DDB4-68B9-46E0-88FD-684D47BC1DE4",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( EE2 ) Kỹ thuật Điều khiển - Tự động hóa"
+  },
+  {
+    "MajorId": "D294F67B-F69A-4EF3-9603-48A0647CE302",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM-E13 ) Phân tích kinh doanh (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "19975496-EF62-4B01-BC45-30A1DF61172E",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM-E14 ) Logistics và Quản lý chuỗi cung ứng (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "728B5D83-60B2-4F83-A36F-FFA3A7702FAA",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM1 ) Quản lý năng lượng"
+  },
+  {
+    "MajorId": "4BBEF06B-C43D-44B8-B16C-C980FF005FE5",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM2 ) Quản lý công nghiệp"
+  },
+  {
+    "MajorId": "45B792F6-1DA5-4C7F-8EE4-40B1C2DF4271",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM3 ) Quản trị kinh doanh"
+  },
+  {
+    "MajorId": "D7BE9946-CBCD-4763-9E16-46A3761C91DD",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM4 ) Kế toán"
+  },
+  {
+    "MajorId": "D886A8AB-59E5-461F-844D-E3DF11E2862E",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( EM5 ) Tài chính - Ngân hàng"
+  },
+  {
+    "MajorId": "2AE51733-BC49-4FE4-BB90-A9860D6E16C5",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET-E16 ) Truyền thông số và Kỹ thuật đa phương tiện (Chương trình tiên tiến"
+  },
+  {
+    "MajorId": "ED4C3102-6046-42AE-ABE5-B24DF89A2402",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET-E4 ) Kỹ thuật Điện tử - Viễn thông (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "62A22F84-4675-478B-B3D7-12437760B1E6",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET-E5 ) Kỹ thuật Y sinh (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "8D60ABE7-BC93-457E-81B4-1D8D5EB4EFE9",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET-E9 ) Hệ thống nhúng thông minh và IoT (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "9FCD5CF0-2380-47AA-800B-120992504F54",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET-LUH ) Điện tử-Viễn thông - ĐH Leibniz Hannover (Đức)"
+  },
+  {
+    "MajorId": "24AA80E7-225C-4F9E-ABD1-4BAC2F70FBEC",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET1 ) Điện tử và Viễn thông"
+  },
+  {
+    "MajorId": "9EFB59F1-A5DE-4191-9D9B-D8870B1A48A7",
+    "SchoolID": "1F8CDC05-60E1-445B-BBEF-04424CB46BFD",
+    "Name": "( ET2 ) Kỹ thuật Y sinh"
+  },
+  {
+    "MajorId": "46E9C83A-9360-4642-B7C2-936764D7601B",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( EV1 ) Kỹ thuật Môi trường"
+  },
+  {
+    "MajorId": "D80EE30C-0446-41DB-8F91-501E3DEB9364",
+    "SchoolID": "B47A4F55-2AE0-41FC-8F2C-9F5EE675E807",
+    "Name": "( EV2 ) Quản lý Tài nguyên và Môi trường"
+  },
+  {
+    "MajorId": "3DE603C4-D831-455C-BA4C-2CEB3005BA3C",
+    "SchoolID": "95697538-47A2-4D6B-A8A3-B99C264240BF",
+    "Name": "( FL1 ) Tiếng Anh Khoa học Kỹ thuật và Công nghệ"
+  },
+  {
+    "MajorId": "2B3E262C-64FA-4D6D-92CA-D7D74E173835",
+    "SchoolID": "95697538-47A2-4D6B-A8A3-B99C264240BF",
+    "Name": "( FL2 ) Tiếng Anh chuyên nghiệp quốc tế"
+  },
+  {
+    "MajorId": "010E293A-E0CD-47B4-8EBC-BB7B07C3528A",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( HE1 ) Kỹ thuật Nhiệt"
+  },
+  {
+    "MajorId": "1C4F05EB-5DEB-4E3E-A093-91B458CA6E3C",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT-E10 ) Khoa học Dữ liệu và Trí tuệ Nhân tạo (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "704BD8CC-CFDD-4488-98FF-A66D3DF3A91E",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT-E15 ) An toàn không gian số (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "23646F22-5CC2-418E-83FF-9EDB221587FE",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT-E6 ) Công nghệ thông tin (Việt-Nhật) (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "50E2553D-C151-42F0-B6B6-67C7C5409060",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT-E7 ) Công nghệ thông tin (Global ICT)"
+  },
+  {
+    "MajorId": "C2E12946-E05A-42BF-859F-C9021A08581E",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT-EP ) Công nghệ thông tin (Việt-Pháp) (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "1BD84EE8-08AA-4644-BA15-119FE56717DA",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT1 ) CNTT: Khoa học Máy tính"
+  },
+  {
+    "MajorId": "62C2FF34-1AD0-4852-81FA-B6751F6EF64D",
+    "SchoolID": "C8A30332-1976-4C48-81F1-E6857032B3DB",
+    "Name": "( IT2 ) CNTT: Kỹ thuật máy tính"
+  },
+  {
+    "MajorId": "153DB93A-80B5-45C2-B460-F56E2E732D23",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( ME-E1 ) Kỹ thuật Cơ điện tử (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "C56F1EC4-03BA-4565-8696-7BAA4523C6A2",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( ME-GU ) Cơ khí - Chế tạo máy - ĐH Griffith (Úc)"
+  },
+  {
+    "MajorId": "2D5EDD91-8FEE-4A4D-9658-E18DF4C3853D",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( ME-LUH ) Cơ điện tử - ĐH Leibniz Hannover (Đức)"
+  },
+  {
+    "MajorId": "3E5244D8-5BF1-4C76-AE88-8E4A353F97F5",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( ME-NUT ) Cơ điện tử - ĐH Nagaoka (Nhật Bản)"
+  },
+  {
+    "MajorId": "A5EAED7D-DD1B-460C-8777-C0D83C3D363C",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( ME1 ) Kỹ thuật Cơ điện tử"
+  },
+  {
+    "MajorId": "6F1CD35B-3D26-4360-9290-055F5269B033",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( ME2 ) Kỹ thuật Cơ khí"
+  },
+  {
+    "MajorId": "1A5F62BE-84A7-4F3A-9BF1-BCD5AFA29C82",
+    "SchoolID": "24020BE3-2931-4802-B6C3-49B95D7528AA",
+    "Name": "( MI1 ) Toán - Tin"
+  },
+  {
+    "MajorId": "97EE66FB-6593-48D6-B6A5-18D76F5A528F",
+    "SchoolID": "24020BE3-2931-4802-B6C3-49B95D7528AA",
+    "Name": "( MI2 ) Hệ thống thông tin quản lý"
+  },
+  {
+    "MajorId": "6C3C5360-B104-4CE3-97A9-4CA989289E66",
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "Name": "( MS-E3 ) Khoa học và Kỹ thuật Vật liệu (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "BBEB60C6-00CC-4F45-86ED-1D954CBDE4B3",
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "Name": "( MS1 ) Kỹ thuật Vật liệu"
+  },
+  {
+    "MajorId": "168DE137-6CD5-4940-9D7B-48C40DEF31E0",
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "Name": "( MS2 ) Chương trình Kỹ thuật vi điện tử và công nghệ Nano"
+  },
+  {
+    "MajorId": "7482EC65-86DF-4005-AA6F-5CD38AA5B6A7",
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "Name": "( MS3 ) Công nghệ vật liệu polyme và compozit"
+  },
+  {
+    "MajorId": "618F750E-B7B5-4A79-A7A1-55D633717B87",
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "Name": "( MS5 ) Kỹ thuật in"
+  },
+  {
+    "MajorId": "38E314A4-56FD-41A8-888E-3715A1E23A10",
+    "SchoolID": "65076895-B133-4454-B573-9F2D6A9A0989",
+    "Name": "( PH1 ) Vật lý kỹ thuật"
+  },
+  {
+    "MajorId": "13037E5F-C109-48C8-B883-625AB536FCC6",
+    "SchoolID": "65076895-B133-4454-B573-9F2D6A9A0989",
+    "Name": "( PH2 ) Kỹ thuật hạt nhân"
+  },
+  {
+    "MajorId": "69DA374A-567A-4F9B-ADBD-8D7E55191EC0",
+    "SchoolID": "65076895-B133-4454-B573-9F2D6A9A0989",
+    "Name": "( PH3 ) Vật lý Y khoa"
+  },
+  {
+    "MajorId": "A2E80403-235F-4043-849D-E8B0D5A5090F",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( TE-E2 ) Kỹ thuật Ô tô (Chương trình tiên tiến)"
+  },
+  {
+    "MajorId": "8B53ABD2-C183-48FE-9A1F-E505F520BB0A",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( TE-EP ) Cơ khí hàng không (Chương trình Việt - Pháp PFIEV)"
+  },
+  {
+    "MajorId": "EB5473C1-95CA-4329-87E6-FB4F910070DB",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( TE1 ) Kỹ thuật Ô tô"
+  },
+  {
+    "MajorId": "EE7E1395-68E7-4E19-9B16-9B11F573FE05",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "( TE2 ) Kỹ thuật Cơ khí động lực"
+  },
+  {
+    "MajorId": "372D24BF-3D23-4B30-A4A3-ED39D7301595",
+    "SchoolID": "0E0087EC-1A97-46FB-9B93-EC81A472535C",
+    "Name": "61 - ( TE3 ) Kỹ thuật Hàng không"
+  },
+  {
+    "MajorId": "339FA357-2210-4146-ABEA-560CBF816BA5",
+    "SchoolID": "9B3A20F7-15B8-4BB1-864A-52B32FE92D1E",
+    "Name": "( TROY-BA ) Quản trị kinh doanh - ĐH Troy (Hoa Kỳ)"
+  },
+  {
+    "MajorId": "79AAAE30-5CF4-4036-AC80-A30DC0A6C186",
+    "SchoolID": "24020BE3-2931-4802-B6C3-49B95D7528AA",
+    "Name": "( TROY-IT ) Khoa học máy tính - ĐH Troy (Hoa Kỳ)"
+  },
+  {
+    "MajorId": "35F4AD38-AF23-4DA0-BB67-9F1E87C3EEA3",
+    "SchoolID": "D0566F46-3751-457E-BB8F-42D32E69E72A",
+    "Name": "( TX1 ) Công nghệ Dệt May"
+  }
+]

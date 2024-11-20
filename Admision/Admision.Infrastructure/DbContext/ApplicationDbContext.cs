@@ -72,11 +72,22 @@ namespace Entities
 			foreach(Group group in groups)
 				modelBuilder.Entity<Group>().HasData(group);
 
+            // Seed to School
+            string schoolJson = System.IO.File.ReadAllText("School.json");
+            List<School>? schools = System.Text.Json.JsonSerializer.Deserialize<List<School>>(schoolJson);
+            foreach (School school in schools)
+                modelBuilder.Entity<School>().HasData(school);
 
-			
+            // Seed to Major
+            string majorJson = System.IO.File.ReadAllText("Major.json");
+            List<Major>? majors = System.Text.Json.JsonSerializer.Deserialize<List<Major>>(majorJson);
+            foreach (Major major in majors)
+                modelBuilder.Entity<Major>().HasData(major);
 
-			// Cấu hình mối quan hệ giữa Comment và Student
-			modelBuilder.Entity<Comment>()
+
+
+            // Cấu hình mối quan hệ giữa Comment và Student
+            modelBuilder.Entity<Comment>()
 				.HasOne(c => c.Student)  // Comment có một Student
 				.WithMany(s => s.Comments)  // Student có nhiều Comment
 				.HasForeignKey(c => c.AuthorID)  // Khóa ngoại trong Comment
