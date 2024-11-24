@@ -50,5 +50,18 @@ namespace Admission.Core.Services
 				}
 			}
 		}
-	}
+        public string ExtractMajorCode(string majorName)
+        {
+            if (string.IsNullOrWhiteSpace(majorName))
+            {
+                return string.Empty;
+            }
+
+            // Sử dụng Regex để tìm chuỗi bên trong dấu ngoặc đơn đầu tiên
+            var match = System.Text.RegularExpressions.Regex.Match(majorName, @"\(\s*(.*?)\s*\)");
+
+            // Nếu tìm thấy mã ngành, loại bỏ khoảng trắng và trả về kết quả
+            return match.Success ? match.Groups[1].Value.Trim() : string.Empty;
+        }
+    }
 }

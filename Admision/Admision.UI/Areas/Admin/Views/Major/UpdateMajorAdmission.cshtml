@@ -1,0 +1,176 @@
+﻿@model IEnumerable<Major>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Major</title>
+    <!-- Select2 Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .selected-items-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 50px;
+            background: #f9f9f9;
+        }
+
+            .selected-items-box .badge {
+                display: inline-block;
+                padding: 8px 12px;
+                border-radius: 15px;
+                font-size: 14px;
+                color: white;
+                background-color: #007bff;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+                .selected-items-box .badge:hover {
+                    background-color: #0056b3;
+                }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form enctype="multipart/form-data" method="post" asp-area="Admin" asp-controller="Major" asp-action="UpdateMajorAdmission">
+            <!-- Multiselect Dropdown for Major -->
+            <div class="form-group">
+                <label for="majors">Chọn ngành học:</label>
+                <select id="majors" name="majorDropdown" class="form-control" multiple>
+                    <option value="all">-- Chọn tất cả --</option>
+                    @foreach (var major in Model)
+                    {
+                        <option value="@major.MajorId">@major.Name</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Selected Items Display -->
+            <div class="form-group">
+                <label>Danh sách ngành học đã chọn:</label>
+                <div id="selected-items" class="selected-items-box">
+                    <!-- Các mục được chọn sẽ hiển thị tại đây -->
+                </div>
+            </div>
+
+            <!-- Dropdown for Year -->
+            <div class="form-group">
+                <label for="year">Chọn năm:</label>
+                <select id="year" name="year" class="form-control">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
+
+            <input type="hidden" name="selectedMajors" id="selectedMajors" />
+            <button type="submit" class="btn btn-primary">Tải lên</button>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const selectedItems = new Set(); // Sử dụng Set để quản lý các mục đã chọn
+            const selectedMajorsInput = $('#selectedMajors');
+            const selectedItemsBox = $('#selected-items');
+
+            // Initialize Select2
+            $('#majors').select2({
+                placeholder: "Chọn ngành học",
+                allowClear: true
+            });
+
+            // Thêm ngành học vào danh sách
+            $('#majors').on('change', function () {
+                const selectedValues = $(this).val();
+
+                if (selectedValues.includes('all')) {
+                    // Nếu chọn "Chọn tất cả", thêm tất cả các mục trừ "Chọn tất cả"
+                    selectedItems.clear();
+                    $('#majors option').each(function () {
+                        if ($(this).val() !== 'all') {
+                            selectedItems.add($(this).val());
+                        }
+                    });
+
+                    // Hiển thị tất cả các mục trong danh sách hiển thị
+                    renderSelectedItems();
+                } else {
+                    // Thêm các mục được chọn mới vào danh sách
+                    selectedValues.forEach(value => {
+                        if (value !== 'all' && !selectedItems.has(value)) {
+                            selectedItems.add(value);
+                        }
+                    });
+
+                    renderSelectedItems();
+                }
+
+                // Xóa lựa chọn "Chọn tất cả" trong dropdown
+                $(this).val('').trigger('change');
+            });
+
+            // Xóa ngành học khỏi danh sách
+            $(document).on('click', '.remove-item', function () {
+                const badge = $(this).closest('.badge');
+                const id = badge.data('id');
+
+                // Xóa khỏi danh sách đã chọn
+                selectedItems.delete(id);
+
+                // Xóa badge khỏi giao diện
+                badge.remove();
+
+                updateSelectedMajorsInput();
+            });
+
+            // Cập nhật input hidden với danh sách đã chọn
+            function updateSelectedMajorsInput() {
+                selectedMajorsInput.val(Array.from(selectedItems).join(','));
+            }
+
+            // Hiển thị danh sách các ngành đã chọn
+            function renderSelectedItems() {
+                selectedItemsBox.empty();
+                selectedItems.forEach(value => {
+                    const text = $(`#majors option[value="${value}"]`).text();
+                    selectedItemsBox.append(`
+                                <span class="badge" data-id="${value}">
+                                    ${text} <span class="remove-item" style="cursor: pointer;">&times;</span>
+                                </span>
+                            `);
+                });
+
+                updateSelectedMajorsInput();
+            }
+        });
+    </script>
+</body>
+</html>

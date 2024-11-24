@@ -240,6 +240,10 @@
         <span class="close" onclick="closeZoomModal()">&times;</span>
         <div class="modal-content-comment" id="zoomModalContentComment"></div>
     </div>
+    <form asp-controller="Post" asp-action="LikeModify" id="likeForm" style="display:none;" enctype="multipart/form-data">
+        <input type="hidden" name="postId" id="likepostIdInput">
+        <input type="hidden" name="like" id="likepostInput">
+    </form>
     
 
 

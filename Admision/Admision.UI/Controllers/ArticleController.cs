@@ -31,8 +31,8 @@ namespace Admission.UI.Controllers
 			// Phân trang
 			var pagedArticles = articles
 				.OrderByDescending(a => a.DateCreated)  
-				.Skip((page - 1) * pageSize)  // Bỏ qua bài viết trên các trang trước
-				.Take(pageSize)  // Lấy số bài viết theo pageSize
+				.Skip((page - 1) * pageSize) 
+				.Take(pageSize)  
 				.ToList();
 
 			List<ArticleDTO> list = new List<ArticleDTO>();

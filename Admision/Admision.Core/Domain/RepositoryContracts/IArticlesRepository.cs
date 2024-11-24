@@ -12,7 +12,8 @@ namespace Admission.Core.Domain.RepositoryContracts
         Task<Article?> GetArticleByArticleID (Guid articleID);
         Task<List<Article>?> GetAllArticle();
 
-        Task<Article> AddArticle(Article article); 
-
+        Task<Article> AddArticle(Article article);
+        Task<Article?> GetArticleByType(string articleType);
+        Task UpdateArticle(Article article);
     }
 }

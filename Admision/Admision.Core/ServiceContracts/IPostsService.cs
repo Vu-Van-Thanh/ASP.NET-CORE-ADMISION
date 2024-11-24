@@ -1,4 +1,5 @@
 ﻿using Admission.Core.DTO;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Admission.Core.ServiceContracts
         Task<List<PostContentDTO>> GetPostsByGroupId(Guid  groupId);
         Task<List<PostMediaDTO>> GetPostMediasByPostId(Guid  postId);
         Task<PostDTO> AddPost(PostDTO post,string GroupID);
+        Task<Guid> LikeMofify(string postId, int like);
     }
 }

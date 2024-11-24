@@ -1310,23 +1310,21 @@ function changeMediaBlog(direction) {
 
 
 // sự kiện nút like
+// Hàm xử lý like/unlike bài viết
+
 function toggleLike(postId) {
-    // Thêm "post-" vào trước id để tìm phần tử
+    // Tìm phần tử bài đăng
     const postElement = document.getElementById(`post-${postId}`);
 
-    // Kiểm tra phần tử bài đăng có tồn tại
     if (!postElement) {
-        console.error(`Không tìm thấy bài đăng với id post-${id}`);
+        console.error(`Không tìm thấy bài đăng với id post-${postId}`);
         return;
     }
 
-    // Tìm đến nút Like của bài đăng
+    // Tìm nút Like
     const likeButton = postElement.querySelector(".like-btn");
-
-    // Tìm đến phần tử span bên trong interaction-icons
     const interactionIcons = postElement.querySelector(".interaction-icons span");
 
-    // Kiểm tra phần tử interactionIcons có tồn tại
     if (!interactionIcons) {
         console.error("Không tìm thấy phần tử span trong interaction-icons");
         return;
@@ -1335,20 +1333,48 @@ function toggleLike(postId) {
     // Lấy số lượt thích hiện tại
     let currentCount = parseInt(interactionIcons.innerText);
 
-    // Kiểm tra nếu người dùng đã thích (dựa trên lớp 'like-btn liked' trên nút)
-    if (likeButton.classList.contains("liked")) {
-        // Nếu đã thích, hủy like
-        currentCount -= 1;
-        likeButton.classList.remove("liked");
-    } else {
-        // Nếu chưa thích, thêm like
-        currentCount += 1;
-        likeButton.classList.add("liked");
-    }
+    // Xác định hành động (like hoặc unlike)
+    const likeChange = likeButton.classList.contains("liked") ? -1 : 1;
 
-    // Cập nhật lại số lượt thích
-    interactionIcons.innerText = currentCount;
+    const likeForm = document.getElementById("likeForm");
+    const postIdInput = document.getElementById("likepostIdInput");
+    const likeInput = document.getElementById("likepostInput");
+    postIdInput.value = postId;
+    likeInput.value = likeChange;
+    const formData = new FormData(likeForm);
+    formData.append("postId", postId);
+    formData.append("like", likeChange);
+    console.log(formData);
+    fetch(likeForm.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => Promise.reject(err));
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Response from server:", data);
+
+            // Cập nhật giao diện dựa trên phản hồi từ server
+            if (data.postId === postId) {
+                if (likeChange === 1) {
+                    likeButton.classList.add("liked");
+                } else {
+                    likeButton.classList.remove("liked");
+                }
+
+                // Cập nhật lại số lượt thích
+                interactionIcons.innerText = currentCount + likeChange;
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 }
+
 
 
 
