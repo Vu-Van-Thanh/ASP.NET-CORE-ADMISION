@@ -21,5 +21,5 @@ namespace ServiceContracts
   /// <param name="countryID">CountryID (guid) to search</param>
   /// <returns>Matching country as CountryResponse object</returns>
   Task<CountryResponse?> GetCountryByCountryID(Guid? countryID);
- }
+    }
 }

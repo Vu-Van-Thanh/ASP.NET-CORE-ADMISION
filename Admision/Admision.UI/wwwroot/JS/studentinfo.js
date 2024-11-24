@@ -27,6 +27,7 @@ function previewImages(event, previewContainerId, selectedFiles) {
             reader.readAsDataURL(file);
         }
     });
+    
 }
 
 function openModal(event,imgSrc) {
@@ -140,8 +141,9 @@ function setupEditAndSaveEvents(icon) {
     });
 }
 
-// Xử lý bảng
+/*// Xử lý bảng
 document.getElementById('add-relation').addEventListener('click', () => {
+    console.log("Đa gtheme thành viên");
     const relation = document.getElementById('Relation').value;
     const name = document.getElementById('FullNameRelation').value;
     const birthYear = document.getElementById('DateOfBirthRelation').value;
@@ -202,3 +204,214 @@ document.querySelectorAll('#infoTable .fa-trash').forEach(icon => {
         }
     });
 });
+*/
+// Hàm để chuyển đổi Data URI thành Blob
+function dataURItoBlob(dataURI) {
+    var byteString = atob(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var arrayBuffer = new ArrayBuffer(byteString.length);
+    var intArray = new Uint8Array(arrayBuffer);
+
+    for (var i = 0; i < byteString.length; i++) {
+        intArray[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([intArray], { type: mimeString });
+}
+
+// fetch gửi form
+async function submitFormWithImages(event) {
+    event.preventDefault(); 
+   
+    const form = document.getElementById('studentInfo');
+    const formData = new FormData(form); // Lấy dữ liệu form
+    const cccdItems = document.querySelectorAll('#imagePreviewCCCD .image-item');
+    const bhytItems = document.querySelectorAll('#imagePreviewBHYT .image-item');
+    console.log(cccdItems);
+    // thêm cccd
+    for (const item of cccdItems) {
+        const img = item.querySelector('.image');
+       
+        console.log(img);
+        if (img) {
+            const file = img.src;
+            const response = await fetch(file);  // lấy file
+            const blob = await response.blob();  //response => Blob (tệp ảnh)
+            formData.append('CCCDImage', blob, 'image.png');
+        }
+    }
+    // thêm bhyt
+    for (const item of bhytItems) {
+        const img = item.querySelector('.image');
+
+        console.log(img);
+        if (img) {
+            const file = img.src;
+            const response = await fetch(file);  // lấy file
+            const blob = await response.blob();  //response => Blob (tệp ảnh)
+            formData.append('BHYTImage', blob, 'image.png');
+        }
+    }
+    formData.forEach((value, key) => console.log(`${key}: ${value}`));
+    fetch(form.action, {
+        method: 'POST',
+        body:formData
+
+    })
+        .then(response => {
+            if (!response.ok) {
+
+                throw new Error("Không cập nhật được thông tin");
+            }
+            response.json();
+        })
+        .then(data => {
+
+            
+        })
+}
+
+async function SubmitFamiliar(event) {
+
+    event.preventDefault();
+    const form = document.getElementById('familyInfo');
+    const formData = new FormData(form);
+    const HKItems = document.querySelectorAll('#imagePreviewHK .image-item');
+    console.log(HKItems);
+    for (const item of HKItems) {
+        const img = item.querySelector('.image');
+
+        console.log(img);
+        if (img) {
+            const file = img.src;
+            const response = await fetch(file);  // lấy file
+            const blob = await response.blob();  //response => Blob (tệp ảnh)
+            formData.append('HKImage', blob, 'image.png');
+        }
+    }
+
+    // dữ liệu từ table
+
+    // Xử lý dữ liệu từ bảng #infoTable (Relative)
+    const tableRows = document.querySelectorAll('#infoTable tbody tr');
+    const relatives = []; // Danh sách RelativeDTO
+
+    for (const row of tableRows) {
+        const cells = row.querySelectorAll('td.editable');
+        const rowData = {
+            RelativeType: cells[0]?.textContent.trim() || "",
+            RelativeName: cells[1]?.textContent.trim() || "",
+            DateOfBirth: cells[2]?.textContent.trim() || "",
+            Career: cells[3]?.textContent.trim() || "",
+            PlaceOfJob: cells[4]?.textContent.trim() || "",
+        };
+        relatives.push(rowData);
+    }
+
+    // Append danh sách RelativeDTO dưới dạng JSON
+    formData.append('Relative', JSON.stringify(relatives));
+    formData.forEach((value, key) => console.log(`${key}: ${value}`));
+
+    fetch(form.action, {
+        method: 'POST',
+        body : formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Không cập nhật được");
+            }
+            return response.json();
+        })
+        
+}
+
+async function SubmitStudy(event) {
+
+    event.preventDefault();
+    const form = document.getElementById('studyProcessInfo');
+    const formData = new FormData(form);
+    const HBItems = document.querySelectorAll('#imagePreviewHB .image-item');
+    console.log(HBItems);
+    for (const item of HBItems) {
+        const img = item.querySelector('.image');
+
+        console.log(img);
+        if (img) {
+            const file = img.src;
+            const response = await fetch(file);  // lấy file
+            const blob = await response.blob();  //response => Blob (tệp ảnh)
+            formData.append('HBImage', blob, 'image.png');
+        }
+    }
+
+   
+    formData.forEach((value, key) => console.log(`${key}: ${value}`));
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Không cập nhật được");
+            }
+            return response.json();
+        })
+
+}
+
+async function SubmitAnother(event) {
+    event.preventDefault(); // Ngăn chặn form gửi mặc định
+
+    const form = document.getElementById('anotherGCNInfo');
+    const formData = new FormData(form); // Khởi tạo FormData từ form
+
+    // Lấy danh sách các thẻ img có src khác null
+    const images = document.querySelectorAll('.ivTN, .ivKS, .ivCD, .ivNVQS');
+    const validImages = Array.from(images).filter(img => img.src && img.src.trim() !== "");
+
+    console.log("Ảnh có src hợp lệ:", validImages);
+
+    // Xử lý các ảnh hợp lệ
+    for (const img of validImages) {
+        const src = img.src;
+        try {
+            const response = await fetch(src);
+            const blob = await response.blob();
+
+            // Thêm ảnh vào FormData với tên tương ứng
+            if (img.classList.contains('ivTN')) {
+                formData.append('TN', blob, 'TN_image.png');
+            } else if (img.classList.contains('ivKS')) {
+                formData.append('KS', blob, 'KS_image.png');
+            } else if (img.classList.contains('ivCD')) {
+                formData.append('CD', blob, 'CD_image.png');
+            } else if (img.classList.contains('ivNVQS')) {
+                formData.append('NVQS', blob, 'NVQS_image.png');
+            }
+        } catch (error) {
+            console.error(`Lỗi khi tải ảnh từ ${src}:`, error);
+        }
+    }
+
+    // Hiển thị FormData để kiểm tra
+    formData.forEach((value, key) => console.log(`${key}:`, value));
+
+    // Gửi form lên server
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error("Không cập nhật được");
+        }
+
+        const data = await response.json();
+        console.log("Dữ liệu đã gửi thành công", data);
+    } catch (error) {
+        console.error("Lỗi khi gửi dữ liệu:", error);
+    }
+}
+

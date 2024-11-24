@@ -12,5 +12,7 @@ namespace Admission.Core.ServiceContracts
         Task<List<Article>?> GetAllArticle();
         Task ExtractNewsFromStream(Stream stream, string filepath);
         Task<string> RenderArticleContent(Article article);
+        Task AddOrUpdateArticlesFromFiles(String docxFiles, string year, string majorCode);
+        Task<Article?> GetArticleByType(string type);
     }
 }

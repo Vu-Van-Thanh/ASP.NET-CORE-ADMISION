@@ -1,5 +1,6 @@
 ﻿using Admission.Core.Domain.Entities;
 using Admission.Core.DTO;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace Admission.Core.ServiceContracts
 		Task<Student?> GetStudentByAccountID (Guid accountID);
 
 		Task<StudentInfoDTO?> GetUserInfoAsync(string userId);
-		Task UpdateStudentInfoAsync (StudentInfoDTO studentInfoDTO);
-	}
+		Task<Guid> UpdateStudentInfo (StudentUpdateInfoDTO student, Guid accountId);
+		Task<Guid> UpdateStudyInfo(StudyProcessDTO student, string accountId);
+		Task SaveMediaStudent(IFormFile[] formFiles, Guid Id, string type);
+		Task AddAdditionalInformation(Student student);
+
+
+    }
 }

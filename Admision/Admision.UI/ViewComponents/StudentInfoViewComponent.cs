@@ -14,11 +14,11 @@ namespace Admission.UI.ViewComponents
 			_highSchoolsService = highSchoolsService;
 		}
 
-		public async Task<IViewComponentResult> InvokeAsync(StudentInfoDTO studentInfo)
+		public async Task<IViewComponentResult> InvokeAsync(ProfileInfo profileInfo)
 		{
 			List<HighSchool>? schoolList = await _highSchoolsService.GetAllHighSchools();
 			ViewBag.SchoolList = schoolList;
-			return View(studentInfo);
+			return View(profileInfo);
 		}
 	}
 }

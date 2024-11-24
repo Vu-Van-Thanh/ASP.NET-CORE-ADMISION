@@ -12,5 +12,6 @@ namespace Admission.Core.ServiceContracts
     {
         Task<CommentResponseDTO> AddComment(CommentAddDTO commentAddDTO);
         Task<List<CommentDTO>> GetCommentByPostId(Guid postID);
+        
     }
 }

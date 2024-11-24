@@ -14,5 +14,6 @@ namespace Admission.Core.Domain.RepositoryContracts
         Task<IEnumerable<PostMedia>> GetPostMediasByPostID(Guid postId);
         Task<Post> AddPostContent(PostContentDTO postContent,string GroupID);
         Task<PostMedia> AddPostMedia(PostMediaDTO postContent , Guid PostID);
+        Task<Guid> AddLike(Guid postId, int like);
     }
 }

@@ -4,6 +4,7 @@ using Admission.Core.DTO;
 using Admission.Core.ServiceContracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Admission.UI.Controllers
 {
@@ -11,10 +12,13 @@ namespace Admission.UI.Controllers
     {
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly IStudentsService _studentService;
-		public StudentController(UserManager<ApplicationUser> userManager,IStudentsService studentsService)
+		private readonly IFilesService _filesService;
+		
+		public StudentController(UserManager<ApplicationUser> userManager,IStudentsService studentsService, IFilesService filesService)
 		{
 			_userManager = userManager;
 			_studentService = studentsService;
+			_filesService = filesService;
 		}
 
 		[HttpGet]
@@ -53,42 +57,68 @@ namespace Admission.UI.Controllers
 			switch (option)
 			{
 				case "ClassList":
-					return ViewComponent("UserDetails", new { action = "ClassList" }); // Gọi View Component
+					return ViewComponent("UserDetails", new { action = "ClassList" }); 
 				case "MyInformation":
 					StudentInfoDTO? studentInfo = await _studentService.GetUserInfoAsync(userId);
+					ProfileInfo profileInfo = new ProfileInfo();
+					profileInfo.studentInfo = studentInfo;
 					if(studentInfo == null)
 					{
 						return Content("Không có thông tin");
 					}
-					return ViewComponent("StudentInfo", new { studentInfo }); // Gọi View Component
+					return ViewComponent("StudentInfo", new { profileInfo }); 
 				default:
 					return NotFound();
 			}
 		}
-
 		[HttpPost]
-		public async Task<IActionResult> UpdateStudentInfo(StudentInfoDTO studentInfo, IFormFile pathOfAvatar)
+		public async Task<IActionResult> UpdateStudentInfo(StudentUpdateInfoDTO student)
 		{
-			// Xử lý upload ảnh nếu có
-			if (pathOfAvatar != null)
-			{
-				// Lưu ảnh vào thư mục cần thiết
-				var filePath = Path.Combine("wwwroot/avataruser", pathOfAvatar.FileName);
-				using (var stream = new FileStream(filePath, FileMode.Create))
-				{
-					await pathOfAvatar.CopyToAsync(stream);
-				}
-				studentInfo.PathOfAvatar = pathOfAvatar.FileName; // Lưu tên file vào DTO
-			}
-
-			// Cập nhật thông tin sinh viên trong cơ sở dữ liệu
-			await _studentService.UpdateStudentInfoAsync(studentInfo);
-
-			return RedirectToAction("Index", "Home");
+            string? accountID = User.FindFirst("AccountID")?.Value;
+			await _studentService.UpdateStudentInfo(student,Guid.Parse(accountID));
+            var result = new { res = "Success" };
+			return Ok();
 		}
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateStudyProcess(StudyProcessDTO student)
+        {
+            string? accountID = User.FindFirst("AccountID")?.Value;
+            await _studentService.UpdateStudyInfo(student, accountID);
+            var result = new { res = "Success" };
+            return Ok();
+        }
 
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateAnotherData(AnotherStudentDTO student)
+        {
 
-	}
+            string? accountID = User.FindFirst("AccountID")?.Value;
+			Student existStudent = await _studentService.GetStudentByAccountID(Guid.Parse(accountID));
+
+            if (student.CD.ContentType == "image/png")
+			{
+				IFormFile[] formFiles = new IFormFile[] { student.CD };
+				await _studentService.SaveMediaStudent(formFiles, existStudent.StudentID, "CD");
+			}
+			if(student.KS.ContentType == "image/png")
+			{
+                IFormFile[] formFiles = new IFormFile[] { student.KS };
+                await _studentService.SaveMediaStudent(formFiles, existStudent.StudentID, "KS");
+            }
+            if (student.NVQS.ContentType == "image/png")
+            {
+                IFormFile[] formFiles = new IFormFile[] { student.NVQS };
+                await _studentService.SaveMediaStudent(formFiles, existStudent.StudentID, "NVQS");
+            }
+            if (student.TN.ContentType == "image/png")
+            {
+                IFormFile[] formFiles = new IFormFile[] { student.TN };
+                await _studentService.SaveMediaStudent(formFiles, existStudent.StudentID, "TN");
+            }
+            var result = new { res = "Success" };
+            return Ok();
+        }
+    }
 }

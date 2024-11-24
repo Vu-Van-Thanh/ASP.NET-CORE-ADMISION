@@ -25,5 +25,15 @@ namespace Admission.Infrastructure.Repositories
                     .Where(sm => sm.StudentID == studentID).ToListAsync();
             return mediaList;
         }
+
+        public async Task UpdateStudentMedia(List<StudentMedia> medias)
+        {
+            if (medias != null && medias.Any())
+            {
+                await _db.StudentMedias.AddRangeAsync(medias); 
+                await _db.SaveChangesAsync(); 
+            }
+        }
+
     }
 }

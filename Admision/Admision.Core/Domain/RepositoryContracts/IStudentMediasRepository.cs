@@ -10,5 +10,6 @@ namespace Admission.Core.Domain.RepositoryContracts
     public interface IStudentMediasRepository
     {
         Task<List<StudentMedia>?> GetStudentMediaByStudentID (Guid studentID);
+        Task UpdateStudentMedia(List<StudentMedia> medias);
     }
 }

@@ -42,5 +42,11 @@ namespace Admission.Core.Services
             List<PostContentDTO> postDTOs = posts.Select(post =>  post.ToPostContentDTO()).ToList();
             return postDTOs;
         }
+
+        public async Task<Guid> LikeMofify(string postId, int like)
+        {
+            Guid result = await _postsRepository.AddLike(Guid.Parse(postId), like);
+            return result;
+        }
     }
 }

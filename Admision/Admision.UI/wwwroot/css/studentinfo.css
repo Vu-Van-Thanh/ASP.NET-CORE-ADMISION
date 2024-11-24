@@ -1,4 +1,14 @@
-
+#SaveInfo {
+    color: white;
+    background-color: green;
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+    border-radius:10px;
+    border:none;
+    padding:10px;
+   
+}
 .title-info{
     margin:10px;
     margin-left:0px !important;
