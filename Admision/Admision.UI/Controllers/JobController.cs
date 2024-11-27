@@ -15,21 +15,22 @@ namespace Admission.UI.Controllers
         public async Task<IActionResult> JobView(FilterDTO filterDTO)
         {
             List<JobDTO> jobs = new List<JobDTO>();
-            if (filterDTO == null)
-            {
-                jobs = await _recruitDataService.GetJob();
-            }
+            
 
            return View(jobs);
         }
 
         public async Task<IActionResult> JobStatistics()
         {
-            // Gọi service để lấy dữ liệu thống kê
-            var statistics = await _recruitDataService.GetJobStatic();
+            return View();
+        }
 
-            // Truyền dữ liệu xuống View
-            return View(statistics);
+
+        public async Task<IActionResult> GetAllJobByFilter()
+        {
+            var result = await _recruitDataService.GetJobByFilter();
+            var result2 = new {success=true};
+            return Ok(result);
         }
     }
 }
