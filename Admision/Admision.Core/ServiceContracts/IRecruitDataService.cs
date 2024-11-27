@@ -9,7 +9,7 @@ namespace Admission.Core.ServiceContracts
 {
     public interface IRecruitDataService
     {
-        Task<List<JobDTO>> GetJob();
-        Task<object> GetJobStatic();
+       
+        Task<object> GetJobByFilter();
     }
 }

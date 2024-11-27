@@ -20,12 +20,14 @@ namespace Admission.Core.DTO
 
         public string? Type { get; set; }
         public string? YOE {  get; set; }
+        public int MaxYOE { get; set; }
+        public int MinYOE { get; set; }
         public string? Level { get; set; }
         public string? DeadlineSubmit { get; set; }
         public string? Requirement { get; set; }
         public string? JobDescription { get; set; }
         public string? Welfare { get; set; }
-        public string? Amount { get; set; }
+        public int? Amount { get; set; }
         public string? Image { get; set; }
     }
 }
