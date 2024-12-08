@@ -6,12 +6,12 @@ namespace Admission.UI.Controllers
     public class RegisterExController : Controller
     {
         [HttpGet]
-        public IActionResult register()
+        public IActionResult registerExam()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult register(RegisterExDTO registerExDTO)
+        public IActionResult registerExam(RegisterExDTO registerExDTO)
         {
             return View();
         }
