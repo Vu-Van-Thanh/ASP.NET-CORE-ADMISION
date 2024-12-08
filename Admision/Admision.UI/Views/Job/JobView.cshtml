@@ -1,28 +1,61 @@
 ﻿<link rel="stylesheet" href="~/css/job.css"  asp-append-version="true"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @* <h1>Biểu đồ Tuyển Dụng</h1> *@
-<div class="charts-container">
-    <!-- Biểu đồ 1: Số lượng công việc theo tỉnh thành -->
-    <div id="cityChart" class="chart"></div>
 
-    <!-- Biểu đồ 2: Tỷ lệ công việc theo loại hình -->
-    <div id="typeChart" class="chart"></div>
-</div>
 
-<!-- Container biểu đồ dưới -->
-<div class="charts-container">
-    <!-- Biểu đồ 3: Mức lương trung bình theo cấp bậc -->
-    <div id="salaryChart" class="chart-bottom"></div>
+<div id="chart-panel">
+    <div class="chart-panel">
+        <div class="filter-panel">
+            <select id="provinceFilter" onchange="updateMap()">
+                <option value="all">Tất cả tỉnh thành</option>
+                <option value="hanoi">Hà Nội</option>
+                <option value="hochiminh">TP. Hồ Chí Minh</option>
+                <option value="danang">Đà Nẵng</option>
+                <!-- Thêm các tỉnh thành khác nếu cần -->
+            </select>
 
-    <!-- Biểu đồ 4: Số lượng công việc và lương trung bình theo ngành -->
-    <div id="combinedChart" class="chart-bottom"></div>
-</div>
+            <select id="jobTypeFilter" onchange="updateMap()">
+                <option value="all">Tất cả công việc</option>
+                <option value="developer">Lập trình viên</option>
+                <option value="designer">Thiết kế</option>
+                <option value="marketing">Marketing</option>
+                <!-- Thêm các loại công việc khác nếu cần -->
+            </select>
+            <div id="salaryRangeFilter">
+                <label for="salaryRange">Lọc theo mức lương:</label>
+                <div id="salarySlider"></div>
+                <span id="salaryRangeValue">0 - 2000</span>
+            </div>
+        </div>
+        <div id="container"></div>
+    </div>
 
-<div class="map-container">
-    <!-- Biểu đồ Bản đồ công việc -->
-    <div id="mapChart"></div>
+    <div class="charts-container">
+
+        <!-- Biểu đồ 1: Số lượng công việc theo tỉnh thành -->
+        <div id="cityChart" class="chart"></div>
+
+        <!-- Biểu đồ 2: Tỷ lệ công việc theo loại hình -->
+        <div id="typeChart" class="chart"></div>
+    </div>
+
+    <!-- Container biểu đồ dưới -->
+    <div class="charts-container">
+        <!-- Biểu đồ 3: Mức lương trung bình theo cấp bậc -->
+        <div id="salaryChart" class="chart-bottom"></div>
+
+        <!-- Biểu đồ 4: Số lượng công việc và lương trung bình theo ngành -->
+        <div id="combinedChart" class="chart-bottom"></div>
+    </div>
+
+    <div class="map-container">
+        <!-- Biểu đồ Bản đồ công việc -->
+        <div id="mapChart"></div>
+    </div>
 </div>
 
 <script>
+    let jobs = [];
     document.addEventListener("DOMContentLoaded", async () => {
         // Dữ liệu mặc định
         const defaultJobs = [
@@ -33,7 +66,7 @@
             { province: "Hồ Chí Minh", major: "Công nghệ thông tin", type: "Toàn thời gian", level: "Nhân viên", minWage: 900, maxWage: 1300, wage: 1300, amount: 12 }
         ];
 
-        let jobs = [];
+       
 
         try {
             // Fetch dữ liệu từ API (cập nhật URL phù hợp)
@@ -268,12 +301,57 @@
             },
         });
     }
+    document.addEventListener("DOMContentLoaded", function () {
+        // Khởi tạo giá trị mặc định
+        let minWage = 0;
+        let maxWage = 2000;
 
+        const salarySlider = document.getElementById('salarySlider');
+        const salaryRangeValue = document.getElementById('salaryRangeValue');
+
+        // Khởi tạo thanh trượt với 2 con trỏ
+        noUiSlider.create(salarySlider, {
+            start: [minWage, maxWage],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 2000
+            },
+            step: 100,
+            format: {
+                to: function (value) {
+                    return Math.round(value);
+                },
+                from: function (value) {
+                    return Math.round(value);
+                }
+            }
+        });
+
+        // Cập nhật giá trị khi người dùng thay đổi
+        salarySlider.noUiSlider.on('update', function (values, handle) {
+            const [min, max] = values;
+            minWage = parseInt(min);
+            maxWage = parseInt(max);
+
+            // Cập nhật hiển thị giá trị của thanh trượt
+            salaryRangeValue.textContent = `${minWage} - ${maxWage}`;
+
+            // Lọc công việc dựa trên mức lương đã chọn
+            const filteredJobs = jobs.filter(job => job.minWage <= maxWage && job.maxWage >= minWage);
+
+            // Render lại biểu đồ và bản đồ với dữ liệu đã lọc
+            renderCharts(filteredJobs);
+            renderMap(filteredJobs);
+        });
+    });
 
 </script>
 <script src="https://code.highcharts.com/maps/highmaps.js"></script>
 <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/mapdata/countries/vn/vn-all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.js" integrity="sha512-g/feAizmeiVKSwvfW0Xk3ZHZqv5Zs8PEXEBKzL15pM0SevEvoX8eJ4yFWbqakvRj7vtw1Q97bLzEpG2IVWX0Mg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <script src="https://code.highcharts.com/maps.js"></script>
 <script src="https://code.highcharts.com/maps/modules/map.js"></script>
