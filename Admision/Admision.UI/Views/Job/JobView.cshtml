@@ -1,148 +1,280 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biểu đồ Highcharts</title>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/mapdata/countries/vn/vn-all.js"></script>
-</head>
-<body>
-    <h1>Biểu đồ Tuyển Dụng</h1>
+﻿<link rel="stylesheet" href="~/css/job.css"  asp-append-version="true"/>
+@* <h1>Biểu đồ Tuyển Dụng</h1> *@
+<div class="charts-container">
+    <!-- Biểu đồ 1: Số lượng công việc theo tỉnh thành -->
+    <div id="cityChart" class="chart"></div>
 
-    <!-- Biểu đồ Số lượng công việc theo tỉnh thành -->
-    <div id="cityChart" style="width: 100%; height: 400px;"></div>
+    <!-- Biểu đồ 2: Tỷ lệ công việc theo loại hình -->
+    <div id="typeChart" class="chart"></div>
+</div>
 
-    <!-- Biểu đồ Tỷ lệ công việc theo loại hình -->
-    <div id="typeChart" style="width: 100%; height: 400px;"></div>
+<!-- Container biểu đồ dưới -->
+<div class="charts-container">
+    <!-- Biểu đồ 3: Mức lương trung bình theo cấp bậc -->
+    <div id="salaryChart" class="chart-bottom"></div>
 
-    <!-- Biểu đồ Mức lương trung bình theo cấp bậc -->
-    <div id="salaryChart" style="width: 100%; height: 400px;"></div>
+    <!-- Biểu đồ 4: Số lượng công việc và lương trung bình theo ngành -->
+    <div id="combinedChart" class="chart-bottom"></div>
+</div>
 
-    <!-- Biểu đồ Số lượng công việc và lương trung bình theo ngành -->
-    <div id="combinedChart" style="width: 100%; height: 400px;"></div>
-
+<div class="map-container">
     <!-- Biểu đồ Bản đồ công việc -->
-    <div id="mapChart" style="width: 100%; height: 600px;"></div>
+    <div id="mapChart"></div>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            // Dữ liệu mặc định
-            const defaultJobs = [
-                { province: "Hà Nội", major: "Công nghệ thông tin", type: "Toàn thời gian", level: "Nhân viên", minWage:900, maxWage:1200, wage: 1200, amount: 10 },
-                { province: "Hồ Chí Minh", major: "Kỹ thuật", type: "Toàn thời gian", level: "Trưởng nhóm", minWage:1200, maxWage:1500, wage: 1500, amount: 5 },
-                { province: "Đà Nẵng", major: "Kinh doanh", type: "Bán thời gian", level: "Thực tập sinh", minWage:200, maxWage:500, wage: 500, amount: 3 },
-                { province: "Hà Nội", major: "Kinh doanh", type: "Toàn thời gian", level: "Nhân viên", minWage:700, maxWage:1000 , wage: 1000, amount: 8 },
-                { province: "Hồ Chí Minh", major: "Công nghệ thông tin", type: "Toàn thời gian", level: "Nhân viên", minWage:900, maxWage:1300, wage: 1300, amount: 12 }
-            ];
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        // Dữ liệu mặc định
+        const defaultJobs = [
+            { province: "Hà Nội", major: "Công nghệ thông tin", type: "Toàn thời gian", level: "Nhân viên", minWage: 900, maxWage: 1200, wage: 1200, amount: 10 },
+            { province: "Hồ Chí Minh", major: "Kỹ thuật", type: "Toàn thời gian", level: "Trưởng nhóm", minWage: 1200, maxWage: 1500, wage: 1500, amount: 5 },
+            { province: "Đà Nẵng", major: "Kinh doanh", type: "Bán thời gian", level: "Thực tập sinh", minWage: 200, maxWage: 500, wage: 500, amount: 3 },
+            { province: "Hà Nội", major: "Kinh doanh", type: "Toàn thời gian", level: "Nhân viên", minWage: 700, maxWage: 1000, wage: 1000, amount: 8 },
+            { province: "Hồ Chí Minh", major: "Công nghệ thông tin", type: "Toàn thời gian", level: "Nhân viên", minWage: 900, maxWage: 1300, wage: 1300, amount: 12 }
+        ];
 
-            let jobs = [];
+        let jobs = [];
 
-            try {
-                // Fetch dữ liệu từ API (cập nhật URL phù hợp)
-                const response = await fetch("/Job/GetAllJobByFilter");
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log(data);
-                    
+        try {
+            // Fetch dữ liệu từ API (cập nhật URL phù hợp)
+            const response = await fetch("/Job/GetAllJobByFilter");
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
 
-                    jobs = data.length > 0 ? data : defaultJobs;
-                } else {
-                    console.error("Không thể tải dữ liệu từ API. Sử dụng dữ liệu mặc định.");
 
-                    jobs = defaultJobs;
-                }
-            } catch (error) {
-                console.error("Lỗi khi tải dữ liệu:", error);
+                jobs = data.length > 0 ? data : defaultJobs;
+            } else {
+                console.error("Không thể tải dữ liệu từ API. Sử dụng dữ liệu mặc định.");
+
                 jobs = defaultJobs;
             }
+        } catch (error) {
+            console.error("Lỗi khi tải dữ liệu:", error);
+            jobs = defaultJobs;
+        }
 
-            // Render các biểu đồ sau khi có dữ liệu
-            renderCharts(jobs);
+        // Render các biểu đồ sau khi có dữ liệu
+        renderCharts(jobs);
+        // biểu đồ địa lý
+        renderMap(jobs);
+    });
+
+    function renderCharts(jobs) {
+        // 1. Số lượng công việc theo tỉnh thành
+        const jobCountByCity = jobs.reduce((acc, job) => {
+            acc[job.province] = (acc[job.province] || 0) + job.amount;
+            return acc;
+        }, {});
+        const chartData1 = Object.entries(jobCountByCity).map(([city, count]) => ({ name: city, y: count }));
+
+        Highcharts.chart('cityChart', {
+            chart: { type: 'column', zoomType: 'x' },
+            title: { text: 'Số lượng công việc theo tỉnh thành' },
+            xAxis: { type: 'category', title: { text: 'Tỉnh thành' } },
+            yAxis: { title: { text: 'Số lượng công việc' } },
+            series: [{ name: 'Công việc', data: chartData1 }]
         });
 
-        function renderCharts(jobs) {
-            // 1. Số lượng công việc theo tỉnh thành
-            const jobCountByCity = jobs.reduce((acc, job) => {
-                acc[job.province] = (acc[job.province] || 0) + job.amount;
-                return acc;
-            }, {});
-            const chartData1 = Object.entries(jobCountByCity).map(([city, count]) => ({ name: city, y: count }));
+        // 2. Tỷ lệ công việc theo loại hình
+        const jobCountByType = jobs.reduce((acc, job) => {
+            acc[job.type] = (acc[job.type] || 0) + job.amount;
+            return acc;
+        }, {});
+        const chartData2 = Object.entries(jobCountByType).map(([type, count]) => ({ name: type, y: count }));
 
-            Highcharts.chart('cityChart', {
-                chart: { type: 'column' },
-                title: { text: 'Số lượng công việc theo tỉnh thành' },
-                xAxis: { type: 'category', title: { text: 'Tỉnh thành' } },
-                yAxis: { title: { text: 'Số lượng công việc' } },
-                series: [{ name: 'Công việc', data: chartData1 }]
-            });
+        Highcharts.chart('typeChart', {
+            chart: { type: 'pie', zoomType: 'xy' },
+            title: { text: 'Tỷ lệ công việc theo loại hình' },
+            series: [{ name: 'Công việc', colorByPoint: true, data: chartData2 }]
+        });
 
-            // 2. Tỷ lệ công việc theo loại hình
-            const jobCountByType = jobs.reduce((acc, job) => {
-                acc[job.type] = (acc[job.type] || 0) + job.amount;
-                return acc;
-            }, {});
-            const chartData2 = Object.entries(jobCountByType).map(([type, count]) => ({ name: type, y: count }));
+        // 3. Mức lương trung bình theo cấp bậc
+        const salaryByRank = jobs.reduce((acc, job) => {
+            acc[job.level] = acc[job.level] || { total: 0, count: 0 };
+            acc[job.level].total += (job.minWage + job.maxWage) / 2;
+            acc[job.level].count++;
+            return acc;
+        }, {});
+        const chartData3 = Object.entries(salaryByRank).map(([rank, { total, count }]) => ({ name: rank, y: total / count }));
 
-            Highcharts.chart('typeChart', {
-                chart: { type: 'pie' },
-                title: { text: 'Tỷ lệ công việc theo loại hình' },
-                series: [{ name: 'Công việc', colorByPoint: true, data: chartData2 }]
-            });
+        Highcharts.chart('salaryChart', {
+            chart: { type: 'line', zoomType: 'x' },
+            title: { text: 'Mức lương trung bình theo cấp bậc' },
+            xAxis: { type: 'category', title: { text: 'Cấp bậc' } },
+            yAxis: { title: { text: 'Mức lương trung bình ($)' } },
+            series: [{ name: 'Lương', data: chartData3 }]
+        });
 
-            // 3. Mức lương trung bình theo cấp bậc
-            const salaryByRank = jobs.reduce((acc, job) => {
-                acc[job.level] = acc[job.level] || { total: 0, count: 0 };
-                acc[job.level].total += (job.minWage + job.maxWage) / 2;
-                acc[job.level].count++;
-                return acc;
-            }, {});
-            const chartData3 = Object.entries(salaryByRank).map(([rank, { total, count }]) => ({ name: rank, y: total / count }));
+        // 4. Số lượng công việc và lương trung bình theo ngành
+        const industryData = jobs.reduce((acc, job) => {
+            acc[job.major] = acc[job.major] || { count: 0, totalSalary: 0, jobCount: 0 };
+            acc[job.major].count++;
+            acc[job.major].totalSalary += (job.minWage + job.maxWage) / 2;
+            acc[job.major].jobCount += job.amount;
+            return acc;
+        }, {});
+        const chartData4Jobs = Object.entries(industryData).map(([industry, { jobCount }]) => ({ name: industry, y: jobCount }));
+        const chartData4Salary = Object.entries(industryData).map(([industry, { totalSalary, count }]) => ({ name: industry, y: totalSalary / count }));
 
-            Highcharts.chart('salaryChart', {
-                chart: { type: 'line' },
-                title: { text: 'Mức lương trung bình theo cấp bậc' },
-                xAxis: { type: 'category', title: { text: 'Cấp bậc' } },
-                yAxis: { title: { text: 'Mức lương trung bình ($)' } },
-                series: [{ name: 'Lương', data: chartData3 }]
-            });
+        Highcharts.chart('combinedChart', {
+            chart: { type: 'column', zoomType: 'xy' },
+            title: { text: 'Số lượng công việc và lương trung bình theo ngành' },
+            xAxis: { type: 'category', title: { text: 'Ngành nghề' } },
+            yAxis: [{
+                title: { text: 'Số lượng công việc' },
+                opposite: false
+            }, {
+                title: { text: 'Mức lương trung bình ($)' },
+                opposite: true  // trục phải
+            }],
+            series: [{
+                name: 'Công việc',
+                data: chartData4Jobs
+            }, {
+                name: 'Lương',
+                type: 'line',
+                yAxis: 1,
+                data: chartData4Salary
+            }]
+        });
 
-            // 4. Số lượng công việc và lương trung bình theo ngành
-            const industryData = jobs.reduce((acc, job) => {
-                acc[job.major] = acc[job.major] || { count: 0, totalSalary: 0, jobCount: 0 };
-                acc[job.major].count++;
-                acc[job.major].totalSalary += (job.minWage + job.maxWage) / 2;
-                acc[job.major].jobCount += job.amount;
-                return acc;
-            }, {});
-            const chartData4Jobs = Object.entries(industryData).map(([industry, { jobCount }]) => ({ name: industry, y: jobCount }));
-            const chartData4Salary = Object.entries(industryData).map(([industry, { totalSalary, count }]) => ({ name: industry, y: totalSalary / count }));
+    }
 
-            Highcharts.chart('combinedChart', {
-                chart: { type: 'column' },
-                title: { text: 'Số lượng công việc và lương trung bình theo ngành' },
-                xAxis: { type: 'category', title: { text: 'Ngành nghề' } },
-                yAxis: [{
-                    title: { text: 'Số lượng công việc' },
-                    opposite: false
-                }, {
-                    title: { text: 'Mức lương trung bình ($)' },
-                    opposite: true  // trục phải
-                }],
-                series: [{
-                    name: 'Công việc',
-                    data: chartData4Jobs
-                }, {
-                    name: 'Lương',
-                    type: 'line',
-                    yAxis: 1,
-                    data: chartData4Salary
-                }]
-            });
-        }
-    </script>
+    function provinceCode(province) {
+        const provinceMap = {
+            "Hà Nội": "vn-hn",
+            "Hồ Chí Minh": "vn-sg",
+            "Đà Nẵng": "vn-dn",
+            "Cần Thơ": "vn-ct",
+            "Hải Phòng": "vn-hp",
+            "An Giang": "vn-ag",
+            "Bà Rịa - Vũng Tàu": "vn-br",
+            "Bắc Giang": "vn-bg",
+            "Bắc Kạn": "vn-bk",
+            "Bạc Liêu": "vn-bl",
+            "Bắc Ninh": "vn-bn",
+            "Bến Tre": "vn-bt",
+            "Bình Dương": "vn-bd",
+            "Bình Định": "vn-bd",
+            "Bình Phước": "vn-bp",
+            "Bình Thuận": "vn-bt",
+            "Cà Mau": "vn-cm",
+            "Cao Bằng": "vn-cb",
+            "Đắk Lắk": "vn-dl",
+            "Đắk Nông": "vn-dn",
+            "Điện Biên": "vn-db",
+            "Đồng Nai": "vn-dn",
+            "Đồng Tháp": "vn-dt",
+            "Gia Lai": "vn-gl",
+            "Hà Giang": "vn-hg",
+            "Hà Nam": "vn-hm",
+            "Hà Tĩnh": "vn-ht",
+            "Hải Dương": "vn-hd",
+            "Hậu Giang": "vn-hg",
+            "Hòa Bình": "vn-hb",
+            "Hưng Yên": "vn-hy",
+            "Khánh Hòa": "vn-kh",
+            "Kiên Giang": "vn-kg",
+            "Kon Tum": "vn-kt",
+            "Lai Châu": "vn-lc",
+            "Lâm Đồng": "vn-ld",
+            "Lạng Sơn": "vn-ls",
+            "Lào Cai": "vn-lc",
+            "Long An": "vn-la",
+            "Nam Định": "vn-nd",
+            "Nghệ An": "vn-na",
+            "Ninh Bình": "vn-nb",
+            "Ninh Thuận": "vn-nt",
+            "Phú Thọ": "vn-pt",
+            "Quảng Bình": "vn-qb",
+            "Quảng Nam": "vn-qn",
+            "Quảng Ngãi": "vn-qn",
+            "Quảng Ninh": "vn-qn",
+            "Quảng Trị": "vn-qt",
+            "Sóc Trăng": "vn-st",
+            "Sơn La": "vn-sl",
+            "Tây Ninh": "vn-tn",
+            "Thái Bình": "vn-tb",
+            "Thái Nguyên": "vn-tn",
+            "Thanh Hóa": "vn-th",
+            "Thừa Thiên Huế": "vn-tt",
+            "Tiền Giang": "vn-tg",
+            "Trà Vinh": "vn-tv",
+            "Tuyên Quang": "vn-tq",
+            "Vĩnh Long": "vn-vl",
+            "Vĩnh Phúc": "vn-vp",
+            "Yên Bái": "vn-yb"
+        };
 
-</body>
-</html>
+        return provinceMap[province] || null;
+    }
+
+
+    async function renderMap(jobs) {
+        // Tải dữ liệu bản đồ từ Highcharts CDN
+        const topology = await fetch('https://code.highcharts.com/mapdata/countries/vn/vn-all.topo.json')
+            .then(response => response.json());
+
+        // Chuẩn hóa dữ liệu công việc theo tỉnh
+        const jobDataByProvince = jobs.reduce((acc, job) => {
+            const code = provinceCode(job.province);
+            if (code) {
+                acc[code] = (acc[code] || 0) + job.amount;
+            }
+            return acc;
+        }, {});
+
+        // Chuyển đổi dữ liệu thành mảng theo định dạng mong muốn
+        const mapData = Object.entries(jobDataByProvince).map(([code, count]) => [code, count]);
+
+        console.log(mapData);
+
+        // Khởi tạo biểu đồ bản đồ
+        Highcharts.mapChart('mapChart', {
+            chart: {
+                map: topology,
+                backgroundColor: '#f7f7f7',
+            },
+            title: {
+                text: 'Bản đồ số lượng công việc theo tỉnh thành',
+            },
+            subtitle: {
+                text: 'Sử dụng dữ liệu công việc',
+            },
+            colorAxis: {
+                min: 0,
+                stops: [
+                    [0, '#e0f7fa'],    // Màu nhạt (ít công việc)
+                    [0.5, '#00796b'], // Màu trung bình
+                    [1, '#004d40'],   // Màu đậm (nhiều công việc)
+                ],
+            },
+            series: [{
+                data: mapData,
+                name: 'Số lượng công việc',
+                states: {
+                    hover: {
+                        color: '#ffa726', // Màu khi hover
+                    },
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}', // Hiển thị tên tỉnh
+                },
+            }],
+            tooltip: {
+                pointFormat: '{point.name}: <b>{point.value}</b> công việc',
+            },
+        });
+    }
+
+
+</script>
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/vn/vn-all.js"></script>
+
+<script src="https://code.highcharts.com/maps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/map.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
