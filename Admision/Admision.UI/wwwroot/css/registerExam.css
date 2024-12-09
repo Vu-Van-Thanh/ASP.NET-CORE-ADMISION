@@ -1,5 +1,6 @@
-﻿.examregis-container {
-    max-width: 600px;
+﻿/* Basic styles for the form */
+.examregis-container {
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
     background-color: white;
@@ -7,9 +8,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.examregis-title {
-    text-align: center;
-    margin-bottom: 20px;
+.examregis-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .examregis-form-group {
@@ -31,21 +33,9 @@
         border: 1px solid #ddd;
     }
 
-    .examregis-form-group select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-    }
-
     .examregis-form-group textarea {
         height: 100px;
     }
-
-.examregis-error {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}
 
 .examregis-btn {
     width: 100%;
@@ -62,11 +52,40 @@
         background-color: #218838;
     }
 
-.examregis-form-group input[type="file"] {
-    padding: 5px;
-    background-color: #f9f9f9;
+.examregis-error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-    .examregis-form-group input[type="file"]:focus {
-        border-color: #28a745;
+.examregis-preview {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.examregis-preview-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.examregis-form-group {
+    margin-bottom: 15px;
+}
+
+    .examregis-form-group label {
+        font-weight: bold;
+        display: block;
     }
+
+/* Make adjustments for smaller screens */
+@media (max-width: 768px) {
+    .examregis-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
