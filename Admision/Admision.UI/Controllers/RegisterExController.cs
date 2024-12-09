@@ -26,9 +26,10 @@ namespace Admission.UI.Controllers
             return View(registerExDTO);
         }
         [HttpPost]
+
         public IActionResult registerExam(RegisterExDTO registerExDTO)
         {
             return View();
-        }
+		    }
     }
 }
