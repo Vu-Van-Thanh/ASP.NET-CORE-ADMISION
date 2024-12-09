@@ -4,6 +4,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Admission.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123032413_updatepayment")]
+    partial class updatepayment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasKey("ArticleId");
 
-                    b.ToTable("Articles", (string)null);
+                    b.ToTable("Articles");
 
                     b.HasData(
                         new
@@ -125,7 +128,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("PostID");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Group", b =>
@@ -141,7 +144,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasKey("GroupID");
 
-                    b.ToTable("Groups", (string)null);
+                    b.ToTable("Groups");
 
                     b.HasData(
                         new
@@ -266,7 +269,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasKey("HighSchoolID");
 
-                    b.ToTable("HighSchools", (string)null);
+                    b.ToTable("HighSchools");
 
                     b.HasData(
                         new
@@ -557,7 +560,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.ToTable("InformationOfApplieds", (string)null);
+                    b.ToTable("InformationOfApplieds");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Major", b =>
@@ -577,7 +580,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("SchoolID");
 
-                    b.ToTable("Majors", (string)null);
+                    b.ToTable("Majors");
 
                     b.HasData(
                         new
@@ -989,7 +992,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("ArticleID");
 
-                    b.ToTable("Medias", (string)null);
+                    b.ToTable("Medias");
 
                     b.HasData(
                         new
@@ -1061,7 +1064,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notifications", (string)null);
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Payment", b =>
@@ -1086,7 +1089,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("ResultID");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Post", b =>
@@ -1116,7 +1119,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("GroupID");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.PostMedia", b =>
@@ -1137,7 +1140,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasKey("PostID", "MediaID");
 
-                    b.ToTable("PostMedias", (string)null);
+                    b.ToTable("PostMedias");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Relative", b =>
@@ -1218,7 +1221,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.ToTable("Relatives", (string)null);
+                    b.ToTable("Relatives");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.Result", b =>
@@ -1241,7 +1244,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasIndex("StudentID");
 
-                    b.ToTable("Results", (string)null);
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.School", b =>
@@ -1276,7 +1279,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasKey("SchoolID");
 
-                    b.ToTable("Schools", (string)null);
+                    b.ToTable("Schools");
 
                     b.HasData(
                         new
@@ -1530,7 +1533,7 @@ namespace Admission.Infrastructure.Migrations
                     b.HasIndex("Id")
                         .IsUnique();
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.Entities.StudentMedia", b =>
@@ -1551,7 +1554,7 @@ namespace Admission.Infrastructure.Migrations
 
                     b.HasKey("StudentID", "StudentMediaID");
 
-                    b.ToTable("StudentMedias", (string)null);
+                    b.ToTable("StudentMedias");
                 });
 
             modelBuilder.Entity("Admission.Core.Domain.IdentityEntities.ApplicationRole", b =>
