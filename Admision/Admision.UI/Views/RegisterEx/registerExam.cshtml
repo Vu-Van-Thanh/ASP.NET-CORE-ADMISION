@@ -1,121 +1,170 @@
 ﻿@model RegisterExDTO
+
 <link rel="stylesheet" href="~/css/registerExam.css" asp-append-version="true" />
 
 <div class="examregis-container">
     <h1 class="examregis-title">Đăng Ký Thi</h1>
-    <form id="examregis-form" asp-controller="Register" asp-action="registerExam" method="post">
-        <!-- Full Name -->
-        <div class="examregis-form-group">
-            <label for="examregis-FullName">Họ và Tên</label>
-            <input type="text" id="examregis-FullName" name="FullName" required maxlength="40" placeholder="Nhập họ và tên" />
-            <span class="examregis-error" id="examregis-FullNameError"></span>
+
+    <form id="examregis-form" asp-controller="Register" asp-action="registerExam" method="post" enctype="multipart/form-data">
+        <div class="examregis-form-grid">
+            <!-- Full Name -->
+            <div class="examregis-form-group">
+                <label for="examregis-FullName">Họ và Tên</label>
+                <input type="text" id="examregis-FullName" asp-for="FullName" maxlength="40" placeholder="Nhập họ và tên" />
+                <span class="examregis-error" asp-validation-for="FullName"></span>
+            </div>
+
+            <!-- Gender -->
+            <div class="examregis-form-group">
+                <label for="examregis-Gender">Giới Tính</label>
+                <select id="examregis-Gender" asp-for="Gender" required>
+                    <option value="">Chọn giới tính</option>
+                    <option value="Male">Nam</option>
+                    <option value="Female">Nữ</option>
+                    <option value="Other">Khác</option>
+                </select>
+                <span class="examregis-error" asp-validation-for="Gender"></span>
+            </div>
+
+            <!-- Identity Card Number -->
+            <div class="examregis-form-group">
+                <label for="examregis-IdentityCardNumber">Căn Cước Công Dân</label>
+                <input type="text" id="examregis-IdentityCardNumber" asp-for="IdentityCardNumber" pattern="^\d{9,12}$" maxlength="12" placeholder="Nhập căn cước công dân" />
+                <span class="examregis-error" asp-validation-for="IdentityCardNumber"></span>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="examregis-form-group">
+                <label for="examregis-DateOfBirth">Ngày Sinh</label>
+                <input type="date" id="examregis-DateOfBirth" asp-for="DateOfBirth" />
+                <span class="examregis-error" asp-validation-for="DateOfBirth"></span>
+            </div>
+
+            <!-- Address -->
+            <div class="examregis-form-group">
+                <label for="examregis-Address">Địa Chỉ</label>
+                <textarea id="examregis-Address" asp-for="Address" maxlength="200" placeholder="Nhập địa chỉ"></textarea>
+                <span class="examregis-error" asp-validation-for="Address"></span>
+            </div>
+
+            <!-- Admission Method -->
+            <div class="examregis-form-group">
+                <label for="examregis-AdmissionMethod">Phương thức xét tuyển</label>
+                <input type="text" id="examregis-AdmissionMethod" asp-for="AdmissionMethod" placeholder="Nhập phương thức xét tuyển" />
+                <span class="examregis-error" asp-validation-for="AdmissionMethod"></span>
+            </div>
+
+            <!-- High School -->
+            <div class="examregis-form-group">
+                <label for="examregis-HighSchool">Trường Trung Học Phổ Thông</label>
+                <input type="text" id="examregis-HighSchool" asp-for="HighSchool" placeholder="Nhập tên trường" />
+                <span class="examregis-error" asp-validation-for="HighSchool"></span>
+            </div>
+
+            <!-- Graduated Year -->
+            <div class="examregis-form-group">
+                <label for="examregis-GraduatedYear">Năm Tốt Nghiệp</label>
+                <input type="text" id="examregis-GraduatedYear" asp-for="GraduatedYear" placeholder="Nhập năm tốt nghiệp" />
+                <span class="examregis-error" asp-validation-for="GraduatedYear"></span>
+            </div>
+
+            <!-- GPA 10 -->
+            <div class="examregis-form-group">
+                <label for="examregis-GPA10">GPA lớp 10</label>
+                <input type="number" id="examregis-GPA10" asp-for="GPA10" step="0.1" min="0" max="10" placeholder="Nhập GPA lớp 10" />
+                <span class="examregis-error" asp-validation-for="GPA10"></span>
+            </div>
+
+            <!-- GPA 11 -->
+            <div class="examregis-form-group">
+                <label for="examregis-GPA11">GPA lớp 11</label>
+                <input type="number" id="examregis-GPA11" asp-for="GPA11" step="0.1" min="0" max="10" placeholder="Nhập GPA lớp 11" />
+                <span class="examregis-error" asp-validation-for="GPA11"></span>
+            </div>
+
+            <!-- GPA 12 -->
+            <div class="examregis-form-group">
+                <label for="examregis-GPA12">GPA lớp 12</label>
+                <input type="number" id="examregis-GPA12" asp-for="GPA12" step="0.1" min="0" max="10" placeholder="Nhập GPA lớp 12" />
+                <span class="examregis-error" asp-validation-for="GPA12"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="examregis-form-group">
+                <label for="examregis-Email">Email</label>
+                <input type="email" id="examregis-Email" asp-for="Email" placeholder="Nhập email" />
+                <span class="examregis-error" asp-validation-for="Email"></span>
+            </div>
+
+            <!-- Phone -->
+            <div class="examregis-form-group">
+                <label for="examregis-Phone">Số Điện Thoại</label>
+                <input type="text" id="examregis-Phone" asp-for="Phone" pattern="^[0-9]*$" placeholder="Nhập số điện thoại" />
+                <span class="examregis-error" asp-validation-for="Phone"></span>
+            </div>
+
+            <!-- Exam Period -->
+            <div class="examregis-form-group">
+                <label for="examregis-ExamPeriod">Kỳ Thi</label>
+                <select id="examregis-ExamPeriod" asp-for="ExamPeriod" required>
+                    <option value="">Chọn kỳ thi</option>
+                    <option value="Exam1">Kỳ Thi 1</option>
+                    <option value="Exam2">Kỳ Thi 2</option>
+                    <option value="Exam3">Kỳ Thi 3</option>
+                </select>
+                <span class="examregis-error" asp-validation-for="ExamPeriod"></span>
+            </div>
+
+            <!-- File Upload cho Căn Cước -->
+            <div class="examregis-form-group">
+                <label for="examregis-IdentityCard">Ảnh Căn Cước</label>
+                <input type="file" id="examregis-IdentityCard" asp-for="IdentityCard" multiple onchange="previewFiles()" />
+                <span class="examregis-error" asp-validation-for="IdentityCard"></span>
+
+                <div id="preview-container" class="examregis-preview">
+                    <!-- Các ảnh preview sẽ hiển thị ở đây -->
+                    @if (Model.IdentityCard != null && Model.IdentityCard.Count > 0)
+                    {
+                        @foreach (var file in Model.IdentityCard)
+                        {
+                            <div class="examregis-preview-item">
+                                <img src="@file" alt="Ảnh căn cước" class="examregis-preview-img" />
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- File Upload cho Học Bạ -->
+            <div class="examregis-form-group">
+                <label for="examregis-TranscriptPath">Bảng Điểm</label>
+                <input type="file" id="examregis-TranscriptPath" asp-for="TranscriptPath" multiple onchange="previewTranscript()" />
+                <span class="examregis-error" asp-validation-for="TranscriptPath"></span>
+
+                <div id="transcript-preview-container" class="examregis-preview">
+                    <!-- Các ảnh preview bảng điểm sẽ hiển thị ở đây -->
+                </div>
+            </div>
+
+            <!-- File Upload cho Ảnh Chân Dung -->
+            <div class="examregis-form-group">
+                <label for="examregis-PortraitPath">Ảnh Chân Dung</label>
+                <input type="file" id="examregis-PortraitPath" asp-for="PortraitPath" onchange="previewPortrait()" />
+                <span class="examregis-error" asp-validation-for="PortraitPath"></span>
+
+                <div id="portrait-preview-container" class="examregis-preview">
+                    <!-- Ảnh chân dung preview sẽ hiển thị ở đây -->
+                    @if (Model.PortraitPath != null)
+                    {
+                        <div class="examregis-preview-item">
+                            <img src="@Model.PortraitPath" alt="Ảnh chân dung" class="examregis-preview-img" />
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
 
-        <!-- Gender -->
-        <div class="examregis-form-group">
-            <label for="examregis-Gender">Giới Tính</label>
-            <select id="examregis-Gender" name="Gender" required>
-                <option value="">Chọn giới tính</option>
-                <option value="Male">Nam</option>
-                <option value="Female">Nữ</option>
-                <option value="Other">Khác</option>
-            </select>
-        </div>
-
-        <!-- Identity Card Number -->
-        <div class="examregis-form-group">
-            <label for="examregis-IdentityCardNumber">Căn Cước Công Dân</label>
-            <input type="text" id="examregis-IdentityCardNumber" name="IdentityCardNumber" required pattern="^\d{9,12}$" maxlength="12" placeholder="Nhập căn cước công dân" />
-            <span class="examregis-error" id="examregis-IdentityCardNumberError"></span>
-        </div>
-
-        <!-- Date of Birth -->
-        <div class="examregis-form-group">
-            <label for="examregis-DateOfBirth">Ngày Sinh</label>
-            <input type="date" id="examregis-DateOfBirth" name="DateOfBirth" required />
-        </div>
-
-        <!-- Address -->
-        <div class="examregis-form-group">
-            <label for="examregis-Address">Địa Chỉ</label>
-            <textarea id="examregis-Address" name="Address" maxlength="200" placeholder="Nhập địa chỉ"></textarea>
-        </div>
-
-        <!-- Admission Method -->
-        <div class="examregis-form-group">
-            <label for="examregis-AdmissionMethod">Phương thức xét tuyển</label>
-            <input type="text" id="examregis-AdmissionMethod" name="AdmissionMethod" required placeholder="Nhập phương thức xét tuyển" />
-        </div>
-
-        <!-- High School -->
-        <div class="examregis-form-group">
-            <label for="examregis-HighSchool">Trường Trung Học Phổ Thông</label>
-            <input type="text" id="examregis-HighSchool" name="HighSchool" required placeholder="Nhập tên trường" />
-        </div>
-
-        <!-- Graduated Year -->
-        <div class="examregis-form-group">
-            <label for="examregis-GraduatedYear">Năm Tốt Nghiệp</label>
-            <input type="text" id="examregis-GraduatedYear" name="GraduatedYear" required placeholder="Nhập năm tốt nghiệp" />
-        </div>
-
-        <!-- GPA 10 -->
-        <div class="examregis-form-group">
-            <label for="examregis-GPA10">GPA lớp 10</label>
-            <input type="number" id="examregis-GPA10" name="GPA10" required step="0.1" min="0" max="10" placeholder="Nhập GPA lớp 10" />
-        </div>
-
-        <!-- GPA 11 -->
-        <div class="examregis-form-group">
-            <label for="examregis-GPA11">GPA lớp 11</label>
-            <input type="number" id="examregis-GPA11" name="GPA11" required step="0.1" min="0" max="10" placeholder="Nhập GPA lớp 11" />
-        </div>
-
-        <!-- GPA 12 -->
-        <div class="examregis-form-group">
-            <label for="examregis-GPA12">GPA lớp 12</label>
-            <input type="number" id="examregis-GPA12" name="GPA12" required step="0.1" min="0" max="10" placeholder="Nhập GPA lớp 12" />
-        </div>
-
-        <!-- Email -->
-        <div class="examregis-form-group">
-            <label for="examregis-Email">Email</label>
-            <input type="email" id="examregis-Email" name="Email" required placeholder="Nhập email" />
-            <span class="examregis-error" id="examregis-EmailError"></span>
-        </div>
-
-        <!-- Phone -->
-        <div class="examregis-form-group">
-            <label for="examregis-Phone">Số Điện Thoại</label>
-            <input type="text" id="examregis-Phone" name="Phone" required pattern="^[0-9]*$" placeholder="Nhập số điện thoại" />
-            <span class="examregis-error" id="examregis-PhoneError"></span>
-        </div>
-
-        <!-- Portrait Path -->
-        <div class="examregis-form-group">
-            <label for="examregis-PortraitPath">Ảnh Chân Dung</label>
-            <input type="file" id="examregis-PortraitPath" name="PortraitPath" required />
-        </div>
-
-        <!-- Identity Card Front Side -->
-        <div class="examregis-form-group">
-            <label for="examregis-IdentityCardFrontSide">Ảnh Mặt Trước Căn Cước</label>
-            <input type="file" id="examregis-IdentityCardFrontSide" name="IdentityCardFrontSide" required />
-        </div>
-
-        <!-- Identity Card Back Side -->
-        <div class="examregis-form-group">
-            <label for="examregis-IdentityCardBackSide">Ảnh Mặt Sau Căn Cước</label>
-            <input type="file" id="examregis-IdentityCardBackSide" name="IdentityCardBackSide" required />
-        </div>
-
-        <!-- Transcript Path -->
-        <div class="examregis-form-group">
-            <label for="examregis-TranscriptPath">Bảng Điểm</label>
-            <input type="file" id="examregis-TranscriptPath" name="TranscriptPath" required />
-        </div>
-
-        <!-- Submit Button -->
+        <!-- Nút Submit -->
         <div class="examregis-form-group">
             <button type="submit" class="examregis-btn">Đăng Ký</button>
         </div>
@@ -123,12 +172,68 @@
 </div>
 
 <script>
-    document.getElementById("examregis-form").addEventListener("submit", function (event) {
-        event.preventDefault();
+    // Hàm hiển thị ảnh preview khi người dùng chọn ảnh căn cước
+    function previewFiles() {
+        var previewContainer = document.querySelector('#preview-container'); 
+        previewContainer.innerHTML = ''; 
 
-        // Add custom validation logic here
+        var files = document.querySelector('#examregis-IdentityCard').files;
 
-        // If valid, submit the form data
-        alert("Đăng ký thành công!");
-    });
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('examregis-preview-img');
+                previewContainer.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Hàm hiển thị ảnh preview khi người dùng chọn ảnh bảng điểm
+    function previewTranscript() {
+        var previewContainer = document.querySelector('#transcript-preview-container');
+        previewContainer.innerHTML = '';
+
+        var files = document.querySelector('#examregis-TranscriptPath').files;
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('examregis-preview-img');
+                previewContainer.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Hàm hiển thị ảnh preview khi người dùng chọn ảnh chân dung
+    function previewPortrait() {
+        var previewContainer = document.querySelector('#portrait-preview-container');
+        previewContainer.innerHTML = '';
+
+        var file = document.querySelector('#examregis-PortraitPath').files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('examregis-preview-img');
+                previewContainer.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
 </script>

@@ -58,12 +58,10 @@ namespace Admission.Core.DTO
         public string PortraitPath { get; set; } // Đường dẫn tới ảnh chân dung
 
         [Required(ErrorMessage = "Ảnh căn cước là bắt buộc.")]
-        public string IdentityCardBackSide{ get; set; } // Đường dẫn tới mặt trước ảnh căn cước
-        [Required(ErrorMessage = "Ảnh căn cước là bắt buộc.")]
-        public string IdentityCardFrontSide { get; set; } // Đường dẫn tới mặt trước ảnh căn cước
+        public List<string> IdentityCard { get; set; } // Đường dẫn tới mặt trước ảnh căn cước
 
         [Required(ErrorMessage = "Bảng điểm là bắt buộc.")]
-        public string TranscriptPath { get; set; } // Đường dẫn tới bảng điểm
+        public List<string> TranscriptPath { get; set; } // Đường dẫn tới bảng điểm
 
     }
 }
