@@ -91,20 +91,20 @@ namespace Admission.Core.Services
 
         public string GetStaticDataPathWithDate()
         {
-            // Lấy đường dẫn thư mục hiện tại của project Admision.Core
+            
             string coreProjectPath = Directory.GetCurrentDirectory();
 
-            // Lấy thời gian hiện tại
+            
             DateTime currentTime = DateTime.Now;
 
             // Lấy năm và tên tháng bằng tiếng Anh
-            string year = currentTime.Year.ToString();         // Lấy năm
-            string month = currentTime.ToString("MMMM");       // Lấy tên tháng (January, February,...)
+            string year = currentTime.Year.ToString();         
+            string month = currentTime.ToString("MMMM");       
 
-            // Kết hợp đường dẫn với wwwroot/StaticData/năm/tháng
+            
             string outputDirectory = Path.Combine(coreProjectPath, "wwwroot", "StaticData", year, month);
 
-            // Kiểm tra xem thư mục đã tồn tại chưa, nếu chưa thì tạo
+            
             if (!Directory.Exists(outputDirectory))
             {
                 Directory.CreateDirectory(outputDirectory);
@@ -122,7 +122,7 @@ namespace Admission.Core.Services
             string year = datepost.Year.ToString();
 
             // Tạo đường dẫn URL media tương đối
-            string folderUrl = $"/StaticData/{year}/{monthName}/{nameFolder}{articleID}/"; // Đường dẫn tương đối từ gốc của ứng dụng
+            string folderUrl = $"/StaticData/{year}/{monthName}/{nameFolder}{articleID}/";
 
             // Đường dẫn thư mục vật lý (hệ thống tệp) để lưu trữ media
             string rootFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "StaticData", year, monthName);
@@ -145,7 +145,7 @@ namespace Admission.Core.Services
                 if (node.Name == "img")
                 {
                     Guid id = Guid.NewGuid();
-                    string mediaId = $"[media: {id}]"; // Tạo ID cho media
+                    string mediaId = $"[media: {id}]";
 
                     // Tạo tên tệp cho hình ảnh dựa trên ID của media
                     string mediaFileName = node.GetAttributeValue("src", "");
@@ -192,6 +192,79 @@ namespace Admission.Core.Services
 
 
 
+        public async Task AddOrUpdateArticlesFromFiles(String docxFiles, string year, string majorCode)
+        {
+            
+                try
+                {
+                    
+                    string articleType = $"{year} {majorCode}";
+
+                    
+                    var existingArticle = await _articlesRepository.GetArticleByType(articleType);
+
+                    // Đọc nội dung file Word
+                    using var fileStream = new FileStream(docxFiles, FileMode.Open, FileAccess.Read);
+                    Document doc = new Document(fileStream);
+
+                    // Tạo đường dẫn để lưu tạm HTML (dùng cho phân tích nội dung)
+                    Guid articleId = existingArticle?.ArticleId ?? Guid.NewGuid();
+                    string outputDirectory = GetStaticDataPathWithDate();
+                    string tempFolderPath = Path.Combine(outputDirectory, majorCode + " data " + articleId);
+                    Directory.CreateDirectory(tempFolderPath);
+
+                    string fileName = Path.GetFileNameWithoutExtension(docxFiles);
+                    string htmlPath = Path.Combine(tempFolderPath, fileName + ".html");
+                    doc.Save(htmlPath, SaveFormat.Html);
+
+                    // Đọc nội dung HTML
+                    string htmlContent = System.IO.File.ReadAllText(htmlPath);
+
+                    // Phân tích nội dung HTML và lấy text + media
+                    List<Media> mediaList = new List<Media>();
+                    string textContent = ParseHtmlContent(htmlContent, mediaList, articleId, DateTime.Now, majorCode + " data ");
+
+                    // Nếu bài viết đã tồn tại, cập nhật nội dung
+                    if (existingArticle != null)
+                    {
+                        existingArticle.Content = textContent;
+                        existingArticle.DateCreated = DateTime.Now;
+                        await _articlesRepository.UpdateArticle(existingArticle);
+                        Console.WriteLine($"Đã cập nhật bài viết: {existingArticle.ArticleId} - {articleType}");
+                    }
+                    else
+                    {
+                        // Nếu bài viết chưa tồn tại, thêm mới
+                        Article newArticle = new Article
+                        {
+                            ArticleId = articleId,
+                            Title = fileName,
+                            Content = textContent,
+                            DateCreated = DateTime.Now,
+                            Type  = articleType
+                        };
+                        await _articlesRepository.AddArticle(newArticle);
+                        Console.WriteLine($"Đã thêm bài viết mới: {newArticle.ArticleId} - {articleType}");
+                    }
+
+                    // Lưu media vào bảng Media
+                    foreach (var media in mediaList)
+                    {
+                        await _mediasRepository.AddMedia(media);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Lỗi khi xử lý file {docxFiles}: {ex.Message}");
+                }
+            
+        }
+
+        
+        public async Task<Article?> GetArticleByType(string type)
+        {
+            return await _articlesRepository.GetArticleByType(type);
+        }
 
     }
 }

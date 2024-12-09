@@ -287,8 +287,19 @@
 .post-list {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Căn giữa các bài viết theo chiều ngang */
-    gap: 20px; /* Khoảng cách giữa các bài viết */
+    overflow-y: auto;
+    align-items: center;
+    gap: 20px;
+}
+    .post-list::-webkit-scrollbar {
+        display: none; 
+    }
+
+.loading-indicator {
+    text-align: center;
+    font-size: 16px;
+    color: gray;
+    margin: 20px 0;
 }
 
 .post {
@@ -495,8 +506,14 @@ button.action-btn {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
+    max-height: 400px;
+    overflow-y: auto;
     background-color: inherit;
 }
+    /* Ẩn thanh cuộn dọc */
+    #modalCommentSection::-webkit-scrollbar {
+        display: none;
+    }
 
 .comment-author {
     font-weight: bold;

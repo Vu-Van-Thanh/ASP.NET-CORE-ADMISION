@@ -1,15 +1,52 @@
-﻿@model IEnumerable<Major>
+﻿@model IEnumerable<Admission.Core.Domain.Entities.Major>
 @{
-	int count = 1;
+    int count = 1;
+    int maxVisible = 5;
 }
-<div class="container">
-	<div class="list-group">
-		@foreach (var major in Model)
-		{
-			<a asp-controller="Major" asp-action="ProgramDetail" class="list-group-item list-group-item-action">
-				<strong>@count.</strong> @major.Name
-			</a>
-			count++;
-		}
-	</div>
+<link rel="stylesheet" asp-append-version="true" href="/css/major.css" />
+<div class="container d-flex">
+    <!-- Sidebar -->
+    <div class="list-group w-25" id="access">
+        <!-- Search Box -->
+        <div class="p-2">
+            <input type="text" id="search-box" class="form-control" placeholder="Tìm ngành học..." />
+        </div>
+
+        <!-- List of Majors -->
+        <div id="major-list">
+            @foreach (var major in Model)
+            {
+                <a href="#"
+                   class="list-group-item list-group-item-action course-item @((count > maxVisible) ? "hidden" : "")"
+                   data-id="@major.MajorId"
+                   data-name="@major.Name"
+                   data-description="@major.Name"
+                   onclick="handleMajorClick('@major.MajorId')">
+                    <strong>@count.</strong> @major.Name
+                </a>
+                count++;
+            }
+        </div>
+
+        <!-- Show More Button -->
+        <div class="p-2 text-center">
+            <button id="show-more" class="btn btn-secondary" data-visible="@maxVisible">Xem thêm</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content w-75 p-3">
+        <h1 id="course-title">Chọn ngành học</h1>
+        <iframe id="course-description-iframe" style="width: 100%; height: 600px; border: none;overflow:hidden;"></iframe>
+        <div class="form-group mb-3">
+            <label for="year-select">Năm:</label>
+            <select id="year-select" class="form-control">
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+        <a id="register-button" href="#" class="btn btn-primary" style="display: none;">Đăng ký ngay</a>
+    </div>
 </div>
+<script src="/js/major.js"></script>

@@ -52,6 +52,7 @@ namespace Admission.Core.DTO
         [RegularExpression("^[0-9]*$", ErrorMessage = "Số điện thoại chỉ được chứa kí tự số!")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
+        public string ExamPeriod { get; set; }
 
         [Required(ErrorMessage = "Ảnh chân dung là bắt buộc.")]
         public string PortraitPath { get; set; } // Đường dẫn tới ảnh chân dung

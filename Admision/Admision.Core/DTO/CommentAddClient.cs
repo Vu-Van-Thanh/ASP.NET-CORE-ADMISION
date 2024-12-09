@@ -15,5 +15,6 @@ namespace Admission.Core.DTO
         public string CreatedDate { get; set; }
         public Guid AuthorID { get; set; }
         public IFormFile? image {  get; set; }
+        public int level { get; set; }
     }
 }

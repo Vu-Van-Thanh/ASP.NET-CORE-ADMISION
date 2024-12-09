@@ -2,6 +2,7 @@
 using Admission.Core.DTO;
 using Admission.Core.ServiceContracts;
 using Admission.Core.Services;
+using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 
@@ -41,7 +42,7 @@ namespace Admission.UI.Controllers
                 PostMediaDTO postMedia = new PostMediaDTO();
                 postMedia.MediaID = Guid.NewGuid();
                 postMedia.MediaUrl = file;
-                postMedia.Type = "PostMedia";
+                postMedia.Type = _filesService.GetMediaType(file);
                 postMediaDTO.Add(postMedia);
             }
             PostDTO postDTO = new PostDTO();
@@ -53,6 +54,19 @@ namespace Admission.UI.Controllers
 
             var postData = new { postID = postID,Title = "Post Title", Content = "This is the content of the post." };
             return Ok(postData);  // Trả về HTTP 200 OK và dữ liệu JSON
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> LikeModify(string postId, int like)
+        {
+            if (string.IsNullOrEmpty(postId) || (like != 1 && like != -1))
+            {
+                return BadRequest("Invalid parameters");
+            }
+            Guid id = await _postsService.LikeMofify(postId, like);
+            var  result = new { postId = id };
+            return Ok(result);
         }
     }
 }

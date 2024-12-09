@@ -1,0 +1,72 @@
+﻿.examregis-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.examregis-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.examregis-form-group {
+    margin-bottom: 15px;
+}
+
+    .examregis-form-group label {
+        font-weight: bold;
+        display: block;
+    }
+
+    .examregis-form-group input,
+    .examregis-form-group select,
+    .examregis-form-group textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .examregis-form-group select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .examregis-form-group textarea {
+        height: 100px;
+    }
+
+.examregis-error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.examregis-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .examregis-btn:hover {
+        background-color: #218838;
+    }
+
+.examregis-form-group input[type="file"] {
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+    .examregis-form-group input[type="file"]:focus {
+        border-color: #28a745;
+    }

@@ -1,9 +1,6 @@
-﻿
-@model BlogChatDTO
+﻿@model BlogChatDTO
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" type="text/css" href="~/css/social.css" asp-append-version="true">
-
-
 <div class="full-content">
     
     <div class="container-post">
@@ -44,8 +41,8 @@
 
 
 
-            <!-- Hiển thị các bài post -->
-            <div class="post-list">
+            @* <!-- Hiển thị các bài post --> *@
+            <div class="post-list" data-group-id="">
                 <div class="post" id="post-1">
                     <div class="post-header">
                         <img src="@ViewBag.AvatarUrl" alt="Profile">
@@ -88,13 +85,14 @@
 
 
             </div>
+            <div class="loading-indicator" id="loadingIndicator" style="display: none;">Đang tải...</div>
         </div>
     </div>
 
 
     <!-- Modal cho Bình luận -->
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-        <div id="commentPostID" type="hidden" data-comment-post-id=""></div>
+        <div id="commentPostID" type="hidden" data-comment-post-id="" data-authorid="@ViewBag.AuthorID"></div>
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -110,8 +108,9 @@
                     <!-- Hiển thị các bình luận -->
                     <div id="modalCommentSection">
                         <!-- Các bình luận sẽ được tải động từ AJAX hoặc JavaScript -->
+                        
                     </div>
-
+                    <div class="loading-indicator" id="loadingCommentIndicator" style="display: none;">Đang tải bình luận...</div>
                     <!-- Form để người dùng nhập bình luận mới -->
                     <form id="comment-form" asp-controller="Comment" asp-action="AddComment">
                         <div class="comment-box-total">
@@ -132,8 +131,8 @@
                             </div>
                             <div id="image-previewSelf" class="image-previewSelf" style="display: none;">
                                 <div class="image-preview-buttons">
-                                    <button onclick="zoomImageComment()" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
-                                    <button onclick="removeImageComment()" class="remove-btn"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" onclick="zoomImageComment()" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+                                    <button type="button" onclick="removeImageComment()" class="remove-btn"><i class="fas fa-trash-alt"></i></button>
                                 </div>
                                 <img id="preview-imgSelf" src="#" alt="Image Preview" />
 
@@ -142,19 +141,40 @@
                                 <div class="emoji-list" id="emoji-list">
                                 </div>
                                 <div class="emoji-categories">
-                                    <button class="category-button" data-category="smileys">😊</button>
-                                    <button class="category-button" data-category="animals">🐶</button>
-                                    <button class="category-button" data-category="foods">🍎</button>
-                                    <button class="category-button" data-category="sports">⚽</button>
-                                    <button class="category-button" data-category="objects">💡</button>
-                                    <button class="category-button" data-category="celebrations">🎉</button>
+                                    <button type="button" class="category-button" data-category="smileys">😊</button>
+                                    <button type="button" class="category-button" data-category="animals">🐶</button>
+                                    <button type="button" class="category-button" data-category="foods">🍎</button>
+                                    <button type="button" class="category-button" data-category="sports">⚽</button>
+                                    <button type="button" class="category-button" data-category="objects">💡</button>
+                                    <button type="button" class="category-button" data-category="celebrations">🎉</button>
                                 </div>
                             </div>
 
                         </div>
                     </form>
                     
-
+                    <form id="replyFormComment" asp-controller="Comment" asp-action="AddComment" method="post" style="display:none;">
+                        <input type="hidden" id="parentCommentId">
+                        <input type="hidden" id="commentLevel">
+                        <input type="hidden" id="parentAuthor">
+                        <div class="reply-container" style="margin-left: 0px;">
+                            <div class="reply-input-container">
+                                <img src="@ViewBag.AvatarUrl" alt="Profile" class="comment-profile-pic">
+                                <div class="reply-tools">
+                                    <input id="reply-input" type="text" class="form-control reply-input" placeholder="Viết trả lời của bạn..." onkeydown="handleEnter(event, '${parentId}', ${newLevel})" />
+                                    <div class="tool-buttons">
+                                        <button type="button" id="reply-state" onclick="showEmojiPicker(event,'reply-state','reply-input')"><i class="fas fa-smile"></i></button>
+                                        <label for="upload-image" class="upload-label"><i class="fas fa-camera"></i></label>
+                                        <input type="file" id="upload-image" class="upload-image" accept="image/*, video/*" onchange="handleImageUpload(event,'${parentId}')" style="display: none;" />
+                                        <button id="submitreply" onclick="submitReply(event)">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="media-preview-${parentId}" class="media-preview" style="display: none;"></div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -220,6 +240,13 @@
         <span class="close" onclick="closeZoomModal()">&times;</span>
         <div class="modal-content-comment" id="zoomModalContentComment"></div>
     </div>
+    <form asp-controller="Post" asp-action="LikeModify" id="likeForm" style="display:none;" enctype="multipart/form-data">
+        <input type="hidden" name="postId" id="likepostIdInput">
+        <input type="hidden" name="like" id="likepostInput">
+    </form>
+    
+
+
 
 </div>
 

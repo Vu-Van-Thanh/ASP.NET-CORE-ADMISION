@@ -12,5 +12,7 @@ namespace Admission.Core.ServiceContracts
 		Task<Major?> GetMajorByMajorID(Guid majorID);
 		Task<List<Major>?> GetAllMajors();
 		Task UploadFile(IEnumerable<(Stream fileStream, string fileName)> files);
-	}
+		string ExtractMajorCode(string majorName);
+
+    }
 }

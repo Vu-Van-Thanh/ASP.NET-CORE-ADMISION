@@ -21,17 +21,14 @@ namespace Admission.Infrastructure.Repositories
         }
 
         public async Task<Comment> AddComment(Comment comment)
-        {
-            Console.WriteLine($"Before AddAsync: {JsonConvert.SerializeObject(comment)}");
+        {         
             await _context.Comments.AddAsync(comment);
-            Console.WriteLine($"After AddAsync: {JsonConvert.SerializeObject(comment)}");
             await _context.SaveChangesAsync();
-            Console.WriteLine($"After AddAsync: {JsonConvert.SerializeObject(comment)}");
-
             return comment;
         }
 
-        public async Task<IEnumerable<Comment>> GetCommentsByPostId(Guid postId)
+
+        public async Task<List<Comment>> GetCommentsByPostId(Guid postId)
         {
             return await _context.Comments
             .Where(c => c.PostID == postId)

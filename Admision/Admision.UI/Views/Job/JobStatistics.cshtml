@@ -1,0 +1,160 @@
+﻿@model dynamic
+
+<div class="chart-container">
+    <h2>Biểu đồ thống kê công việc</h2>
+
+    <!-- Biểu đồ số lượng công việc theo ngành nghề -->
+    <h3>Số lượng công việc theo ngành nghề</h3>
+    <canvas id="jobByMajorChart"></canvas>
+
+    <!-- Biểu đồ số lượng công việc theo khu vực -->
+    <h3>Số lượng công việc theo khu vực</h3>
+    <canvas id="jobByProvinceChart"></canvas>
+
+    <!-- Biểu đồ phân bổ công việc theo loại -->
+    <h3>Phân bổ công việc theo loại</h3>
+    <canvas id="jobByTypeChart"></canvas>
+
+    <!-- Biểu đồ phân bổ công việc theo cấp bậc -->
+    <h3>Phân bổ công việc theo cấp bậc</h3>
+    <canvas id="jobByLevelChart"></canvas>
+
+    <!-- Biểu đồ hạn nộp hồ sơ theo thời gian -->
+    <h3>Hạn nộp hồ sơ theo thời gian</h3>
+    <canvas id="jobTrendChart"></canvas>
+
+    <!-- Biểu đồ lương trung bình theo ngành nghề -->
+    <h3>Lương trung bình theo ngành nghề</h3>
+    <canvas id="salaryByMajorChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Lấy toàn bộ dữ liệu từ Model
+    const modelData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+    console.log("Full Model Data:", modelData);
+
+    // Biểu đồ số lượng công việc theo ngành nghề
+    const jobByMajor = modelData.find(item => item.jobByMajor)?.jobByMajor || [];
+    const ctx1 = document.getElementById('jobByMajorChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: jobByMajor.map(item => item.label),
+            datasets: [{
+                label: 'Số lượng công việc',
+                data: jobByMajor.map(item => item.count),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Ngành nghề' } },
+                y: { title: { display: true, text: 'Số lượng công việc' } }
+            }
+        }
+    });
+
+    // Biểu đồ số lượng công việc theo khu vực
+    const jobByProvince = modelData.find(item => item.jobByProvince)?.jobByProvince || [];
+    const ctx2 = document.getElementById('jobByProvinceChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: jobByProvince.map(item => item.label),
+            datasets: [{
+                label: 'Số lượng công việc',
+                data: jobByProvince.map(item => item.count),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Khu vực' } },
+                y: { title: { display: true, text: 'Số lượng công việc' } }
+            }
+        }
+    });
+
+    // Biểu đồ phân bổ công việc theo loại
+    const jobByType = modelData.find(item => item.jobByType)?.jobByType || [];
+    const ctx3 = document.getElementById('jobByTypeChart').getContext('2d');
+    new Chart(ctx3, {
+        type: 'pie',
+        data: {
+            labels: jobByType.map(item => item.label),
+            datasets: [{
+                data: jobByType.map(item => item.count),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Biểu đồ phân bổ công việc theo cấp bậc
+    const jobByLevel = modelData.find(item => item.jobByLevel)?.jobByLevel || [];
+    const ctx4 = document.getElementById('jobByLevelChart').getContext('2d');
+    new Chart(ctx4, {
+        type: 'pie',
+        data: {
+            labels: jobByLevel.map(item => item.label),
+            datasets: [{
+                data: jobByLevel.map(item => item.count),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Biểu đồ hạn nộp hồ sơ theo thời gian
+    const jobTrend = modelData.find(item => item.jobTrend)?.jobTrend || [];
+    const ctx5 = document.getElementById('jobTrendChart').getContext('2d');
+    new Chart(ctx5, {
+        type: 'line',
+        data: {
+            labels: jobTrend.map(item => item.label),
+            datasets: [{
+                label: 'Số lượng công việc',
+                data: jobTrend.map(item => item.count),
+                borderColor: '#36A2EB',
+                backgroundColor: 'rgba(54,162,235,0.2)',
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Thời gian' } },
+                y: { title: { display: true, text: 'Số lượng công việc' } }
+            }
+        }
+    });
+
+    // Biểu đồ lương trung bình theo ngành nghề
+    const salaryByMajor = modelData.find(item => item.salaryByMajor)?.salaryByMajor || [];
+    const ctx6 = document.getElementById('salaryByMajorChart').getContext('2d');
+    new Chart(ctx6, {
+        type: 'horizontalBar',
+        data: {
+            labels: salaryByMajor.map(item => item.label),
+            datasets: [{
+                label: 'Lương trung bình (VND)',
+                data: salaryByMajor.map(item => item.count),
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Lương (VND)' } },
+                y: { title: { display: true, text: 'Ngành nghề' } }
+            }
+        }
+    });
+</script>

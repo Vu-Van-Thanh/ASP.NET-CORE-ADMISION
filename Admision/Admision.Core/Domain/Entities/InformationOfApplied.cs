@@ -24,6 +24,8 @@ namespace Admission.Core.Domain.Entities
 
 		[StringLength(10)]
 		public string? TestRoom {  get; set; }
+		[StringLength(50)]
+		public string? ExamPeriod { get; set; }
 
 		public double GPA10 { get; set; }
 

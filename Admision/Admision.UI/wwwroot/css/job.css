@@ -1,0 +1,79 @@
+﻿/* Sử dụng flexbox cho các biểu đồ */
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Cho phép các biểu đồ xuống dòng khi không đủ không gian */
+    width: 100%;
+    gap: 20px;
+}
+
+.chart, .chart-bottom {
+    width: 48%; /* Mỗi biểu đồ chiếm khoảng 50% chiều rộng */
+    height: 300px; /* Chiều cao biểu đồ */
+}
+
+/* Biểu đồ map chiếm 100% chiều rộng */
+.map-container {
+    width: 100%;
+    height:500px;
+    
+}
+
+#mapChart {
+    width: 100%;
+    height: 100%; /* Chiều cao bản đồ */
+}
+#chart-panel{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+}
+
+.filter-panel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 20px; /* Giãn cách với chart */
+}
+
+    .filter-panel select {
+        margin-right: 15px;
+        margin-bottom: 10px; /* Đảm bảo các phần tử không bị chồng lên nhau khi xuống dòng */
+        padding: 8px;
+        font-size: 14px;
+        width: 200px; /* Bạn có thể điều chỉnh độ rộng của các thẻ select */
+    }
+
+
+.noUi-handle {
+    width: 20px !important; /* Đặt chiều rộng của nút trượt */
+    height: 20px !important; /* Đặt chiều cao của nút trượt */
+    border-radius: 50% !important; /* Làm cho nút trượt có hình tròn */
+    background-color: #007bff !important; /* Màu nền của nút trượt */
+    border: 2px solid #fff !important; /* Viền trắng cho nút trượt */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2) !important; /* Thêm bóng cho nút trượt */
+    cursor: pointer !important; /* Đổi con trỏ thành hình tay khi hover vào nút */
+}
+
+/* Tùy chỉnh các thanh nối giữa các điểm */
+.noUi-connect {
+    background: #007bff !important; /* Màu của phần nối giữa các giá trị */
+}
+
+/* Khi hover vào nút trượt, thay đổi hiệu ứng */
+.noUi-handle:hover {
+    background-color: #0056b3 !important; /* Màu thay đổi khi hover */
+}
+
+#salarySlider {
+    margin: 20px 0;
+    width: 100%;
+}
+
+#salaryRangeValue {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}

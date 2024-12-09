@@ -20,6 +20,25 @@ namespace Admission.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<Guid> AddLike(Guid postId, int like)
+        {
+            var post = await _context.Posts
+                                      .FirstOrDefaultAsync(p => p.PostID == postId);  // Lấy bài viết theo postId
+
+            if (post == null)
+            {
+                throw new Exception("Post not found");
+            }
+
+            // Thêm lượt thích vào bài viết, ví dụ:
+            post.LikeCount += like;  // Giả sử bạn có thuộc tính Likes trong bài viết
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            await _context.SaveChangesAsync();
+
+            return post.PostID;  // Trả về Id của bài viết sau khi thêm lượt thích
+        }
+
         public async Task<Post> AddPostContent(PostContentDTO postContent, string GroupID)
         {
             Post post = new Post();

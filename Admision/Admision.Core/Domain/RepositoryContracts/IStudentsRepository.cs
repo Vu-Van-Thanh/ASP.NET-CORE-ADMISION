@@ -15,5 +15,8 @@ namespace Admission.Core.Domain.RepositoryContracts
 		Task<ApplicationUser?> GetUserByEmailAsync (string email);
 
 		Task UpdateUserAsync(ApplicationUser user,Student student);
-	}
+		Task <Student> GetAuthorByAuthorId(Guid authorID);
+		Task UpdateStudent(Student student);
+
+    }
 }
