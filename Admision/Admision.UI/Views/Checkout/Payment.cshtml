@@ -1,0 +1,42 @@
+﻿@model Admission.Core.Domain.Entities.Payment
+
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+
+<div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Nội dung thu</th>
+                <th scope="col">Bắt buộc</th>
+                <th scope="col">Hạn nộp</th>
+                <th scope="col">Số tiền (VNĐ)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Phí đăng ký dự thi</td>
+                <td class="text-center">
+                    <span class="text-success">&#10003;</span> <!-- Dấu tích -->
+                </td>
+                <td>31/05/2024</td>
+                <td>@Model.InitialExpenses.ToString("N0")</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <form asp-action="Payment" method="post" class="mt-4">
+        <input type="submit" name="payment" class="btn btn-success" value="Thanh toán VNPAY">
+    </form>
+</div>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger mt-3">
+        @TempData["ErrorMessage"]
+    </div>
+}

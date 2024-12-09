@@ -13,13 +13,13 @@ namespace Admission.Core.Domain.Entities
 		[Key]
 		public Guid PaymentID { get; set; }
 
-		public Guid ResultID { get; set; }
+		public Guid Id { get; set; }
 		[Column(TypeName = "decimal(18,2)")]
-		public decimal InitialExpenses { get; set; }
+		public double InitialExpenses { get; set; }
 		[Column(TypeName = "decimal(18,2)")]
-		public decimal CostPaid { get; set; }
+		public double CostPaid { get; set; }
 
 		[ForeignKey("ResultID")]
-		public virtual Result? Result { get; set; }
+		public virtual InformationOfApplied? InformationOfApplied { get; set; }
 	}
 }

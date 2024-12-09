@@ -4,6 +4,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Admission.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241209100840_updatesomefield")]
+    partial class updatesomefield
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,12 +38,8 @@ namespace Admission.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.HasKey("ArticleId");
 
@@ -52,48 +51,42 @@ namespace Admission.Infrastructure.Migrations
                             ArticleId = new Guid("a14fb4b4-9886-437b-add1-e4429424f6a2"),
                             Content = "Để hỗ trợ các thí sinh đưa ra quyết định về việc lựa chọn nguyện vọng một cách hợp lý nhất, Đại học Bách khoa Hà Nội đưa ra dự báo điểm chuẩn cho 64 chương trình đào tạo tuyển sinh năm 2024.",
                             DateCreated = new DateTime(2024, 10, 5, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Đề án tuyển sinh 2024-2025",
-                            Type = "Normal"
+                            Title = "Đề án tuyển sinh 2024-2025"
                         },
                         new
                         {
                             ArticleId = new Guid("53aa8629-51a7-4810-8e69-0cc8a4c4ebd3"),
                             Content = "Trường Đại học Bách khoa Hà Nội thông báo lịch thi tuyển sinh cho năm 2024. Các thí sinh cần chú ý theo dõi để không bỏ lỡ.",
                             DateCreated = new DateTime(2024, 10, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Thông báo lịch thi tuyển sinh 2024",
-                            Type = "Normal"
+                            Title = "Thông báo lịch thi tuyển sinh 2024"
                         },
                         new
                         {
                             ArticleId = new Guid("32460e72-2ba1-420f-b32c-53f4e2e01be3"),
                             Content = "Để đăng ký dự thi, các thí sinh cần chuẩn bị hồ sơ đầy đủ theo hướng dẫn của trường. Hãy đọc kỹ để tránh thiếu sót.",
                             DateCreated = new DateTime(2024, 10, 3, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Hướng dẫn chuẩn bị hồ sơ đăng ký",
-                            Type = "Normal"
+                            Title = "Hướng dẫn chuẩn bị hồ sơ đăng ký"
                         },
                         new
                         {
                             ArticleId = new Guid("18fc6183-8a57-4deb-9d26-f28034395fc1"),
                             Content = "Điểm chuẩn vào các chương trình đào tạo của Đại học Bách khoa Hà Nội trong năm 2023 đã được công bố. Các thí sinh có thể tham khảo để chuẩn bị cho năm sau.",
                             DateCreated = new DateTime(2024, 9, 30, 11, 30, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Điểm chuẩn năm 2023",
-                            Type = "Normal"
+                            Title = "Điểm chuẩn năm 2023"
                         },
                         new
                         {
                             ArticleId = new Guid("9aa5e0da-57d8-4393-b9c9-5a30374f0703"),
                             Content = "Đại học Bách khoa Hà Nội hiện có nhiều chương trình đào tạo nổi bật, đáp ứng nhu cầu thị trường lao động.",
                             DateCreated = new DateTime(2024, 10, 2, 12, 15, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Các chương trình đào tạo nổi bật",
-                            Type = "Normal"
+                            Title = "Các chương trình đào tạo nổi bật"
                         },
                         new
                         {
                             ArticleId = new Guid("24e5b629-cd94-4364-bb64-63e5a7e72dda"),
                             Content = "Đánh giá chất lượng chương trình đào tạo tại Đại học Bách khoa Hà Nội được thực hiện hàng năm để cải tiến và nâng cao chất lượng giảng dạy.",
                             DateCreated = new DateTime(2024, 10, 4, 15, 45, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Đánh giá chương trình đào tạo",
-                            Type = "Normal"
+                            Title = "Đánh giá chương trình đào tạo"
                         });
                 });
 
@@ -126,9 +119,6 @@ namespace Admission.Infrastructure.Migrations
 
                     b.Property<string>("VideoUrl")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("level")
-                        .HasColumnType("int");
 
                     b.HasKey("CommentID");
 
@@ -542,10 +532,6 @@ namespace Admission.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("ExamPeriod")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<double>("GPA10")
                         .HasColumnType("float");
 
@@ -828,13 +814,13 @@ namespace Admission.Infrastructure.Migrations
                         new
                         {
                             MajorId = new Guid("1bd84ee8-08aa-4644-ba15-119fe56717da"),
-                            Name = "( IT1 ) CNTT Khoa học Máy tính",
+                            Name = "( IT1 ) CNTT: Khoa học Máy tính",
                             SchoolID = new Guid("c8a30332-1976-4c48-81f1-e6857032b3db")
                         },
                         new
                         {
                             MajorId = new Guid("62c2ff34-1ad0-4852-81fa-b6751f6ef64d"),
-                            Name = "( IT2 ) CNTT Kỹ thuật máy tính",
+                            Name = "( IT2 ) CNTT: Kỹ thuật máy tính",
                             SchoolID = new Guid("c8a30332-1976-4c48-81f1-e6857032b3db")
                         },
                         new

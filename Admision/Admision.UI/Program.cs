@@ -8,6 +8,7 @@ using Serilog;
 using Admission.Filters.ActionFilters;
 using Admission;
 using Admission.Middleware;
+using Admission.Core.ServiceContracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,6 @@ builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider services, 
 
 
 builder.Services.ConfigureServices(builder.Configuration);
-
 
 var app = builder.Build();
 
