@@ -38,5 +38,7 @@ namespace Admission.Core.Domain.Entities
 
 		[ForeignKey("MajorID")]
 		public virtual Major? Major { get; set; }
+
+		public virtual List<Payment>? Payments { get; set; }
 	}
 }

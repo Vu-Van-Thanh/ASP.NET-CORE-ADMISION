@@ -57,7 +57,7 @@ namespace Admission
             services.AddScoped<IHighSchoolsRepository, HighSchoolsRepository>();
 
             services.AddSingleton<IVnPayService, VnPayService>();
-            services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
+            /*services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();
 
 

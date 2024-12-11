@@ -19,7 +19,7 @@ namespace Admission.Core.Domain.Entities
 		[Column(TypeName = "decimal(18,2)")]
 		public double CostPaid { get; set; }
 
-		[ForeignKey("ResultID")]
+		[ForeignKey("Id")]
 		public virtual InformationOfApplied? InformationOfApplied { get; set; }
 	}
 }
