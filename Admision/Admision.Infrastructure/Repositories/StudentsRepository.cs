@@ -118,5 +118,54 @@ namespace Admission.Infrastructure.Repositories
                         .Where(s => s.StudentID == authorID)
                         .FirstOrDefaultAsync();
         }
+
+        public async Task<bool> UpdateRegisEx(Student updateStudent)
+        {
+            if (updateStudent == null)
+            {
+                return false;
+            }
+            Student? student = await _dbcontext.Students .FirstOrDefaultAsync(s => s.StudentID == updateStudent.StudentID);
+            if(student == null)
+            {
+                return false;
+            }
+            student.FirstName = updateStudent.FirstName;
+            student.LastName = updateStudent.LastName;
+            student.Gender = updateStudent.Gender;
+            student.IndentityCard = updateStudent.IndentityCard;
+            student.DateOfBirth = updateStudent.DateOfBirth;
+            student.Address = updateStudent.Address;
+            student.HighSchoolID = updateStudent.HighSchoolID;
+            await _dbcontext.SaveChangesAsync();
+            return true;
+        }
+
+        public Task<bool> UpdateRegisMediaEx(List<StudentMedia> updateMedia)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> UpdateMedia(List<StudentMedia> updateMedia)
+        {
+            if (updateMedia != null)
+            {
+                List<StudentMedia> existMedia = await _dbcontext.StudentMedias
+                                        .Where(m => m.StudentID == updateMedia[0].StudentID && m.StudentMediaType == updateMedia[0].StudentMediaType)
+                                        .ToListAsync();
+                if (existMedia.Any())
+                {
+                    _dbcontext.RemoveRange(existMedia);
+
+                }
+                await _dbcontext.AddRangeAsync(updateMedia);
+                int result = await _dbcontext.SaveChangesAsync();
+                return result >= updateMedia.Count;
+            }
+            else
+            {
+                throw new ArgumentException("Danh sách updateMedia không được rỗng.");
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Admission.Core.CustomerAtribute;
 using Admission.Core.CustomerAttribute;
+using Microsoft.AspNetCore.Http;
 using ServiceContracts.Enums;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Admission.Core.DTO
         [NoNumber]
         public string FullName { get; set; }
 
-        public GenderOptions Gender { get; set; }
+        public string Gender { get; set; }
 
         [Required(ErrorMessage = "Căn cước công dân là bắt buộc.")]
         [StringLength(12, ErrorMessage = "Căn cước công dân không được vượt quá 12 ký tự.")]
@@ -30,6 +31,7 @@ namespace Admission.Core.DTO
         public string? Address { get; set; }
 
         public string AdmissionMethod { get; set; }
+        public string MajorID {  get; set; }
         public string HighSchool { get; set; }
         public string GraduatedYear { get; set; }
 
@@ -62,6 +64,10 @@ namespace Admission.Core.DTO
 
         [Required(ErrorMessage = "Bảng điểm là bắt buộc.")]
         public List<string> TranscriptPath { get; set; } // Đường dẫn tới bảng điểm
+
+        public IFormFile? NewPortraitPath { get; set; } // File ảnh chân dung mới
+        public IFormFile[]? NewIdentityCard { get; set; } // Các file ảnh căn cước mới
+        public IFormFile[]? NewTranscriptPath { get; set; }
 
     }
 }

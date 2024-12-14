@@ -5,12 +5,12 @@
 <div class="examregis-container">
     <h1 class="examregis-title">Đăng Ký Thi</h1>
 
-    <form id="examregis-form" asp-controller="Register" asp-action="registerExam" method="post" enctype="multipart/form-data">
+    <form id="examregis-form" asp-controller="RegisterEx" asp-action="registerExam" method="post" enctype="multipart/form-data">
         <div class="examregis-form-grid">
             <!-- Full Name -->
             <div class="examregis-form-group">
                 <label for="examregis-FullName">Họ và Tên</label>
-                <input type="text" id="examregis-FullName" asp-for="FullName" maxlength="40" placeholder="Nhập họ và tên" />
+                <input type="text" id="examregis-FullName" asp-for="FullName" maxlength="40" placeholder="Nhập họ và tên" value="@Model.FullName"/>
                 <span class="examregis-error" asp-validation-for="FullName"></span>
             </div>
 
@@ -19,9 +19,9 @@
                 <label for="examregis-Gender">Giới Tính</label>
                 <select id="examregis-Gender" asp-for="Gender" required>
                     <option value="">Chọn giới tính</option>
-                    <option value="Male">Nam</option>
-                    <option value="Female">Nữ</option>
-                    <option value="Other">Khác</option>
+                    <option value="0">Nam</option>
+                    <option value="1">Nữ</option>
+                    <option value="2">Khác</option>
                 </select>
                 <span class="examregis-error" asp-validation-for="Gender"></span>
             </div>
@@ -43,7 +43,7 @@
             <!-- Address -->
             <div class="examregis-form-group">
                 <label for="examregis-Address">Địa Chỉ</label>
-                <textarea id="examregis-Address" asp-for="Address" maxlength="200" placeholder="Nhập địa chỉ"></textarea>
+                <textarea id="examregis-Address" asp-for="Address" maxlength="200" placeholder="Nhập địa chỉ">@Model.Address</textarea>
                 <span class="examregis-error" asp-validation-for="Address"></span>
             </div>
 
@@ -54,10 +54,30 @@
                 <span class="examregis-error" asp-validation-for="AdmissionMethod"></span>
             </div>
 
+            
+            <!-- Major ID -->
+            <div class="examregis-form-group">
+                <label for="examregis-MajorID">Kỳ Thi</label>
+                <select id="examregis-MajorID" asp-for="MajorID" required>
+                    <option value="">Chọn ngành học ứng tuyển</option>
+                    @foreach(Major major in ViewBag.Majors)
+                    {
+                        <option value="@major.MajorId">@major.Name</option>
+                    }
+                </select>
+                <span class="examregis-error" asp-validation-for="MajorID"></span>
+            </div>
             <!-- High School -->
             <div class="examregis-form-group">
                 <label for="examregis-HighSchool">Trường Trung Học Phổ Thông</label>
-                <input type="text" id="examregis-HighSchool" asp-for="HighSchool" placeholder="Nhập tên trường" />
+                
+                <select id="examregis-HighSchool" asp-for="HighSchool">
+                    <option value="">Chọn trường học</option>
+                    @foreach(HighSchool highSchool in ViewBag.HighSchools)
+                    {
+                        <option value="@highSchool.HighSchoolID">@highSchool.HighSchoolName</option>
+                    }
+                </select>
                 <span class="examregis-error" asp-validation-for="HighSchool"></span>
             </div>
 
@@ -92,7 +112,7 @@
             <!-- Email -->
             <div class="examregis-form-group">
                 <label for="examregis-Email">Email</label>
-                <input type="email" id="examregis-Email" asp-for="Email" placeholder="Nhập email" />
+                <input type="email" id="examregis-Email" asp-for="Email" placeholder="Nhập email" disabled />
                 <span class="examregis-error" asp-validation-for="Email"></span>
             </div>
 
@@ -118,12 +138,12 @@
             <!-- File Upload cho Căn Cước -->
             <div class="examregis-form-group">
                 <label for="examregis-IdentityCard">Ảnh Căn Cước</label>
-                <input type="file" id="examregis-IdentityCard" asp-for="IdentityCard" multiple onchange="previewFiles()" />
-                <span class="examregis-error" asp-validation-for="IdentityCard"></span>
+                <input type="file" id="examregis-IdentityCard" asp-for="NewIdentityCard" multiple onchange="previewFiles()" />
+                <span class="examregis-error" asp-validation-for="NewIdentityCard"></span>
 
                 <div id="preview-container" class="examregis-preview">
                     <!-- Các ảnh preview sẽ hiển thị ở đây -->
-                    @if (Model.IdentityCard != null && Model.IdentityCard.Count > 0)
+                    @if (Model.IdentityCard != null && Model.IdentityCard.Count > 0)    // bug
                     {
                         @foreach (var file in Model.IdentityCard)
                         {
@@ -138,8 +158,8 @@
             <!-- File Upload cho Học Bạ -->
             <div class="examregis-form-group">
                 <label for="examregis-TranscriptPath">Bảng Điểm</label>
-                <input type="file" id="examregis-TranscriptPath" asp-for="TranscriptPath" multiple onchange="previewTranscript()" />
-                <span class="examregis-error" asp-validation-for="TranscriptPath"></span>
+                <input type="file" id="examregis-TranscriptPath" asp-for="NewTranscriptPath" multiple onchange="previewTranscript()" />
+                <span class="examregis-error" asp-validation-for="NewTranscriptPath"></span>
 
                 <div id="transcript-preview-container" class="examregis-preview">
                     <!-- Các ảnh preview bảng điểm sẽ hiển thị ở đây -->
@@ -149,8 +169,8 @@
             <!-- File Upload cho Ảnh Chân Dung -->
             <div class="examregis-form-group">
                 <label for="examregis-PortraitPath">Ảnh Chân Dung</label>
-                <input type="file" id="examregis-PortraitPath" asp-for="PortraitPath" onchange="previewPortrait()" />
-                <span class="examregis-error" asp-validation-for="PortraitPath"></span>
+                <input type="file" id="examregis-PortraitPath" asp-for="NewPortraitPath" onchange="previewPortrait()" />
+                <span class="examregis-error" asp-validation-for="NewPortraitPath"></span>
 
                 <div id="portrait-preview-container" class="examregis-preview">
                     <!-- Ảnh chân dung preview sẽ hiển thị ở đây -->

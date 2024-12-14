@@ -1,5 +1,4 @@
 ﻿using Admission.Core.Domain.Entities;
-using Admission.Core.Domain.IdentityEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Admission.Core.Domain.RepositoryContracts
 {
-	public interface IHighSchoolsRepository
-	{
-		Task<List<HighSchool>?> GetAllHighSchools();
-        Task<HighSchool> GetHighSchoolById(Guid Id);
+    public interface IInfoApplyRepository
+    {
+        Task<int> AddInfoApply(InformationOfApplied informationOfApplied);
     }
 }

@@ -29,7 +29,7 @@ namespace Admission.UI.Controllers
         public async Task<IActionResult> GetAllJobByFilter()
         {
             var result = await _recruitDataService.GetJobByFilter();
-            var result2 = new {success=true};
+            
             return Ok(result);
         }
     }

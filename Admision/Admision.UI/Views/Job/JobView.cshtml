@@ -328,19 +328,15 @@
             }
         });
 
-        // Cập nhật giá trị khi người dùng thay đổi
         salarySlider.noUiSlider.on('update', function (values, handle) {
             const [min, max] = values;
             minWage = parseInt(min);
             maxWage = parseInt(max);
 
-            // Cập nhật hiển thị giá trị của thanh trượt
             salaryRangeValue.textContent = `${minWage} - ${maxWage}`;
-
-            // Lọc công việc dựa trên mức lương đã chọn
             const filteredJobs = jobs.filter(job => job.minWage <= maxWage && job.maxWage >= minWage);
 
-            // Render lại biểu đồ và bản đồ với dữ liệu đã lọc
+            
             renderCharts(filteredJobs);
             renderMap(filteredJobs);
         });

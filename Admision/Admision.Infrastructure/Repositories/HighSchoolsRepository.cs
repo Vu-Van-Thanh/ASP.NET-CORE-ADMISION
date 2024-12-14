@@ -25,5 +25,10 @@ namespace Admission.Infrastructure.Repositories
 		{
 			return await _dbcontext.HighSchools.ToListAsync();
 		}
-	}
+
+        public async Task<HighSchool> GetHighSchoolById(Guid Id)
+        {
+            return await _dbcontext.HighSchools.FirstOrDefaultAsync(h => h.HighSchoolID == Id);
+        }
+    }
 }

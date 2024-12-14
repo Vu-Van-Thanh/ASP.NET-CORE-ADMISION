@@ -16,6 +16,7 @@ namespace Admission.Core.Domain.Entities
 
 		public Guid StudentID { get; set; }
 		[StringLength(50)]
+
 		public string? AdmissionMethod { get; set; }
 
 		public Guid MajorID { get; set; }

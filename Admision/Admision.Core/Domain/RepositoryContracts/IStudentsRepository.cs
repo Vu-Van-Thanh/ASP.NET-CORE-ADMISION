@@ -17,6 +17,9 @@ namespace Admission.Core.Domain.RepositoryContracts
 		Task UpdateUserAsync(ApplicationUser user,Student student);
 		Task <Student> GetAuthorByAuthorId(Guid authorID);
 		Task UpdateStudent(Student student);
+        Task<bool> UpdateRegisEx(Student updateStudent);
+		Task<bool> UpdateRegisMediaEx(List<StudentMedia> updateMedia);
+		Task<bool> UpdateMedia(List<StudentMedia> updateMedia);
 
     }
 }

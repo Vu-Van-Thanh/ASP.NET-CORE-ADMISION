@@ -10,5 +10,7 @@ namespace Admission.Core.ServiceContracts
 	public interface IHighSchoolsService
 	{
 		Task<List<HighSchool>?> GetAllHighSchools();
-	}
+		Task<HighSchool> GetHighSchoolById(Guid Id);
+
+    }
 }

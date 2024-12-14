@@ -18,6 +18,11 @@ namespace Admission.Core.ServiceContracts
 		Task<Guid> UpdateStudyInfo(StudyProcessDTO student, string accountId);
 		Task SaveMediaStudent(IFormFile[] formFiles, Guid Id, string type);
 		Task AddAdditionalInformation(Student student);
+		(string, string) SplitStringAtFirstSpace(string input);
+        Task<bool> UpdateRegisEx(Student updateStudent);
+        Task<bool> UpdateRegisMediaEx(StudentMedia updateStudent);
+		Task<bool> UpdateStudentMedia(List<StudentMedia> list);
+
 
 
     }

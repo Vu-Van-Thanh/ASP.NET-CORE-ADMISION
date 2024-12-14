@@ -28,8 +28,14 @@ namespace Admission.Infrastructure.Repositories
 
         public async Task UpdateStudentMedia(List<StudentMedia> medias)
         {
+            
             if (medias != null && medias.Any())
             {
+                List<StudentMedia> list = await _db.StudentMedias.Where(m => m.StudentID == medias[0].StudentID && m.StudentMediaType == medias[0].StudentMediaType).ToListAsync();
+                if(list!= null)
+                {
+                    _db.StudentMedias.RemoveRange(list);
+                }
                 await _db.StudentMedias.AddRangeAsync(medias); 
                 await _db.SaveChangesAsync(); 
             }

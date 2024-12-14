@@ -55,7 +55,8 @@ namespace Admission
             services.AddScoped<ICountriesAdderService, CountriesAdderService>();
             services.AddScoped<ICountriesUploaderService, CountriesUploaderService>();
             services.AddScoped<IHighSchoolsRepository, HighSchoolsRepository>();
-
+            services.AddScoped<IInfoApplyRepository, InfoApplyRepository>();
+            services.AddScoped<IInfoAppliesService,InfoAppliesService>();
             services.AddSingleton<IVnPayService, VnPayService>();
             /*services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();

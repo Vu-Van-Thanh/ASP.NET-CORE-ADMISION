@@ -24,5 +24,9 @@ namespace Admission.Core.Services
 		{
 			return await _highSchoolsRepository.GetAllHighSchools();
 		}
+		public async Task<HighSchool> GetHighSchoolById(Guid Id)
+		{
+			return await _highSchoolsRepository.GetHighSchoolById(Id);
+		}
 	}
 }
