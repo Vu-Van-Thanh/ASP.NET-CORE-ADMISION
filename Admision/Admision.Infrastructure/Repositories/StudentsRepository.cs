@@ -167,5 +167,11 @@ namespace Admission.Infrastructure.Repositories
                 throw new ArgumentException("Danh sách updateMedia không được rỗng.");
             }
         }
+
+        public async Task<Student?> GetStudentByStudentID(Guid studentID)
+        {
+            return await _dbcontext.Students
+                                .FirstOrDefaultAsync(s=> s.StudentID == studentID);
+        }
     }
 }

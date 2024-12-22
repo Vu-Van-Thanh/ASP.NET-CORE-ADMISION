@@ -311,5 +311,10 @@ namespace Admission.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<Student?> GetStudentByStudentID(Guid studentID)
+        {
+            return await _studentsRepository.GetStudentByStudentID(studentID);
+        }
     }
 }

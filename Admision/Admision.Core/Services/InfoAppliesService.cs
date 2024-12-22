@@ -2,6 +2,9 @@
 using Admission.Core.Domain.RepositoryContracts;
 using Admission.Core.DTO;
 using Admission.Core.ServiceContracts;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +16,12 @@ namespace Admission.Core.Services
     public class InfoAppliesService : IInfoAppliesService
     {
         private readonly IInfoApplyRepository _infoApplyRepository;
+        private readonly IStudentsService _studentsService;
 
-        public InfoAppliesService(IInfoApplyRepository infoApplyRepository)
+        public InfoAppliesService(IInfoApplyRepository infoApplyRepository, IStudentsService studentsService)
         {
             _infoApplyRepository = infoApplyRepository;
+            _studentsService = studentsService; 
         }
 
         public async Task<int> AddInfoApplies(InformationApplyDTO informationApplyDTO)
@@ -31,11 +36,80 @@ namespace Admission.Core.Services
             informationOfApplied.GPA10 = informationApplyDTO.GPA10;
             informationOfApplied.GPA12 = informationApplyDTO.GPA12;
             informationOfApplied.TestRoom = null;
-            informationOfApplied.TestDate = DateTime.Now;
+            informationOfApplied.TestDate = DateTime.Now.ToString();
 
              return await _infoApplyRepository.AddInfoApply(informationOfApplied);
-           
+        }
 
+        public async Task<List<InfoStudentDTO>> GetInfoStudent(string ExamPeriod)
+        {
+            List<InformationOfApplied> list = await _infoApplyRepository.GetByEP(ExamPeriod);
+            List<InfoStudentDTO> result = new List<InfoStudentDTO>();
+            foreach (InformationOfApplied informationOfApplied in list)
+            {
+                Student temp = await _studentsService.GetStudentByStudentID(informationOfApplied.StudentID);
+                result.Add(new InfoStudentDTO
+                {
+
+                    StudentID = informationOfApplied.StudentID,
+                    StudentName = temp.FirstName + " " + temp.LastName,
+                    AdmissionMethod = informationOfApplied.AdmissionMethod,
+                    MajorID = informationOfApplied.MajorID,
+                    TestDate = null,
+                    TestRoom = null
+                });
+            }
+            return result;
+        }
+
+        public async Task<List<(string, string, int)>> ReadRoomsFromExcel(IFormFile roomsFile)
+        {
+            var result = new List<(string, string, int)>(); 
+            var shifts = new HashSet<string>(); 
+
+           
+            using (var stream = new MemoryStream())
+            {
+                await roomsFile.CopyToAsync(stream);
+                using (var package = new ExcelPackage(stream))
+                {
+                    
+                    var worksheet = package.Workbook.Worksheets[0];
+
+                    
+                    for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
+                    {
+                        
+                        string shift = worksheet.Cells[row, 3].Text.Trim(); // Kíp thi
+
+                        // Thêm kíp vào set (đảm bảo kíp không bị trùng lặp)
+                        if (!string.IsNullOrEmpty(shift))
+                        {
+                            shifts.Add(shift);
+                        }
+                    }
+                    for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
+                    {
+                        string classRoom = worksheet.Cells[row, 1].Text.Trim();
+                        int maxCapacity = int.Parse(worksheet.Cells[row, 2].Text.Trim());
+                        foreach (var shift in shifts)
+                        {
+                            result.Add((classRoom, shift, maxCapacity));
+                        }
+                    }
+
+                    
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<int> UpdateInfoApplies(List<InfoStudentDTO> informationStudentDTO)
+        {
+            List<InformationOfApplied> list = informationStudentDTO.Select(p => p.ToIOA()).ToList();
+            List<InformationOfApplied> result = await _infoApplyRepository.UpdateInfo(list);
+            return result.Count;
         }
     }
 }

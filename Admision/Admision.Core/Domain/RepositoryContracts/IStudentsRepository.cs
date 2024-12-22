@@ -11,7 +11,8 @@ namespace Admission.Core.Domain.RepositoryContracts
 	public interface IStudentsRepository
 	{
 		Task<Student?> GetStudentByAccountID (Guid accountID);
-		Task<ApplicationUser?> GetUserAsync (string accountID);
+		Task<Student?> GetStudentByStudentID (Guid studentID);
+        Task<ApplicationUser?> GetUserAsync (string accountID);
 		Task<ApplicationUser?> GetUserByEmailAsync (string email);
 
 		Task UpdateUserAsync(ApplicationUser user,Student student);

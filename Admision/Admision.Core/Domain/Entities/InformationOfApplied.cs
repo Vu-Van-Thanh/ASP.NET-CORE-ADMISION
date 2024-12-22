@@ -21,7 +21,7 @@ namespace Admission.Core.Domain.Entities
 
 		public Guid MajorID { get; set; }
 
-		public DateTime TestDate { get; set; }
+		public string? TestDate { get; set; }
 
 		[StringLength(10)]
 		public string? TestRoom {  get; set; }

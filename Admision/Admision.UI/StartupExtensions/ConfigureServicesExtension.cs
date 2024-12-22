@@ -58,6 +58,7 @@ namespace Admission
             services.AddScoped<IInfoApplyRepository, InfoApplyRepository>();
             services.AddScoped<IInfoAppliesService,InfoAppliesService>();
             services.AddSingleton<IVnPayService, VnPayService>();
+            services.AddTransient<IEmailService, EmailService>();
             /*services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();
 

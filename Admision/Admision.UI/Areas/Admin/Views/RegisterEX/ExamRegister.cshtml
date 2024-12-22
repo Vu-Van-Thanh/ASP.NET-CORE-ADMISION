@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = "Tải lên Tệp Excel và Chọn Kỳ Thi";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        /* Nền và kiểu trang web */
+        body {
+            background: linear-gradient(to right, #ff6a00, #d40000);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding-top: 30px;
+        }
+
+        /* Tạo hiệu ứng hover cho các nút */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #c82333;
+                transform: scale(1.1);
+            }
+
+        /* Các thẻ Card */
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+        /* Input và select focus */
+        .form-group input,
+        .form-group select {
+            transition: border-color 0.3s;
+        }
+
+            .form-group input:focus,
+            .form-group select:focus {
+                border-color: #ff6a00;
+                box-shadow: 0 0 5px rgba(255, 106, 0, 0.6);
+            }
+
+        /* Padding cho các phần tử */
+        .container {
+            max-width: 900px;
+        }
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .text-center {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
+
+        <!-- Form tải lên tệp Excel -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">Tải lên Tệp Excel</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="examForm"  enctype="multipart/form-data" asp-controller="RegisterEX" asp-action="ExamRegister" asp-area="admin" method="post">
+                            <div class="form-group">
+                                <label for="file">Chọn tệp Excel:</label>
+                                <input type="file" name="rooms" id="file" class="form-control" />
+                            </div>
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-upload"></i> Phân bổ phòng thi
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chọn kỳ thi -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">Chọn Kỳ Thi</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="examId">Chọn Kỳ Thi:</label>
+                            <select name="examId" id="examId" class="form-control">
+                                @* Uncomment and loop through exams when you have exam data *@
+                                @*
+                                @foreach (var exam in ViewBag.Exams)
+                                {
+                                <option value="@exam.Id">@exam.Name</option>
+                                }
+                                *@
+                                <option value="Exam1">Exam1</option>
+                            </select>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-4">
+            <button id="loadStudentData" class="btn btn-warning btn-lg">
+                <i class="bi bi-download"></i> Tải Dữ Liệu Sinh Viên
+            </button>
+        </div>
+
+       
+        <div id="studentList" class="mb-4">
+         
+        </div>
+
+       
+        
+    </div>
+
+    <!-- Cài đặt Bootstrap và Bootstrap Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AJAX Script để gọi hàm GetStudentData -->
+    <script>
+        document.getElementById("loadStudentData").addEventListener("click", function () {
+            var examPeriod = document.getElementById("examId").value; // Lấy giá trị kỳ thi
+
+            if (examPeriod) {
+                fetch('/admin/registerEX/GetStudentData?ExamPeriod=' + examPeriod) // Thay 'YourController' với tên controller của bạn
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById("studentList").innerHTML = data; // Hiển thị dữ liệu vào div studentList
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
+                alert('Vui lòng chọn kỳ thi!');
+            }
+        });
+        document.getElementById("examForm").addEventListener("submit", function (e) {
+            e.preventDefault(); 
+
+            var formData = new FormData(this); 
+
+            // Gửi dữ liệu qua AJAX
+            fetch('/admin/registerEX/ExamRegister', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.text())  
+                .then(data => {
+                    
+                    document.getElementById("studentList").innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

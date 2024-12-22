@@ -5,6 +5,8 @@ using Admission.Core.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Admission.Core.Domain.IdentityEntities;
 using ServiceContracts.Enums;
+using Admission.Core.Services;
+using System.Net.Mail;
 
 namespace Admission.UI.Controllers
 {
@@ -17,9 +19,10 @@ namespace Admission.UI.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IFilesService _filesService;
         private readonly IInfoAppliesService _inforAppliesService;
+        private readonly IEmailService _emailService;
         
 
-        public RegisterExController(IStudentMediasService studentMediasService, IStudentsService studentsService, IMajorsService majorsService, IHighSchoolsService highSchoolsService, UserManager<ApplicationUser> userManager,IFilesService filesService, IInfoAppliesService infoAppliesService)
+        public RegisterExController(IStudentMediasService studentMediasService, IStudentsService studentsService, IMajorsService majorsService, IHighSchoolsService highSchoolsService, UserManager<ApplicationUser> userManager,IFilesService filesService, IInfoAppliesService infoAppliesService, IEmailService emailService)
         {
             _studentMediasService = studentMediasService;
             _studentsService = studentsService;
@@ -28,6 +31,7 @@ namespace Admission.UI.Controllers
             _userManager = userManager;
             _filesService = filesService;
             _inforAppliesService = infoAppliesService;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -147,7 +151,19 @@ namespace Admission.UI.Controllers
             infor.GPA11 = registerExDTO.GPA11;
             infor.GPA12 = registerExDTO.GPA12;
             int result = await _inforAppliesService.AddInfoApplies(infor);
-            return View();
+            if (result > 0)
+            {
+                // Ví dụ sử dụng EmailService
+                var emailBody = $"<p>Chào {student.FirstName} {student.LastName},</p>" +
+                                $"<p>Bạn đã đăng ký thành công kỳ thi {registerExDTO.ExamPeriod}. Chúng tôi sẽ sớm gửi thông tin chi tiết.</p>" +
+                                $"<p>Trân trọng,<br>Ban tuyển sinh</p>";
+
+                
+                await _emailService.SendEmailAsync(registerExDTO.Email, "Xác nhận đăng ký kỳ thi thành công", emailBody);
+
+            }
+
+            return Redirect("/");
         }
     }
 }

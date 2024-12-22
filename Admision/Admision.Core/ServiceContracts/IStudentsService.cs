@@ -12,8 +12,9 @@ namespace Admission.Core.ServiceContracts
 	public interface IStudentsService
 	{
 		Task<Student?> GetStudentByAccountID (Guid accountID);
+		Task<Student?> GetStudentByStudentID (Guid studentID);
 
-		Task<StudentInfoDTO?> GetUserInfoAsync(string userId);
+        Task<StudentInfoDTO?> GetUserInfoAsync(string userId);
 		Task<Guid> UpdateStudentInfo (StudentUpdateInfoDTO student, Guid accountId);
 		Task<Guid> UpdateStudyInfo(StudyProcessDTO student, string accountId);
 		Task SaveMediaStudent(IFormFile[] formFiles, Guid Id, string type);

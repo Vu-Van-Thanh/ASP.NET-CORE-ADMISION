@@ -1,0 +1,27 @@
+﻿@model List<InfoStudentDTO>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Admission Method</th>
+            <th>Major ID</th>
+            <th>Test Date</th>
+            <th>Test Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentID</td>
+                <td>@student.StudentName</td>
+                <td>@student.AdmissionMethod</td>
+                <td>@student.MajorID</td>
+                <td>@student.TestDate?.ToString() ?? "N/A"</td> <!-- Nếu TestDate là null, hiển thị "N/A" -->
+                <td>@student.TestRoom ?? "N/A"</td> <!-- Nếu TestRoom là null, hiển thị "N/A" -->
+            </tr>
+        }
+    </tbody>
+</table>

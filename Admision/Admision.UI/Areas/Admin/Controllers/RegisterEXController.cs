@@ -1,122 +1,109 @@
-﻿/*using Entities;
+﻿using Admission.Core.Domain.Entities;
+using Admission.Core.DTO;
+using Admission.Core.ServiceContracts;
+using Admission.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using OfficeOpenXml;
 
 namespace Admission.UI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+
     public class RegisterEXController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private  List<InfoStudentDTO> students;
+        private readonly IInfoAppliesService _info;
+        
 
-        public RegisterEXController(ApplicationDbContext context)
+        public RegisterEXController(IInfoAppliesService info)
         {
-            _context = context;
+            students = new List<InfoStudentDTO>();   
+            _info = info;
         }
 
-        // View chính
-        public ActionResult Index()
+        [HttpGet]
+        public IActionResult ExamRegister()
         {
+
             return View();
         }
 
-        // API: Lấy danh sách kỳ thi
-        [HttpGet]
-        public JsonResult GetExamPeriods()
-        {
-            var periods = _context.InformationOfApplieds
-                .Select(x => x.ExamPeriod)
-                .Distinct()
-                .ToList();
-
-            return Json(periods, JsonRequestBehavior.AllowGet);
-        }
-
-        // API: Lấy danh sách sinh viên theo kỳ thi
-        [HttpGet]
-        public JsonResult GetStudentsByExamPeriod(string examPeriod)
-        {
-            var students = _context.InformationOfApplieds
-                .Where(x => x.ExamPeriod == examPeriod)
-                .Select(x => new
-                {
-                    x.StudentID,
-                    x.Student.Name,
-                    x.ExamPeriod,
-                    x.TestRoom
-                })
-                .ToList();
-
-            return Json(students, JsonRequestBehavior.AllowGet);
-        }
-
-        // API: Upload file Excel
         [HttpPost]
-        public JsonResult UploadFile()
+        public async Task<IActionResult> ExamRegister(IFormFile rooms)
         {
-            try
+            if (TempData["students"] != null)
             {
-                var file = Request.Files[0];
-                if (file != null && file.ContentLength > 0)
-                {
-                    string path = Path.Combine(Server.MapPath("~/Uploads"), file.FileName);
-                    file.SaveAs(path);
-                    return Json(new { success = true, path });
-                }
-
-                return Json(new { success = false, message = "Không có file được tải lên." });
+                // Lấy lại students từ TempData
+                students = JsonConvert.DeserializeObject<List<InfoStudentDTO>>(TempData["students"].ToString());
             }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, message = ex.Message });
-            }
-        }
+            // Đọc thông tin phòng thi từ tệp Excel
+            List<(string room, string shift, int maxCapacity)> roomsList = await _info.ReadRoomsFromExcel(rooms);
 
-        // API: Random phòng và kíp thi
-        [HttpPost]
-        public JsonResult RandomRooms(string examPeriod, string filePath)
-        {
-            try
+            Random random = new Random();
+            int roomIndex = 0;
+
+            // Tạo danh sách để theo dõi số lượng tối đa còn lại cho mỗi phòng và kíp
+            // Chúng ta sẽ lưu số lượng tối đa còn lại cho mỗi phòng/kíp trong một danh sách mới
+            var roomCapacity = roomsList.ToDictionary(
+                r => (r.room, r.shift),
+                r => r.maxCapacity
+            );
+
+            foreach (var student in students)
             {
-                // Đọc dữ liệu phòng/kíp thi từ file Excel
-                var roomsAndPeriods = new List<(string Room, string Period)>();
-                using (var package = new ExcelPackage(new FileInfo(filePath)))
+                // Lấy phòng thi và kíp thi cho sinh viên
+                var room = roomsList[roomIndex].room;
+                var shift = roomsList[roomIndex].shift;
+
+                // Kiểm tra xem có còn chỗ không cho phòng và kíp này
+                if (roomCapacity[(room, shift)] > 0)
                 {
-                    var worksheet = package.Workbook.Worksheets.FirstOrDefault();
-                    if (worksheet != null)
+                    // Cập nhật thông tin phòng thi và kíp thi cho sinh viên
+                    student.TestRoom = room;
+                    student.TestDate = shift; // Có thể thay đổi theo yêu cầu
+
+                    // Giảm số lượng sinh viên còn lại cho phòng/kíp thi này
+                    roomCapacity[(room, shift)]--;
+
+                    // Nếu phòng thi đã hết chỗ, chuyển sang phòng tiếp theo
+                    if (roomCapacity[(room, shift)] == 0)
                     {
-                        int row = 2;
-                        while (worksheet.Cells[row, 1].Value != null)
+                        roomIndex++;
+                        if (roomIndex >= roomsList.Count)
                         {
-                            roomsAndPeriods.Add((
-                                worksheet.Cells[row, 1].Value.ToString(),
-                                worksheet.Cells[row, 2].Value.ToString()
-                            ));
-                            row++;
+                            // Nếu hết phòng thi, dừng lại
+                            break;
                         }
                     }
                 }
-
-                // Lấy sinh viên thuộc kỳ thi
-                var students = _context.InformationOfApplieds
-                    .Where(x => x.ExamPeriod == examPeriod)
-                    .ToList();
-
-                var random = new Random();
-                foreach (var student in students)
+                else
                 {
-                    var randomRoom = roomsAndPeriods[random.Next(roomsAndPeriods.Count)];
-                    student.TestRoom = randomRoom.Room;
-                    student.ExamPeriod = randomRoom.Period;
+                   
+                    Console.WriteLine($"Không còn chỗ trong phòng {room} cho kíp {shift}");
                 }
+            }
 
-                _context.SaveChanges();
-                return Json(new { success = true });
-            }
-            catch (Exception ex)
+            int result = await _info.UpdateInfoApplies(students);
+            if(result == students.Count)
             {
-                return Json(new { success = false, message = ex.Message });
+                return PartialView("_InfoAppliedStudent", students);
             }
+            else
+            {
+                return BadRequest();
+            }
+            
+        }
+
+
+
+        public async Task<IActionResult> GetStudentData(string ExamPeriod)
+        {
+            List<InfoStudentDTO> list = await _info.GetInfoStudent(ExamPeriod);
+            TempData["students"] = JsonConvert.SerializeObject(list);
+            /*students.AddRange(list);*/
+            return PartialView("_InfoAppliedStudent",list);
         }
     }
 }
-*/
