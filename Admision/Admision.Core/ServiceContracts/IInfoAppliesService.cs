@@ -14,5 +14,6 @@ namespace Admission.Core.ServiceContracts
         Task<List<InfoStudentDTO>> GetInfoStudent(string ExamPeriod);
         Task<List<(string, string, int)>> ReadRoomsFromExcel(IFormFile roomsFile);
         Task<int> UpdateInfoApplies(List<InfoStudentDTO> informationStudentDTO);
+        Task<List<ExamClassDTO>> GetInfoApplyByStudentId(string studentId);
     }
 }

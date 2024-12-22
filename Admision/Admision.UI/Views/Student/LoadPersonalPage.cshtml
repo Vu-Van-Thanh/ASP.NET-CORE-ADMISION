@@ -46,6 +46,10 @@
 	$(document).ready(function () {
 		$('.event-link').click(function (event) {
 			event.preventDefault();
+			const extensionContainer = document.querySelector('.extension-container');
+			if (extensionContainer) {
+				extensionContainer.style.display = 'none';
+			}
 
 			var option = $(this).data('option');
 			var userId = $(this).data('user-id');

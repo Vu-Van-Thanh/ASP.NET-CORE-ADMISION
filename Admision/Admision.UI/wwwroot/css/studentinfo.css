@@ -47,7 +47,7 @@
     padding:10px;
 }
 .access-info img {
-    max-width: 100%; /* Hình ảnh không vượt quá chiều rộng của access-info */
+    max-width: 80%; /* Hình ảnh không vượt quá chiều rộng của access-info */
     height: auto; /* Giữ tỷ lệ hình ảnh */
 }
 

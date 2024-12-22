@@ -13,14 +13,14 @@ namespace Admission.Core.Domain.Entities
 		[Key]
 		public Guid ResultId { get; set; }
 
-		public Guid StudentID { get; set; }
+		public Guid InfoAppliedID { get; set; }
 
 		[StringLength(10)]
 		public string? Status {  get; set; }
 
 		public double? Score { get; set; }
 
-		[ForeignKey("StudentID")]
-		public virtual Student? Student { get; set; }
+		[ForeignKey("InfoAppliedID")]
+		public virtual InformationOfApplied? Info { get; set; }
 	}
 }

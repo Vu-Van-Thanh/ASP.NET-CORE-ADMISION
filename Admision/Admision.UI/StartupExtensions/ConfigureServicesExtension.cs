@@ -59,6 +59,10 @@ namespace Admission
             services.AddScoped<IInfoAppliesService,InfoAppliesService>();
             services.AddSingleton<IVnPayService, VnPayService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IResultRepository, ResultRepository>();
+            services.AddScoped<IResultService, ResultService>();
             /*services.AddScoped<IPersonsGetterService, PersonsGetterServiceWithFewExcelFields>();
             services.AddScoped<PersonsGetterService, PersonsGetterService>();
 
@@ -137,6 +141,7 @@ namespace Admission
             {
                 options.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestProperties | Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.ResponsePropertiesAndHeaders;
             });
+            services.AddHttpContextAccessor();
 
             return services;
         }

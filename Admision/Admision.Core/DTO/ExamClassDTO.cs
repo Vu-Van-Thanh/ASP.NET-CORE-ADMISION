@@ -10,14 +10,17 @@ namespace Admission.Core.DTO
     {
         public Guid Id { get; set; }
         public string? AdmissionMethod { get; set; }
-        public Guid MajorID { get; set; }
+        public Guid? MajorID { get; set; }
+        public string? MajorName { get; set; }
         public string? TestDate { get; set; }
         public string? TestRoom { get; set; }
         public string? ExamPeriod { get; set; }
-        public double GPA10 { get; set; }
+        public double? GPA10 { get; set; }
 
-        public double GPA11 { get; set; }
+        public double? GPA11 { get; set; }
 
-        public double GPA12 { get; set; }
+        public double? GPA12 { get; set; }
+        public string? PaymentStatus { get; set; }
+        public double? Score { get; set; }
     }
 }

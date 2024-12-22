@@ -17,11 +17,17 @@ namespace Admission.Core.Services
     {
         private readonly IInfoApplyRepository _infoApplyRepository;
         private readonly IStudentsService _studentsService;
+        private readonly IMajorsService _majorService;
+        private readonly IPaymentService _paymentService;
+        private readonly IResultService _resultService;
 
-        public InfoAppliesService(IInfoApplyRepository infoApplyRepository, IStudentsService studentsService)
+        public InfoAppliesService(IInfoApplyRepository infoApplyRepository, IStudentsService studentsService, IMajorsService majorService, IPaymentService paymentService, IResultService resultService)
         {
             _infoApplyRepository = infoApplyRepository;
-            _studentsService = studentsService; 
+            _studentsService = studentsService;
+            _majorService = majorService;   
+            _paymentService = paymentService;
+            _resultService = resultService;
         }
 
         public async Task<int> AddInfoApplies(InformationApplyDTO informationApplyDTO)
@@ -39,6 +45,31 @@ namespace Admission.Core.Services
             informationOfApplied.TestDate = DateTime.Now.ToString();
 
              return await _infoApplyRepository.AddInfoApply(informationOfApplied);
+        }
+
+        public async Task<List<ExamClassDTO>> GetInfoApplyByStudentId(string studentId)
+        {
+            List<InformationOfApplied> list = await _infoApplyRepository.GetByStudentId(Guid.Parse(studentId));
+            List<ExamClassDTO> result = new List<ExamClassDTO>();
+            foreach(InformationOfApplied informationOfApplied in list)
+            {
+                ExamClassDTO exClass = new ExamClassDTO();
+                exClass.Id = informationOfApplied.Id;
+                exClass.AdmissionMethod = informationOfApplied.AdmissionMethod;
+                exClass.MajorID = informationOfApplied.MajorID;
+                exClass.MajorName = (await _majorService.GetMajorByMajorID(informationOfApplied.MajorID)).Name ?? "N/A";
+                exClass.TestDate = informationOfApplied.TestDate;
+                exClass.TestRoom = informationOfApplied.TestRoom;
+                exClass.ExamPeriod = informationOfApplied.ExamPeriod;
+                exClass.GPA11 = informationOfApplied.GPA11;
+                exClass.GPA10 = informationOfApplied.GPA10;
+                exClass.GPA12 = informationOfApplied.GPA12;
+                Guid? paymentID = await _paymentService.GetPaymentByAI(informationOfApplied.Id);
+                exClass.PaymentStatus = paymentID != null ? "Yes" : "No";
+                exClass.Score = (await _resultService.GetScroreExam(informationOfApplied.Id)) ?? 0;
+                result.Add(exClass);
+            }
+            return result;
         }
 
         public async Task<List<InfoStudentDTO>> GetInfoStudent(string ExamPeriod)

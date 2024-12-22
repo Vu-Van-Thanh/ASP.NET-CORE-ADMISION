@@ -34,6 +34,11 @@ namespace Admission.Infrastructure.Repositories
            
         }
 
+        public async Task<List<InformationOfApplied>> GetByStudentId(Guid Id)
+        {
+            return await _db.InformationOfApplieds.Where(ia=> ia.StudentID == Id).ToListAsync();
+        }
+
         public async Task<List<InformationOfApplied>> UpdateInfo(List<InformationOfApplied> infos)
         {
             List<InformationOfApplied> result = new List<InformationOfApplied> ();

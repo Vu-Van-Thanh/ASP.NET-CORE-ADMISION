@@ -11,6 +11,7 @@ namespace Admission.Core.Domain.RepositoryContracts
     {
         Task<int> AddInfoApply(InformationOfApplied informationOfApplied);
         Task<List<InformationOfApplied>> GetByEP(string ExamPeriod);
+        Task<List<InformationOfApplied>> GetByStudentId(Guid Id);
         Task<List<InformationOfApplied>> UpdateInfo(List<InformationOfApplied> infos);
     }
 }
