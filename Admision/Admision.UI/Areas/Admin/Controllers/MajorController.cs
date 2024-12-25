@@ -17,7 +17,7 @@ namespace Admission.UI.Areas.Admin.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult UpLoadProgramDetail ()
+		public IActionResult UpLoadProgramDetail()
 		{
 			return View();
 		}

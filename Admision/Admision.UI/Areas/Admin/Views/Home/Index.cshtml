@@ -1,0 +1,86 @@
+﻿<div class="container my-5">
+    <!-- Carousel (Vùng Nổi Bật) -->
+    <div id="adminHomepageCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/img/admin panel.png" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:black;">Chào mừng Quản Trị Viên</h5>
+                    <p style="color:black;">Quản lý toàn bộ hệ thống tuyển sinh một cách dễ dàng và hiệu quả.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Kiểm Soát Toàn Diện</h5>
+                    <p>Theo dõi và cập nhật thông tin tuyển sinh chỉ với vài cú nhấp chuột.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Tích Hợp Thông Minh</h5>
+                    <p>Kết nối linh hoạt với các hệ thống quản lý và dữ liệu học sinh.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#adminHomepageCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#adminHomepageCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Cards (Chức Năng Chính) -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Quản Lý Hồ Sơ">
+                <div class="card-body">
+                    <h5 class="card-title">Cập nhật thông tin tuyển sinh</h5>
+                    <p class="card-text">Cập nhật ngay</p>
+                    <a href="~/admin/major/UpdateMajorAdmission" class="btn btn-primary">Xem Chi Tiết</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Cập Nhật Điểm Chuẩn">
+                <div class="card-body">
+                    <h5 class="card-title">Đăng bài viết tuyển sinh</h5>
+                    <p class="card-text">Thêm thông tin tuyển sinh</p>
+                    <a href="~/admin/article/UploadNews" class="btn btn-primary">Xem Chi Tiết</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Phân Bổ Phòng Thi">
+                <div class="card-body">
+                    <h5 class="card-title">Phân Bổ Phòng Thi</h5>
+                    <p class="card-text">Sắp xếp phòng thi và lịch thi một cách chuyên nghiệp.</p>
+                    <a href="~/admin/registerEX/ExamRegister" class="btn btn-primary">Xem Chi Tiết</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Thông Báo -->
+    <div class="mt-5">
+        <h4>Thông Báo Mới Nhất</h4>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>[12/12/2024]</strong> Hạn chót xác nhận hồ sơ tuyển sinh: 20/12/2024.
+            </li>
+            <li class="list-group-item">
+                <strong>[10/12/2024]</strong> Điểm chuẩn dự kiến sẽ được công bố vào tuần tới.
+            </li>
+            <li class="list-group-item">
+                <strong>[05/12/2024]</strong> Hệ thống tuyển sinh được nâng cấp với các tính năng mới.
+            </li>
+        </ul>
+    </div>
+</div>

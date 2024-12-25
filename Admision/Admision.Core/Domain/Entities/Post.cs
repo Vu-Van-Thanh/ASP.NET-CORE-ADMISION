@@ -24,6 +24,9 @@ namespace Admission.Core.Domain.Entities
 
 		public int LikeCount { get; set; } = 0;
 
+		[StringLength(40)]
+		public string? Type { get; set; }
+
 		[ForeignKey("AuthorID")]
 		public virtual Student? Author { get; set; }
 

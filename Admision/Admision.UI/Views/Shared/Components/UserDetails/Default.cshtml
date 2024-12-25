@@ -1,45 +1,89 @@
 ﻿@model List<ExamClassDTO>
 
-
-
-<body>
-    <div class="container mt-4">
+<link rel="stylesheet" href="~/css/classInfo.css" asp-append-version="true" />
+<div class="custom-container mt-4">
+    <div class="custom-info-table">
         @foreach (var examClass in Model)
         {
-            <div class="row mb-3">
-                <div class="col-12">
-                    <div class="card shadow-sm">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5 class="card-title mb-0">@examClass.MajorName</h5>
-                                <p class="mb-1"><strong>Phương thức xét tuyển:</strong> @examClass.AdmissionMethod</p>
-                                <p class="mb-1"><strong>Ngày thi:</strong> @examClass.TestDate</p>
-                                <p class="mb-1"><strong>Phòng thi:</strong> @examClass.TestRoom</p>
-                                <p class="mb-1"><strong>Ca thi:</strong> @examClass.ExamPeriod</p>
-                                <p class="mb-1"><strong>Trạng thái thanh toán:</strong> @examClass.PaymentStatus</p>
-                            </div>
-                            <div>
-                                <button class="btn btn-success me-2" onclick="payExam('@examClass.Id')">Thanh toán</button>
-                                <button class="btn btn-primary" onclick="viewDetail('@examClass.Id')">Xem chi tiết</button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="custom-info-row">
+                <div class="custom-info-columns">
+                    <div class="custom-column"><strong>Ngành:</strong> @examClass.MajorName</div>
+                    <div class="custom-column"><strong>Kíp thi:</strong> @examClass.ExamPeriod</div>
+                    <div class="custom-column"><strong>Nơi thi:</strong> @examClass.TestRoom</div>
+                    <div class="custom-column"><strong>Điểm:</strong> @examClass.Score</div>
+                </div>
+                <div class="custom-action-buttons">
+                    <button class="custom-btn custom-btn-detail"
+                            onclick="viewDetail(this)"
+                            data-id="@examClass.Id"
+                            data-major="@examClass.MajorName"
+                            data-period="@examClass.ExamPeriod"
+                            data-room="@examClass.TestRoom"
+                            data-score="@examClass.Score"
+                            data-method="@examClass.AdmissionMethod"
+                            data-date="@examClass.TestDate"
+                            data-gpa10="@examClass.GPA10"
+                            data-gpa11="@examClass.GPA11"
+                            data-gpa12="@examClass.GPA12"
+                            data-payment-status="@examClass.PaymentStatus">
+                        Xem chi tiết
+                    </button>
+                    <button class="custom-btn custom-btn-pay" onclick="payExam('@examClass.Id')">Thanh toán</button>
                 </div>
             </div>
         }
     </div>
-</body>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+</div>
+<!-- Modal -->
+<div class="custom-modal" id="detailModal">
+    <div class="custom-modal-content">
+        <span class="custom-modal-close" onclick="closeModal()">&times;</span>
+        <div id="modal-body">
+            <!-- Nội dung chi tiết sẽ được load ở đây -->
+            <p>Loading...</p>
+        </div>
+    </div>
+</div>
 <script>
-    function payExam(examId) {
-        alert(`Thanh toán cho kỳ thi: ${examId}`);
-        // Thêm logic gửi request thanh toán tại đây
+    function viewDetail(button) {
+        // Lấy dữ liệu từ các thuộc tính data-*
+        const id = button.getAttribute('data-id');
+        const major = button.getAttribute('data-major');
+        const period = button.getAttribute('data-period');
+        const room = button.getAttribute('data-room');
+        const score = button.getAttribute('data-score');
+        const method = button.getAttribute('data-method');
+        const date = button.getAttribute('data-date');
+        const gpa10 = button.getAttribute('data-gpa10');
+        const gpa11 = button.getAttribute('data-gpa11');
+        const gpa12 = button.getAttribute('data-gpa12');
+        const paymentStatus = button.getAttribute('data-payment-status');
+
+        // Cập nhật nội dung của modal
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `
+            <p><strong>ID:</strong> ${id}</p>
+            <p><strong>Ngành:</strong> ${major}</p>
+            <p><strong>Kíp thi:</strong> ${period}</p>
+            <p><strong>Nơi thi:</strong> ${room}</p>
+            <p><strong>Điểm:</strong> ${score}</p>
+            <p><strong>Phương thức tuyển sinh:</strong> ${method}</p>
+            <p><strong>Ngày thi:</strong> ${date}</p>
+            <p><strong>GPA lớp 10:</strong> ${gpa10}</p>
+            <p><strong>GPA lớp 11:</strong> ${gpa11}</p>
+            <p><strong>GPA lớp 12:</strong> ${gpa12}</p>
+            <p><strong>Trạng thái thanh toán:</strong> ${paymentStatus}</p>
+        `;
+
+        // Hiển thị modal
+        const modal = document.getElementById('detailModal');
+        modal.style.display = 'block';
     }
 
-    function viewDetail(examId) {
-        alert(`Xem chi tiết kỳ thi: ${examId}`);
-        // Thêm logic xem chi tiết kỳ thi tại đây
+    function closeModal() {
+        // Ẩn modal
+        const modal = document.getElementById('detailModal');
+        modal.style.display = 'none';
     }
+
 </script>

@@ -1124,6 +1124,10 @@ namespace Admission.Infrastructure.Migrations
                     b.Property<int>("LikeCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Type")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
                     b.HasKey("PostID");
 
                     b.HasIndex("AuthorID");
@@ -1251,14 +1255,9 @@ namespace Admission.Infrastructure.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<Guid?>("StudentID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ResultId");
 
                     b.HasIndex("InfoAppliedID");
-
-                    b.HasIndex("StudentID");
 
                     b.ToTable("Results");
                 });
@@ -1970,10 +1969,6 @@ namespace Admission.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Admission.Core.Domain.Entities.Student", null)
-                        .WithMany("Results")
-                        .HasForeignKey("StudentID");
-
                     b.Navigation("Info");
                 });
 
@@ -2117,8 +2112,6 @@ namespace Admission.Infrastructure.Migrations
                     b.Navigation("Posts");
 
                     b.Navigation("Relatives");
-
-                    b.Navigation("Results");
 
                     b.Navigation("StudentMedias");
                 });
